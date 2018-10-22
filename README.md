@@ -12,7 +12,7 @@ Datalogic maintains two ways to use the Datalogic Android SDK in your project:
 
 ## Add jitpack.io repository
 
-Add a reference to jitpack.io to your project's base build.gradle file:
+Add a reference to jitpack.io to the `build.gradle` file at your project's base/root directory:
 
 ```gradle
 allprojects {
@@ -25,7 +25,7 @@ allprojects {
 
 ## Add a dependency on the SDK
 
-Add a reference to the specific version of the SDK you would like to use to your app/build.gradle file. In this example, we are using version 1.12. You can see a list of all released versions [here](https://github.com/datalogic/datalogic-android-sdk/releases).
+Add a reference to the specific version of the SDK you would like to use to your `app/build.gradle` file. In this example, we are using version `1.12`. You can see a list of all released versions [here](https://github.com/datalogic/datalogic-android-sdk/releases).
 
 ```gradle
 dependencies {
@@ -35,7 +35,7 @@ dependencies {
 
 ## Add uses-library to manifest
 
-You must include a specific ```<uses-library>``` tag within the ```<application>``` element in your AndroidManifest.xml file (typically located inside app/src/main). Otherwise the actual library implementation on the Datalogic device will not be referenced.
+You must include a specific `<uses-library>` tag within the `<application>` element in your `AndroidManifest.xml` file (typically located inside `app/src/main`). Otherwise the actual library implementation on the Datalogic device will not be referenced.
 
 ```xml
 <application
