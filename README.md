@@ -29,7 +29,7 @@ Add a reference to the specific version of the SDK you would like to use to your
 
 ```gradle
 dependencies {
-    compile 'com.github.datalogic:datalogic-android-sdk:1.12'
+    implementation 'com.github.datalogic:datalogic-android-sdk:1.12'
 }
 ```
 
