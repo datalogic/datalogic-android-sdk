@@ -44,6 +44,10 @@ public class DecodeException extends RuntimeException {
 	 * A scan session cannot be started because a condition is not met.
 	 */
 	public static final int DECODER_CANNOT_START = (DEC_EXCEPTION<<16 | 0x0006);
+	/**
+	 * The Scanner Service cannot register or unregister the required listener.
+	 */
+	public static final int LISTENER_ERROR = (DEC_EXCEPTION<<16 | 0x0007);
 
 	/**
 	 * The error number returned by the Decoding Subsystem.

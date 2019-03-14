@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.datalogic.android.sdk" />
+	package="com.datalogic.android.sdk">
+    <application>
+        <uses-library
+            android:name="com.datalogic.device"
+            android:required="false" />
+    </application>
+</manifest>

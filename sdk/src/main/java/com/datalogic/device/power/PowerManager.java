@@ -133,4 +133,13 @@ public class PowerManager {
 	public WakeupSource getWakeupReason() {
 	    return null;
 	}
+
+	/**
+	 * This function allows to know the reason of last device power-off.
+	 * 
+	 * @return The {@link RebootReason} related to the reason of last device power-off event.
+	 */
+	public RebootReason getRebootReason() {
+		return null;
+	}
 }

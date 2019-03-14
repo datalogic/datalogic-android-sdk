@@ -77,6 +77,17 @@ public class BarcodeManager implements PropertyEditor {
 	}
 
 	/**
+	 * Checks if the Scanner Service is correctly initialized.
+	 * 
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public boolean isInitialized() {
+		return false;
+	}
+
+	/**
 	 * Registers a {@link ReadListener} to be notified when a read event is
 	 * triggered. Call {@link #removeReadListener} before the application
 	 * closes to properly shut down the listener.
@@ -190,6 +201,65 @@ public class BarcodeManager implements PropertyEditor {
 	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
 	 */
 	public int removeTimeoutListener(TimeoutListener listener) {
+		return 0;
+	}
+
+	/**
+	 * Registers a {@link InitListener} to be notified when a event of completed
+	 * Scanner initialization is triggered. Call {@link #removeInitListener} before
+	 * the application closes to properly shut down the listener.
+	 * 
+	 * @param listener
+	 *            The {@link InitListener} that will be called when a
+	 *            decoder's init event is fired.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int addInitListener(InitListener listener) {
+		return 0;
+	}
+
+	/**
+	 * Unregisters a {@link InitListener} associated with the decoder.
+	 * 
+	 * @param listener
+	 *            The {@link InitListener} that will be no more notified.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int removeInitListener(InitListener listener) {
+		return 0;
+	}
+	
+
+	/**
+	 * Registers a {@link DeinitListener} to be notified when a event of Scanner
+	 * de-initiliazion is triggered. Call {@link #removeDeinitListener} before
+	 * the application closes to properly shut down the listener.
+	 * 
+	 * @param listener
+	 *            The {@link DeinitListener} that will be called when a
+	 *            decoder's de-init event is fired.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int addDeinitListener(DeinitListener listener) {
+		return 0;
+	}
+
+	/**
+	 * Unregisters a {@link DeinitListener} associated with the decoder.
+	 * 
+	 * @param listener
+	 *            The {@link DeinitListener} that will be no more notified.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int removeDeinitListener(DeinitListener listener) {
 		return 0;
 	}
 

@@ -4,7 +4,10 @@ import com.datalogic.device.DeviceException;
 
 /**
  * The <code>BatteryInfo</code> class stores battery's info.
+ * @deprecated This object has been deprecated from Datalogic SDK v1.13, because it is going away in a future release.
+ *             Information about Battery Manufacturing can be retrieved using {@link com.datalogic.device.battery.ManufacturerInfo} instead.
  */
+@Deprecated
 public class BatteryInfo {
 	/**
 	 * The estimated capacity of the main battery in mAh.

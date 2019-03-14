@@ -41,4 +41,11 @@ public interface Trigger
      * @return <code>boolean</code> true in case the trigger is enabled, false otherwise or in case of failure.
      */
     public boolean isEnabled();
+
+    /**
+     * Checks if the trigger is available on the device.
+     *
+     * @return <code>boolean</code> true in case the trigger is available, false otherwise or in case of failure.
+     */
+    public boolean isAvailable();
 }

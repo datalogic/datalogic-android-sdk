@@ -20,7 +20,7 @@ public class SYSTEM {
 		/**
 		 * @hide This changes frequently
 		 */
-		public static final short SDK_VERSION_MINOR = 12;
+		public static final short SDK_VERSION_MINOR = 15;
 
 		/**
 		 * Broadcast Action:  This is a <em>sticky broadcast</em> containing the
@@ -88,7 +88,12 @@ public class SYSTEM {
 	 * Returns information about the main battery.
 	 * 
 	 * @see com.datalogic.device.info.BatteryInfo
+	 * @deprecated This attribute has been deprecated from Datalogic SDK v1.13, because it is going away in a future release.
+	 *             Information about Battery Manufacturing can be retrieved as {@link com.datalogic.device.battery.ManufacturerInfo}
+	 *             by using {@link com.datalogic.device.battery.DLBatteryManager#getManufacturerInfo()} of
+	 *             {@link com.datalogic.device.battery.DLBatteryManager} instead.
 	 */
+	@Deprecated
 	public static final BatteryInfo BATTERY_INFO = getBatteryInfo();
 
 	/**
