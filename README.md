@@ -33,24 +33,6 @@ dependencies {
 }
 ```
 
-## Add uses-library to manifest
-
-You must include a specific `<uses-library>` tag within the `<application>` element in your `AndroidManifest.xml` file (typically located inside `app/src/main`). Otherwise the actual library implementation on the Datalogic device will not be referenced.
-
-```xml
-<application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault" >
-
-    <uses-library
-        android:name="com.datalogic.device"
-        android:required="true" />
-
-</application>
-```
-
 ## Next steps
 - A number of sample projects that use the Datalogic Android SDK are maintained on our [Tutorials page](http://datalogic.github.io/tutorials/).
 
