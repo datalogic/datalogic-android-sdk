@@ -1,3 +1,6 @@
+# HTML files
+*.html
+
 # Built application files
 *.apk
 *.ap_

@@ -286,6 +286,7 @@ public class PropertyID {
 	public final static int QRCODE_LENGTH_CONTROL = 0x0B2A;
 	public final static int QRCODE_USER_ID = 0x0B2B;
 	public final static int QRCODE_CHARACTER_SET_MODE = 0x0B12;
+	public final static int QRCODE_WIFI_ENABLE = 0x30E41;
 
 	//
 	// Micro QR Code definitions

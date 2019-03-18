@@ -11,6 +11,14 @@ import com.datalogic.device.DeviceException;
 public final class DLBatteryManager
 {
     /**
+     * @hide
+     * This is the constructor of DLBatteryManager.
+     * 
+     * @throws DeviceException in case of error.
+     */
+    private DLBatteryManager() {}
+
+    /**
      * Returns an instance of the {@link DLBatteryManager}.
      *
      * @return
