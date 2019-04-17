@@ -37,6 +37,8 @@ public class PropertyID {
 	public final static int MULTISCAN_ENABLE = 0x0050;
 	public final static int MULTISCAN_REQUIRED_LABELS = 0x0051;
 	public final static int MULTISCAN_NOTIFICATION_ENABLE = 0x0052;
+	public final static int INVERSE_1D_SYMBOLOGIES = 0x0060;
+	public final static int INVERSE_2D_SYMBOLOGIES = 0x0061;
 
 	//
 	// Code 39 definitions
@@ -322,6 +324,14 @@ public class PropertyID {
 	public final static int DOTCODE_LENGTH_CONTROL = 0x0C22;
 	public final static int DOTCODE_USER_ID = 0x0C23;
 	public final static int DOTCODE_CHARACTER_SET_MODE = 0x0C02;
+
+	//
+	// ISBT 128 definitions
+	//
+	public final static int ISBT_128_ENABLE = 0x0D00;
+	public final static int ISBT_128_USER_ID = 0x0D01;
+	public final static int ISBT_128_COMMONLY_CONCATENATED_PAIRS = 0x0D02;
+	public final static int ISBT_128_MODE = 0x0D03;
 
 	//
 	// Wedge - Keyboard, Intent mode & Web

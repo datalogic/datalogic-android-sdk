@@ -241,5 +241,13 @@ public enum BarcodeID {
 	 * DotCode
 	 */
 	DOTCODE, //
+	/**
+	 * ISBT 128
+	 */
+	ISBT_128, //
+	/**
+	 * ISBT 128 Concatenated
+	 */
+	ISBT_128_CONCATENATED, //
 
 }

@@ -61,7 +61,7 @@ public class ScannerProperties extends PropertyGroup {
      */
 	public Code39 code39;
     /**
-     * Controls the Code 128 and GS1-128 barcode reading capabilities.
+     * Controls the Code 128, GS1-128 ISBT 128 barcode reading capabilities.
      * {@see Code128}
      */
 	public Code128 code128;

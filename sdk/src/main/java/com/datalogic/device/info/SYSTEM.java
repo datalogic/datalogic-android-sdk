@@ -20,7 +20,7 @@ public class SYSTEM {
 		/**
 		 * @hide This changes frequently
 		 */
-		public static final short SDK_VERSION_MINOR = 16;
+		public static final short SDK_VERSION_MINOR = 17;
 
 		/**
 		 * Broadcast Action:  This is a <em>sticky broadcast</em> containing the
@@ -83,18 +83,6 @@ public class SYSTEM {
 	 * @see com.datalogic.device.info.KeyboardType
 	 */
 	public static final KeyboardType KEYBOARD_TYPE = getKeyboardType();
-
-	/**
-	 * Returns information about the main battery.
-	 * 
-	 * @see com.datalogic.device.info.BatteryInfo
-	 * @deprecated This attribute has been deprecated from Datalogic SDK v1.13, because it is going away in a future release.
-	 *             Information about Battery Manufacturing can be retrieved as {@link com.datalogic.device.battery.ManufacturerInfo}
-	 *             by using {@link com.datalogic.device.battery.DLBatteryManager#getManufacturerInfo()} of
-	 *             {@link com.datalogic.device.battery.DLBatteryManager} instead.
-	 */
-	@Deprecated
-	public static final BatteryInfo BATTERY_INFO = getBatteryInfo();
 
 	/**
 	 * Returns a number indicating the Datalogic SDK version in use at compile time.
@@ -165,15 +153,6 @@ public class SYSTEM {
 	 * @hide
 	 */
 	private static KeyboardType getKeyboardType() {
-		return null;
-	}
-
-	/**
-	 * Retrieves BatteryInfo
-	 * 
-	 * @hide
-	 */
-	private static BatteryInfo getBatteryInfo() {
 		return null;
 	}
 

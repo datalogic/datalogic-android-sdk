@@ -153,5 +153,13 @@ public enum Symbology {
 	/**
 	 * DotCode
 	 */
-	DOTCODE; //
+	DOTCODE, //
+	/**
+	 * ISBT 128
+	 */
+	ISBT_128, //
+	/**
+	 * ISBT 128 Concatenated
+	 */
+	ISBT_128_CONCATENATED; //
 }
