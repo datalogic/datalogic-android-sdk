@@ -1,4 +1,4 @@
-# EXPERIMENTAL PROJECT - datalogic-android-sdk
+# datalogic-android-sdk
 
 Datalogic Androd SDK - see https://datalogic.github.io/ for details.  
 
