@@ -269,6 +269,7 @@ public class PropertyID {
 	public final static int DATAMATRIX_LENGTH_CONTROL = 0x0B22;
 	public final static int DATAMATRIX_USER_ID = 0x0B23;
 	public final static int DATAMATRIX_CHARACTER_SET_MODE = 0x0B02;
+	public final static int DATAMATRIX_OPERATING_MODE = 0x0B03;
 
 	//
 	// MaxiCode definitions

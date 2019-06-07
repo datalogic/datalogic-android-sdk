@@ -50,7 +50,7 @@ public enum BatteryInfo {
 	 */
 	TIME_TO_EMPTY,
 	/**
-	 * The capacity by design of the battery in mAh. The value type of this property is <code>int</code>.
+	 * The capacity by desing of the battery in mAh. The value type of this property is <code>int</code>.
 	 */
 	FULL_CAPACITY_DESIGN,
 	/**
