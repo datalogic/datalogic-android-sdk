@@ -63,6 +63,11 @@ public class ScannerOptions extends PropertyGroup {
 	public NumericProperty decodeTimeout;
 
 	/**
+	 * <code>imageCaptureProfile</code> selects the scanner image capture profile.
+	 */
+	public EnumProperty<ImageCaptureProfile> imageCaptureProfile;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 

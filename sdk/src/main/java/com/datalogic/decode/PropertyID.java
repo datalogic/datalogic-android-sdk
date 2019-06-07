@@ -14,6 +14,7 @@ public class PropertyID {
 	public final static int TARGET_MODE = 0x0009;
 	public final static int PICKLIST_ENABLE = 0x000A;
 	public final static int TARGET_MODE_ENABLE = 0x000B;
+	public final static int IMAGE_CAPTURE_PROFILE = 0x000C;
 	public final static int GOOD_READ_ENABLE = 0x0010;
 	public final static int GREEN_SPOT_ENABLE = 0x0011;
 	public final static int GOOD_READ_VIBRATE_ENABLE = 0x0012;
