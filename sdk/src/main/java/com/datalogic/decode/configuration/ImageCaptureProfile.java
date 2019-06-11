@@ -11,11 +11,11 @@ package com.datalogic.decode.configuration;
  * <td>Capture frames according to the enabled symbologies</td>
  * </tr>
  * <tr>
- * <td>MOTION_TOLLERANCE</td>
+ * <td>MOTION_TOLERANCE</td>
  * <td>Capture frames taking into account the motion</td>
  * </tr>
  * <tr>
- * <td>REFLECTIONS_TOLLERANCE</td>
+ * <td>REFLECTIONS_TOLERANCE</td>
  * <td>Capture frames taking into account possible reflections</td>
  * </tr>
  * </table>
@@ -28,9 +28,9 @@ public enum ImageCaptureProfile {
     /**
      * The profile improves the performance taking into account the motion
      */
-	MOTION_TOLLERANCE,
+	MOTION_TOLERANCE,
 	/**
 	 * The profile improves the performance taking into account possible reflections
 	 */
-	REFLECTIONS_TOLLERANCE;
+	REFLECTIONS_TOLERANCE;
 }
