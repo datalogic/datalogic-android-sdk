@@ -2,6 +2,25 @@
 
 Datalogic Androd SDK - see https://datalogic.github.io/ for details.  
 
+## Supported devices
+
+The table below indicates when support for a given version of the SDK was added to a device's firmware.
+
+| SDK version | X4/DL-Axist | JTA6   | Memor 1 | Memor 10 GMS | Memor 10 CN |
+|-------------|-------------|--------|---------|--------------|-------------|
+| 1.08        |             |        |         | 1.00.02      |             |
+| 1.09        |             |        |         |              |             |
+| 1.10        |             |        |         |              |             |
+| 1.11        |             |        |         |              |             |
+| 1.12        |             |        |         |              |             |
+| 1.13        |             |        |         |              |             |
+| 1.14        |             |        | 3.03.05 | 1.00.04      | 1.00.05     |
+| 1.15        | 2.02.74     | 2.18.29|         |              |             |
+| 1.16        |             | 2.19.31| 3.04.06 | 1.02.07      |             |
+| 1.17        |             | 2.20.32| 3.05.07 |              |             |
+| 1.18        | 2.03.02     | 2.20.34|         |              |             |
+| 1.19.1      |             |        |         | 1.04.10      |             |
+
 ## How to use
 
 Datalogic maintains two ways to use the Datalogic Android SDK in your project:
