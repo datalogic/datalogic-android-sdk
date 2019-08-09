@@ -68,6 +68,17 @@ public class ScannerOptions extends PropertyGroup {
 	public EnumProperty<ImageCaptureProfile> imageCaptureProfile;
 
 	/**
+	 * <code>customImageCaptureProfile</code> allows to define a custom profile.
+	 * It could be set with a number between 0-255.
+	 */
+	public NumericProperty customImageCaptureProfile;
+
+	/**
+	 * <code>illuminationType</code> selects the scanner illuminator to be used for decoding.
+	 */
+	public EnumProperty<IlluminationType> illuminationType;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 

@@ -82,7 +82,11 @@ public enum BatteryInfo {
 	/**
 	 * The battery technology as set internally in the battery pack by the manufacturer. The value type of this property is <code>String</code>.
 	 */
-	TECHNOLOGY;
+	TECHNOLOGY,
+	/**
+	 * The battery product number as set internally in the battery pack by the manufacturer. The value type of this property is <code>String</code>.
+	 */
+	PRODUCT_NUMBER;
 
 	/**
 	 * Converts the BatteryInfo to its integer corresponding value.

@@ -230,6 +230,12 @@ public class ScannerProperties extends PropertyGroup {
      */
     public DotCode dotcode;
 
+    /**
+     * Controls the reverse decoding mode for linear and 2D barcodes.
+     * {@see Inverse}
+     */
+    public Inverse inverse;
+
 	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 

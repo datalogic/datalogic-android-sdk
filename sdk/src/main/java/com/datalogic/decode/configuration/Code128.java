@@ -3,7 +3,7 @@ package com.datalogic.decode.configuration;
 import com.datalogic.device.configuration.*;
 
 /**
- * <code>Code128</code> is the class that configures the Code128, GS1-128 and ISBT 128 Symbologies.
+ * <code>Code128</code> is the class that configures the Code 128, GS1-128 and ISBT 128 Symbologies.
  * 
  */
 public class Code128 extends SymbologyLengths {
@@ -37,7 +37,12 @@ public class Code128 extends SymbologyLengths {
 	public BooleanProperty commonlyConcatenatedPairs;
 
 	/**
-	 * This is the constructor of Code128. All symbology options are initialized
+	 * <code>aggressiveness</code> control the aggressiveness for the Code 128 symbology.
+	 */
+	public EnumProperty<Code128Aggressiveness> aggressiveness;
+
+	/**
+	 * This is the constructor of Code 128. All symbology options are initialized
 	 * by editor.
 	 * 
 	 * @param editor A {@link PropertyGetter} used to load the current barcode family.

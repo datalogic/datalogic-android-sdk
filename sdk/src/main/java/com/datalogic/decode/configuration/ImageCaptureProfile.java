@@ -32,5 +32,9 @@ public enum ImageCaptureProfile {
 	/**
 	 * The profile improves the performance taking into account possible reflections
 	 */
-	REFLECTIONS_TOLERANCE;
+	REFLECTIONS_TOLERANCE,
+	/**
+	 * This allows to customize a profile to improve the performance taking into account specific needs
+	 */
+	CUSTOM;
 }

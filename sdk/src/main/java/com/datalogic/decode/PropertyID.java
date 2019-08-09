@@ -15,6 +15,8 @@ public class PropertyID {
 	public final static int PICKLIST_ENABLE = 0x000A;
 	public final static int TARGET_MODE_ENABLE = 0x000B;
 	public final static int IMAGE_CAPTURE_PROFILE = 0x000C;
+	public final static int CUSTOM_IMAGE_CAPTURE_PROFILE = 0x000D;
+	public final static int ILLUMINATION_TYPE = 0x000E;
 	public final static int GOOD_READ_ENABLE = 0x0010;
 	public final static int GREEN_SPOT_ENABLE = 0x0011;
 	public final static int GOOD_READ_VIBRATE_ENABLE = 0x0012;
@@ -125,9 +127,10 @@ public class PropertyID {
 	public final static int CODE128_LENGTH2 = 0x0425;
 	public final static int CODE128_LENGTH_CONTROL = 0x0426;
 	public final static int CODE128_USER_ID = 0x0427;
-
 	public final static int CODE128_GS1_ENABLE = 0x040C;
 	public final static int CODE128_GS1_USER_ID   = 0x0428;
+	public final static int CODE128_AGGRESSIVENESS = 0x0429;
+	public final static int CODE128_SHORT_QUIET_ZONES = 0x042A;
 
 	//
 	// UPC-A definitions
@@ -189,6 +192,7 @@ public class PropertyID {
 	public final static int MSI_LENGTH2 = 0x0625;
 	public final static int MSI_LENGTH_CONTROL = 0x0626;
 	public final static int MSI_USER_ID = 0x0627;
+	public final static int MSI_AGGRESSIVENESS = 0x0628;
 
 	//
 	// RSS-14 definitions

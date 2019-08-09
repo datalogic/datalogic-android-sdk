@@ -20,9 +20,13 @@ public enum KeyWedgeMode {
     /**
      * Text Injection
      */
-	TEXT_INJECTION,
-	/**
-	 * Key Pressure
-	 */
-	KEY_PRESSURE;
+    TEXT_INJECTION,
+    /**
+     * Key Pressure
+     */
+    KEY_PRESSURE,
+    /**
+     * Commit Text
+     */
+    COMMIT_TEXT;
 }

@@ -27,6 +27,11 @@ public class Msi extends SymbologyLengths {
 	public BooleanProperty checksum2Mod11;
 
 	/**
+	 * <code>aggressiveness</code> control the aggressiveness for the MSI symbology.
+	 */
+	public EnumProperty<MsiAggressiveness> aggressiveness;
+
+	/**
 	 * This is the constructor of Msi. All symbology options are initialized by
 	 * editor.
 	 * 

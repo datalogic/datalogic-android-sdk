@@ -92,4 +92,15 @@ public class ManufacturerInfo
     {
         return null;
     }
+
+    /**
+     * Returns the battery product number.
+     *
+     * @return <code>String</code>
+     *         The battery product number.
+     */
+    public String getProductNumber()
+    {
+        return null;
+    }
 }

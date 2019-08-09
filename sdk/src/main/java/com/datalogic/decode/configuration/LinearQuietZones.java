@@ -18,6 +18,11 @@ public class LinearQuietZones extends PropertyGroup {
 	public BooleanProperty code39Reduced;
 
 	/**
+	 * <code>code128Reduced</code> enables the reading of Code 128 barcode labels with short quiet zones.
+	 */
+	public BooleanProperty code128Reduced;
+
+	/**
 	 * This is the constructor of LinearQuietZones. All options are initialized by
 	 * editor.
 	 * 

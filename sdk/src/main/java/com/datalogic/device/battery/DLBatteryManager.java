@@ -115,7 +115,7 @@ public final class DLBatteryManager
      * Reads the String value of a specific battery property. This value is present
      * as one of the properties of the {@link BatteryInfo}. Call this method only with
      * {@link BatteryInfo} related to properties of type <code>String</code>. For
-     * properties of type <code>int</code>, call getStringProperty() instead.
+     * properties of type <code>int</code>, call getIntProperty() instead.
      *
      * @param prop
      *         The required {@link BatteryInfo}.
