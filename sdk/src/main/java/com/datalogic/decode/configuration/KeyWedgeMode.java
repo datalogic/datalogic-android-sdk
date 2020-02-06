@@ -14,6 +14,10 @@ package com.datalogic.decode.configuration;
  * <td>KEY_PRESSURE</td>
  * <td>Emulate the pressure of the keyboard keys</td>
  * </tr>
+ * <tr>
+ * <td>COMMIT_TEXT</td>
+ * <td>Inject the printable characters in form of text directly in the text area and emulate the pressure of keyboard keys for not printable keys</td>
+ * </tr>
  * </table>
  */
 public enum KeyWedgeMode {

@@ -27,6 +27,14 @@ public class Code128 extends SymbologyLengths {
 	public BooleanProperty isbt_128;
 
 	/**
+	 * <code>isbt_128_userID</code> specifies the ISBT-128 symbology identifier (if any).<br/>
+	 * The symbology identifier is sent with the label when the
+	 * global decode property {@link Formatting#sendCodeId} is set to
+	 * {@link SendCodeID#USERDEFINED_IDENTIFIER_BEFORE_LABEL} or {@link SendCodeID#USERDEFINED_IDENTIFIER_AFTER_LABEL}.
+	 */
+	public CharacterProperty isbt_128_userID;
+	
+	/**
 	 * <code>Isbt128EnablingMode</code> set the allowed ISBT 128 barcode symbologies.
 	 */
 	public EnumProperty<Isbt128Mode> Isbt128EnablingMode;

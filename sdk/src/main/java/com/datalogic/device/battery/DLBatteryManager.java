@@ -1,8 +1,11 @@
 package com.datalogic.device.battery;
 
+import android.content.Context;
 import java.util.List;
 
 import com.datalogic.device.DeviceException;
+import com.datalogic.device.battery.BatteryEventListener;
+import com.datalogic.device.ErrorManager;
 
 /**
  * The <code>DLBatteryManager</code> allows to read specific battery parameters.
@@ -29,6 +32,14 @@ public final class DLBatteryManager
         return null;
     }
 
+    /**
+     * Prepare the DlBatteryManager to receive events from the Android PowerManger Service. <br>
+     * If not called the {@link #addBatteryEventListener} fails with error {@link BatteryException#CONTEXT_UNKNOWN}.
+     *
+     * @param context
+     *         The context of the caller.
+     */
+    public void initBatteryEvents(Context context) {}
 
     /**
      * Reads the battery manufacturer info.
@@ -127,5 +138,37 @@ public final class DLBatteryManager
     public String getStringProperty(BatteryInfo prop)
     {
         return null;
+    }
+
+    /**
+    * Registers a {@link BatteryEventListener} to be notified of the BatteryManager events. <br>
+    * A call to addBatteryEventListener will fail with error {@link BatteryException#CONTEXT_UNKNOWN}
+    * if {@link #initBatteryEvents} has not been not previously called to register the client's context. <br>
+    * Call {@link #removeBatteryEventListener} before the application
+    * closes to properly shut down the listener and avoid memory leaks.
+    * 
+    * @param listener
+    *            The {@link BatteryEventListener} that will be called to signal a {@link BatteryEvent}
+    * @return <code>int</code> {@link BatteryException#SUCCESS} in case of success,
+    * otherwise a possible error code, matching one of the {@link BatteryException} error constants.
+    * @throws
+    *            BatteryException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+    */
+    public int addBatteryEventListener(BatteryEventListener listener) {
+        return 0;
+    }
+
+    /**
+     * Unregisters a {@link BatteryEventListener} associated with the BatteryManager.
+     * 
+     * @param listener
+     *            The {@link BatteryEventListener} that will be no more notified.
+     * @return <code>int</code> {@link BatteryException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link BatteryException} error constants.
+     * @throws
+     *            BatteryException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int removeBatteryEventListener(BatteryEventListener listener) {
+        return 0;
     }
 }
