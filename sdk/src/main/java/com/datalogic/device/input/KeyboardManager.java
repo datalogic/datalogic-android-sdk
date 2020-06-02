@@ -22,7 +22,7 @@ public class KeyboardManager {
 
 	/**
 	 * Locks or unlocks the input from keyboard and physical buttons.
-	 * 
+	 *
 	 * @param lock
 	 *            <code>boolean</code> it specifies whether or not the keyboard will be locked.
 	 * @return <code>int</code> {@link DeviceException#SUCCESS} in case of success,
@@ -35,7 +35,7 @@ public class KeyboardManager {
 
 	/**
 	 * Tells if the input from keyboard is locked.
-	 * 
+	 *
 	 * @return <code>boolean</code> it returns whether or not the keyboard is locked.
 	 */
 	public boolean isInputLocked() {
@@ -46,7 +46,7 @@ public class KeyboardManager {
 	 * Assigns a virtual key code to a physical key. If a mapping for the
 	 * desired physical key is already assigned and saved, it will be
 	 * overridden.
-	 * 
+	 *
 	 * @param scanCode
 	 *             a {@link VScanEntry} representing the virtual scan code.
 	 * @param keyCode
@@ -79,7 +79,7 @@ public class KeyboardManager {
 
 	/**
 	 * Returns current mapping between a physical scan code key and an Android key code.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code.
 	 * @see com.datalogic.device.input.VScanEntry
@@ -96,7 +96,7 @@ public class KeyboardManager {
 	 * Assigns a unicode character to a physical key. If a mapping for the
 	 * desired physical key is already assigned and saved, it will be
 	 * overridden.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code.
 	 * @see com.datalogic.device.input.VScanEntry
@@ -118,7 +118,7 @@ public class KeyboardManager {
 
 	/**
 	 * Returns current mapping between a physical key and a unicode character.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code.
 	 * @see com.datalogic.device.input.VScanEntry
@@ -132,7 +132,7 @@ public class KeyboardManager {
 	/**
 	 * Assigns an Intent to a physical key. If a mapping for the desired
 	 * physical key is already assigned and saved, it will be overridden.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code.
 	 * @see com.datalogic.device.input.VScanEntry
@@ -161,7 +161,7 @@ public class KeyboardManager {
 
 	/**
 	 * Returns current mapping between a physical key and an Intent.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code.
 	 * @see com.datalogic.device.input.VScanEntry
@@ -177,7 +177,7 @@ public class KeyboardManager {
 	/**
 	 * Removes all the configured mappings. Whenever this method is called, all
 	 * the current active mappings are cleared and removed.
-	 * 
+	 *
 	 * @return <code>int</code> {@link DeviceException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link DeviceException} error constants.
 	 * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
@@ -190,7 +190,7 @@ public class KeyboardManager {
 	 * Removes a single active mapping. The current active mapping for the
 	 * selected {@link com.datalogic.device.input.VScanEntry}, if
 	 * existing, is removed.
-	 * 
+	 *
 	 * @param scanCode
 	 *            a {@link VScanEntry} representing the virtual scan code, mapped that must be removed.
 	 * @return <code>int</code> {@link DeviceException#SUCCESS} in case of success,
@@ -205,7 +205,7 @@ public class KeyboardManager {
 	 * Provides a {@link java.util.Map}<
 	 * {@link com.datalogic.device.input.VScanEntry}, {@link com.datalogic.device.input.KeyCodeEntry}>
 	 * containing all the stored and active Android key codes mappings.
-	 * 
+	 *
 	 * @return {@link java.util.Map}<
 	 *         {@link com.datalogic.device.input.VScanEntry},
 	 *         {@link com.datalogic.device.input.KeyCodeEntry}> the corresponding saved mappings. Null is
@@ -221,7 +221,7 @@ public class KeyboardManager {
 	 * {@link com.datalogic.device.input.VScanEntry},
 	 * {@link <a href="http://developer.android.com/reference/android/content/Intent.html">android.content.Intent</a>}
 	 * > containing all the stored and active Android Intent mappings.
-	 * 
+	 *
 	 * @return {@link java.util.Map}<
 	 *         {@link com.datalogic.device.input.VScanEntry},
 	 *         {@link <a href="http://developer.android.com/reference/android/content/Intent.html">android.content.Intent</a>}
@@ -238,7 +238,7 @@ public class KeyboardManager {
 	 * {@link com.datalogic.device.input.VScanEntry},
 	 * {@link java.lang.Character}> containing all the stored and active
 	 * Character mappings.
-	 * 
+	 *
 	 * @return {@link java.util.Map}<
 	 *         {@link com.datalogic.device.input.VScanEntry},
 	 *         {@link java.lang.Character}> the corresponding saved mappings.
@@ -859,14 +859,14 @@ public class KeyboardManager {
 	/**
 	 * Returns the physical keyboard layout. It can be used by application for
 	 * keyboard remapping.
-	 * 
+	 *
 	 * @return the physical keys are returned in a table of scan codes. The
 	 *         table is represented by an array of vectors, where each vector is
 	 *         a row of physical scan code numbers. Note that all the rows of
 	 *         the table have the same number of keys. Application can use
 	 *         returned scan code number with the KeyboardManager remapping
 	 *         methods, i.e. mapKeyCode, mapIntent, ...
-	 * 
+	 *
 	 * <br>
 	 * <br>
 	 * <br>
@@ -941,7 +941,7 @@ public class KeyboardManager {
 	/**
 	 * Returns the physical keyboard layout. It can be used by application for
 	 * keyboard remapping.
-	 * 
+	 *
 	 * @return Cubic grid of scan codes, representing the physical keyboard
 	 *         present. If a row does not span the entire length, 0's or -1's
 	 *         will fill those spots.
@@ -988,5 +988,21 @@ public class KeyboardManager {
          */
         public List<Trigger> getAvailableTriggers() {
 	    return null;
+        }
+
+         /**
+         * Returns the {@link AdvancedKeyboard} object, which can be used to
+         * customize the keyboard configuration, read info about the currently
+		 * installed keyboard and listen to some keyboard events.
+         *
+         * @return {@link AdvancedKeyboard} object if the device supports it,
+         *         otherwise it throws an exception if exceptions are enabled
+         *         through the {@link ErrorManager} singleton or null if exceptions
+         *         are disabled.
+         * @throws DeviceException in case of unsupported device, when exceptions
+         *         are enabled through the {@link ErrorManager} singleton.
+         */
+        public AdvancedKeyboard getAdvancedKeyboard() {
+            return null;
         }
 }

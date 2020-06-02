@@ -236,6 +236,12 @@ public class ScannerProperties extends PropertyGroup {
      */
     public Inverse inverse;
 
+    /**
+     * Controls the frame capture feature.
+     * {@see FrameCaptureConfiguration}
+     */
+    public FrameCaptureConfiguration frameCaptureConfiguration;
+
 	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 

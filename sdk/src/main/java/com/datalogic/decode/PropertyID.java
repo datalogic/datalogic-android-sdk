@@ -193,6 +193,7 @@ public class PropertyID {
 	public final static int MSI_LENGTH_CONTROL = 0x0626;
 	public final static int MSI_USER_ID = 0x0627;
 	public final static int MSI_AGGRESSIVENESS = 0x0628;
+	public final static int MSI_SHORT_QUIET_ZONES = 0x0629;
 
 	//
 	// RSS-14 definitions
@@ -358,4 +359,13 @@ public class PropertyID {
 	// External formatting
 	//
 	public final static int EXTERNAL_FORMATTING_ENABLE = 0x40000;
+
+	//
+	// Frame capture
+	//
+	public final static int FRAME_CAPTURE_ENABLE = 0x50000;
+	public final static int FRAME_CAPTURE_FILE_PATH = 0x50001;
+	public final static int FRAME_CAPTURE_FORMAT = 0x50002;
+	public final static int FRAME_CAPTURE_MODE = 0x50003;
+	public final static int FRAME_CAPTURE_STORAGE_ENABLE = 0x50004;
 }
