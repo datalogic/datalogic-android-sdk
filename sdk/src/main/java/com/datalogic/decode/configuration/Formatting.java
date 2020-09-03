@@ -46,6 +46,11 @@ public class Formatting extends PropertyGroup {
 	public BooleanProperty externalFormatting;
 
 	/**
+	 * <code>eciPolicy</code> selects the policy used to handle ECI.
+	 */
+	public EnumProperty<ECIPolicy> eciPolicy;
+
+	/**
 	 * This is the constructor of Formatting. All options are initialized by
 	 * editor.
 	 * 

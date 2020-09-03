@@ -20,7 +20,11 @@ public enum AvailableSourcePower
     /**
      * Cradle are charging the device with 10 watt.
      */
-    AVAILABLE_SOURCE_POWER_10_WATT;
+    AVAILABLE_SOURCE_POWER_10_WATT,
+    /**
+     * Cradle are charging the device with 15 watt.
+     */
+    AVAILABLE_SOURCE_POWER_15_WATT;
 
     /**
      * Converts the AvailableSourcePower enum to its integer representing value.

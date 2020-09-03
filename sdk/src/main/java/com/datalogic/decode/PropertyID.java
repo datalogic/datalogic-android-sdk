@@ -361,6 +361,11 @@ public class PropertyID {
 	public final static int EXTERNAL_FORMATTING_ENABLE = 0x40000;
 
 	//
+	// ECI Policy
+	//
+	public final static int ECI_POLICY = 0x40200;
+
+	//
 	// Frame capture
 	//
 	public final static int FRAME_CAPTURE_ENABLE = 0x50000;
