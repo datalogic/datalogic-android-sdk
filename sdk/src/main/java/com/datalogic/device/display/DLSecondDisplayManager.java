@@ -168,6 +168,12 @@ public final class DLSecondDisplayManager
     /** 
      * Enable or disable notifications on 2nd display for all the new Apps
      *  
+     * @param isEnabled
+     *         Boolean parameter that represents if new Apps should show notifications on 2nd display
+     * 
+     * @return <code>boolean</code>
+     *         True if Apps can show notification, false otherwise.
+     * 
      * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
      * 
      */
@@ -179,14 +185,129 @@ public final class DLSecondDisplayManager
     /**
      * Return a boolean value that represents if new Apps will show notifications on 2nd display 
      * 
-     * @return boolean
+     * @return <code>boolean</code>
      *         True if Apps can show notification, false otherwise.
      * 
      * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-     * 
-     * */ 
+     */ 
     public boolean getNewAppEnabled()
     {
         return false;
     }
-}
+
+    /** 
+     * Set brightness level on 2nd display 
+     *
+     * @param brightness
+     *         Brightness percentage level for 2nd display: Values lower than 0 or higher than 100 will be cropped respectevely to 0 and 100.
+     * 
+     * @return <code>boolean</code>
+     *         True if Apps can show notification, false otherwise.
+     *  
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public boolean setBrightness(int brightness)
+    {
+	return false;
+    }
+
+    /**
+     * Return an integer value that represents the brightness percentage level on 2nd display 
+     * 
+     * @return integer
+     *         Integer value that represents the brightness percentage level on 2nd display, -1 in case of error.
+     * 
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */ 
+    public int getBrightness()
+    {
+	return 0;
+    }
+
+    /** 
+     * Set rotation on 2nd display 
+     * 
+     * @param enable
+     *         Boolean parameter that represents if rotation is enabled on 2nd display
+     *
+     * @return <code>boolean</code>
+     *         True if Apps can set rotation, false otherwise.
+     *  
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public boolean setRotateEnabled(boolean enable)
+    {
+	return false;
+    }
+
+    /**
+     * Return a boolean value that represents if rotation is enabled on 2nd display 
+     * 
+     * @return <code>boolean</code>
+     *         Boolean value that represents if rotation is enabled on 2nd display.
+     * 
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */ 
+    public boolean getRotateEnabled()
+    {
+	return false;
+    }
+
+    /**
+     * Set switch-off timeout on 2nd display 
+     * 
+     * @param timeout
+     *         Enum that represents 2nd display rotation speed.
+     *
+     * @return <code>boolean</code>
+     *         True if Apps can set the switch-off timeout, false otherwise.
+     *  
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public boolean setSwitchOffTimeout(TimeoutSleep timeout)
+    {
+	return false;
+    }
+
+    /**
+     * Return an enum that represents 2nd display switch-off timeout
+     * 
+     * @return enum
+     *         enum value that represents 2nd display switch-off timeout, null in case of error.
+     * 
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */ 
+    public TimeoutSleep getSwitchOffTimeout()
+    {
+	return null;
+    }
+
+    /**
+     * Set 2nd display rotation speed 
+     *
+     * @param speed
+     *         Enum that represents the desired 2nd display rotation speed.
+     *
+     * @return <code>boolean</code>
+     *         True if Apps can set the rotation speed, false otherwise.
+     *  
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public boolean setRotationSpeed(RotationSpeed speed)
+    {
+	return false;
+    }
+
+    /**
+     * Return an enum that represents 2nd display rotation speed
+     * 
+     * @return enum
+     *         Enum that represents 2nd display rotation speed, null in case of error.
+     * 
+     * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */ 
+    public RotationSpeed getRotationSpeed()
+    {
+	return null;
+    }	
+ }

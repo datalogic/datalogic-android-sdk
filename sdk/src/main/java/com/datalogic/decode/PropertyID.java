@@ -366,6 +366,14 @@ public class PropertyID {
 	public final static int ECI_POLICY = 0x40200;
 
 	//
+	// Visual formatting
+	//
+	public final static int VISUAL_FORMATTING_ENABLE = 0x40100;
+	public final static int VISUAL_FORMATTING_PATH = 0x40101;
+	public final static int VISUAL_FORMATTING_TIMEOUT = 0x40102;
+	public final static int VISUAL_FORMATTING_ACTIVE_ITEM = 0x40103;
+
+	//
 	// Frame capture
 	//
 	public final static int FRAME_CAPTURE_ENABLE = 0x50000;

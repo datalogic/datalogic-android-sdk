@@ -73,6 +73,32 @@ public class DLCradleManager
     }
 
     /**
+     * Add a Failure listener used to be notify about failure events occurred on the Cradle.
+     *
+     * @param listener
+     *            The {@link CradleFailureEventListener} to be added.
+     *
+     * @return <code>boolean</code> true in case of success, false otherwise.
+    */
+    public boolean addFailureEventListener(CradleFailureEventListener listener)
+    {
+        return false;
+    }
+
+    /**
+     * Remove a Failure listener previously added with the {@link #addFailureEventListener(CradleFailureEventListener listener)} method.
+     *
+     * @param listener
+     *            The {@link CradleFailureEventListener} to be removed.
+     *
+     * @return <code>boolean</code> true in case of success, false otherwise.
+     */
+    public boolean removeFailureEventListener(CradleFailureEventListener listener) 
+    {
+        return false;
+    }
+
+    /**
      * Add an Unlock Key Event listener used to be notify about Unlock Key events occurred on the Cradle.
      *
      * @param listener
@@ -94,6 +120,56 @@ public class DLCradleManager
      * @return <code>boolean</code> true in case of success, false otherwise.
      */
     public boolean removeUnlockKeyEventListener(CradleUnlockKeyEventListener listener) 
+    {
+        return false;
+    }
+
+    /**
+     * Add a Unlock listener used to be notify about Lever status changed events occurred on the Cradle.
+     *
+     * @param listener
+     *            The {@link CradleUnlockEventListener} to be added.
+     *
+     * @return <code>boolean</code> true in case of success, false otherwise.
+    */
+    public boolean addUnlockEventListener(CradleUnlockEventListener listener)
+    {
+        return false;
+    }
+
+    /**
+     * Remove an Unlock listener previously added with the {@link #addUnlockEventListener(CradleUnlockEventListener listener)} method.
+     *
+     * @param listener
+     *            The {@link CradleUnlockEventListener} to be removed.
+     *
+     * @return <code>boolean</code> true in case of success, false otherwise.
+     */
+    public boolean removeUnlockEventListener(CradleUnlockEventListener listener) 
+    {
+        return false;
+    }
+
+    /**
+     * Returns the current position related to the Cradle lever.
+     *
+     * @return
+     *         The current {@link LeverStatus} of the Cradle.
+     */
+    public LeverStatus getLeverStatus()
+    {
+        return LeverStatus.LEVER_STATUS_UNKNOWN;
+    }
+
+    /**
+     * Sets the new position related to the Cradle lever.
+     *
+     * @param levelStatus
+     *            The required {@link LeverStatus} of the Cradle lever.
+     *
+     * @return <code>boolean</code> true in case of success, false otherwise.
+     */
+    public boolean setLeverStatus(LeverStatus levelStatus)
     {
         return false;
     }

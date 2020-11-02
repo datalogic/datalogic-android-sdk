@@ -3,6 +3,8 @@ package com.datalogic.device.input;
 import com.datalogic.device.DeviceException;
 import com.datalogic.device.ErrorManager;
 
+import java.util.List;
+
 /**
  * Class exposing advanced keyboard methods.
  */
@@ -512,6 +514,74 @@ public class AdvancedKeyboard {
     }
 
     /**
+     * Class that stores the info related to a keyboard overlay
+     * configuration. The list of available overlays can be
+     * retrieved by using the {@link #getOverlays} method.
+     */
+    public class Overlay {
+        /**
+         * @hide
+         */
+        Overlay() {
+            
+        }
+
+        /**
+         * Gets the name of the keyboard overlay.
+         * @return
+         *         Keyboard overlay name.
+         */
+        public String getName() {
+            return null;
+        }
+
+        /**
+         * Gets the description of the keyboard overlay.
+         * @return
+         *         Keyboard overlay description.
+         */
+        public String getDescription() {
+            return null;
+        }
+
+        /**
+         * Gets the author of the keyboard overlay.
+         * @return
+         *         Keyboard overlay author.
+         */
+        public String getAuthor() {
+            return null;
+        }
+
+        /**
+         * Gets the version of the keyboard overlay.
+         * @return
+         *         Keyboard overlay version.
+         */
+        public int getVersion() {
+            return 0;
+        }
+
+        /**
+         * Gets the revision of the keyboard overlay.
+         * @return
+         *         Keyboard overlay revision.
+         */
+        public int getRevision() {
+            return 0;
+        }
+
+        /**
+         * Gets the creation date of the keyboard overlay.
+         * @return
+         *         Keyboard overlay creation date.
+         */
+        public String getDate() {
+            return null;
+        }
+    }
+
+    /**
      * @hide
      */
     private AdvancedKeyboard() throws Exception {
@@ -609,6 +679,38 @@ public class AdvancedKeyboard {
     }
 
     /**
+     * Gets the currently available keyboard overlays.
+     * @return
+     *         A list of available overlays that can be empty if there are no
+     *         overlays available.
+     */
+    public List<Overlay> getOverlays() {
+        return null;
+    }
+
+    /**
+     * Command the installation of a keyboard overlay, by specifying the
+     * overlay object for the keyboard to install. This object must be one of the
+     * overlays available through the {@link #getOverlays} method.
+     * @param overlay
+     *        The overlay object.
+     * @param persistenceType
+     *        Desired type of persistence. Be aware that the
+     *        FACTORY_RESET_PERSISTENT is not allowed and will cause an
+     *        installation failure.
+     * @return
+     *         true in case the installation is done and all new keyboard data is
+     *         immediately available, false in case of installation failure or
+     *         throws an exception if exceptions are enabled through the
+     *         {@link ErrorManager} singleton.
+     * @throws DeviceException in case of error, when exceptions
+     *         are enabled through the {@link ErrorManager} singleton.
+     */
+    public boolean installOverlay(Overlay overlay, PersistenceType persistenceType) {
+        return false;
+    }
+
+    /**
      * Gets the index of the current layout in which the keyboard is.
      * @return
      *         The layout index (0 is the default layout). If there is an error
@@ -689,6 +791,13 @@ public class AdvancedKeyboard {
      */
     public boolean installKeyboard(String path, PersistenceType persistenceType) {
         return false;
+    }
+
+    /**
+     * Resets the keyboard configuration to the default one.
+     */
+    public void resetToDefault() {
+
     }
 
     /**
@@ -856,4 +965,6 @@ public class AdvancedKeyboard {
     public boolean removeMultitapEventListener(MultitapEventListener listener) {
         return false;
     }
+
+
 }
