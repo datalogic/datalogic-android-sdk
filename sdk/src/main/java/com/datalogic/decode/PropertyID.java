@@ -139,6 +139,7 @@ public class PropertyID {
 	public final static int UPCA_SEND_CHECK = 0x0502;
 	public final static int UPCA_SEND_SYS = 0x0503;
 	public final static int UPCA_TO_EAN13 = 0x0504;
+	public final static int UPCA_COMPOSITE_ENABLE = 0x0505;
 	public final static int UPCA_USER_ID = 0x0521;
 
 	//
@@ -148,6 +149,7 @@ public class PropertyID {
 	public final static int UPCE_SEND_CHECK = 0x050A;
 	public final static int UPCE_SEND_SYS = 0x050B;
 	public final static int UPCE_TO_UPCA = 0x050C;
+	public final static int UPCE_COMPOSITE_ENABLE = 0x050D;
 	public final static int UPCE_USER_ID = 0x0523;
 	public final static int UPCE1_ENABLE = 0x0509;
 
@@ -159,6 +161,7 @@ public class PropertyID {
 	public final static int EAN13_SEND_SYS = 0x0513;
 	public final static int EAN13_TO_ISBN = 0x0514;
 	public final static int EAN13_TO_ISSN = 0x0515;
+	public final static int EAN13_COMPOSITE_ENABLE = 0x0516;
 	public final static int EAN13_USER_ID = 0x0525;
 
 	//
@@ -167,6 +170,7 @@ public class PropertyID {
 	public final static int EAN8_ENABLE = 0x0518;
 	public final static int EAN8_SEND_CHECK = 0x051A;
 	public final static int EAN8_TO_EAN13 = 0x051B;
+	public final static int EAN8_COMPOSITE_ENABLE = 0x0528;
 	public final static int EAN8_USER_ID = 0x0527;
 
 	//
@@ -264,6 +268,7 @@ public class PropertyID {
 	public final static int COMPOSITE_ENABLE = 0x0A30;
 	public final static int COMPOSITE_EAN_UPC_MODE = 0x0A32;
 	public final static int COMPOSITE_GS1_128_MODE = 0x0A33;
+	public final static int COMPOSITE_LINEAR_TRANSMISSION_ENABLE = 0x0A34;
 	public final static int COMPOSITE_USER_ID = 0x0A53;
 
 	//

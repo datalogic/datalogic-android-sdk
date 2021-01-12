@@ -32,6 +32,11 @@ public class Ean13 extends SymbologyBase {
 	public BooleanProperty convertToISSN;
 
 	/**
+	 * <code>compositeEnable</code> allows to use EAN-13 labels in composite barcode.
+	 */
+	public BooleanProperty compositeEnable;
+
+	/**
 	 * This is the constructor of Ean13. All symbology options are initialized
 	 * by editor.
 	 * 

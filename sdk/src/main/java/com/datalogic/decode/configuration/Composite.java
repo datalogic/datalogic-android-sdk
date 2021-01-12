@@ -22,6 +22,11 @@ public class Composite extends SymbologyBase {
     public BooleanProperty convertToGs1_128;
 
     /**
+     * <code>linearTransmissionEnable</code> enable linear code transmission.
+     */
+    public BooleanProperty linearTransmissionEnable;
+
+    /**
      * This is the constructor of Composite. All options are initialized by
      * editor.
      * 

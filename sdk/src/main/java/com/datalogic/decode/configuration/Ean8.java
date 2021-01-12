@@ -21,6 +21,11 @@ public class Ean8 extends SymbologyBase {
 	public BooleanProperty convertToEan13;
 
 	/**
+	 * <code>compositeEnable</code> allows to use EAN-8 labels in composite barcode.
+	 */
+	public BooleanProperty compositeEnable;
+
+	/**
 	 * This is the constructor of Ean8. All symbology options are initialized by
 	 * editor.
 	 * 

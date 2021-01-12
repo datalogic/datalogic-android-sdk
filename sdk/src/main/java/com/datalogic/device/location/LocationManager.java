@@ -17,6 +17,10 @@ public class LocationManager {
 
 	/**
 	 * Set the GPS location provider mode.
+	 * <p>
+	 * Note: on Android-Q onward, GPS and network sensors can't be toggled separately. For this reason any value
+	 * but {@link LocationMode#OFF} is interpreted as the location mode is on.
+	 * </p>
 	 * 
 	 * @param mode
 	 *            {@link LocationMode} indicates the mode to use by the location provider.

@@ -33,6 +33,11 @@ public class UpcE extends SymbologyBase {
 	public BooleanProperty upce1ExtensionEnable;
 
 	/**
+	 * <code>compositeEnable</code> allows to use UPC-E labels in composite barcode.
+	 */
+	public BooleanProperty compositeEnable;
+
+	/**
 	 * This is the constructor of UpcE. All symbology options are initialized by
 	 * editor.
 	 * 

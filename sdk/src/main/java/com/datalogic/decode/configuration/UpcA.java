@@ -27,6 +27,11 @@ public class UpcA extends SymbologyBase {
 	public BooleanProperty convertToEan13;
 
 	/**
+	 * <code>compositeEnable</code> allows to use UPC-A labels in composite barcode.
+	 */
+	public BooleanProperty compositeEnable;
+
+	/**
 	 * This is the constructor of UpcA. All symbology options are initialized by
 	 * default.
 	 * 
