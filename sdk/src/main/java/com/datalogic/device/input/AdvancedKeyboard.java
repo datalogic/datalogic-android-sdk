@@ -441,7 +441,8 @@ public class AdvancedKeyboard {
          * from the first multitap key press the associated character will be
          * submitted to the UI.
          * @param multitapDelay
-         *        The keyboard multitap delay to set (in milliseconds).
+         *        The keyboard multitap delay to set (in milliseconds). It must
+         *        be more than 0.
          */
         public void setMultitapDelay(int multitapDelay) {
 

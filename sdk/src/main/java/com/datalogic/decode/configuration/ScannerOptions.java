@@ -79,6 +79,21 @@ public class ScannerOptions extends PropertyGroup {
 	public EnumProperty<IlluminationType> illuminationType;
 
 	/**
+	 * <code>scanMode</code> selects the scan mode.
+	 */
+	public EnumProperty<ScanMode> scanMode;
+
+	/**
+	 * <code>doubleReadTimeout</code> is the minimum time allowed between
+	 * reads of the same barcode label. When the device decodes a label and
+         * sees the same one before this timeout is expired, the second result
+         * will be ignored. This timeout works when <code>scanMode</code> is
+	 * set to HOLD_MULTIPLE, PULSE_MULTIPLE or ALWAYS_ON. The amount of time
+	 * is represented in milliseconds.
+	 */
+	public NumericProperty doubleReadTimeout;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 

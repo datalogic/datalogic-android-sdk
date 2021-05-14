@@ -37,11 +37,17 @@ public class PropertyID {
 	public final static int DISPLAY_NOTIFICATION_ENABLE = 0x0031;
 	public final static int GOOD_READ_AUDIO_TONE = 0x0032;
 	public final static int GOOD_READ_AUDIO_MODE = 0x0033;
+	public final static int GOOD_READ_AUDIO_CHANNEL = 0x0034;
 	public final static int MULTISCAN_ENABLE = 0x0050;
 	public final static int MULTISCAN_REQUIRED_LABELS = 0x0051;
 	public final static int MULTISCAN_NOTIFICATION_ENABLE = 0x0052;
 	public final static int INVERSE_1D_SYMBOLOGIES = 0x0060;
 	public final static int INVERSE_2D_SYMBOLOGIES = 0x0061;
+	public final static int PRESENTATION_MODE_ENABLE = 0x0062;
+	public final static int PRESENTATION_MODE_AIMER_ENABLE = 0x0063;
+	public final static int PRESENTATION_MODE_SENSITIVITY = 0x0064;
+	public final static int SCAN_MODE = 0x0065;
+	public final static int DOUBLE_READ_TIMEOUT = 0x0066;
 
 	//
 	// Code 39 definitions
@@ -281,6 +287,7 @@ public class PropertyID {
 	public final static int DATAMATRIX_USER_ID = 0x0B23;
 	public final static int DATAMATRIX_CHARACTER_SET_MODE = 0x0B02;
 	public final static int DATAMATRIX_OPERATING_MODE = 0x0B03;
+	public final static int DATAMATRIX_MIRROR = 0x0B04;
 
 	//
 	// MaxiCode definitions

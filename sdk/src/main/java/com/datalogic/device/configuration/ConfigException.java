@@ -52,6 +52,38 @@ public class ConfigException extends RuntimeException {
      * The property is not supported.
      */
     public static final int SUPPORT_ERROR = (CONF_EXCEPTION<<16 | 0x0008);
+    /**
+     * The JSON configuration file has an error.
+     */
+    public static final int JSON_ERROR = (CONF_EXCEPTION<<16 | 0x0009);
+    /**
+     * The JSON resource file was not found.
+     */
+    public static final int JSON_NOT_FOUND = (CONF_EXCEPTION<<16 | 0x000A);
+    /**
+     * The application to the device of the configuration failed.
+     * A revert to the previous permanent configuration was done.
+     */
+    public static final int APPLY_FAILED = (CONF_EXCEPTION<<16 | 0x000B);
+    /**
+     * The application to the device of the configuration failed.
+     * A revert to the previous permanent configuration failed.
+     * The configuration can be inconsistent. A reboot is suggested.
+     */
+    public static final int REVERT_FAILED = (CONF_EXCEPTION<<16 | 0x000C);
+    /**
+     * Store on database failed.
+     */
+    public static final int STORE_FAILED = (CONF_EXCEPTION<<16 | 0x000D);
+    /**
+     * Database not accesible.
+     */
+    public static final int SERVICE_NOT_AVAILABLE = (CONF_EXCEPTION<<16 | 0x000E);
+    /**
+     * The apply on the specific service failed.
+     */
+    public static final int SPECIFIC_APPLY_FAILED = (CONF_EXCEPTION<<16 | 0x000F);
+
 
 	/**
 	 * The error number returned by the Configuration Subsystem.
@@ -78,7 +110,7 @@ public class ConfigException extends RuntimeException {
 
 	/**
 	 * Constructs a ConfigException object.
-	 * 
+	 *
 	 * @param ex A {@link ConfigException} with an existing error code set.
 	 */
 	public ConfigException(ConfigException ex) {
@@ -88,7 +120,7 @@ public class ConfigException extends RuntimeException {
 	 * Constructs a ConfigException object that takes a
 	 * <code>String</code> parameter containing the reason the exception was
 	 * thrown.
-	 * 
+	 *
 	 * @param s
 	 *            <code>String</code> indicating why the exception occurred.
 	 */
@@ -99,7 +131,7 @@ public class ConfigException extends RuntimeException {
 	 * Constructs a ConfigException object that takes a
 	 * <code>String</code> parameter containing the reason the exception was
 	 * thrown.
-	 * 
+	 *
 	 * @param s
 	 *            <code>String</code> indicating why the exception occurred.
 	 * @param number
@@ -123,7 +155,7 @@ public class ConfigException extends RuntimeException {
 	 * Constructs a ConfigException object that takes a
 	 * <code>String</code> parameter containing the reason the exception was
 	 * thrown.
-	 * 
+	 *
 	 * @param s
 	 *            <code>String</code> indicating why the exception occurred.
 	 * @param id_buff

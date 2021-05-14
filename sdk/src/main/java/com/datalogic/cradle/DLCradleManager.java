@@ -151,6 +151,29 @@ public class DLCradleManager
     }
 
     /**
+     * Reboot the Cradle.
+     *
+     * @return int
+     *            Returns 1 if the cradle has been rebooted sucessfully, error otherwise.
+     * 
+     * @throws DeviceException in case of error.
+     */
+    public int rebootCradle()
+    {
+        return 0;
+    }
+
+    /**
+     * Returns the Cradle type.
+     *
+     * @return
+     *         {@link Type} of the Cradle where the device is inserted in.
+     */
+    public Type getType(){
+        return null;
+    }
+
+    /**
      * Returns the current position related to the Cradle lever.
      *
      * @return
@@ -195,6 +218,8 @@ public class DLCradleManager
      *            the <code>String</code> dimension of the binary file.
      *
      * @return <code>boolean</code> true in case of success, false otherwise.
+     * 
+     * @throws DeviceException in case of error.
      */
     public int firmwareUpgrade(String binaryPath, long size)
     {

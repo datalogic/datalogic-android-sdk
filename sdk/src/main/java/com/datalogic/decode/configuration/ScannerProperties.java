@@ -30,10 +30,15 @@ public class ScannerProperties extends PropertyGroup {
      */
 	public ScannerOptions scannerOptions;
     /**
-     * Provides configuration related to Multi Scan functionalities.
-     * {@see MultiScan}
+     * Provides configuration related to presentation mode functionalities.
+     * {@see PresentationMode}
      */
-	public MultiScan multiScan;
+	public PresentationMode presentationMode;
+	/**
+	 * Provides configuration related to Multi Scan functionalities.
+	 * {@see MultiScan}
+	 */	
+	 public MultiScan multiScan;
     /**
      * Provides configuration for the Intent Wedge.
      * {@see IntentWedge}

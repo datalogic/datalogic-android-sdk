@@ -20,6 +20,11 @@ public class Datamatrix extends SymbologyLengths {
     public EnumProperty<DatamatrixOpMode> operatingMode;
 
     /**
+     * <code>DatamatrixMirror </code> control the mirror mode.
+     */
+    public EnumProperty<DatamatrixMirror> mirror;
+
+    /**
      * This is the constructor of Datamatrix. All symbology options are
      * initialized by editor.
      *

@@ -320,7 +320,34 @@ public class BarcodeManager implements PropertyEditor {
 	public int removeFrameSaveListener(FrameSaveListener listener) {
 		return 0;
 	}
+/**
+	 * Registers a {@link PresentationStateListener} to be notified when a frame save event is
+	 * triggered. Call {@link #removeFrameSaveListener} before the application
+	 * closes to properly shut down the listener.
+	 * 
+	 * @param listener
+	 *            The {@link PresentationStateListener} that will be called when a
+	 *            decoder's read event is fired.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+public int addPresentationStateListener(PresentationStateListener listener) {
+	return 0;
+}
 
+/**
+	 * Unregisters a {@link PresentationStateListener} associated with the decoder.
+	 * 
+	 * @param listener
+	 *            The {@link PresentationStateListener} that will be no more notified.
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+public int removePresentationStateListener(PresentationStateListener listener) {
+	return 0;
+}
 	/**
 	 * Removes and clears all the registered listeners, in case some application
 	 * did not call removal methods.

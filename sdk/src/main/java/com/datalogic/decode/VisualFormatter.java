@@ -87,6 +87,17 @@ public class VisualFormatter {
     }
 
     /**
+     * Gets the Visual Formatter feature level.
+     *
+     * @return
+     *        The maximum supported feature level.
+     * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int getFeatureLevel() {
+        return 0;
+    }
+
+    /**
      * Installs a new formatter project by specifying a zip file. It also sets the active item to one of the items found inside the zip file.
      *
      * @param path
@@ -271,11 +282,196 @@ public class VisualFormatter {
         }
 
         /**
+         * <code>VisualFormatter.Item.Property</code> is a class representing a property of
+         * a visual formatting item, used to add custom parameters that can change the runtime
+         * behavior of the formatting item. A property can be of different types and directions.
+         */
+        public static class Property<T> {
+            /**
+             * <code>VisualFormatter.Item.Property.Type</code> is an enumeration representing
+             * the type of property.
+             */
+            public enum Type {
+                /**
+                 * String.
+                 */
+                STRING,
+                /**
+                 * Number, corresponding to the Double type for the property value.
+                 */
+                NUMBER,
+                /**
+                 * Boolean.
+                 */
+                BOOLEAN;
+
+                /**
+                 * Converts the property type to its integer corresponding value.
+                 *
+                 * @return
+                 *         Integer value of this property type.
+                 */
+                public int toInt() {
+                    return 0;
+                }
+
+                /**
+                 * Retrieves the corresponding property type value from a valid integer.
+                 *
+                 * @param value
+                 *        Integer to use as input in the conversion.
+                 * @return
+                 *         The corresponding property type.
+                 */
+                public static Type fromInt(int value) {
+                    return null;
+                }
+            }
+
+            /**
+             * <code>VisualFormatter.Item.Property.Direction</code> is an enumeration representing
+             * the direction of the property.
+             */
+            public enum Direction {
+                /**
+                 * Input.
+                 */
+                INPUT,
+                /**
+                 * Output.
+                 */
+                OUTPUT,
+                /**
+                 * Input and Output.
+                 */
+                INPUT_OUTPUT;
+
+                /**
+                 * Converts the property direction to its integer corresponding value.
+                 *
+                 * @return
+                 *         Integer value of this property direction.
+                 */
+                public int toInt() {
+                    return 0;
+                }
+
+                /**
+                 * Retrieves the corresponding property direction value from a valid integer.
+                 *
+                 * @param value
+                 *        Integer to use as input in the conversion.
+                 * @return
+                 *         The corresponding property direction.
+                 */
+                public static Direction fromInt(int value) {
+                    return null;
+                }
+            }
+
+            /**
+             * @hide
+             */
+            public Property(String id, String name, String description, Type type,
+                    Direction direction, T defaultValue, T value) {
+                
+            }
+
+            /**
+             * Returns the property id that uniquely identifies this property.
+             *
+             * @return
+             *        The property id.
+             */
+            public String getId() {
+                return null;
+            }
+
+            /**
+             * Returns the property name.
+             *
+             * @return
+             *        The property name.
+             */
+            public String getName() {
+                return null;
+            }
+
+            /**
+             * Returns the property description.
+             *
+             * @return
+             *        The property description.
+             */
+            public String getDescription() {
+                return null;
+            }
+
+            /**
+             * Returns the property type.
+             *
+             * @return
+             *        The property type.
+             */
+            public Type getType() {
+                return null;
+            }
+
+            /**
+             * Returns the property direction.
+             *
+             * @return
+             *        The property direction.
+             */
+            public Direction getDirection() {
+                return null;
+            }
+
+            /**
+             * Returns the property default value.
+             *
+             * @return
+             *        The property default value.
+             */
+            public T getDefaultValue() {
+                return null;
+            }
+
+            /**
+             * Returns the property current value.
+             *
+             * @return
+             *        The property current value.
+             */
+            public T getValue() {
+                return null;
+            }
+
+            /**
+             * @hide
+             */
+            public boolean isHiddenFromUI() {
+                return false;
+            }
+
+            /**
+             * Sets the property current value.
+             *
+             * @param value
+             *        The value to set.
+             */
+            public void setValue(T value) {
+                
+            }
+        }
+
+        /**
          * @hide
          */
         public Item(int version, String name, String id, String fileName,
                 Type type, String description, String author, String revision, String date,
-                PersistenceType persistenceType, String projectId, String projectName) {
+                PersistenceType persistenceType, String projectId, String projectName,
+                List<Property> properties) {
             
         }
 
@@ -387,6 +583,16 @@ public class VisualFormatter {
          *        The project name.
          */
         public String getProjectName() {
+            return null;
+        }
+
+        /**
+         * Returns the item properties.
+         *
+         * @return
+         *        The item properties.
+         */
+        public List<Property> getProperties() {
             return null;
         }
     }

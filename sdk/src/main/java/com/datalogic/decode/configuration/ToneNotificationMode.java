@@ -17,6 +17,17 @@ package com.datalogic.decode.configuration;
  * <td>AUDIO_FILE</td>
  * <td>Play the desired audio file, specified by {@link DecodingNotification#goodReadAudioFile}, just one time</td>
  * </tr>
+  * </tr>
+ * <tr>
+ * <td>VIPER</td>
+ * <td>Play Viper beep sound, just one time</td>
+ * </tr>
+  * </tr>
+ * <tr>
+ * <td>BAROQUE</td>
+ * <td>Play Baroque beep sound, just one time</td>
+ * </tr>
+
  * </table>
  */
 public enum ToneNotificationMode {
@@ -31,5 +42,13 @@ public enum ToneNotificationMode {
 	/**
 	 * Play an audio tone of choice
 	 */
-	AUDIO_FILE;
+	AUDIO_FILE,
+	/**
+	 * Play viper tone.
+	 */
+	VIPER,
+	/**
+	 * Play baroque tone.
+	 */
+	BAROQUE;
 }

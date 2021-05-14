@@ -45,6 +45,13 @@ public class DecodingNotification extends PropertyGroup {
 	public EnumProperty<ToneNotificationMode> goodReadAudioMode;
 
 	/**
+	 * <code>goodReadAudioChannel</code> selects the audio channel to use for the
+         * scanner notification. That corresponds to one of the
+         * {@link ToneNotificationChannel} values.
+	 */
+	public EnumProperty<ToneNotificationChannel> goodReadAudioChannel;
+
+	/**
 	 * This is the constructor of DecodingNotification. All options are
 	 * initialized by editor.
 	 * 
