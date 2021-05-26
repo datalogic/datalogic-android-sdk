@@ -83,9 +83,7 @@ public abstract class Property<T> {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-     * @deprecated no more to be used 
 	 */
-    @Deprecated
 	public int load(PropertyGetter from) {
 		return 0;
 	}
@@ -97,9 +95,7 @@ public abstract class Property<T> {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-     * @deprecated no more to be used
 	 */
-    @Deprecated
 	public int store(PropertyEditor to) {
 		return 0;
 	}
@@ -110,9 +106,7 @@ public abstract class Property<T> {
 	 * @param list The {@link ArrayList} containing all the Properties.
 	 * @param id The <code>int</code> representing the ID that should be found.
 	 * @return Property corresponding to the passed ID, null in case of error.
-     * @deprecated no more to be used
 	 */
-    @Deprecated
 	public static Property findPropertybyId(ArrayList<Property> list, int id) {
 		return null;
 	}
@@ -125,9 +119,7 @@ public abstract class Property<T> {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-	 * @deprecated no more to be used
 	 */
-	@Deprecated
 	public static int storelist(PropertyEditor to, ArrayList list) {
 		return 0;
 	}
@@ -141,9 +133,7 @@ public abstract class Property<T> {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-	 * @deprecated no more to be used
 	 */
-	@Deprecated
 	public static int loadlist(PropertyGetter from, ArrayList list) {
 		return 0;
 	}	

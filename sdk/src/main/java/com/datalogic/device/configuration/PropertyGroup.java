@@ -117,9 +117,7 @@ public class PropertyGroup {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-     * @deprecated no more to be used
 	 */
-    @Deprecated
 	public int load(PropertyGetter from) {
 		return 0;
 	}
@@ -135,9 +133,7 @@ public class PropertyGroup {
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
 	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
-     * @deprecated no more to be used
 	 */
-    @Deprecated
 	public int store(PropertyEditor to, boolean persist) {
 		return 0;
 	}
@@ -163,9 +159,7 @@ public class PropertyGroup {
      *         underling decoding hardware. <br>
      *         If this property group doesn't contain any property, this method
      *         returns false.
-     * @deprecated no more to be used
 	 */
-    @Deprecated
 	public boolean isFullySupported() {
         return true;
 	}
