@@ -1,24 +1,27 @@
 package com.datalogic.device.configuration;
 
+/**
+ * Enum <code>Wifi802Dot11Mode</code> defines the allowed values for settings property {@link PropertyID#WIFI_802_DOT_11_MODE}
+ */
 public enum Wifi802Dot11Mode {
     /**
-     *
+     * All the 802.11 mode (b/g/n/a/ac) are anabled
      */
     WIFI_802_DOT_11_ALL_ENABLED,
     /**
-     *
+     * Only the 802.11 mode (b/g/a) are anabled
      */
     WIFI_802_DOT_11_ABG,
     /**
-     *
+     * Only the 802.11 mode (b) is anabled
      */
     WIFI_802_DOT_11_B,
     /**
-     *
+     * Only the 802.11 mode (b/g) are anabled
      */
     WIFI_802_DOT_11_BG,
     /**
-     *
+     * Only the 802.11 mode (b/g/n/a) are anabled
      */
     WIFI_802_DOT_11_ABGN;
 

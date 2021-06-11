@@ -3,6 +3,7 @@ package com.datalogic.device.configuration;
 
 import com.datalogic.device.configuration.PropertyGroupID;
 import com.datalogic.device.configuration.*;
+
 /**
  * <code>PropertyID</code> is the class that includes all the properties
  * identifiers.<br>
@@ -18,7 +19,7 @@ import com.datalogic.device.configuration.*;
  * <ul>
  *     <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_GROUP}
  *         <ul>
- *         <li style="color:red" type="square"> {@link PropertyGroupID#MODULE_SETTINGS_GROUP}
+ *         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_MODULE_SETTINGS_GROUP}
  *             <ul>
  *                 <li style="color:black" type="circle"> {@link #WIFI_802_DOT_11_MODE} </li>
  *                 <li style="color:black" type="circle"> {@link #WIFI_BAND_SELECTION} </li>
@@ -26,16 +27,16 @@ import com.datalogic.device.configuration.*;
  *                 <li style="color:black" type="circle"> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
  *             </ul>
  *         </li>
- *         <li style="color:red" type="square"> {@link PropertyGroupID#ROAMING_SETTINGS_GROUP}
+ *         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_ROAMING_SETTINGS_GROUP}
  *             <ul>
  *                 <li style="color:black" type="circle"> {@link #WIFI_ROAMING_PROFILE} </li>
  *                 <li style="color:black" type="circle"> {@link #WIFI_ROAMING_RSSI_THRESHOLD} </li>
  *                 <li style="color:black" type="circle"> {@link #WIFI_ROAMING_RSSI_DIFFERENCE} </li>
  *             </ul>
  *         </li>
- *         <li style="color:red" type="square"> {@link PropertyGroupID#SCAN_SETTINGS_GROUP}
+ *         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_SCAN_SETTINGS_GROUP}
  *             <ul>
- *                 <li style="color:red" type="square"> {@link PropertyGroupID#SCAN_TIMINGS_GROUP}
+ *                 <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_SCAN_TIMINGS_GROUP}
  *                     <ul>
  *                         <li style="color:black" type="circle"> {@link #WIFI_SCAN_INTERVAL} </li>
  *                         <li style="color:black" type="circle"> {@link #WIFI_SCAN_INTERVAL_MAX} </li>
@@ -77,9 +78,10 @@ import com.datalogic.device.configuration.*;
  * </ul>
  */
 public class PropertyID {
-    //
-    // WIFI Settings definitions
-    //
+   /**
+     * @hide
+     * WIFI Settings definitions
+     */
     public final static int WIFI_UNKNOWN = PropertyGroupID.WIFI_MIB_BASE + 0;
     /**
       * Interval between scans when the device is on and disconnected.
@@ -87,7 +89,7 @@ public class PropertyID {
       * it is not connected to any Wi-Fi network. The scans are issued in this way: the first scan is done when
       * the device is woken up from a standby state, then the next scans are done in an exponential backoff fashion.
       * The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on, until it reaches
-      * the maximum value.
+      * the maximum value defined by {@link #WIFI_SCAN_INTERVAL_MAX}.
       */
     public final static int WIFI_SCAN_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x0001;
     /**
@@ -96,7 +98,7 @@ public class PropertyID {
       * it is not connected to any Wi-Fi network. The scans are issued in this way: the first scan is done when
       * the device is woken up from a standby state, then the next scans are done in an exponential backoff fashion.
       * The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on, until it reaches
-      * the maximum value.
+      * the maximum value defined by {@link #WIFI_SCAN_INTERVAL_MAX}.
       */
     public final static int WIFI_SCAN_INTERVAL_MAX = PropertyGroupID.WIFI_MIB_BASE + 0x0002;
     /**
@@ -105,7 +107,7 @@ public class PropertyID {
       * has the screen on and it is connected to any Wi-Fi network. The scans are issued in this way: the first
       * scan is done when the device is woken up from a standby state, then the next scans are done in an exponential
       * backoff fashion. The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on,
-      * until it reaches the maximum.
+      * until it reaches the maximum defined by {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX}.
       */
     public final static int WIFI_CONNECTED_SCAN_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x0003;
     /**
@@ -114,25 +116,28 @@ public class PropertyID {
       * has the screen on and it is connected to any Wi-Fi network. The scans are issued in this way: the first scan
       * is done when the device is woken up from a standby state, then the next scans are done in an exponential
       * backoff fashion. The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on,
-      * until it reaches the maximum value.
+      * until it reaches the maximum value defined by {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX}.
       */
     public final static int WIFI_CONNECTED_SCAN_INTERVAL_MAX = PropertyGroupID.WIFI_MIB_BASE + 0x0004;
     /**
       * Selects the 802.11 mode to be used (b/g/n/a/ac).
-      * This parameter controls the 802.11 mode the device will be using. {@link Wifi802Dot11Mode}
+      * This parameter controls the 802.11 mode the device will be using.
+      * The allowed values for this property are defined by enum {@link Wifi802Dot11Mode}
       */
     public final static int WIFI_802_DOT_11_MODE = PropertyGroupID.WIFI_MIB_BASE + 0x000D;
     /**
       * Selects the band used by the device (2.4/5 GHz).
       * This parameter controls the band the device will be using.
-      * When one band is disabled, the device won’t transmit anything on that band. {@link WifiBandSelection}
+      * When one band is disabled, the device won’t transmit anything on that band.
+      * The allowed values for this property are defined by enum {@link WifiBandSelection}
       */
     public final static int WIFI_BAND_SELECTION = PropertyGroupID.WIFI_MIB_BASE + 0x000E;
     /**
       * Selects the power saving mode used.
       * This parameter enables the power save mode and controls which kind of power save is used.
-      * The default value is QPower enabled (2), if you notice a degradation in the VoIP call performance
-      * increase the value to 5. {@link WifiPowerSave}
+      * The allowed values for this property are defined by enum {@link WifiPowerSave}.
+      * The default value is set to {@link WifiPowerSave#WIFI_Q_POWER}, if you notice a degradation in the VoIP call performance
+      * change the value to {WifiPowerSave#WIFI_Q_POWER_VOIP_CALLS}.
       */
     public final static int WIFI_POWER_SAVE = PropertyGroupID.WIFI_MIB_BASE + 0x000F;
     /**
@@ -163,10 +168,10 @@ public class PropertyID {
       */
     public final static int WIFI_ROAMING_PROFILE = PropertyGroupID.WIFI_MIB_BASE + 0x001A;
 
-    //
-    //
-    // DateAndTime Settings definitions
-    //
+    /**
+      * @hide
+      * DateAndTime Settings definitions
+      */
     public final static int DATE_AND_TIME_UNKNOWN = PropertyGroupID.DNT_MIB_BASE + 0;
     /** 
       * Value to specify if the user prefers the date, time and time zone to be automatically fetched from the network (NITZ). 
@@ -230,4 +235,9 @@ public class PropertyID {
      */
     public final static int USB_CURRENT_FUNCTION = PropertyGroupID.USB_MIB_BASE + 0x0003;
 
+    /**
+     * @hide
+     * The constructor is defined hide and private to avoid Apps create an instance of this class.
+     */
+    private PropertyID() {}
 }

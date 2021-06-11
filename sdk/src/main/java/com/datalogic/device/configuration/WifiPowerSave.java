@@ -1,16 +1,19 @@
 package com.datalogic.device.configuration;
 
+/**
+ * Enum <code>WifiPowerSave</code> defines the allowed values for settings property {@link PropertyID#WIFI_POWER_SAVE}
+ */
 public enum WifiPowerSave {
     /**
-     *
+     * Power Save mode disabled.
      */
     WIFI_POWER_SAVE_DISABLED(0),
     /**
-     *
+     * Power Save mode enabled with default power consumpsion level.
      */
     WIFI_Q_POWER(2),
     /**
-     *
+     * Power Save mode enabled with power consumpsion level set to avoid performance degradation in the VoIP call . 
      */
     WIFI_Q_POWER_VOIP_CALLS(5);
 

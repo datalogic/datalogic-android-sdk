@@ -1,16 +1,19 @@
 package com.datalogic.device.configuration;
 
+/**
+ * Enum <code>WifiBandSelection</code> defines the allowed values for settings property {@link PropertyID#WIFI_BAND_SELECTION}
+ */
 public enum WifiBandSelection {
     /**
-     *
+     * 2.4GHz and 5GHz bands are both enabled
      */
     WIFI_BAND_BOTH_ENABLED,
     /**
-     *
+     * Only 2.4GHz band is enabled
      */
     WIFI_BAND_24_GHZ,
     /**
-     *
+     * Only 5GHz band is enabled
      */
     WIFI_BAND_5_GHZ;
 

@@ -38,23 +38,24 @@ public class PropertyGroupID {
     /**
       * Root of the subtree of Wifi's properties.
       */
-    public final static int WIFI_GROUP = WIFI_MIB_BASE + 0x0001;
+    public final static int WIFI_GROUP = WIFI_MIB_BASE;
+
     /**
       * Root of the subtree of the wifi module settings properties.
       */
-    public final static int MODULE_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0001;
+    public final static int WIFI_MODULE_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0001;
     /**
       * Root of the subtree of the wifi roaming settings properties.
       */
-    public final static int ROAMING_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0002;
+    public final static int WIFI_ROAMING_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0002;
     /**
       * Root of the subtree of the wifi scan settings properties.
       */
-    public final static int SCAN_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0003;
+    public final static int WIFI_SCAN_SETTINGS_GROUP = WIFI_MIB_BASE + 0x0003;
     /**
       * Root of the subtree of the wifi scan timings properties.
       */
-    public final static int SCAN_TIMINGS_GROUP = WIFI_MIB_BASE + 0x0004;
+    public final static int WIFI_SCAN_TIMINGS_GROUP = WIFI_MIB_BASE + 0x0004;
 
     /**
       * Root of the subtree of Date and Time properties.
@@ -75,4 +76,9 @@ public class PropertyGroupID {
       */
     public final static int USB_GROUP = USB_MIB_BASE + 0x0001;
 
+    /**
+     * @hide
+     * The constructor is defined hide and private to avoid Apps create an instance of this class.
+     */
+    private PropertyGroupID() {}
 }
