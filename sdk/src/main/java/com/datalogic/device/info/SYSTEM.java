@@ -20,7 +20,7 @@ public class SYSTEM {
 		/**
 		 * @hide This changes frequently
 		 */
-		public static final short SDK_VERSION_MINOR = 27;
+		public static final short SDK_VERSION_MINOR = 28;
 
 		/**
 		 * Broadcast Action:  This is a <em>sticky broadcast</em> containing the
@@ -68,6 +68,18 @@ public class SYSTEM {
 		 */
 		public static final String EXTRA_SCAN_ENGINE =
 				"scan_engine_model";
+
+		/**
+		 * Extra for {@link Version#ACTION_DEVICE_INFO}: String containing the device's serial number.
+		 */
+		public static final String EXTRA_SERIAL_NUMBER =
+				"serial_number";
+
+		/**
+		 * Extra for {@link Version#ACTION_DEVICE_INFO}: String containing the device's product number.
+		 */
+		public static final String EXTRA_PRODUCT_NUMBER =
+				"product_number";
 	}
 
 	/**
@@ -126,6 +138,16 @@ public class SYSTEM {
 	 */
 	public static final Bitmap DEVICE_IMAGE = getBitmapFromRes("device.png");
 
+    /**
+	 * Returns a String indicating the serial number of the device.
+	 */
+	public static final String SERIAL_NUMBER = getDeviceSerialNumber();
+
+	/**
+	 * Returns a String indicating the product number of the device.
+	 */
+	public static final String PRODUCT_NUMBER = getDeviceProductNumber();
+
 	/**
 	 * Returns a number indicating the installed Datalogic SDK version on
 	 * the device. Future SDK releases will always have a greater number.
@@ -144,6 +166,24 @@ public class SYSTEM {
 	 * @hide
 	 */
 	private static BootType getBootType() {
+		return null;
+	}
+
+    /**
+	 * Retrieves the Serial Number
+	 *
+	 * @hide
+	 */
+	private static String getDeviceSerialNumber() {
+		return null;
+	}
+
+	/**
+	 * Retrieves the Product Number
+	 *
+	 * @hide
+	 */
+	private static String getDeviceProductNumber() {
 		return null;
 	}
 

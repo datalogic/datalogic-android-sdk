@@ -161,5 +161,9 @@ public enum Symbology {
 	/**
 	 * ISBT 128 Concatenated
 	 */
-	ISBT_128_CONCATENATED; //
+	ISBT_128_CONCATENATED, //
+	/**
+	 * GS1 Data Matrix
+	 */
+	GS1_DATAMATRIX; //
 }

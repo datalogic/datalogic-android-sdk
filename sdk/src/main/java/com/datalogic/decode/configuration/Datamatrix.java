@@ -20,6 +20,11 @@ public class Datamatrix extends SymbologyLengths {
     public EnumProperty<DatamatrixOpMode> operatingMode;
 
     /**
+     * <code>gs1_datamatrix</code> enables or disables the GS1-DATAMATRIX symbology.
+     */  
+    public BooleanProperty gs1_datamatrix;
+
+    /**
      * <code>DatamatrixMirror </code> control the mirror mode.
      */
     public EnumProperty<DatamatrixMirror> mirror;

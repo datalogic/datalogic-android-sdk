@@ -21,6 +21,27 @@ public class AppManagerException extends RuntimeException {
 	 */
 	public static final int NULL_POINTER_ERROR = -3866622;
 
+    /**
+	 * Invalid argument error.
+	 */
+    public static final int INVALID_ARGUMENT_ERROR = -3866597;
+
+    /**
+	 * Package not found error.
+	 */
+     public static final int PACKAGE_NOT_FOUND_ERROR = -3866596;
+
+    /**
+ 	 * There are no permissions declared to be granted.
+ 	 */
+      public static final int NO_PERMISSIONS_TO_BE_GRANTED = -3866595;
+
+    /**
+   	 * There are no permissions declared to be granted.
+   	 */
+        public static final int PERMISSION_NOT_GRANTED_ERROR = -3866582;
+
+
 	/**
 	 * Generic error, mostly due to a wrong parameter passed to a SDK method.
 	 */

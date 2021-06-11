@@ -26,6 +26,12 @@ public class AppManager {
     /**
      * Call this method to grant an application all the permissions declared in its manifest. <br>
      * <br>
+     * The method works in best effort. If almost one of the requested permissions is not granted an error is returned.
+     * In case of error to check which permissions are granted use
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#getPackageInfo(android.content.pm.VersionedPackage,%20int)">PackageManger.getPackageInfo(String packageName, int flags)</a>
+     * with the flag
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#GET_PERMISSIONS">PackageManager#GET_PERMISSIONS</a>
+     * to get the PackageInfo of the application with the permissions information.
      *
      * @param packageName
      *            <code>String</code>The application to grant permissions to.
@@ -41,6 +47,12 @@ public class AppManager {
     /**
      * Call this method to grant an application the specified permissions. <br>
      * <br>
+     * The method works in best effort. If almost one of the requested permissions is not granted an error is returned.
+     * In case of error to check which permissions are granted use
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#getPackageInfo(android.content.pm.VersionedPackage,%20int)">PackageManger.getPackageInfo(String packageName, int flags)</a>
+     * with the flag
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#GET_PERMISSIONS">PackageManager#GET_PERMISSIONS</a>
+     * to get the PackageInfo of the application with the permissions information.
      *
      * @param packageName
      *            <code>String</code>he application to grant permissions to.
@@ -54,6 +66,30 @@ public class AppManager {
     public int grantPermissions(String packageName, ArrayList<String>permissions) {
         return 0;
 	}
+
+    /**
+     * Call this method to revoke an application the specified permissions. <br>
+     * <br>
+     * The method works in best effort. If almost one of the requested permissions is not revoked an error is returned.
+     * In case of error to check which permissions are revoked use
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#getPackageInfo(android.content.pm.VersionedPackage,%20int)">PackageManger.getPackageInfo(String packageName, int flags)</a>
+     * with the flag
+     * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#GET_PERMISSIONS">PackageManager#GET_PERMISSIONS</a>
+     * to get the PackageInfo of the application with the permissions information.
+     *
+     *
+     * @param packageName
+     *            <code>String</code>he application to revoke permissions to.
+     * @param permissions
+     *            <code>ArrayList<String></code> list of permissions to be revoked.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int revokePermissions(String packageName, ArrayList<String>permissions) {
+        return 0;
+    }
 
     /**
      * Call this method to stop an application. <br>
@@ -81,7 +117,9 @@ public class AppManager {
     * @param flags
     *            <code>int</code>Optional behaviour flags.
     * Value is either 0 or a combination of android.content.pm.PackageManager#DONT_KILL_APP and
-    * android.content.pm.PackageManager#SYNCHRONOUS.
+    * android.content.pm.PackageManager#SYNCHRONOUS. Not expected values in combinationation with these are ignored.
+    * See for more details the Android documentation
+    * <a href="https://developer.android.com/reference/android/content/pm/PackageManager#setApplicationEnabledSetting(java.lang.String,%20int,%20int)">PackageManager.setApplicationEnabledSetting(String packageName, int newState, int flags)</a>.
     * @return <code>int</code>
     *            {@link AppManagerException#SUCCESS} in case of success,
     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -111,7 +149,7 @@ public class AppManager {
   /**
    * Call this method to hide or unhide packages. <br>
    * <br>
-   *
+   * If the package is already hide/unhide the method returns  {@link AppManagerException#GENERIC_ERROR}.
    * @param packageName
    *            <code>String</code>The name of the package to hide or unhide.
    * @param hidden

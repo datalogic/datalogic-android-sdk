@@ -79,6 +79,14 @@ public class ScannerOptions extends PropertyGroup {
 	public EnumProperty<IlluminationType> illuminationType;
 
 	/**
+	 * <code>illuminationTime</code> selects the scanner illumination pulse length.
+	 * The scan engine illumination is a pulsed light. It is characterized by a light pulse length and a frequency usually equal to the frame rate frequency. 
+	 * This property affects only the pulse length. With a longer light pulse the scan engine can decode a more distant target and DOF performance is enhanced on low environment light condition. 
+	 * In the counterside, a shorter light pulse makes the scan engine more motion tollerant.
+	 */
+	public EnumProperty<IlluminationTime> illuminationTime;
+
+	/**
 	 * <code>scanMode</code> selects the scan mode.
 	 */
 	public EnumProperty<ScanMode> scanMode;

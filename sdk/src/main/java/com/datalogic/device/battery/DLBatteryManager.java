@@ -35,9 +35,16 @@ public final class DLBatteryManager
     /**
      * Prepare the DlBatteryManager to receive events from the Android PowerManger Service. <br>
      * If not called the {@link #addBatteryEventListener} fails with error {@link BatteryException#CONTEXT_UNKNOWN}.
-     *
+     * This method cannot be called from a BroadcastReceiver component; that is, from a BroadcastReceiver that is declared
+     * in an application's manifest. It is okay, however, to call this method from another BroadcastReceiver that has itself
+     * been registered at run time with registerReceiver(BroadcastReceiver, IntentFilter), since the lifetime of such a
+     * registered BroadcastReceiver is tied to the object that registered it. See for more details:
+     * <a href="https://developer.android.com/reference/android/content/Context#registerReceiver(android.content.BroadcastReceiver,%20android.content.IntentFilter)">registerReceiver(BroadcastReceiver receiver, IntentFilter filter)</a>
+     * and
+     * <a href="https://developer.android.com/reference/kotlin/android/content/ReceiverCallNotAllowedException">ReceiverCallNotAllowedException</a>
      * @param context
      *         The context of the caller.
+      * @throws BatteryException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
      */
     public void initBatteryEvents(Context context) {}
 

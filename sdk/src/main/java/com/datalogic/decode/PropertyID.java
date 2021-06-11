@@ -48,6 +48,7 @@ public class PropertyID {
 	public final static int PRESENTATION_MODE_SENSITIVITY = 0x0064;
 	public final static int SCAN_MODE = 0x0065;
 	public final static int DOUBLE_READ_TIMEOUT = 0x0066;
+	public final static int ILLUMINATION_TIME = 0x0067;
 
 	//
 	// Code 39 definitions
@@ -288,6 +289,7 @@ public class PropertyID {
 	public final static int DATAMATRIX_CHARACTER_SET_MODE = 0x0B02;
 	public final static int DATAMATRIX_OPERATING_MODE = 0x0B03;
 	public final static int DATAMATRIX_MIRROR = 0x0B04;
+	public final static int DATAMATRIX_GS1_ENABLE = 0x0B05;
 
 	//
 	// MaxiCode definitions

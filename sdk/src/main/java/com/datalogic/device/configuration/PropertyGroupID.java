@@ -56,7 +56,15 @@ public class PropertyGroupID {
       * Root of the subtree of the wifi scan timings properties.
       */
     public final static int WIFI_SCAN_TIMINGS_GROUP = WIFI_MIB_BASE + 0x0004;
+    
+    /** Root of the subtree of Wifi's channels. */
+    public final static int WIFI_CHANNELS_GROUP = WIFI_MIB_BASE +  0x0006;
 
+    /** Root of the subtree of 2.4ghz Wifi's channels. */
+    public final static int WIFI_CHANNELS_GROUP_2_4GHZ = WIFI_MIB_BASE +  0x0007;
+
+     /** Root of the subtree of 5ghz Wifi's channels. */
+     public final static int WIFI_CHANNELS_GROUP_5GHZ = WIFI_MIB_BASE +  0x0008;
     /**
       * Root of the subtree of Date and Time properties.
       */

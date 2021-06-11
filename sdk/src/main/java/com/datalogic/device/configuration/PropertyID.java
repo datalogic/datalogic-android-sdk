@@ -25,6 +25,57 @@ import com.datalogic.device.configuration.*;
  *                 <li style="color:black" type="circle"> {@link #WIFI_BAND_SELECTION} </li>
  *                 <li style="color:black" type="circle"> {@link #WIFI_POWER_SAVE} </li>
  *                 <li style="color:black" type="circle"> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
+ *                 <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_CHANNELS_GROUP}
+ *                     <ul>
+ *                         <li style="color:black" type="circle"> {@link #WIFI_COUNTRY_CODE} </li>
+ *                         <li style="color:black" type="circle"> {@link #WIFI_UNLOCK_CHANNELS} </li>
+ *                         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_2_4GHZ}
+ *                             <ul>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_1} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_2} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_3} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_4} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_5} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_6} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_7} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_8} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_9} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_10} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_11} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_12} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_13} </li>
+ *                             </ul>
+ *                         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_5GHZ}
+ *                             <ul>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_36} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_40} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_44} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_48} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_52} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_56} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_60} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_64} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_100} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_104} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_108} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_112} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_116} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_120} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_124} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_128} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_132} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_136} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_140} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_144} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_149} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_153} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_157} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_161} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_165} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_169} </li>
+ *                                 <li style="color:black" type="circle"> {@link #WIFI_CHANNEL_173} </li>
+ *                             </ul>
+ *                     </ul>
  *             </ul>
  *         </li>
  *         <li style="color:red" type="square"> {@link PropertyGroupID#WIFI_ROAMING_SETTINGS_GROUP}
@@ -167,6 +218,264 @@ public class PropertyID {
       * be editable if any preset other than custom is selected. 
       */
     public final static int WIFI_ROAMING_PROFILE = PropertyGroupID.WIFI_MIB_BASE + 0x001A;
+    /**
+      * @hide
+      * This parameters controls the channels that will be disabled on the device.
+      * When a channel is disabled, the device won’t be able to communicate on that specific channel
+      * and thus won’t see any AP using that channel.
+      */
+    private final static int WIFI_CHANNEL_BASE = PropertyGroupID.WIFI_MIB_BASE + 0x001B;
+    /**
+      * This parameters controls the Channels 1 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_1 = WIFI_CHANNEL_BASE + 0x0001;
+    /**
+      * This parameters controls the Channels 2 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_2 = WIFI_CHANNEL_BASE + 0x0002;
+    /**
+      * This parameters controls the Channels 3 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_3 = WIFI_CHANNEL_BASE + 0x0003;
+
+    /**
+      * This parameters controls the Channels 4 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_4 = WIFI_CHANNEL_BASE + 0x0004;
+    /**
+      * This parameters controls the Channels 5 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_5 = WIFI_CHANNEL_BASE + 0x0005;
+    /**
+      * This parameters controls the Channels 6 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_6 = WIFI_CHANNEL_BASE + 0x0006;
+    /**
+      * This parameters controls the Channels 7 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_7 = WIFI_CHANNEL_BASE + 0x0007;
+    /**
+      * This parameters controls the Channels 8 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_8 = WIFI_CHANNEL_BASE + 0x0008;
+    /**
+      * This parameters controls the Channels 9 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_9 = WIFI_CHANNEL_BASE + 0x0009;
+    /**
+      * This parameters controls the Channels 10 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_10 = WIFI_CHANNEL_BASE + 0x000A;
+    /**
+      * This parameters controls the Channels 11 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_11 = WIFI_CHANNEL_BASE + 0x000B;
+    /**
+      * This parameters controls the Channels 12 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_12 = WIFI_CHANNEL_BASE + 0x000C;
+    /**
+      * This parameters controls the Channels 13 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_13 = WIFI_CHANNEL_BASE + 0x000D;
+    /**
+      * This parameters controls the Channels 36 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_36 = WIFI_CHANNEL_BASE + 0x0024; //36
+    /**
+      * This parameters controls the Channels 40 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_40 = WIFI_CHANNEL_BASE + 0x0028; //40
+    /**
+      * This parameters controls the Channels 44 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_44 = WIFI_CHANNEL_BASE + 0x002C; //44
+    /**
+      * This parameters controls the Channels 48 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_48 = WIFI_CHANNEL_BASE + 0x0030; //48
+    /**
+      * This parameters controls the Channels 52 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_52 = WIFI_CHANNEL_BASE + 0x0034; //52
+    /**
+      * This parameters controls the Channels 56 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_56 = WIFI_CHANNEL_BASE + 0x0038; //56
+    /**
+      * This parameters controls the Channels 60 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_60 = WIFI_CHANNEL_BASE + 0x003c; //60
+    /**
+      * This parameters controls the Channels 64 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_64 = WIFI_CHANNEL_BASE + 0x0040; //64
+    /**
+      * This parameters controls the Channels 100 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_100 = WIFI_CHANNEL_BASE + 0x0064; //100
+    /**
+      * This parameters controls the Channels 104 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_104 = WIFI_CHANNEL_BASE + 0x0068; //104
+    /**
+      * This parameters controls the Channels 108 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_108 = WIFI_CHANNEL_BASE + 0x006c; //108
+    /**
+      * This parameters controls the Channels 112 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_112 = WIFI_CHANNEL_BASE + 0x0070; //112
+    /**
+      * This parameters controls the Channels 116 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_116 = WIFI_CHANNEL_BASE + 0x0074; //116
+    /**
+      * This parameters controls the Channels 120 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_120 = WIFI_CHANNEL_BASE + 0x0078; //120
+    /**
+      * This parameters controls the Channels 124 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_124 = WIFI_CHANNEL_BASE + 0x007c; //124
+    /**
+      * This parameters controls the Channels 128 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_128 = WIFI_CHANNEL_BASE + 0x0080; //128
+    /**
+      * This parameters controls the Channels 132 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_132 = WIFI_CHANNEL_BASE + 0x0084; //132
+    /**
+      * This parameters controls the Channels 136 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_136 = WIFI_CHANNEL_BASE + 0x0088; //136
+    /**
+      * This parameters controls the Channels 140 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_140 = WIFI_CHANNEL_BASE + 0x008c; //140
+    /**
+      * This parameters controls the Channels 144 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_144 = WIFI_CHANNEL_BASE + 0x0090; //144
+    /**
+      * This parameters controls the Channels 149 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_149 = WIFI_CHANNEL_BASE + 0x0095; //149
+    /**
+      * This parameters controls the Channels 153 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_153 = WIFI_CHANNEL_BASE + 0x0099; //153
+    /**
+      * This parameters controls the Channels 157 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_157 = WIFI_CHANNEL_BASE + 0x009d; //157
+    /**
+      * This parameters controls the Channels 161 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_161 = WIFI_CHANNEL_BASE + 0x00a1; //161
+    /**
+      * This parameters controls the Channels 165 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_165 = WIFI_CHANNEL_BASE + 0x00a5; //165
+    /**
+      * This parameters controls the Channels 169 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_169 = WIFI_CHANNEL_BASE + 0x00a9; //169
+    /**
+      * This parameters controls the Channels 173 that can be enabled or disabled on the device.
+      * When this channel is disabled, the device won’t be able to communicate on it
+      * and thus won’t see any AP using that channel.
+      */
+    public final static int WIFI_CHANNEL_173 = WIFI_CHANNEL_BASE + 0x00ad; //173
+	/**
+	  * This parameter reports the current Wi-Fi country-code.
+	  * The value is calculated by the device according to the connected AP,
+      * so this property cannot be set.
+	  */
+	public final static int WIFI_COUNTRY_CODE = PropertyGroupID.WIFI_MIB_BASE + 0x0100;
+	/**
+	  * This parameter enables the Wi-Fi channels selection regardless of the current country-code.
+	  */
+    public final static int WIFI_UNLOCK_CHANNELS = PropertyGroupID.WIFI_MIB_BASE + 0x0101;
 
     /**
       * @hide

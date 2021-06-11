@@ -9,19 +9,19 @@ package com.datalogic.decode.configuration;
  * <tr>
  * <td>SINGLE</td>
  * <td>
- * When pressing the trigger (or virtually starting the decoder),
+ * When pressing the trigger or virtually starting the decoder,
  * the device will scan until a barcode is read, the timeout
- * has been reached or the trigger is released (or the decoder
- * has been virtually stopped)
+ * has been reached, the trigger is released or the decoder
+ * has been virtually stopped.
  * </td>
  * </tr>
  * <tr>
  * <td>HOLD_MULTIPLE</td>
  * <td>
- * When pressing the trigger (or virtually starting the decoder),
+ * When pressing the trigger or virtually starting the decoder,
  * the device will scan continuously until the timeout from the
- * last decoding result has been reached or the trigger is released
- * (or the decoder has been virtually stopped)
+ * last decoding result has been reached, the trigger is released
+ * or the decoder has been virtually stopped.
  * </td>
  * </tr>
  * <tr>
@@ -34,7 +34,12 @@ package com.datalogic.decode.configuration;
  * </tr>
  * <tr>
  * <td>ALWAYS_ON</td>
- * <td>The scanning is always enabled when this option is selected</td>
+ * <td>
+ * Scanning is always enabled when this option is selected.
+ * In this case, scanner properties different from the ScanMode
+ * cannot be applied until the scan mode is set to a different
+ * value.
+ * </td>
  * </tr>
  * </table>
  */
