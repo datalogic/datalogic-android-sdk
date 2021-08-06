@@ -1,4 +1,4 @@
-package com.datalogic.decode.configuration;
+	package com.datalogic.decode.configuration;
 
 import com.datalogic.device.configuration.*;
 
@@ -50,6 +50,11 @@ public class Code39 extends SymbologyLengths {
 	 * {@link SendCodeID#USERDEFINED_IDENTIFIER_BEFORE_LABEL} or {@link SendCodeID#USERDEFINED_IDENTIFIER_AFTER_LABEL}.
 	 */
 	public CharacterProperty trioptic_userID;
+
+	/**
+	 * <code>aggressiveness</code> controls the aggressiveness for the Code 39 symbology.
+	 */
+	public EnumProperty<Code39Aggressiveness> aggressiveness;
 	
 	/**
 	 * This is the constructor of Code39. All symbology options are initialized

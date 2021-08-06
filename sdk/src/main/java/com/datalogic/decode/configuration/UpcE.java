@@ -38,6 +38,11 @@ public class UpcE extends SymbologyBase {
 	public BooleanProperty compositeEnable;
 
 	/**
+	 * <code>aggressiveness</code> control the aggressiveness for all the UPC/EAN symbologies.
+	 */
+	public EnumProperty<UpcEanAggressiveness> aggressiveness;
+
+	/**
 	 * This is the constructor of UpcE. All symbology options are initialized by
 	 * editor.
 	 * 

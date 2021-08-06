@@ -53,6 +53,10 @@ public class ConfigException extends RuntimeException {
      */
     public static final int SUPPORT_ERROR = (CONF_EXCEPTION<<16 | 0x0008);
     /**
+     * The property is read only.
+     */
+    public static final int ACCESS_VIOLATION_ERROR = (CONF_EXCEPTION<<16 | 0x0010);
+    /**
      * The JSON configuration file has an error.
      */
     public static final int JSON_ERROR = (CONF_EXCEPTION<<16 | 0x0009);

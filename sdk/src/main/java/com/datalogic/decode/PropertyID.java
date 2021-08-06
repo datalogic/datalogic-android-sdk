@@ -41,6 +41,7 @@ public class PropertyID {
 	public final static int MULTISCAN_ENABLE = 0x0050;
 	public final static int MULTISCAN_REQUIRED_LABELS = 0x0051;
 	public final static int MULTISCAN_NOTIFICATION_ENABLE = 0x0052;
+	public final static int MULTISCAN_PARTIAL_RESULT_MODE = 0x0053;
 	public final static int INVERSE_1D_SYMBOLOGIES = 0x0060;
 	public final static int INVERSE_2D_SYMBOLOGIES = 0x0061;
 	public final static int PRESENTATION_MODE_ENABLE = 0x0062;
@@ -62,6 +63,7 @@ public class PropertyID {
 	public final static int CODE39_LENGTH2 = 0x0121;
 	public final static int CODE39_LENGTH_CONTROL = 0x0122;
 	public final static int CODE39_USER_ID = 0x0123;
+	public final static int CODE39_AGGRESSIVENESS = 0x0124;
 
 	//
 	// Trioptic definitions
@@ -103,6 +105,8 @@ public class PropertyID {
 	public final static int I25_LENGTH2 = 0x0229;
 	public final static int I25_LENGTH_CONTROL = 0x022A;
 	public final static int I25_USER_ID = 0x022B;
+	public final static int ITF14_ENABLE = 0x022C;
+	public final static int I25_AGGRESSIVENESS = 0x022D;
 
 	//
 	// Codabar definitions
@@ -191,6 +195,7 @@ public class PropertyID {
 	// UPC/EAN Options
 	//
 	public final static int UPC_EAN_SHORT_QUIET_ZONES = 0x0520;
+	public final static int UPC_EAN_AGGRESSIVENESS = 0x0526;
 
 	//
 	// MSI definitions
@@ -290,6 +295,7 @@ public class PropertyID {
 	public final static int DATAMATRIX_OPERATING_MODE = 0x0B03;
 	public final static int DATAMATRIX_MIRROR = 0x0B04;
 	public final static int DATAMATRIX_GS1_ENABLE = 0x0B05;
+	public final static int DATAMATRIX_AGGRESSIVENESS = 0x0B06;
 
 	//
 	// MaxiCode definitions
@@ -309,7 +315,9 @@ public class PropertyID {
 	public final static int QRCODE_LENGTH_CONTROL = 0x0B2A;
 	public final static int QRCODE_USER_ID = 0x0B2B;
 	public final static int QRCODE_CHARACTER_SET_MODE = 0x0B12;
+	public final static int QRCODE_GS1_ENABLE = 0x0B13;
 	public final static int QRCODE_WIFI_ENABLE = 0x30E41;
+	public final static int QRCODE_S2D_ENABLE = 0x30E42;
 
 	//
 	// Micro QR Code definitions
@@ -395,4 +403,13 @@ public class PropertyID {
 	public final static int FRAME_CAPTURE_FORMAT = 0x50002;
 	public final static int FRAME_CAPTURE_MODE = 0x50003;
 	public final static int FRAME_CAPTURE_STORAGE_ENABLE = 0x50004;
+
+	//
+	// OCR
+	//
+	public final static int OCR_ENABLE = 0x40300;
+	public final static int OCR_USER_ID = 0x40301;
+	public final static int OCR_PASSPORT_ENABLE = 0x40302;
+	public final static int OCR_ID_ENABLE = 0x40303;
+	public final static int OCR_CONFIDENCE = 0x40304;
 }

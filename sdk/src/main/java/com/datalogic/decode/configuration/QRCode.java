@@ -14,12 +14,22 @@ public class QRCode extends SymbologyLengths {
     public EnumProperty<CharacterSetMode> characterSetMode;
 
     /**
-     * <code>wifiEnable</code> controls if the QR code Wi-Fi configuration format is enabled.
+     * <code>wifiEnable</code> enables Wi-Fi configuration through Wi-Fi QR Code.
      */
     public BooleanProperty wifiEnable;
 
+   /**
+    * <code>gs1_qrcode</code> enables or disables the GS1-QR Code symbology.
+    */
+    public BooleanProperty gs1_qrcode;
+
     /**
-     * This is the constructor of QRCode. All symbology options are initialized
+     * <code>s2dEnable</code> enables device configuration through Scan2Deploy QR Codes.
+     */
+    public BooleanProperty s2dEnable;
+
+    /**
+     * This is the QRCode constructor. All symbology options are initialized
      * by editor.
      *
      * @param editor A {@link PropertyGetter} used to load the current barcode family.

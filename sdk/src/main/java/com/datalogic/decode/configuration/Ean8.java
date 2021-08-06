@@ -26,6 +26,11 @@ public class Ean8 extends SymbologyBase {
 	public BooleanProperty compositeEnable;
 
 	/**
+	 * <code>aggressiveness</code> control the aggressiveness for all the UPC/EAN symbologies.
+	 */
+	public EnumProperty<UpcEanAggressiveness> aggressiveness;
+
+	/**
 	 * This is the constructor of Ean8. All symbology options are initialized by
 	 * editor.
 	 * 

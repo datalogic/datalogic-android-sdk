@@ -126,6 +126,19 @@ import com.datalogic.device.configuration.*;
  *            <li style="color:black" type="circle"> {@link #USB_CURRENT_FUNCTION} </li>
  *         </ul>
  *     </li>
+ *     <li style="color:red" type="square"> {@link PropertyGroupID#DUAL_SIM_GROUP}
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_AVAILABLE} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_SIM1_ENABLE} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_SIM2_ENABLE} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_CURRENT_DATA} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_CURRENT_CALLS} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_CURRENT_SMS} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_DATA} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_CALLS} </li>
+ *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_SMS} </li>
+ *         </ul>
+ *     </li>
  * </ul>
  */
 public class PropertyID {
@@ -187,8 +200,8 @@ public class PropertyID {
       * Selects the power saving mode used.
       * This parameter enables the power save mode and controls which kind of power save is used.
       * The allowed values for this property are defined by enum {@link WifiPowerSave}.
-      * The default value is set to {@link WifiPowerSave#WIFI_Q_POWER}, if you notice a degradation in the VoIP call performance
-      * change the value to {WifiPowerSave#WIFI_Q_POWER_VOIP_CALLS}.
+      * The default value is set to {@link WifiPowerSave#WIFI_POWER_SAVE_ENABLED}, if you notice a degradation in the VoIP call performance
+      * change the value to {WifiPowerSave#WIFI_POWER_SAVE_ENABLED_VOIP_CALLS}.
       */
     public final static int WIFI_POWER_SAVE = PropertyGroupID.WIFI_MIB_BASE + 0x000F;
     /**
@@ -216,6 +229,7 @@ public class PropertyID {
       * A roaming profile can be one of four presets: standard, aggressive, slow and custom.
       * Each preset should have a direct impact on the Roaming RSSI Threshold and Difference, and those settings should not
       * be editable if any preset other than custom is selected. 
+      * The allowed values for this property are defined by enum {@link WifiRoamingProfile}.
       */
     public final static int WIFI_ROAMING_PROFILE = PropertyGroupID.WIFI_MIB_BASE + 0x001A;
     /**
@@ -243,7 +257,6 @@ public class PropertyID {
       * and thus won’t see any AP using that channel.
       */
     public final static int WIFI_CHANNEL_3 = WIFI_CHANNEL_BASE + 0x0003;
-
     /**
       * This parameters controls the Channels 4 that can be enabled or disabled on the device.
       * When this channel is disabled, the device won’t be able to communicate on it
@@ -466,15 +479,15 @@ public class PropertyID {
       * and thus won’t see any AP using that channel.
       */
     public final static int WIFI_CHANNEL_173 = WIFI_CHANNEL_BASE + 0x00ad; //173
-	/**
-	  * This parameter reports the current Wi-Fi country-code.
-	  * The value is calculated by the device according to the connected AP,
+    /**
+      * This parameter reports the current Wi-Fi country-code.
+      * The value is calculated by the device according to the connected AP,
       * so this property cannot be set.
-	  */
-	public final static int WIFI_COUNTRY_CODE = PropertyGroupID.WIFI_MIB_BASE + 0x0100;
-	/**
-	  * This parameter enables the Wi-Fi channels selection regardless of the current country-code.
-	  */
+      */
+    public final static int WIFI_COUNTRY_CODE = PropertyGroupID.WIFI_MIB_BASE + 0x0100;
+    /**
+      * This parameter enables the Wi-Fi channels selection regardless of the current country-code.
+      */
     public final static int WIFI_UNLOCK_CHANNELS = PropertyGroupID.WIFI_MIB_BASE + 0x0101;
 
     /**
@@ -525,7 +538,7 @@ public class PropertyID {
       */
     public final static int POWER_OFF_CHARGING_MODE_THRESHOLD = PropertyGroupID.POWER_MIB_BASE + 0x0001;
     /** 
-      * Policy for automatic exit from charging mode
+      * Policy for automatic exit from charging mode, according to the enum {@link OffChargingModePolicy}.
       */
     public final static int POWER_OFF_CHARGING_MODE_POLICY = PropertyGroupID.POWER_MIB_BASE + 0x0002;
 
@@ -533,16 +546,71 @@ public class PropertyID {
     // USB Settings definitions
     //
     /**
-     * Default USB data function is the USB Transfer Protocol setup every time a USB is plugged-in to the device.
+     * Default USB data function is the USB Transfer Protocol setup every time a USB is plugged-in to the device,
+     * according to the enum {@link UsbFunction}.
      */
     public final static int USB_DEFAULT_FUNCTION = PropertyGroupID.USB_MIB_BASE + 0x0002;
     /**
      * Current USB data function is the USB Transfer Protocol used to change the Default USB data function 
-     * just for the current USB transfer (until the USB will be plugged-out from the device). 
+     * just for the current USB transfer (until the USB will be plugged-out from the device),
+     * according to the enum {@link UsbFunction}.
      * When the USB will be plugged-out, then USB will be plugged-in again, 
      * the Default USB data function is used for setup new USB transfer.
      */
     public final static int USB_CURRENT_FUNCTION = PropertyGroupID.USB_MIB_BASE + 0x0003;
+
+
+    //
+    // DualSim Settings definitions
+    //
+    /**
+     * This parameter reports the availability of SIM card 1 and SIM card 2 according to the enum {@link DualSimStatus}.
+     * The value is calculated by the device according to the availablity of the SIM cards, so this property cannot be set.
+     */
+    public final static int DUALSIM_AVAILABLE = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0001;
+    /**
+      * This parameters controls the SIM card Slot 1 that can be enabled or disabled on the device.
+      * When this slot is disabled, the SIM card cannot be used for voice calls, mobile data and SMS.
+      */
+    public final static int DUALSIM_SIM1_ENABLE = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0002;
+    /**
+      * This parameters controls the SIM card Slot 2 that can be enabled or disabled on the device.
+      * When this slot is disabled, the SIM card cannot be used for voice calls, mobile data and sms communication.
+      */
+    public final static int DUALSIM_SIM2_ENABLE = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0003;
+    /**
+      * This parameter reports the current SIM card privileged by the device for mobile data, according to the enum {@link DualSimPreferredData}.
+      * The value is calculated by the device according to the availablity of the SIM card preferred by
+      * the user (set by {@link #DUALSIM_PREFERRED_DATA}), so this property cannot be set.
+      */
+    public final static int DUALSIM_CURRENT_DATA = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0004;
+    /**
+      * This parameter reports the current SIM card privileged by the device for voice calls, according to the enum {@link DualSimPreferredCallsAndSms}.
+      * The value is calculated by the device according to the availablity of the SIM card preferred by
+      * the user (set by {@link #DUALSIM_PREFERRED_CALLS}), so this property cannot be set.
+      */
+    public final static int DUALSIM_CURRENT_CALLS = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0005;
+    /**
+      * This parameter reports the current SIM card privileged by the device for SMS, according to the enum {@link DualSimPreferredCallsAndSms}.
+      * The value is calculated by the device according to the availablity of the SIM card preferred by
+      * the user (set by {@link #DUALSIM_PREFERRED_SMS}), so this property cannot be set.
+      */
+    public final static int DUALSIM_CURRENT_SMS = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0006;
+    /**
+      * This parameter controls the privileged SIM card to be used for mobile data, according to the enum {@link DualSimPreferredData}.
+      * The actual SIM card used by the device is retrieved by the property ({@link #DUALSIM_CURRENT_DATA}).
+      */
+    public final static int DUALSIM_PREFERRED_DATA = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0007;
+    /**
+      * This parameter controls the privileged SIM card to be used for voice calls, according to the enum {@link DualSimPreferredCallsAndSms}.
+      * The actual SIM card used by the device is retrieved by the property ({@link #DUALSIM_CURRENT_CALLS}).
+      */
+    public final static int DUALSIM_PREFERRED_CALLS = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0008;
+    /**
+      * This parameter controls the privileged SIM card to be used for SMS, according to the enum {@link DualSimPreferredCallsAndSms}.
+      * The actual SIM card used by the device is retrieved by the property ({@link #DUALSIM_CURRENT_SMS}).
+      */
+    public final static int DUALSIM_PREFERRED_SMS = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0009;
 
     /**
      * @hide

@@ -4,7 +4,8 @@ import com.datalogic.device.configuration.*;
 
 /**
  * <code>MultiScan</code> is the class that configures the Multi Scan functionality.
- * 
+ * This functionality allows to collect a defined number of barcodes in a single session and transmit them at the same time.
+ *
  */
 public class MultiScan extends PropertyGroup {
 
@@ -25,6 +26,12 @@ public class MultiScan extends PropertyGroup {
 	 * Multi Scan operation.
 	 */
 	public BooleanProperty notifyOnEachLabel;
+
+	/**
+	 * <code>partialResultMode</code> selects the behaviour when partial results are present.
+	 * See {@link PartialResultMode} for a deeper description.
+	 */
+	public EnumProperty<PartialResultMode> partialResultMode;
 
 	/**
 	 * This is the constructor of MultiScan. All options are initialized by

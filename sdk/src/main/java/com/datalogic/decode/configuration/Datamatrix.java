@@ -15,9 +15,15 @@ public class Datamatrix extends SymbologyLengths {
     public EnumProperty<CharacterSetMode> characterSetMode;
 
     /**
-     * <code>DatamatrixOpMode</code> control the operating mode.
+     * <code>operatingMode</code> control the operating mode.
      */
     public EnumProperty<DatamatrixOpMode> operatingMode;
+
+    /**
+     * <code>mirror</code> controls the mirror mode.
+     * It controls the scanning capabilities of Data Matrix barcodes from mirror reflections.
+     */
+    public EnumProperty<DatamatrixMirror> mirror;
 
     /**
      * <code>gs1_datamatrix</code> enables or disables the GS1-DATAMATRIX symbology.
@@ -25,9 +31,9 @@ public class Datamatrix extends SymbologyLengths {
     public BooleanProperty gs1_datamatrix;
 
     /**
-     * <code>DatamatrixMirror </code> control the mirror mode.
+     * <code>aggressiveness</code> controls the aggressiveness for the Datamatrix symbology.
      */
-    public EnumProperty<DatamatrixMirror> mirror;
+    public EnumProperty<DatamatrixAggressiveness> aggressiveness;
 
     /**
      * This is the constructor of Datamatrix. All symbology options are

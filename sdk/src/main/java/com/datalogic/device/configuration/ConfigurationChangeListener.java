@@ -13,7 +13,7 @@ public interface ConfigurationChangeListener {
      * can be the consequence of a change to the {@link Property}s done and committed by another sdk user {@link ConfigurationManager#commit}.
      *
      * @param map
-     *          <code>HashMap<Integer, Object></code> map of the changes <br>
+     *          Map&lt;Integer, Object&gt; map of the changes <br>
      * 			e.g: for each couple of the map:<br>
      *				 key = {@link PropertyID}<br>
      *				 value = new value of the {@link Property}

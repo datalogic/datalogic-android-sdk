@@ -165,5 +165,13 @@ public enum Symbology {
 	/**
 	 * GS1 Data Matrix
 	 */
-	GS1_DATAMATRIX; //
+	GS1_DATAMATRIX, //
+	/**
+	 * GS1 QR Code
+	 */
+	GS1_QRCODE, //
+	/**
+	 * ITF14
+	 */
+    	ITF14; //
 }

@@ -34,7 +34,13 @@ public abstract class Property<T> {
 	 * @param value The value to be set.
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
-     * @throws ConfigException when the property is not supported, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 * In case of error, when exceptions are enabled through the {@link ErrorManager} singleton, an exception is thrown.
+	 * @throws ConfigException
+	 *           {@link ConfigException#ACCESS_VIOLATION_ERROR} if the property is read-only.
+	 * @throws ConfigException
+	 *           {@link ConfigException#SUPPORT_ERROR} if the property is not supported.
+	 * @throws ConfigException
+	 *           {@link ConfigException#VALUE_ERROR} if the value is not an allowed value, e.g: an out of range integer or char value or a profiled enumerated value.
 	 */
 	public int set(T value) {
 		return 0;
@@ -64,6 +70,15 @@ public abstract class Property<T> {
 	 * @return <code>boolean</code> value representing whether the Property is supported or not.
 	 */
 	public boolean isSupported() {
+            return false;
+	}
+
+	/**
+	 * Returns whether a Property is read only or not.
+	 *
+	 * @return <code>boolean</code> value representing whether the Property is read only or not.
+	 */
+	public boolean isReadOnly() {
             return false;
 	}
 

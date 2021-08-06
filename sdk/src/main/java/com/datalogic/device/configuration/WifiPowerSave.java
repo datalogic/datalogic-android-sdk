@@ -11,11 +11,11 @@ public enum WifiPowerSave {
     /**
      * Power Save mode enabled with default power consumpsion level.
      */
-    WIFI_Q_POWER(2),
+    WIFI_POWER_SAVE_ENABLED(2),
     /**
      * Power Save mode enabled with power consumpsion level set to avoid performance degradation in the VoIP call . 
      */
-    WIFI_Q_POWER_VOIP_CALLS(5);
+    WIFI_POWER_SAVE_ENABLED_VOIP_CALLS(5);
 
     /**
      * @hide
