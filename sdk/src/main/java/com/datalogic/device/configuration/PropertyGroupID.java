@@ -30,6 +30,10 @@ public class PropertyGroupID {
     protected final static int USB_MIB_BASE = 7<<18;
     /** @hide */
     protected final static int DUAL_SIM_MIB_BASE = 8<<18;
+    /** @hide */
+    protected final static int ETHERNET_MIB_BASE = 9<<18;
+    /** @hide */
+    protected final static int TOUCH_MIB_BASE = 10<<18;
 
     /**
       * Root of the configuration tree.
@@ -87,10 +91,20 @@ public class PropertyGroupID {
     public final static int USB_GROUP = USB_MIB_BASE + 0x0001;
 
     /**
+     * Root of the subtree of ethernet properties.
+     */
+    public final static int ETHERNET_GROUP = ETHERNET_MIB_BASE + 0x0001;
+
+    /**
       * Root of the subtree of Dual SIM properties
       */
     public final static int DUAL_SIM_GROUP = DUAL_SIM_MIB_BASE;
 
+
+    /**
+     * Root of the subtree of Touch Mode properties.
+     */
+    public static final int TOUCH_GROUP = TOUCH_MIB_BASE + 0x0001;
     /**
      * @hide
      * The constructor is defined hide and private to avoid Apps create an instance of this class.

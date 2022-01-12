@@ -126,6 +126,11 @@ import com.datalogic.device.configuration.*;
  *            <li style="color:black" type="circle"> {@link #USB_CURRENT_FUNCTION} </li>
  *         </ul>
  *     </li>
+ *     <li style="color:red" type="square"> {@link PropertyGroupID#ETHERNET_GROUP}
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #ETHERNET_ENABLED} </li>
+ *         </ul>
+ *     </li>
  *     <li style="color:red" type="square"> {@link PropertyGroupID#DUAL_SIM_GROUP}
  *         <ul>
  *            <li style="color:black" type="circle"> {@link #DUALSIM_AVAILABLE} </li>
@@ -137,6 +142,11 @@ import com.datalogic.device.configuration.*;
  *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_DATA} </li>
  *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_CALLS} </li>
  *            <li style="color:black" type="circle"> {@link #DUALSIM_PREFERRED_SMS} </li>
+ *         </ul>
+ *     </li>
+ *     <li style="color:red" type="square"> {@link PropertyGroupID#TOUCH_GROUP}
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #TOUCH_MODE_SENSITIVITY} </li>
  *         </ul>
  *     </li>
  * </ul>
@@ -561,6 +571,15 @@ public class PropertyID {
 
 
     //
+    // Ethernet Settings definitions
+    //
+
+    /**
+     *	Enables/disables the Ethernet sub-system.
+     */
+    public final static int ETHERNET_ENABLED = PropertyGroupID.ETHERNET_MIB_BASE + 0x0001;
+
+    //
     // DualSim Settings definitions
     //
     /**
@@ -611,6 +630,15 @@ public class PropertyID {
       * The actual SIM card used by the device is retrieved by the property ({@link #DUALSIM_CURRENT_SMS}).
       */
     public final static int DUALSIM_PREFERRED_SMS = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0009;
+
+    //
+    // Touch Settings definitions
+    //
+
+    /**
+      *	This is the property used to configure the touch controller, according to the enum {@link TouchMode}.
+      */
+    public final static int TOUCH_MODE_SENSITIVITY = PropertyGroupID.TOUCH_MIB_BASE + 0x0001;
 
     /**
      * @hide

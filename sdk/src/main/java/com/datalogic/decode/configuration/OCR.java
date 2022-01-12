@@ -25,6 +25,12 @@ public class OCR extends SymbologyBase {
 	 * algorithm. An higher confidence decreases misdecoding probabilities.
 	 */
 	public NumericProperty confidence;
+	
+	/**
+	 * <code>multiframe</code> specifies how many decoded frames must match 
+	 * before accepting OCR data.
+	 */
+	public NumericProperty multiframe;
 
 	/**
 	 * This is the constructor of OCR. All symbology options are initialized by

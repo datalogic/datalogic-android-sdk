@@ -247,6 +247,12 @@ public class ScannerProperties extends PropertyGroup {
      */
     public FrameCaptureConfiguration frameCaptureConfiguration;
 
+    /**
+     * Controls the OCR reading capabilities.
+     * {@see OCR}
+     */
+    public OCR ocr;
+
 	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 

@@ -26,6 +26,26 @@ public class LinearQuietZones extends PropertyGroup {
 	 * <code>msiReduced</code> enables the reading of MSI barcode labels with short quiet zones.
 	 */
 	public BooleanProperty msiReduced;
+	
+	/**
+     * <code>interleaved2of5Reduced</code> enables the reading of Interleaved 2 of 5 barcode labels with short quiet zones.
+     */
+    public BooleanProperty interleaved2of5Reduced;
+
+    /**
+     * <code>codabarReduced</code> enables the reading of Codabar barcode labels with short quiet zones.
+     */
+    public BooleanProperty codabarReduced;
+
+    /**
+     * <code>code93Reduced</code> enables the reading of Code 93 barcode labels with short quiet zones.
+     */
+    public BooleanProperty code93Reduced;
+
+    /**
+     * <code>matrix2of5Reduced</code> enables the reading of Matrix 2 of 5 barcode labels with short quiet zones.
+     */
+    public BooleanProperty matrix2of5Reduced;
 
 	/**
 	 * This is the constructor of LinearQuietZones. All options are initialized by

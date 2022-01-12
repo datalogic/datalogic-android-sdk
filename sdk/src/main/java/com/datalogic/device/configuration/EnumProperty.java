@@ -25,4 +25,12 @@ public class EnumProperty<E extends Enum<E>> extends Property<Enum<E>> {
 	public Class<E> getEnum() {
 		return null;
 	}
+
+    /**
+     * Returns the allowed elements of the Enum.
+     * The allowed values of the Enum can be profiled based on the model and sku of the device, 
+     */
+    public E[] getEnumConstants() {
+        return null;
+    }
 }

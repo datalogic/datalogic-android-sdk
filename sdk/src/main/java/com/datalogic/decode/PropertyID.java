@@ -94,6 +94,7 @@ public class PropertyID {
 	public final static int M25_LENGTH2 = 0x0225;
 	public final static int M25_LENGTH_CONTROL = 0x0226;
 	public final static int M25_USER_ID = 0x0227;
+	public final static int M25_SHORT_QUIET_ZONES = 0x022F;
 
 	//
 	// Interleaved 2/5 definitions
@@ -107,6 +108,8 @@ public class PropertyID {
 	public final static int I25_USER_ID = 0x022B;
 	public final static int ITF14_ENABLE = 0x022C;
 	public final static int I25_AGGRESSIVENESS = 0x022D;
+	public final static int I25_SHORT_QUIET_ZONES = 0x022E;
+
 
 	//
 	// Codabar definitions
@@ -120,6 +123,7 @@ public class PropertyID {
 	public final static int CODABAR_LENGTH2 = 0x0321;
 	public final static int CODABAR_LENGTH_CONTROL = 0x0322;
 	public final static int CODABAR_USER_ID = 0x0323;
+	public final static int CODABAR_SHORT_QUIET_ZONES = 0x0324;
 
 	//
 	// Code 93 definitions
@@ -129,6 +133,7 @@ public class PropertyID {
 	public final static int CODE93_LENGTH2 = 0x0421;
 	public final static int CODE93_LENGTH_CONTROL = 0x0422;
 	public final static int CODE93_USER_ID = 0x0423;
+	public final static int CODE93_SHORT_QUIET_ZONES = 0x042B;
 
 	//
 	// Code 128 definitions
@@ -412,4 +417,5 @@ public class PropertyID {
 	public final static int OCR_PASSPORT_ENABLE = 0x40302;
 	public final static int OCR_ID_ENABLE = 0x40303;
 	public final static int OCR_CONFIDENCE = 0x40304;
+	public final static int OCR_MULTIFRAME = 0x40305;
 }
