@@ -34,7 +34,7 @@ public class AppManager {
      * to get the PackageInfo of the application with the permissions information.
      *
      * @param packageName
-     *            <code>String</code>The application to grant permissions to.
+     *            <code>String</code> The application to grant permissions to.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -55,9 +55,9 @@ public class AppManager {
      * to get the PackageInfo of the application with the permissions information.
      *
      * @param packageName
-     *            <code>String</code>he application to grant permissions to.
+     *            <code>String</code> The application to grant permissions to.
      * @param permissions
-     *            <code>ArrayList<String></code> list of permissions to be granted.
+     *            <code>ArrayList<String></code> The list of permissions to be granted.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -79,9 +79,9 @@ public class AppManager {
      *
      *
      * @param packageName
-     *            <code>String</code>he application to revoke permissions to.
+     *            <code>String</code> The application to revoke permissions to.
      * @param permissions
-     *            <code>ArrayList<String></code> list of permissions to be revoked.
+     *            <code>ArrayList<String></code> The list of permissions to be revoked.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -96,7 +96,7 @@ public class AppManager {
      * <br>
      *
      * @param packageName
-     *            <code>String</code>The package name of the application to be force stopped.
+     *            <code>String</code> The package name of the application to be force stopped.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -111,11 +111,11 @@ public class AppManager {
     * <br>
     *
     * @param packageName
-    *            <code>String</code>The package name of the application to enable.
+    *            <code>String</code> The package name of the application to enable.
     * @param newState
-    *            <code>int</code>The new enabled state for the application.
+    *            <code>int</code> The new enabled state for the application.
     * @param flags
-    *            <code>int</code>Optional behaviour flags.
+    *            <code>int</code >Optional behaviour flags.
     * Value is either 0 or a combination of android.content.pm.PackageManager#DONT_KILL_APP and
     * android.content.pm.PackageManager#SYNCHRONOUS. Not expected values in combinationation with these are ignored.
     * See for more details the Android documentation
@@ -134,9 +134,9 @@ public class AppManager {
    * <br>
    *
    * @param packageName
-   *            <code>String</code>The name of the package to change.
+   *            <code>String</code> The name of the package to change.
    * @param uninstallBlocked
-   *            <code>boolean</code>True if the user shouldn't be able to uninstall the package.
+   *            <code>boolean</code> True if the user shouldn't be able to uninstall the package.
    * @return <code>int</code>
    *            {@link AppManagerException#SUCCESS} in case of success,
    * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -151,9 +151,9 @@ public class AppManager {
    * <br>
    * If the package is already hide/unhide the method returns  {@link AppManagerException#GENERIC_ERROR}.
    * @param packageName
-   *            <code>String</code>The name of the package to hide or unhide.
+   *            <code>String</code> The name of the package to hide or unhide.
    * @param hidden
-   *            <code>boolean</code>True if the package should be hidden, false if it should be unhidden.
+   *            <code>boolean</code> True if the package should be hidden, false if it should be unhidden.
    * @return <code>int</code>
    *            {@link AppManagerException#SUCCESS} in case of success,
    * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -162,5 +162,49 @@ public class AppManager {
    public int setApplicationHidden(String packageName, boolean hidden) {
        return 0;
    }
+
+    /**
+     * Call this method to place the given application package on the device's power allowlist. <br>
+     * <br>
+     * @param packageName
+     *            <code>String</code>The name of the package to be added to the device's power allowlist.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int addBatteryOptimizationExemption(String packageName) {
+        return 0;
+    }
+
+
+    /**
+     * Call this method to remove the given application package from the device's power allowlist. <br>
+     * <br>
+     * @param packageName
+     *            <code>String</code>The name of the package to be removed from the device's power allowlist.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int removeBatteryOptimizationExemption(String packageName) {
+        return 0;
+    }
+
+    /**
+     * Call this method to disable or enable the status bar. <br>
+     * Disabling the status bar blocks notifications and quick settings. 
+     * <br>
+     * @param disabled
+     *            <code>boolean</code> True disables the status bar, false reenables it.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int setStatusBarDisabled(boolean disabled) {
+        return 0;
+    }
 
 }

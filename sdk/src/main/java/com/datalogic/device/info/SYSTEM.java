@@ -20,7 +20,7 @@ public class SYSTEM {
 		/**
 		 * @hide This changes frequently
 		 */
-		public static final short SDK_VERSION_MINOR = 30;
+		public static final short SDK_VERSION_MINOR = 31;
 
 		/**
 		 * Broadcast Action:  This is a <em>sticky broadcast</em> containing the

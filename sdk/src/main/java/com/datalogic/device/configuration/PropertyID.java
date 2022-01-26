@@ -149,6 +149,14 @@ import com.datalogic.device.configuration.*;
  *            <li style="color:black" type="circle"> {@link #TOUCH_MODE_SENSITIVITY} </li>
  *         </ul>
  *     </li>
+ *     <li style="color:red" type="square"> {@link PropertyGroupID#UI_SETTINGS_GROUP}
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #STATUS_BAR_HIDDEN} </li>
+ *         </ul>
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #NAVIGATION_BAR_HIDDEN} </li>
+ *         </ul>
+ *     </li>
  * </ul>
  */
 public class PropertyID {
@@ -639,6 +647,21 @@ public class PropertyID {
       *	This is the property used to configure the touch controller, according to the enum {@link TouchMode}.
       */
     public final static int TOUCH_MODE_SENSITIVITY = PropertyGroupID.TOUCH_MIB_BASE + 0x0001;
+
+    //
+    // UI Settings definitions
+    //
+
+    /**
+     *	This parameter hide/unhide the status bar.
+     */
+    public final static int STATUS_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0001;
+
+    /**
+     *	This parameter hide/unhide the navigation bar.
+     */
+    public final static int NAVIGATION_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0002;
+
 
     /**
      * @hide

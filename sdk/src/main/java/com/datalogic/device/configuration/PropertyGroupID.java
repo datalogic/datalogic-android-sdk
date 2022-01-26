@@ -34,6 +34,8 @@ public class PropertyGroupID {
     protected final static int ETHERNET_MIB_BASE = 9<<18;
     /** @hide */
     protected final static int TOUCH_MIB_BASE = 10<<18;
+    /** @hide */
+    protected final static int UI_SETTINGS_MIB_BASE = 11<<18;
 
     /**
       * Root of the configuration tree.
@@ -105,6 +107,12 @@ public class PropertyGroupID {
      * Root of the subtree of Touch Mode properties.
      */
     public static final int TOUCH_GROUP = TOUCH_MIB_BASE + 0x0001;
+
+    /**
+     * Root of UI Settings properties.
+     */
+    public static final int UI_SETTINGS_GROUP = UI_SETTINGS_MIB_BASE + 0x0001;
+
     /**
      * @hide
      * The constructor is defined hide and private to avoid Apps create an instance of this class.
