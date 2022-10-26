@@ -56,7 +56,8 @@ public class BarcodeDefaults implements PropertyGetter {
 	 * @param id_buffer
 	 *            The <code>int[]</code> of identifiers for parameters to look for.
 	 * @param property_ranges
-	 *            The <code>int[][]</code> array of ranges associated to the passed IDs, that will be filled in.
+	 *            The <code>int[][2]</code> array of ranges associated to the passed IDs, that will be filled in.
+	 *	      Each element will be filled with the range of the admissible values described by min and max value.
 	 * 
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.

@@ -87,6 +87,26 @@ public class ConfigException extends RuntimeException {
      * The apply on the specific service failed.
      */
     public static final int SPECIFIC_APPLY_FAILED = (CONF_EXCEPTION<<16 | 0x000F);
+	/**
+	 * The specified name is already in use.
+	 */
+	public static final int DUPLICATE_NAME_ERROR = (CONF_EXCEPTION<<16 | 0x0011);
+	/**
+	 * Error saving the json file.
+	 */
+	public static final int SAVE_PROFILE_ERROR = (CONF_EXCEPTION<<16 | 0x0012);
+	/**
+	 * There is a defined rule with an application context that overlaps with that of the rule.
+	 */
+	public static final int OVERLAPPING_RULE_ERROR = (CONF_EXCEPTION<<16 | 0x0013);
+	/**
+	 * The specified object is not found.
+	 */
+	public static final int NOT_FOUND_ERROR = (CONF_EXCEPTION<<16 | 0x0014);
+	/**
+	 * There is already a manually loaded profile.
+	 */
+	public static final int PROFILE_ALREADY_LOADED_ERROR = (CONF_EXCEPTION<<16 | 0x0015);
 
 
 	/**

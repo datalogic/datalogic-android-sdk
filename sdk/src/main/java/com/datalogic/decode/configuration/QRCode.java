@@ -29,7 +29,19 @@ public class QRCode extends SymbologyLengths {
     public BooleanProperty s2dEnable;
 
     /**
-     * This is the QRCode constructor. All symbology options are initialized
+     * <code>qrMirror</code> controls the mirror mode.
+     */
+    public EnumProperty<QRMirror> qrMirror;
+
+    /**
+     * <code>absoluteGrid</code> enables or disables Absolute Grid algorithm. It performs 
+     * a geometric reconstruction of the QR Code grid by regularizing it. This algorithm is executed
+     * only when the standard one fails. It may slow down decoding rate.
+     */
+    public BooleanProperty absoluteGrid;
+
+    /**
+     * This is the constructor of QRCode. All symbology options are initialized
      * by editor.
      *
      * @param editor A {@link PropertyGetter} used to load the current barcode family.

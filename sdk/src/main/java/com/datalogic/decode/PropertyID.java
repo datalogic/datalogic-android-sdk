@@ -38,6 +38,9 @@ public class PropertyID {
 	public final static int GOOD_READ_AUDIO_TONE = 0x0032;
 	public final static int GOOD_READ_AUDIO_MODE = 0x0033;
 	public final static int GOOD_READ_AUDIO_CHANNEL = 0x0034;
+	public final static int IMAGE_DECODE_TIMEOUT = 0x0035;
+	public final static int GS1_CHECK = 0x0036;
+	public final static int GS1_STRING_FORMAT = 0x0037;
 	public final static int MULTISCAN_ENABLE = 0x0050;
 	public final static int MULTISCAN_REQUIRED_LABELS = 0x0051;
 	public final static int MULTISCAN_NOTIFICATION_ENABLE = 0x0052;
@@ -50,6 +53,7 @@ public class PropertyID {
 	public final static int SCAN_MODE = 0x0065;
 	public final static int DOUBLE_READ_TIMEOUT = 0x0066;
 	public final static int ILLUMINATION_TIME = 0x0067;
+	public final static int ENHANCE_DOF_ENABLE = 0x006A;
 
 	//
 	// Code 39 definitions
@@ -301,6 +305,7 @@ public class PropertyID {
 	public final static int DATAMATRIX_MIRROR = 0x0B04;
 	public final static int DATAMATRIX_GS1_ENABLE = 0x0B05;
 	public final static int DATAMATRIX_AGGRESSIVENESS = 0x0B06;
+	public final static int DATAMATRIX_DMRE = 0x0B0A;
 
 	//
 	// MaxiCode definitions
@@ -323,6 +328,8 @@ public class PropertyID {
 	public final static int QRCODE_GS1_ENABLE = 0x0B13;
 	public final static int QRCODE_WIFI_ENABLE = 0x30E41;
 	public final static int QRCODE_S2D_ENABLE = 0x30E42;
+	public final static int QRCODE_MIRROR = 0x0B07;
+	public final static int QRCODE_ABSOLUTE_GRID = 0x0B09;
 
 	//
 	// Micro QR Code definitions
@@ -418,4 +425,14 @@ public class PropertyID {
 	public final static int OCR_ID_ENABLE = 0x40303;
 	public final static int OCR_CONFIDENCE = 0x40304;
 	public final static int OCR_MULTIFRAME = 0x40305;
+	public final static int OCR_CUSTOM_RULE_ENABLE = 0x40306;
+
+	//
+	// HAN XIN
+	//
+	public final static int HAN_XIN_ENABLE = 0x40500;
+	public final static int HAN_XIN_LENGTH1 = 0x40501;
+	public final static int HAN_XIN_LENGTH2 = 0x40502;
+	public final static int HAN_XIN_LENGTH_CONTROL = 0x40503;
+	public final static int HAN_XIN_USER_ID = 0x40504;
 }

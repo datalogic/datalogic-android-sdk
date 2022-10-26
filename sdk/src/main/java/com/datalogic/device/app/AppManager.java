@@ -115,7 +115,7 @@ public class AppManager {
     * @param newState
     *            <code>int</code> The new enabled state for the application.
     * @param flags
-    *            <code>int</code >Optional behaviour flags.
+    *            <code>int</code> Optional behaviour flags.
     * Value is either 0 or a combination of android.content.pm.PackageManager#DONT_KILL_APP and
     * android.content.pm.PackageManager#SYNCHRONOUS. Not expected values in combinationation with these are ignored.
     * See for more details the Android documentation
@@ -167,7 +167,7 @@ public class AppManager {
      * Call this method to place the given application package on the device's power allowlist. <br>
      * <br>
      * @param packageName
-     *            <code>String</code>The name of the package to be added to the device's power allowlist.
+     *            <code>String</code> The name of the package to be added to the device's power allowlist.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
@@ -182,7 +182,7 @@ public class AppManager {
      * Call this method to remove the given application package from the device's power allowlist. <br>
      * <br>
      * @param packageName
-     *            <code>String</code>The name of the package to be removed from the device's power allowlist.
+     *            <code>String</code> The name of the package to be removed from the device's power allowlist.
      * @return <code>int</code>
      *            {@link AppManagerException#SUCCESS} in case of success,
      * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.

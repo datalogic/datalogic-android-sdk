@@ -174,11 +174,34 @@ public final class Intents {
     /**
      * <code>ACTION_CONFIGURATION_COMMIT</code> This intent allows to request a change of the device configuration. <br>
      * The intent carries as extra data the list of requested properties' changes.
-      * <br>
+     * <br>
      * The intent will have the following extra values: <br>
      *
      * {@link #EXTRA_CONFIGURATION_CHANGED_MAP} - Bundle containing the map of requested properties' changes.
-     */
+     * <br>
+     * java code example:
+     * <br>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap<Integer, String> map = new HashMap<Integer, String>();
+     * map.put(PropertyID.WIFI_802_DOT_11_MODE, Wifi802Dot11Mode.WIFI_802_DOT_11_ABG.toString());
+     * map.put(PropertyID.CODE128_ENABLE, "true")
+     * map.put(PropertyID.CODE128_LENGTH2, "10");
+     * map.put(PropertyID.CODE128_USER_ID, String.format ("\\u%04x", (int)'a'));
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     *
+     * adb example with extra data as List&ltString&gt:
+     * <pre>
+     * adb shell am broadcast -a com.datalogic.device.intent.action.configuration.COMMIT
+     * --esal com.datalogic.device.intent.extra.configuration.CHANGED_MAP "TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false"
+     * </pre>
+      * adb example with extra data as String:
+     * <pre>
+     * adb shell am broadcast -a com.datalogic.device.intent.action.configuration.COMMIT
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP "TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false"
+     * </pre>    */
     public static final String ACTION_CONFIGURATION_COMMIT = "com.datalogic.device.intent.action.configuration.COMMIT";
 
     /**
@@ -214,7 +237,7 @@ public final class Intents {
     public static final String EXTRA_CONFIGURATION_ERROR_MAP = "com.datalogic.device.intent.extra.configuration.ERROR_MAP";
 
     /**
-     * <code>EXTRA_CONFIGURATION_CHANGED_TIME</code> Used as an int extra field in {@link #ACTION_CONFIGURATION_COMMIT}.
+     * <code>EXTRA_CONFIGURATION_CHANGED_TIME</code> Used as an int extra field in {@link #ACTION_CONFIGURATION_CHANGED}.
      * The field contains the time of the event as a difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC.
      * See
      * <a href="https://developer.android.com/reference/java/lang/System#currentTimeMillis()">System.currentTimeMillis()</a>.

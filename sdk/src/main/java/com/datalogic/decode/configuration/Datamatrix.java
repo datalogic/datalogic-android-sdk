@@ -36,6 +36,13 @@ public class Datamatrix extends SymbologyLengths {
     public EnumProperty<DatamatrixAggressiveness> aggressiveness;
 
     /**
+     * <code>dmre</code> enables DataMatrix Rectangular Extended dimensions (DMRE).
+     * New AIM specs introduce new Datamatrix format:
+     * 8x48, 8x64, 12x48, 12x64, 16x64, 24x32, 24x36, 24x48, 24x64, 26x32, 26x40, 26x48, 26x64
+     */
+    public BooleanProperty dmre;
+
+    /**
      * This is the constructor of Datamatrix. All symbology options are
      * initialized by editor.
      *

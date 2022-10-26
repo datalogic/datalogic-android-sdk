@@ -167,11 +167,19 @@ public enum Symbology {
 	 */
 	GS1_DATAMATRIX, //
 	/**
+	 * OCR
+	 */
+	OCR, //
+	/**
 	 * GS1 QR Code
 	 */
 	GS1_QRCODE, //
 	/**
 	 * ITF14
 	 */
-    	ITF14; //
+    	ITF14, //
+	/**
+	 * HAN XIN
+	 */
+	HAN_XIN;
 }

@@ -23,9 +23,17 @@ public abstract class Property<T> {
 	 *
 	 * @return T The current value if the property is supported, null if the property is not supported.
      * @throws ConfigException when the property is not supported, when exceptions are enabled through the {@link ErrorManager} singleton.
-
 	 */
 	public T get() {
+		return null;
+	}
+
+	/**
+	 * Gets the default value of the Property.
+	 *
+	 * @return T Default value of the property.
+	 */
+	public T getDefault() {
 		return null;
 	}
 
@@ -81,6 +89,15 @@ public abstract class Property<T> {
 	public boolean isReadOnly() {
             return false;
 	}
+
+    /**
+     * Returns whether a Property needs a device reboot to be applied or not.
+     *
+     * @return <code>boolean</code> value representing whether the Property needs a device reboot to be applied or not.
+     */
+    public boolean getNeedReboot() {
+        return false;
+    }
 
 	/**
 	 * Gets the integer value of the unique identifier {@link PropertyID} of the property.

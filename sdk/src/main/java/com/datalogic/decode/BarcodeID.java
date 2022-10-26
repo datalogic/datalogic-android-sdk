@@ -264,6 +264,10 @@ public enum BarcodeID {
 	/**
 	 * OCR
 	 */
-	OCR //
+	OCR, //
+	/**
+	 * HAN XIN
+	 */
+	HAN_XIN //
 
 }

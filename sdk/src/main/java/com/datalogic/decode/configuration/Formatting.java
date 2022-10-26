@@ -51,6 +51,16 @@ public class Formatting extends PropertyGroup {
 	public EnumProperty<ECIPolicy> eciPolicy;
 
 	/**
+	 * <code>gs1Check</code> enables the check for the GS1 format.
+	 */
+	public BooleanProperty gs1Check;
+
+	/**
+	 * <code>gs1StringFormat</code> enables conversion of GS1 barcodes to the readable GS1 string format.
+	 */
+	public BooleanProperty gs1StringFormat;
+
+	/**
 	 * This is the constructor of Formatting. All options are initialized by
 	 * editor.
 	 * 

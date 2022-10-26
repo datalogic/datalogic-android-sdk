@@ -41,7 +41,19 @@ public enum Type
     /** 
      * Cradle X5 with locking multiple slots wireless.
      */
-    TYPE_SX5_3SD_WIRELESS_LOCKING;
+    TYPE_SX5_3SD_WIRELESS_LOCKING,
+    /**
+     * Cradle JT22 simplified.
+     */
+    TYPE_JT22_SIMPLIFIED,
+    /**
+     * Cradle JT22 with single slot.
+     */
+    TYPE_JT22_SINGLE,
+    /**
+     * Cradle JT22 with multiple slots.
+     */
+    TYPE_JT22_MULTIPLE;
 
     /**
      * Converts the Type enum to its integer representing value.

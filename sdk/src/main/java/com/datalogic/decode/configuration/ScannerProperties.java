@@ -115,6 +115,11 @@ public class ScannerProperties extends PropertyGroup {
      * {@see Gs1DataBar_Limited}
      */
 	public Gs1DataBar_Limited gs1DataBar_Limited;
+	/**
+	 * Controls the Han Xin barcode reading capabilities.
+	 * {@see HanXin}
+	 */
+	public HanXin hanXin;
     /**
      * Controls the Interleaved 2 of 5 barcode reading capabilities.
      * {@see Interleaved25}
