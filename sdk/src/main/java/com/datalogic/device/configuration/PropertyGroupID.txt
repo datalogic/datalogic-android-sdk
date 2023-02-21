@@ -40,11 +40,6 @@ public class PropertyGroupID {
     protected final static int DEVELOPER_OPTIONS_MIB_BASE = 12<<18;
     /** @hide */
     protected final static int DISPLAY_MIB_BASE = 13<<18;
-    /** @hide */
-    protected final static int KEYBOARD_MIB_BASE = 14<<18;
-    /** @hide */
-    protected final static int CRADLE_MIB_BASE = 15<<18;
-
 
     /**
       * Root of the configuration tree.
@@ -109,8 +104,7 @@ public class PropertyGroupID {
     /**
       * Root of the subtree of Dual SIM properties
       */
-    public final static int DUAL_SIM_GROUP = DUAL_SIM_MIB_BASE;
-
+    public final static int DUAL_SIM_GROUP = DUAL_SIM_MIB_BASE + 0x0001;
 
     /**
      * Root of the subtree of Touch Mode properties.
@@ -118,59 +112,19 @@ public class PropertyGroupID {
     public static final int TOUCH_GROUP = TOUCH_MIB_BASE + 0x0001;
 
     /**
-     * Root of the subtree of the UI Settings properties.
+     * Root of UI Settings properties.
      */
     public static final int UI_SETTINGS_GROUP = UI_SETTINGS_MIB_BASE + 0x0001;
 
     /**
-      * Root of the subtree of the Dual SIM properties
-      */
-    public static final int DUAL_SIM_MGMT_GROUP = DUAL_SIM_MIB_BASE + 0x0001;
-    /**
-     * Root of specific sim properties
-     */
-    public static final int SPECIFIC_SIM_MGMT_GROUP = DUAL_SIM_MIB_BASE + 0x0002;
-
-    /**
-      * Root of the subtree of Power Sources properties.
-      */
-    public final static int POWER_SOURCE_GROUP = POWER_MIB_BASE + 0x0003;
-    /**
-      * Root of the subtree of Wake-Up Sources properties.
-      */
-    public final static int POWER_WAKEUP_SOURCES_GROUP = POWER_MIB_BASE + 0x0004;
-    /**
-     * Root of the subtree of screen off timeout properties.
-     */
-    public final static int POWER_SUSPEND_TIMEOUT_GROUP = POWER_MIB_BASE + 0x0005;
-
-    /**
-     * Root of the subtree of the Developer Options properties.
+     * Root of Developer Options properties.
      */
     public static final int DEVELOPER_OPTIONS_GROUP = DEVELOPER_OPTIONS_MIB_BASE + 0x0001;
 
     /**
-     * Root of the subtree of the Display properties.
+     * Root of Display properties.
      */
     public static final int DISPLAY_GROUP = DISPLAY_MIB_BASE + 0x0001;
-
-    /**
-      * Root of the subtree of the Keyboard properties.
-      */
-    public static final int KEYBOARD_GROUP = KEYBOARD_MIB_BASE + 0x0001;
-    /**
-      * Root of the subtree of the Keyboard Triggers properties.
-      */
-    public static final int KEYBOARD_TRIGGERS_GROUP = KEYBOARD_MIB_BASE + 0x0002;
-    /**
-     * Root of the subtree of the Keyboard Advanced Settings properties.
-     */
-    public static final int KEYBOARD_ADVANCED_GROUP = KEYBOARD_MIB_BASE + 0x0003;
-
-    /**
-     * Root of the subtree of the Cradle properties.
-     */
-    public static final int CRADLE_GROUP = CRADLE_MIB_BASE + 0x0001;
 
     /**
      * Root of the subtree of the decoding properties.
@@ -425,14 +379,6 @@ public class PropertyGroupID {
      * Root of the subtree of the Han Xin Barcode symbology properties
      */
     public final static int HAN_XIN_GROUP = SCANNER_MIB_BASE + 0x003A;
-    /**
-     * Root of the subtree of the Standard Formatting properties
-     */
-    public final static int STANDARD_FORMATTING_GROUP = SCANNER_MIB_BASE + 0x003B;
-    /**
-     * Root of the subtree of the Input Selection properties
-     */
-    public final static int INPUT_SELECTION_GROUP = SCANNER_MIB_BASE + 0x0040;
     /**
      * Root of the subtree of External Formatter Group's properties.
      */

@@ -29,7 +29,7 @@ public abstract class Property<T> {
 	}
 
 	/**
-	 * Gets the default value of the Property.
+	 * Gets the default value of the Property. This method is meaningless if the property is get through the BarcodeManager interface.
 	 *
 	 * @return T Default value of the property.
 	 */
@@ -55,7 +55,7 @@ public abstract class Property<T> {
 	}
 
     /**
-	 * Gets the type of the Property.
+	 * Gets the type of the Property. This method is meaningless if the property is get through the BarcodeManager interface.
 	 *
 	 * @return T {@link PropertyType}
 	 */
@@ -82,7 +82,7 @@ public abstract class Property<T> {
 	}
 
 	/**
-	 * Returns whether a Property is read only or not.
+	 * Returns whether a Property is read only or not. This method is meaningless if the property is get through the BarcodeManager interface.
 	 *
 	 * @return <code>boolean</code> value representing whether the Property is read only or not.
 	 */
@@ -91,7 +91,7 @@ public abstract class Property<T> {
 	}
 
     /**
-     * Returns whether a Property needs a device reboot to be applied or not.
+     * Returns whether a Property needs a device reboot to be applied or not. This method is meaningless if the property is get through the BarcodeManager interface.
      *
      * @return <code>boolean</code> value representing whether the Property needs a device reboot to be applied or not.
      */

@@ -17,7 +17,9 @@ public enum WifiBandSelection {
      */
     WIFI_BAND_5_GHZ;
 
-
+    /**
+     * @hide
+     */
     private static WifiBandSelection[] allValues = values();
 
     /**

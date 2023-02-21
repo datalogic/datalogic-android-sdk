@@ -1,5 +1,7 @@
 package com.datalogic.decode;
 
+import java.util.List;
+
 import com.datalogic.device.ErrorManager;
 import com.datalogic.device.configuration.ConfigException;
 import com.datalogic.device.configuration.PropertyEditor;
@@ -74,6 +76,34 @@ public class BarcodeManager implements PropertyEditor {
 	 * @throws DecodeException in case of error.
 	 */
 	public BarcodeManager() {
+	}
+
+	/**
+	 * Gets the list of supported input devices.
+	 *
+	 * @return The list of input devices available.
+	 */
+	public List<InputDevice> getSupportedInputDevices() {
+		return null;
+	}
+
+	/**
+	 * Gets the input device in use.
+	 *
+	 * @return The current input device.
+	 */
+	public InputDevice getCurrentInputDevice() {
+		return null;
+	}
+
+	/**
+	 * Sets the input device in use.
+	 *
+	 * @param currentInputDevice
+	 *            The input device to set.
+	 */
+	public void setCurrentInputDevice(InputDevice currentInputDevice) {
+		
 	}
 
 	/**

@@ -109,6 +109,8 @@ import com.datalogic.device.*;
  *                 <li> {@link #WIFI_BAND_SELECTION} </li>
  *                 <li> {@link #WIFI_POWER_SAVE} </li>
  *                 <li> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
+ *                 <li> {@link #WIFI_MAC_RANDOMIZATION} </li>
+ *                 <li> {@link #WIFI_NO_INTERNET_EXPECTED} </li>
  *                 <li>
  *                 <details>
  *                     <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP}</summary>
@@ -182,6 +184,9 @@ import com.datalogic.device.*;
  *                 <li> {@link #WIFI_ROAMING_PROFILE} </li>
  *                 <li> {@link #WIFI_ROAMING_RSSI_THRESHOLD} </li>
  *                 <li> {@link #WIFI_ROAMING_RSSI_DIFFERENCE} </li>
+ *                 <li> {@link #WIFI_ROAMING_RETRY_TIMES} </li>
+ *                 <li> {@link #WIFI_ROAMING_RECALCULATION_INTERVAL} </li>
+ *                 <li> {@link #WIFI_ROAMING_BEACON_PERIOD} </li>
  *             </ul>
  *         </details>
  *         </li>
@@ -428,6 +433,8 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #CODE128_LENGTH2} </li>
  *                                                     <li> {@link #CODE128_LENGTH_CONTROL} </li>
  *                                                     <li> {@link #CODE128_AGGRESSIVENESS} </li>
+ *                                                     <li> {@link #CODE128_EXTENDED_ASCII} </li>
+ *                                                     <li> {@link #CODE128_CHARACTER_SET_MODE} </li>
  *                                                     <li>
  *                                                         <details>
  *                                                             <summary> {@link PropertyGroupID#GS1_128_GROUP}</summary>
@@ -942,6 +949,23 @@ import com.datalogic.device.*;
  *                 </li>
  *                 <li>
  *                     <details>
+ *                         <summary> {@link PropertyGroupID#INPUT_SELECTION_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #INPUT_TYPE} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH} </li>
+ *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT} </li>
+ *                         </ul>
+ *                     </details>
+ *                 </li>
+ *                 <li>
+ *                     <details>
  *                         <summary> {@link PropertyGroupID#FORMATTING_GROUP}</summary>
  *                         <ul>
  *                             <li>
@@ -1010,6 +1034,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #GOOD_READ_AUDIO_MODE} </li>
  *                             <li> {@link #GOOD_READ_AUDIO_CHANNEL} </li>                            
  *                             <li> {@link #DISPLAY_NOTIFICATION_ENABLE} </li>
+ *                             <li> {@link #GOOD_READ_TIMEOUT} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -1507,6 +1532,47 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int WIFI_UNLOCK_CHANNELS = PropertyGroupID.WIFI_MIB_BASE + 0x0101;
+    /**
+     * Number of roaming retries before aborting the roaming procedure.
+     * This parameter controls how many times the device will try to find a new access point
+     * to roam to, before giving up and aborting the current roaming event.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WIFI_ROAMING_RETRY_TIMES = PropertyGroupID.WIFI_MIB_BASE + 0x0102;
+    /**
+     * Minimum time interval between roaming threshold calculations.
+     * This parameter controls how frequently the device recalculates the roaming trigger
+     * threshold in case there are no other interruptions (i.e. scans).
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WIFI_ROAMING_RECALCULATION_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x0103;
+    /**
+     * Interval between beacon listening.
+     * A live AP transmits beacons at periodic intervals (typically every 102.4 ms) to be
+     * recognized by other devices. This parameter controls how frequently the device listens
+     * to the access point beacon frame.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WIFI_ROAMING_BEACON_PERIOD = PropertyGroupID.WIFI_MIB_BASE + 0x0104;
+    /**
+     * This parameter enables/disables the random MAC feature.
+     * This adds some security in case of public networks, as the device real MAC address is hidden
+     * and a randomly generated one is used instead. This can cause problems in case your device needs
+     * a fixed MAC address (for example, MAC authentication or specific DHCP rules).
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int WIFI_MAC_RANDOMIZATION = PropertyGroupID.WIFI_MIB_BASE + 0x0105;
+    /**
+     * Controls the behaviour when the current Wi-Fi profile doesn't have an Internet connectivity.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link WifiNoInternetExpected}.
+     */
+    public final static int WIFI_NO_INTERNET_EXPECTED = PropertyGroupID.WIFI_MIB_BASE + 0x0106;
 
     /**
       * @hide
@@ -2216,26 +2282,34 @@ public class PropertyID {
       * The allowed values are defined by enum {@link ToneNotificationChannel}.
       */
     public final static int GOOD_READ_AUDIO_CHANNEL = 0x0034;
-     /**
-      * This parameter is the timeout to set during image decoding.
-      * The amount of time is represented in milliseconds.
-      * <p>
-      * The class of the property is {@link NumericProperty}.
-      */
+    /**
+     * This parameter is the timeout to set during image decoding.
+     * The amount of time is represented in milliseconds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
     public final static int IMAGE_DECODE_TIMEOUT = 0x0035;
-     /**
-      * This parameter is set to true to enable check of GS1 format for GS1 symbologies.
-      * <p>
-      * The class of the property is {@link BooleanProperty}.
-      */
+    /**
+     * This parameter is set to true to enable check of GS1 format for GS1 symbologies.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
     public final static int GS1_CHECK = 0x0036;
-     /**
-      * This parameter is set to true to convert the GS1 barcode string in the GS1 readable string format.
-      * It is used only if {@link #GS1_CHECK} is set to true.
-      * <p>
-      * The class of the property is {@link BooleanProperty}.
-      */
+    /**
+     * This parameter is set to true to convert the GS1 barcode string in the GS1 readable string format.
+     * It is used only if {@link #GS1_CHECK} is set to true.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
     public final static int GS1_STRING_FORMAT = 0x0037;
+    /**
+     * This parameter indicates the delay after which the good read LEDs are turned off. This is valid only in case of a single good read.
+     * The value range is between 20 and 5000 for  normal scanning sessions. The maximum value is lowered to 500 in case of a scan mode
+     * different from SINGLE or when the target mode is set to RELEASE_SCAN.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_TIMEOUT = 0x0038;
      /**
       * This parameter enables the ability to collect a defined number of barcodes in a single session and transmit them at the same time.       
       * <p>
@@ -2334,6 +2408,13 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int ENHANCE_DOF_ENABLE = 0x006A;
+    /**
+     * @hide
+     * This parameter forcefully disable hardware generation from the scanengine
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int FORCE_HW_ACCELERATION_DISABLED = 0x0069;
 
     //
     // Code 39 definitions
@@ -2867,6 +2948,20 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int CODE128_SHORT_QUIET_ZONES = 0x042A;
+    /**
+     * This parameter selects the support to the extended ASCII (ASCII code from 128 to 255).
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link Code128ExtendedAsciiMode}.
+     */
+    public final static int CODE128_EXTENDED_ASCII = 0x042C;
+    /**
+     * This parameter controls the character set in use for the decoded label.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link CharacterSetMode}.
+     */
+    public final static int CODE128_CHARACTER_SET_MODE = 0x042D;
 
     //
     // UPC-A definitions
@@ -4184,6 +4279,89 @@ public class PropertyID {
       * The class of the property is {@link NumericProperty}.
       */
     public final static int OCR_MULTIFRAME = 0x40305;
+
+    //
+    // Camera
+    //
+    /**
+     * This parameter indicates the input type to use for decoding.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link com.datalogic.decode.InputDevice.Type}. 
+     */
+    public final static int INPUT_TYPE = 0x40401;
+    /**
+     * This parameter indicates the display mode in which to show the
+     * camera preview in case the input type is set to camera.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link com.datalogic.decode.CameraInputDevice.PreviewDisplayMode}. 
+     */
+    public final static int PREVIEW_DISPLAY_MODE = 0x40402;
+    /**
+     * This parameter indicates the Y coordinate of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X = 0x40403;
+    /**
+     * This parameter indicates the Y coordinate of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y = 0x40404;
+    /**
+     * This parameter indicates the width of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH = 0x40405;
+    /**
+     * This parameter indicates the height of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT = 0x40406;
+    /**
+     * This parameter indicates the X coordinate of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X = 0x40407;
+    /**
+     * This parameter indicates the Y coordinate of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y = 0x40408;
+    /**
+     * This parameter indicates the width of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH = 0x40409;
+    /**
+     * This parameter indicates the height of the preview shown
+     * in case of manual display mode and camera input type, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT = 0x4040A;
 
     //
     // Frame capture

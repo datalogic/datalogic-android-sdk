@@ -172,6 +172,26 @@ public class DLCradleManager
     public Type getType(){
         return null;
     }
+    
+    /**
+     * Returns the Cradle slot index where the device is inserted in
+     *
+     * @return
+     *         {@link Integer} of the Cradle slot index where the device is inserted in.
+     */
+    public int getSlotIndex(){
+        return 0;
+    }
+
+    /**
+     * Returns the current insertion count for this Cradle slot
+     *
+     * @return
+     *         {@link Integer} of the current insertion count for this Cradle slot.
+     */
+    public int getInsertionCount(){
+        return 0;
+    }
 
     /**
      * Returns the current position related to the Cradle lever.

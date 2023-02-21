@@ -50,6 +50,16 @@ public class Code128 extends SymbologyLengths {
 	public EnumProperty<Code128Aggressiveness> aggressiveness;
 
 	/**
+	 * <code>extendedAscii</code> select the level of support to the extended ASCII (ASCII code from 128 to 255 using special function FNC4).
+	 */
+	public EnumProperty<Code128ExtendedAsciiMode> extendedAscii;
+
+	/**
+	 * <code>characterSetMode</code> controls the character set in use for the decoded label.
+	 */
+	public EnumProperty<CharacterSetMode> characterSetMode;
+
+	/**
 	 * This is the constructor of Code 128. All symbology options are initialized
 	 * by editor.
 	 * 

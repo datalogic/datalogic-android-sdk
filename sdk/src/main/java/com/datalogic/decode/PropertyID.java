@@ -41,6 +41,7 @@ public class PropertyID {
 	public final static int IMAGE_DECODE_TIMEOUT = 0x0035;
 	public final static int GS1_CHECK = 0x0036;
 	public final static int GS1_STRING_FORMAT = 0x0037;
+	public final static int GOOD_READ_TIMEOUT = 0x0038;
 	public final static int MULTISCAN_ENABLE = 0x0050;
 	public final static int MULTISCAN_REQUIRED_LABELS = 0x0051;
 	public final static int MULTISCAN_NOTIFICATION_ENABLE = 0x0052;
@@ -151,6 +152,8 @@ public class PropertyID {
 	public final static int CODE128_GS1_USER_ID   = 0x0428;
 	public final static int CODE128_AGGRESSIVENESS = 0x0429;
 	public final static int CODE128_SHORT_QUIET_ZONES = 0x042A;
+	public final static int CODE128_EXTENDED_ASCII = 0x042C;
+	public final static int CODE128_CHARACTER_SET_MODE = 0x042D;
 
 	//
 	// UPC-A definitions
@@ -426,6 +429,20 @@ public class PropertyID {
 	public final static int OCR_CONFIDENCE = 0x40304;
 	public final static int OCR_MULTIFRAME = 0x40305;
 	public final static int OCR_CUSTOM_RULE_ENABLE = 0x40306;
+
+	//
+	// Camera
+	//
+	public final static int INPUT_TYPE = 0x40401;
+	public final static int PREVIEW_DISPLAY_MODE = 0x40402;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X = 0x40403;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y = 0x40404;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH = 0x40405;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT = 0x40406;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X = 0x40407;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y = 0x40408;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH = 0x40409;
+	public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT = 0x4040A;
 
 	//
 	// HAN XIN

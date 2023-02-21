@@ -163,13 +163,65 @@ public final class Intents {
      */
     public static final String EXTRA_CRADLE_FAILURE_WRONG_DAISY_CHAIN_CONFIG = "com.datalogic.device.intent.extra.cradle.FAILURE_WRONG_DAISY_CHAIN_CONFIG";
 
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_GENERAL</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * General failure was detected.
+     */
     public static final String EXTRA_CRADLE_FAILURE_GENERAL = "com.datalogic.device.intent.extra.cradle.FAILURE_GENERAL";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_SOLENOID</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     The locking solenoid is too hot and the lever cannot be controlled until temperature will be reduced.
+     */
     public static final String EXTRA_CRADLE_FAILURE_SOLENOID = "com.datalogic.device.intent.extra.cradle.FAILURE_SOLENOID";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_WRONG_DAISY_CHAIN_CONFIG</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem on the charger.
+     */
     public static final String EXTRA_CRADLE_FAILURE_CHARGER = "com.datalogic.device.intent.extra.cradle.FAILURE_CHARGER";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_BATTERY_AUTH</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem on the battery authentication.
+     */
     public static final String EXTRA_CRADLE_FAILURE_BATTERY_AUTH = "com.datalogic.device.intent.extra.cradle.FAILURE_BATTERY_AUTH";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_BATTERY_EEPROM</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem on the battery eeprom.
+     */
     public static final String EXTRA_CRADLE_FAILURE_BATTERY_EEPROM = "com.datalogic.device.intent.extra.cradle.FAILURE_BATTERY_EEPROM";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_BATTERY_DEAD</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem on the battery status.
+     */
     public static final String EXTRA_CRADLE_FAILURE_BATTERY_DEAD = "com.datalogic.device.intent.extra.cradle.FAILURE_BATTERY_DEAD";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_WLC_GENERAL</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a general problem on the wlc.
+     */
     public static final String EXTRA_CRADLE_FAILURE_WLC_GENERAL = "com.datalogic.device.intent.extra.cradle.FAILURE_WLC_GENERAL";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_LEVER_NOT_CALIBRATED</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem with lever calibration.
+     */
+    public static final String EXTRA_CRADLE_FAILURE_LEVER_NOT_CALIBRATED = "com.datalogic.device.intent.extra.cradle.FAILURE_LEVER_NOT_CALIBRATED";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_DEVICE_NOT_CHARGING</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle is experiencing a problem on its internal charging system.
+     */
+    public static final String EXTRA_CRADLE_FAILURE_DEVICE_NOT_CHARGING = "com.datalogic.device.intent.extra.cradle.FAILURE_FAILURE_DEVICE_NOT_CHARGING";
+
+    /**
+     * <code>EXTRA_CRADLE_FAILURE_FLASH_CORRUPTED</code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The cradle's internal flash is corrupted.
+     */
+    public static final String EXTRA_CRADLE_FAILURE_FLASH_CORRUPTED = "com.datalogic.device.intent.extra.cradle.FAILURE_FLASH_CORRUPTED";
 
     /**
      * <code>ACTION_CONFIGURATION_COMMIT</code> This intent allows to request a change of the device configuration. <br>
@@ -251,4 +303,79 @@ public final class Intents {
      */
     public static final String ACTION_CONFIGURATION_BOOT_REQUIRED = "com.datalogic.device.intent.action.configuration.BOOT_REQUIRED";
 
+    /**
+     * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_FILE_PATH</code> Used as a String value to specify the path of the fw to be used for the upgrade.
+     */
+    public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_FILE_PATH = "path";
+
+    /**
+     * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT</code> Used as an int value to request a device reboot after successful update.
+     * <br>
+     * Use 1 to request the reboot, 0 otherwise.
+     */
+    public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT = "reboot";
+
+    /**
+     * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET</code> Used as an int value to request a reset after successful update.
+     * <br>
+     * The allowed values are:
+     * <br>
+     * <pre>
+     * - 0 for NONE
+     * - 1 for FACTORY RESET
+     * - 2 for ENTERPRISE RESET
+     * </pre>
+     */
+    public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET = "reset";
+
+    /**
+     * <code>ACTION_SYSTEM_FIRMWARE_UPGRADE</code> This intent allows to request a device firmware upgrade. <br>
+     * <br>
+     * The intent will have the following extra values:
+     * <br>
+     * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_FILE_PATH} - Path of the fw to be used for the upgrade.
+     * <br>
+     * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT} - To request a reboot device after a successful update.
+     * <br>
+     * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET} - To request a device reset after a successful update.
+     *
+     *
+     * <p>
+     * <b>broadcast intent adb example:</b>
+     * <pre>
+     * adb shell am broadcast -a com.datalogic.systemupdate.action.FIRMWARE_UPDATE -n com.datalogic.systemupdate/.SystemUpgradeReceiver
+     * --es path /sdcard/ota.zip
+     * --ei reset 0
+     * --ei reboot 1
+     * </pre>
+     *
+     *
+     * <p>
+     * In addition to the broadcast intent a startService intent or a startActivity intent can be used with the same extra data of the broadcast intent.
+     * <br>   
+     * Pay attention that with startService intent the extra data <i>action</i> must be specified with the value <i>2</i> while for the broadcast and the startActivity intents it is implicit.
+     * <br>
+     *
+     *
+     * <p>
+     * <b>startService intent adb example:</b>
+     * <pre>
+     * adb shell am startservice -n com.datalogic.systemupdate/.SystemUpgradeService
+     * --ei action 2
+     * --es path /sdcard/ota.zip
+     * --ei reset 0
+     * --ei reboot 1
+     * </pre>
+     *
+     *
+     * <p>
+     * <b>startActivity intent adb example:</b>
+     * <pre>
+     * adb shell am start -n com.datalogic.systemupdate/.SystemUpgradeActivity
+     * --es path /sdcard/ota.zip
+     * --ei reset 0
+     * --ei reboot 1
+     * </pre>
+     */
+    public static final String ACTION_SYSTEM_FIRMWARE_UPGRADE = "com.datalogic.systemupdate.action.FIRMWARE_UPDATE";
 }

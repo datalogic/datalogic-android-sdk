@@ -52,6 +52,15 @@ public class DecodingNotification extends PropertyGroup {
 	public EnumProperty<ToneNotificationChannel> goodReadAudioChannel;
 
 	/**
+	 * <code>goodReadTimeout</code> specifies the delay (in milliseconds) after which the
+	 * good read LEDs are disabled. This value is considered only when the
+	 * <code>goodReadCount</code> is 1. The value range is between 20 and 5000 for
+	 * normal scanning sessions. The maximum value is lowered to 500 in case of a scan mode
+	 * different from SINGLE or when the target mode is set to RELEASE_SCAN.
+	 */
+	public NumericProperty goodReadTimeout;
+
+	/**
 	 * This is the constructor of DecodingNotification. All options are
 	 * initialized by editor.
 	 * 

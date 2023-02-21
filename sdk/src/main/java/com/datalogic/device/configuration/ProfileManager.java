@@ -111,8 +111,13 @@ import com.datalogic.device.ErrorManager;
  * It is allowed to have at the same moment a manually loaded profile and an automatically loaded profile.
  * When there is both a manually loaded profile and an automatically loaded profile the value of the properties belonging to both profiles
  * are set to the value specified in the automatically loaded profile. This is true no matter the order of load of the two profiles was.
- * <br>
- * The persistence type of a profile controls the persistence to reboot or reset of the file saved on the device not the persistence of the applied profile configuration.
+ * </p>
+ * The persistence type of a profile controls:
+ * </p>
+ * <ol>
+ * <li> the persistence to reboot or reset of the file saved on the device not the persistence of the applied profile configuration, and
+ * <li> the persistence to reboot or reset of the rules that associate the profile to activities, if any. A rule that associates a profile with persistence REBOOT_PERSISTENT to an activity will be recreated after a normal reset but will be deleted by an enterprise reset. A rule that associates a profile with persistence ENTERPRISE_RESET_PERSISTENT to an activity will be recreated after a normal or enterprise reset but will be deleted by a factory reset.
+ </ol>
  * <br>
  * The configuration applied by an automatically loaded profile is automatically unloaded when the associated activity is no more in foreground or the device restarts.
  * <br>
@@ -411,6 +416,8 @@ public class ProfileManager {
      * The profile associated to the rule is the one found with the given name.
      * There must be only one rule to be loaded when an activity comes to the foreground.
      * If one of the specified activities already has an associated profile the method fails.
+     * <br>
+     * The persistence to reboot of a rule is that of the referred profile. If the referred profile is deleted by reboot all the rules in which it is referred are deleted.
      *
      * @param name
      *            <code>StringBuffer</code> in input an empty string or the preferred name for the rule, in output the unique name assigned

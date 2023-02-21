@@ -10,14 +10,14 @@ public enum Failure
      */
     FAILURE_UNKNOWN,
     /**
-     * The slot's lever is not in the correct position. 
-     */
-    FAILURE_BAD_LEVER_POSITION,
-    /**
      * There is some metal object which prevents a successful wireless
      * charge power transmission between the cradle and the device.
      */
     FAILURE_WLC_FOD,
+    /**
+     * The slot's lever is not in the correct position.
+     */
+    FAILURE_BAD_LEVER_POSITION,
     /**
      * The device asked for an "end of power transmission" for too long.
      */
@@ -35,7 +35,48 @@ public enum Failure
     /**
      * The current cradle's daisy chain configuration is not allowed.
      */
-    FAILURE_WRONG_DAISY_CHAIN_CONFIG;
+    FAILURE_WRONG_DAISY_CHAIN_CONFIG,
+    /**
+     * General failure was detected.
+     */
+    FAILURE_GENERAL,
+    /**
+     * The locking solenoid is too hot and the lever cannot be
+     * controlled until temperature will be reduced.
+     */
+    FAILURE_SOLENOID,
+    /**
+     * The Cradle is experiencing a problem on the charger.
+     */
+    FAILURE_CHARGER,
+    /**
+     * The Cradle is experiencing a problem on the battery authentication.
+     */
+    FAILURE_SPARE_BATTERY_AUTH,
+    /**
+     * The Cradle is experiencing a problem on the battery eeprom.
+     */
+    FAILURE_SPARE_BATTERY_EEPROM,
+    /**
+     * The Cradle is experiencing a problem on the battery status.
+     */
+    FAILURE_SPARE_BATTERY_DEAD,
+    /**
+     * The Cradle is experiencing a general problem on the wlc.
+     */
+    FAILURE_WLC_GENERAL,
+    /**
+     * The Cradle is experiencing a problem with lever calibration
+     */
+    FAILURE_LEVER_NOT_CALIBRATED,
+    /**
+     * The Cradle is experiencing a problem on its internal charging system
+     */
+    FAILURE_DEVICE_NOT_CHARGING,
+    /**
+     * The cradle's internal flash is corrupted.
+     */
+    FAILURE_FLASH_CORRUPTED;
 
     /**
      * Converts the Failure enum to its integer representing value.
