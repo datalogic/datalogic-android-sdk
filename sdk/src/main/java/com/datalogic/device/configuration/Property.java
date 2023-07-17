@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.datalogic.device.ErrorManager;
 import com.datalogic.device.*;
+import com.datalogic.decode.BarcodeManager;
 
 /**
  * <code>Property</code> is the abstract class that represents a generic Property of type T.
@@ -38,7 +39,7 @@ public abstract class Property<T> {
 	}
 
 	/**
-	 * Sets the value of the property. To apply the value of the property to the device and make it persistent the method {@link ConfigurationManager#commit} of {@link ConfigurationManager} must be called.
+	 * Sets the value of the property, it is not applied to the device. To apply the value of the property to the device and make it persistent the method {@link ConfigurationManager#commit} of {@link ConfigurationManager} must be called.
 	 * @param value The value to be set.
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
@@ -53,6 +54,20 @@ public abstract class Property<T> {
 	public int set(T value) {
 		return 0;
 	}
+
+    /**
+     * Resets to the default value the property. To apply the value of the property to the device and make it persistent the method {@link ConfigurationManager#commit} of {@link ConfigurationManager} must be called.
+     * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success
+     * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
+	 * @throws ConfigException
+	 *           {@link ConfigException#ACCESS_VIOLATION_ERROR} if the property is read-only.
+	 * @throws ConfigException
+	 *           {@link ConfigException#SUPPORT_ERROR} if the property is not supported.
+     */
+    public int setToDefault() {
+        return 0;
+    }
+
 
     /**
 	 * Gets the type of the Property. This method is meaningless if the property is get through the BarcodeManager interface.
@@ -121,7 +136,7 @@ public abstract class Property<T> {
 	}
 
 	/**
-	 * Stores the Property value, applying them.
+	 * Stores the Property value, applying them.  The change is not persistent across system reboot. See the <code>BarcodeManager</code> {@link BarcodeManager persistance note}.
 	 *
 	 * @param to The {@link PropertyEditor} in charge of applying the desired values.
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
@@ -144,7 +159,7 @@ public abstract class Property<T> {
 	}
 
 	/**
-	 * Stores and applies all the Properties and their current associated values.
+	 * Stores and applies all the Properties and their current associated values. The change is not persistent across system reboot.  See the <code>BarcodeManager</code> {@link BarcodeManager persistance note}.
 	 *
 	 * @param to The {@link PropertyEditor} used to store all the values.
 	 * @param list The {@link ArrayList} containing the Properties.

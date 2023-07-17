@@ -13,14 +13,18 @@ import com.datalogic.device.configuration.PropertyEditor;
  * To decode bar codes with this class, use the following steps:
  * </p>
  * <ol>
- * <li>Obtain an instance of BarcodeManager with {@link #BarcodeManager()}.
+ * <li>Obtain an instance of BarcodeManager with {@link #BarcodeManager()};
+ * <li>Register the listeners needed in your application from the available ones: StartListener, ReadListener, StopListener and TimeoutListener;
  * <li>To begin a decode session, call {@link #startDecode()}. Your registered
  * StartListener/ReadListener/TimeoutListener will be called when a successful
- * decode occurs or if the configured timeout expires, etc..
- * <li>Call {@link #stopDecode()} to end the decode session.
+ * decode occurs or if the configured timeout expires, etc;
+ * <li>Call {@link #stopDecode()} to end the decode session;
+ * <li><em>Call {@link #release()} to release all registered StartListener/ReadListener/TimeoutListener/StopListener.</em>
  * </ol>
- * <li><b>Important:</b> Call {@link #release()} to release all registered
- * StartListener/ReadListener/TimeoutListener/StopListener.
+ * <p id="Persistance"><b>Configuration persistance:</b> All the configuration changes done using the <code>BarcodeManager</code> are natively not persistent to the device reboot, they are kept only in the current device session.
+ * If you want to persist your changes in flash and keep them across a system reboot the only existing way is to call explicitally {@link #commitProperties()}. Beware that the decoding system configuration is
+ * restored from flash every time the decoding service restart and so any configuration not stored persistently could be lost if the service is killed (and consequently restarted) by the Android OS. It is a rare 
+ * event that could happens for many reasons (low resources, execution exception, not responding service, etc...), the decoding system is usually restored but any configuration not stored persistently could be lost.</p>
  */
 public class BarcodeManager implements PropertyEditor {
 	/**
@@ -30,8 +34,8 @@ public class BarcodeManager implements PropertyEditor {
 	 * <br>
 	 * Example:<br>
 	 * <code>public int startDecodingIntent() {</code><br>
-	 * <code> &nbsp&nbspIntent myintent = new Intent();</code><br>
-	 * <code> &nbsp&nbspmyintent.setAction(ACTION_START_DECODE);</code><br>
+	 * <code> &nbsp;&nbsp;Intent myintent = new Intent();</code><br>
+	 * <code> &nbsp;&nbsp;myintent.setAction(ACTION_START_DECODE);</code><br>
 	 * <code>}</code><br>
 	 * Otherwise application can associate this intent to a physical key code
 	 * through the KeyboardManager mapIntent method.
@@ -47,17 +51,16 @@ public class BarcodeManager implements PropertyEditor {
 	 * <br>
 	 * Example:<br>
 	 * <code>public int stopDecodingIntent() {</code><br>
-	 * <code> &nbsp&nbspIntent myintent = new Intent();</code><br>
-	 * <code> &nbsp&nbspmyintent.setAction(ACTION_STOP_DECODE);</code><br>
+	 * <code> &nbsp;&nbsp;Intent myintent = new Intent();</code><br>
+	 * <code> &nbsp;&nbsp;myintent.setAction(ACTION_STOP_DECODE);</code><br>
 	 * <code>}</code><br>
 	 */
 	public final static String ACTION_STOP_DECODE = "com.datalogic.decode.action.STOP_DECODE";
 
 	/**
 	 * Android keycode representing the scanning functionality, in accordance
-	 * with
-	 * {@link <a href="http://developer.android.com/reference/android/view/KeyEvent.html">android.view.KeyEvent</a>}
-	 * .<br>
+	 * with <a href="http://developer.android.com/reference/android/view/KeyEvent.html">android.view.KeyEvent</a>. <br>
+	 * <br>
 	 * It is possible to associate a device generic button to the scanning
 	 * functionality through the mapping mechanism and the
 	 * {@link com.datalogic.device.input.VScanEntry}, this means a
@@ -104,6 +107,14 @@ public class BarcodeManager implements PropertyEditor {
 	 */
 	public void setCurrentInputDevice(InputDevice currentInputDevice) {
 		
+	}
+
+	/**
+	 * Returns the list of custom OCR configurations found in the device.
+	 * @return A list of all custom OCR configurations available. The list is empty if there is no cusotm OCR configuration.
+	 */
+	public List<CustomOCR> getCustomOcrItems() {
+		return null;
 	}
 
 	/**
@@ -351,13 +362,13 @@ public class BarcodeManager implements PropertyEditor {
 		return 0;
 	}
 /**
-	 * Registers a {@link PresentationStateListener} to be notified when a frame save event is
-	 * triggered. Call {@link #removeFrameSaveListener} before the application
+	 * Registers a {@link PresentationStateListener} to be notified when a presentation mode state change event is
+	 * triggered. Call {@link #removePresentationStateListener} before the application
 	 * closes to properly shut down the listener.
 	 * 
 	 * @param listener
 	 *            The {@link PresentationStateListener} that will be called when a
-	 *            decoder's read event is fired.
+	 *            presentation mode state change event is fired.
 	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
 	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
@@ -397,7 +408,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *      Example:<br>
 	 *      <code>public int startDecodingForFiveSeconds(BarcodeManager decoder) {</code>
 	 * <br>
-	 *      <code> &nbsp&nbspdecoder.startDecode(5000);</code><br>
+	 *      <code> &nbsp;&nbsp;decoder.startDecode(5000);</code><br>
 	 *      <code>}</code><br>
 	 * 
 	 * @param timeout
@@ -419,7 +430,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *      Example:<br>
 	 *      <code>public int startDecoding(BarcodeManager decoder) {</code>
 	 * <br>
-	 *      <code> &nbsp&nbspdecoder.startDecode();</code><br>
+	 *      <code> &nbsp;&nbsp;decoder.startDecode();</code><br>
 	 *      <code>}</code><br>
 	 * 
 	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
@@ -436,7 +447,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Example:<br>
 	 *             <code>public int abortDecoding(BarcodeManager decoder) {</code>
 	 * <br>
-	 *             <code> &nbsp&nbspdecoder.stopDecode();</code><br>
+	 *             <code> &nbsp;&nbsp;decoder.stopDecode();</code><br>
 	 *             <code>}</code><br>
 	 * 
 	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
@@ -477,12 +488,12 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Note: <br>
 	 *             when the decoding configuration changes due a call to this
 	 *             method, it is not saved in a persistent way across system
-	 *             reboot. <br>
+	 *             reboot. See <a href="#Persistance">persistance note</a>.<br>
 	 * <br>
 	 *             Example:<br>
 	 *             <code>public int enableCode39(BarcodeManager decoder) {</code>
 	 * <br>
-	 *             <code> &nbsp&nbspdecoder.enableSymbology(Symbology.CODE39, true);</code>
+	 *             <code> &nbsp;&nbsp;decoder.enableSymbology(Symbology.CODE39, true);</code>
 	 * <br>
 	 *             <code>}</code><br>
 	 * 
@@ -508,11 +519,11 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Note: <br>
 	 *             when the decoding configuration changes due a call to this
 	 *             method, it is not saved in a persistent way across system
-	 *             reboot. <br>
+	 *             reboot. See <a href="#Persistance">persistance note</a>.<br>
 	 * <br>
 	 *             Example:<br>
 	 *             <code>public int enableAll() {</code><br>
-	 *             <code> &nbsp&nbspdecoder.enableAllSymbologies(true);</code><br>
+	 *             <code> &nbsp;&nbsp;decoder.enableAllSymbologies(true);</code><br>
 	 *             <code>}</code><br>
 	 * 
 	 * @param enable
@@ -534,12 +545,12 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Note: <br>
 	 *             when the decoding configuration changes due a call to this
 	 *             method, it is not saved in a persistent way across system
-	 *             reboot. <br>
+	 *             reboot. See <a href="#Persistance">persistance note</a>.<br>
 	 * <br>
 	 *             Example:<br>
 	 *             <code>public int setAllDefaults(BarcodeManager decoder) {</code>
 	 * <br>
-	 *             <code> &nbsp&nbspdecoder.setDefaults();</code><br>
+	 *             <code> &nbsp;&nbsp;decoder.setDefaults();</code><br>
 	 *             <code>}</code><br>
 	 * 
 	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
@@ -556,7 +567,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Example:<br>
 	 *             <code>public boolean isCode39Enabled(BarcodeManager decoder) {</code>
 	 * <br>
-	 *             <code> &nbsp&nbspreturn decoder.isSymbologyEnabled(Symbology.CODE39);</code>
+	 *             <code> &nbsp;&nbsp;return decoder.isSymbologyEnabled(Symbology.CODE39);</code>
 	 * <br>
 	 *             <code>}</code><br>
 	 * 
@@ -581,7 +592,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 *             Example:<br>
 	 *             <code>public boolean isQRSupported(BarcodeManager decoder) {</code>
 	 * <br>
-	 *             <code> &nbsp&nbspreturn decoder.isSymbologySupported(Symbology.QRCODE);</code>
+	 *             <code> &nbsp;&nbsp;return decoder.isSymbologySupported(Symbology.QRCODE);</code>
 	 * <br>
 	 *             <code>}</code><br>
 	 * 
@@ -632,7 +643,8 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 }
 
 	 /**
-	  * Sets one or more label programming parameters of type Integer.
+	  * Sets one or more label programming parameters of type Integer. The change is not persistent
+	  * across system reboot. See <a href="#Persistance">persistance note</a>.
 	  * 
 	  * @param id_buffer
 	  *            The <code>int[]</code> of identifiers for parameters to set.
@@ -649,7 +661,8 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 }
 
 	 /**
-	  * Sets one or more label programming parameters of type String.
+	  * Sets one or more label programming parameters of type String. The change is not persistent
+	  * across system reboot. See <a href="#Persistance">persistance note</a>.
 	  * 
 	  * @param id_buffer
 	  *            The <code>int[]</code> identifiers for parameters to set.
@@ -667,7 +680,7 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 
 	/**
 	 * Saves the configuration. The configuration is saved in a persistent way
-	 * across system reboot.
+	 * across system reboot. See <a href="#Persistance">persistance note</a>.
 	 * 
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.

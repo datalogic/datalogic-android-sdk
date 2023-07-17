@@ -34,12 +34,7 @@ public class NumericProperty extends Property<Integer> {
 	}
 
 	/**
-	 * Sets the desired value.
-	 * 
-	 * @param value
-	 *            <code>Integer</code>
-	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success
-	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int set(Integer value) {

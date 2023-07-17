@@ -23,10 +23,10 @@ public class PresentationMode extends PropertyGroup {
 	public NumericProperty presentationModeSensitivity;
 	
 	/**
-	 * This is the constructor of ScannerOptions. All options are initialized by
-	 * editor.
+	 * This is the constructor of PresentationMode. All properties values are initialized reading from 
+	 * <code>editor</code>.
 	 * 
-	 * @param editor A {@link PropertyGetter} used to load the current barcode family.
+	 * @param editor A {@link PropertyGetter} used to load the current presentation mode configuration.
 	 */
 	public PresentationMode(PropertyGetter editor) {}
 

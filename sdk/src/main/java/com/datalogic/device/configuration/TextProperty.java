@@ -9,21 +9,16 @@ import com.datalogic.device.ErrorManager;
 public class TextProperty extends Property<String> {
 
 	/**
-	 * Constructor
+	 * This is the constructor of TextProperty.
 	 * 
-	 * @param index
+	 * @param index <code>int</code> the corresponding ID.
 	 */
 	public TextProperty(int index) {
 		super(index);
 	}
 
 	/**
-	 * Loads the property querying the PropertyGetter.
-	 * 
-	 * @param from The {@link PropertyGetter} called to synchronize the current values.
-	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
-	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
-	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int load(PropertyGetter from) {
@@ -31,12 +26,7 @@ public class TextProperty extends Property<String> {
 	}
 
 	/**
-	 * Store the property value using the passed PropertyEditor.
-	 * 
-	 * @param to The {@link PropertyEditor} in charge of applying the desired values.
-	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
-	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.
-	 * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int store(PropertyEditor to) {

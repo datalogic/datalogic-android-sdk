@@ -90,7 +90,13 @@ public class PackageInstallerSession implements ServiceConnection {
 	*      <code>session.closeSession();</code><br>
 	*
 	* @param apk
-	*            <code>String</code> full path of the .apk to be installed.
+	*            <code>String</code> full path of the .apk to be installed. <br>
+	*            <strong>NOTE</strong>: Running on an Android 11 device, until Datalogic SDK v1.32, an user App can install an APK only using <br>
+	*                     a path of the external storage (WRITE_EXTERNAL_STORAGE permission to be granted by App to store the APK) <br>
+	*                     or any path not requiring memory permissions to access (e.g Downloads). <br>
+	*                     On the contrary, if the calling App stores the APK into the internal memory, <br>
+	*                     the API will be not able to install the APK due to the missing privilages for accessing to the internal memory of the calling App. <br>
+	*                     From Datalogic SDK v1.33, instead, the API is able to install an APK stored into the internal memory of the calling App. <br>
 	* @param force
 	*            <code>boolean</code> true force the upgrade in case the application is already installed,
 	*							   otherwise the upgrade is refused.
@@ -126,7 +132,13 @@ public class PackageInstallerSession implements ServiceConnection {
 	*      <code>session.closeSession();</code><br>
 	*
 	* @param apks
-	*            <code>ArrayList<String></code> list of the full path of the .apk files to be installed.
+	*            <code>ArrayList<String></code> list of the full path of the .apk files to be installed. <br>
+	*            <strong>NOTE</strong>: Running on an Android 11 device, until Datalogic SDK v1.32, an user App can install an APK only using <br>
+	*                     a path of the external storage (WRITE_EXTERNAL_STORAGE permission to be granted by App to store the APK) <br>
+	*                     or any path not requiring memory permissions to access (e.g Downloads). <br>
+	*                     On the contrary, if the calling App stores the APK into the internal memory, <br>
+	*                     the API will be not able to install the APK due to the missing privilages for accessing to the internal memory of the calling App. <br>
+	*                     From Datalogic SDK v1.33, instead, the API is able to install an APK stored into the internal memory of the calling App. <br>
 	* @param atomic
 	*            <code>boolean</code> true if "apks" lists the multiple split APKs of the application to be installed.
 	* @return <code>int</code>
@@ -156,7 +168,13 @@ public class PackageInstallerSession implements ServiceConnection {
 	*      <code>session.closeSession();</code><br>
 	*
 	* @param apk
-	*            <code>String</code> full path of the .apk to be used to upgrade the application already installed with the same Package Name of this .apk.
+	*            <code>String</code> full path of the .apk to be used to upgrade the application already installed with the same Package Name of this .apk. <br>
+	*            <strong>NOTE</strong>: Running on an Android 11 device, until Datalogic SDK v1.32, an user App can upgrade an APK only using <br>
+	*                     a path of the external storage (WRITE_EXTERNAL_STORAGE permission to be granted by App to store the APK) <br>
+	*                     or any path not requiring memory permissions to access (e.g Downloads). <br>
+	*                     On the contrary, if the calling App stores the APK into the internal memory,  <br>
+	*                     the API will be not able to upgrade the APK due to the missing privilages for accessing to the internal memory of the calling App. <br>
+	*                     From Datalogic SDK v1.33, instead, the API is able to upgrade an APK stored into the internal memory of the calling App. <br>
 	* @return <code>int</code>
 	*            {@link PackageInstallerException#SUCCESS} in case of success,
 	* otherwise a possible error code, matching one of the {@link PackageInstallerException} error constants.

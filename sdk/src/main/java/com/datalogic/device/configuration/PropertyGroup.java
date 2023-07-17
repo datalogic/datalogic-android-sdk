@@ -5,7 +5,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 import com.datalogic.device.ErrorManager;
+import com.datalogic.decode.configuration.Code39;
 import com.datalogic.device.configuration.*;
+import com.datalogic.decode.BarcodeManager;
 
 /**
  * <code>PropertyGroup</code> contains properties and/or other property groups.
@@ -40,8 +42,9 @@ public class PropertyGroup {
 
    /**
      * Gets the {@link Property}, belonging to this group's subtree, whose identifier has the given integer value in {@link PropertyID}.
-     * If  a property with the given id is not found NULL is returned.
+     * If a property with the given id is not found NULL is returned.
      * If the returned property is not supported, get and set on the property will fail.
+	 * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
      * @param id
      *            <code>int</code> unique identifier of the requested property.
      * @return {@link Property}.
@@ -54,6 +57,7 @@ public class PropertyGroup {
      * Gets the {@link Property}, belonging to this group's subtree, whose identifier has the integer value defined by the given string in {@link PropertyID}.
      * If a property with the given name is not found NULL is returned.
      * If the returned property is not supported, get and set on the property will fail.
+	 * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
      * @param name
      *            <code>String</code> defining string of the unique identifier of the requested property.
      * @return {@link Property}.
@@ -64,6 +68,7 @@ public class PropertyGroup {
 
    /**
      * Gets the {@link PropertyGroup}, belonging to this group's subtree, whose identifier has the given integer value in {@link PropertyGroupID}.
+	 * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
      *
      * @param id
      *            <code>int</code> unique identifier of the requested group.
@@ -75,6 +80,7 @@ public class PropertyGroup {
 
     /**
       * Gets the {@link PropertyGroup}, belonging to this group's subtree, whose identifier has the integer value defined by the given string in {@link PropertyGroupID}.
+	  * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
       *
       * @param name
       *            <code>String</code> name of the requested group.
@@ -86,6 +92,7 @@ public class PropertyGroup {
 
    /**
      * Gets the name of the unique identifier{@link PropertyGroupID} of the group.
+	 * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
      *
      * @return String.
      */
@@ -95,6 +102,7 @@ public class PropertyGroup {
 
     /**
       *  Gets the integer value of the unique identifier {@link PropertyGroupID} of the group.
+	  *  The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
       *
       * @return int.
       */
@@ -105,7 +113,8 @@ public class PropertyGroup {
      /**
        * Resets to the default value all the properties contained in the subtree.
        * To make the change persistent the {@link ConfigurationManager#commit} must be called.
-       */
+	   * The method is meaningful only for propertyGroups of the ConfigurationManager tree not for the classes, derived from PropertyGroup, handled by BarcodeManager like for example {@link Code39}.
+	   */
       public void setToDefault() {
       }
 
@@ -124,11 +133,12 @@ public class PropertyGroup {
 
 	/**
 	 * Store the properties values contained by this property into the
-	 * PropertyEditor.
+	 * PropertyEditor persistently or not, depending from the <code>persist</code> parameter.
 	 *
 	 * @param to The {@link PropertyEditor} in charge of applying the desired values.
 	 * @param persist <code>boolean</code> if true the configuration is saved in a persistent way across
-	 *            system reboots.
+	 *            system reboots with an implicit call to {@link PropertyEditor#commitProperties()}; it could happens to persists properties not related to the property group and previously changed 
+	 *            not persistently. See the <code>BarcodeManager</code> {@link BarcodeManager persistance note};
 	 *
 	 * @return <code>int</code> {@link ConfigException#SUCCESS} in case of success,
 	 * otherwise a possible error code, matching one of the {@link ConfigException} error constants.

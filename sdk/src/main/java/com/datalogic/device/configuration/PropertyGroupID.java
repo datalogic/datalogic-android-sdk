@@ -143,6 +143,11 @@ public class PropertyGroupID {
      * Root of the subtree of screen off timeout properties.
      */
     public final static int POWER_SUSPEND_TIMEOUT_GROUP = POWER_MIB_BASE + 0x0005;
+    /**
+     * Root of the subtree of battery charging mode properties.
+     */
+    public final static int POWER_CHARGING_MODE_GROUP = POWER_MIB_BASE + 0x0006;
+
 
     /**
      * Root of the subtree of the Developer Options properties.

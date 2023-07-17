@@ -50,4 +50,15 @@ public final class DeviceManager
     {
         return false;
     }
+
+    /**
+     * Enable or disable the cradle failure event
+     *
+     * @param enable The required boolean for Cradle failure event.
+     * @return <code>boolean</code> true in case of success, false otherwise.
+     */
+    public boolean enableCradleFailureEvent(boolean enable) 
+    {        
+        return false;
+    }
 }

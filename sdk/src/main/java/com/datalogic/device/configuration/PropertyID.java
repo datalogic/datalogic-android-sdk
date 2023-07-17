@@ -243,6 +243,14 @@ import com.datalogic.device.*;
  *            </li>
  *            <li>
  *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_CHARGING_MODE_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
  *               <summary> {@link PropertyGroupID#POWER_SUSPEND_TIMEOUT_GROUP}</summary>
  *               <ul>
  *                  <li> {@link #POWER_SUSPEND_EXTERNAL_TIMEOUT} </li>
@@ -1735,6 +1743,13 @@ public class PropertyID {
      * The allowed values are between 0 and MAX_INT. 0 means never.
      */
    public final static int POWER_SUSPEND_INTERNAL_TIMEOUT = PropertyGroupID.POWER_MIB_BASE + 0x0012;
+    /**
+     * This parameter defines the battery charging profile.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link BatteryChargingProfile}.
+     */
+    public final static int POWER_BATTERY_CHARGING_PROFILE = PropertyGroupID.POWER_MIB_BASE + 0x0013;
 
     //
     // USB Settings definitions
@@ -2263,8 +2278,7 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int DISPLAY_NOTIFICATION_ENABLE = 0x0031;
-
-	/**
+     /**
      * @hide
      */
     public final static int GOOD_READ_AUDIO_TONE = 0x0032;
@@ -2397,17 +2411,10 @@ public class PropertyID {
       * The allowed values are defined by enum {@link IlluminationTime}.
       */
     public final static int ILLUMINATION_TIME = 0x0067;
-
-     /**
-      * This parameter enhances the Depth of Field. 
-      * <p>
-      * Depending on barcode typology, quality and  
-      * light condition it could enhance the Depth of Field. Try to enable it 
-      * only if you need to increment the DoF.
-      * <p>
-      * The class of the property is {@link BooleanProperty}.
-      */
-    public final static int ENHANCE_DOF_ENABLE = 0x006A;
+    /**
+     * @hide
+     */
+    public final static int LINEAR_RASTER = 0x0068;
     /**
      * @hide
      * This parameter forcefully disable hardware generation from the scanengine
@@ -2415,6 +2422,15 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int FORCE_HW_ACCELERATION_DISABLED = 0x0069;
+    /**
+     * This parameter enhances the Depth of Field.
+     * <p></p>
+     * Depending on barcode typology, quality and light condition it could enhance the Depth of Field.
+     * Try to enable it only if you need to increment the DoF.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ENHANCE_DOF_ENABLE = 0x006A;
 
     //
     // Code 39 definitions
@@ -2641,7 +2657,7 @@ public class PropertyID {
       */
     public final static int M25_USER_ID = 0x0227;
      /**
-      * This parameter enables the reading of Matrix 2 of 5 barcode labels with short quiet zones.       
+      * This parameter enables the reading of Matrix 2 of 5 barcode labels with short quiet zones.
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
@@ -2724,7 +2740,7 @@ public class PropertyID {
       */
     public final static int I25_AGGRESSIVENESS = 0x022D;
      /**
-      * This parameter enables the reading of Interleaved 2 of 5 barcode labels with short quiet zones.       
+      * This parameter enables the reading of Interleaved 2 of 5 barcode labels with short quiet zones.
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
@@ -2864,7 +2880,7 @@ public class PropertyID {
       */
     public final static int CODE93_USER_ID = 0x0423;
      /**
-      * This parameter enables the reading of Code 93 barcode labels with short quiet zones.       
+      * This parameter enables the reading of Code 93 barcode labels with short quiet zones.
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
@@ -3616,7 +3632,7 @@ public class PropertyID {
       */
     public final static int COMPOSITE_ENABLE = 0x0A30;
      /**
-      * This parameter ccontrols UPC/EAN label recognition mode.   
+      * This parameter controls UPC/EAN label recognition mode.   
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link UpcEanCompositeMode}. 
@@ -3722,16 +3738,16 @@ public class PropertyID {
       */
     public final static int DATAMATRIX_GS1_ENABLE = 0x0B05;
      /**
-      * This parameter controls the aggressiveness for the Datamatrix symbology. 
+      * This parameter controls the aggressiveness for the Datamatrix symbology.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link DatamatrixAggressiveness}. 
       */
     public final static int DATAMATRIX_AGGRESSIVENESS = 0x0B06;
-     /**    
-      * This parameter enables or disables DataMatrix Rectangular Extended dimensions (DMRE). 
+     /**
+      * This parameter enables or disables DataMatrix Rectangular Extended dimensions (DMRE).
       * New AIM specs introduce new Datamatrix format:
-      * 8x48, 8x64, 12x48, 12x64, 16x64, 24x32, 24x36, 24x48, 24x64, 26x32, 26x40, 26x48, 26x64 
+      * 8x48, 8x64, 12x48, 12x64, 16x64, 24x32, 24x36, 24x48, 24x64, 26x32, 26x40, 26x48, 26x64
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
@@ -3866,14 +3882,14 @@ public class PropertyID {
       */
     public final static int QRCODE_S2D_ENABLE = 0x30E42;
      /**
-      * This parameter controls the mirror mode. 
+      * This parameter controls the mirror mode.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link QRMirror}. 
       */
     public final static int QRCODE_MIRROR = 0x0B07;
      /**
-      * This parameter enables or disables Absolute Grid algorithm. It performs 
+      * This parameter enables or disables Absolute Grid algorithm. It performs
       * a geometric reconstruction of the QR Code grid by regularizing it. This algorithm is executed
       * only when the standard one fails. It may slow down decoding rate.
       * <p>
@@ -4127,6 +4143,10 @@ public class PropertyID {
       * The allowed values are defined by enum {@link KeyWedgeMode}. 
       */
     public final static int WEDGE_KEYBOARD_DELIVERY_MODE = 0x11172;
+    /**
+     * @hide
+     */
+    public final static int WEDGE_KEYBOARD_INJECTION2COMMIT = 0x11173;
      /**
       * This parameter enables the intent mode for the Decode Wedge capability.
       * <p>
@@ -4215,7 +4235,7 @@ public class PropertyID {
       */
     public final static int VISUAL_FORMATTING_PATH = 0x40101;
 
-	/**
+     /**
      * @hide
      */
     public final static int VISUAL_FORMATTING_TIMEOUT = 0x40102;
@@ -4223,7 +4243,7 @@ public class PropertyID {
     /**
      * @hide
      */
-	public final static int VISUAL_FORMATTING_ACTIVE_ITEM = 0x40103;
+    public final static int VISUAL_FORMATTING_ACTIVE_ITEM = 0x40103;
 
     //
     // ECI Policy
@@ -4287,7 +4307,7 @@ public class PropertyID {
      * This parameter indicates the input type to use for decoding.
      * <p>
      * The class of the property is {@link EnumProperty}.
-     * The allowed values are defined by enum {@link com.datalogic.decode.InputDevice.Type}. 
+     * The allowed values are defined by enum {@link com.datalogic.decode.configuration.InputType}.
      */
     public final static int INPUT_TYPE = 0x40401;
     /**
@@ -4295,7 +4315,7 @@ public class PropertyID {
      * camera preview in case the input type is set to camera.
      * <p>
      * The class of the property is {@link EnumProperty}.
-     * The allowed values are defined by enum {@link com.datalogic.decode.CameraInputDevice.PreviewDisplayMode}. 
+     * The allowed values are defined by enum {@link com.datalogic.decode.configuration.PreviewDisplayMode}.
      */
     public final static int PREVIEW_DISPLAY_MODE = 0x40402;
     /**

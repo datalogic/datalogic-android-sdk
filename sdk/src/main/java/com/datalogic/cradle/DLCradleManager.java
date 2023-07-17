@@ -245,4 +245,14 @@ public class DLCradleManager
     {
         return 0;
     }
+
+    /**
+     * Abort Cradle Firmware update procedure
+     *
+     * @return <code>Integer</code> true in case of success, false otherwise.
+     */
+    public int firmwareUpgradeAbort()
+    {
+        return 0;
+    }
 }
