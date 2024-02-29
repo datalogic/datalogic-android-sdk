@@ -24,6 +24,24 @@ public class AppManager {
     }
 
     /**
+     * Call this method to enable/disable the notifications of the given application. <br>
+     * <br>
+     * @param packageName
+     *            <code>String</code>The package of the application for which to enable/disable notifications.
+     * @param enabled
+     *            <code>boolean</code>True to enable notifications, false to disable.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int setNotificationsEnabledForPackage(String packageName, boolean enabled) {
+        return 0;
+    }
+
+
+
+    /**
      * Call this method to grant an application all the permissions declared in its manifest. <br>
      * <br>
      * The method works in best effort. If almost one of the requested permissions is not granted an error is returned.

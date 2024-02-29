@@ -2,7 +2,7 @@ package com.datalogic.device;
 
 import com.datalogic.device.configuration.ConfigurationManager;
 import com.datalogic.device.configuration.PropertyID;
-
+import com.datalogic.device.battery.BatteryDefinitions;
 /**
 * Datalogic Intents allow to be notified about system events such as interactions between Device and Cradle (ACTION_CRADLE_*) or device configuration changed (ACTION_CONFIGURATION_*).
 * App are also allowed to send lock/unlock command to the Cradle ({@link #ACTION_CRADLE_LOCK_DEVICE}/{@link #ACTION_CRADLE_UNLOCK_DEVICE}) or configuration change request ().
@@ -58,7 +58,7 @@ public final class Intents {
      * <code>ACTION_CRADLE_FIRMWARE_UPGRADE_STARTED</code> Broadcast Action: Sent when the system starts the firmware upgrade process with the cradle. <br>
      * <br>
      * The intent will have the following extra values: <br>
-     *
+     * <br>
      * {@link #EXTRA_CRADLE_FIRMWARE_UPGRADE_BYTES} - int representing the number of bytes (firmware size) will be transferred to the cradle.
      */
     public static final String ACTION_CRADLE_FIRMWARE_UPGRADE_STARTED = "com.datalogic.device.intent.action.cradle.FIRMWARE_UPGRADE_STARTED";
@@ -67,7 +67,7 @@ public final class Intents {
      * <code>ACTION_CRADLE_FIRMWARE_UPGRADE_IN_PROGRESS</code> Broadcast Action: Sent during the firmware upgrade procedure, when a firmware block has been trasferred to the the cradle. <br>
      * <br>
      * The intent will have the following extra values: <br>
-     *
+     * <br>
      * {@link #EXTRA_CRADLE_FIRMWARE_UPGRADE_BYTES} - int representing the number of bytes has been already transferred to the cradle.
      */
     public static final String ACTION_CRADLE_FIRMWARE_UPGRADE_IN_PROGRESS = "com.datalogic.device.intent.action.cradle.FIRMWARE_UPGRADE_IN_PROGRESS";
@@ -76,7 +76,7 @@ public final class Intents {
      * <code>ACTION_CRADLE_FIRMWARE_UPGRADE_COMPLETED</code> Broadcast Action: Sent when the cradle firmware upgrade procedure is completed. <br>
      * <br>
      * The intent will have the following extra values: <br>
-     *
+     * <br>
      * {@link #EXTRA_CRADLE_FIRMWARE_UPGRADE_BYTES} - int representing the number of bytes transferred to the cradle.
      */
     public static final String ACTION_CRADLE_FIRMWARE_UPGRADE_COMPLETED = "com.datalogic.device.intent.action.cradle.FIRMWARE_UPGRADE_COMPLETED";
@@ -96,7 +96,7 @@ public final class Intents {
      * <code>ACTION_CRADLE_FAILURE_OCCURRED</code> Broadcast Action: Sent when a failure occurs on the cradle. <br>
      * <br>
      * The intent will have the following extra values: <br>
-     * 
+     * <br>
      * {@link #EXTRA_CRADLE_FAILURE} - indicating which kind of failure occured on the cradle
      */
     public static final String ACTION_CRADLE_FAILURE_OCCURRED = "com.datalogic.device.intent.action.cradle.FAILURE_OCCURRED";
@@ -105,7 +105,7 @@ public final class Intents {
      * <code>ACTION_CRADLE_FAILURE_RECOVERED</code> Broadcast Action: Sent when a failure has been recovered on the cradle. <br>
      * <br>
      * The intent will have the following extra values: <br>
-     * 
+     * <br> 
      * {@link #EXTRA_CRADLE_FAILURE} - indicating which kind of failure has been recovered on the cradle
      */
     public static final String ACTION_CRADLE_FAILURE_RECOVERED = "com.datalogic.device.intent.action.cradle.FAILURE_RECOVERED";
@@ -225,11 +225,11 @@ public final class Intents {
 
     /**
      * <code>ACTION_CONFIGURATION_COMMIT</code> This intent allows to request a change of the device configuration. <br>
-     * The intent carries as extra data the list of requested properties' changes.
+     * The intent carries as extra data the list of requested properties' changes.<br>
      * <br>
      * The intent will have the following extra values: <br>
-     *
-     * {@link #EXTRA_CONFIGURATION_CHANGED_MAP} - Bundle containing the map of requested properties' changes.
+     * <br>
+     * {@link #EXTRA_CONFIGURATION_CHANGED_MAP} - Bundle containing the map of requested properties' changes.<br>
      * <br>
      * java code example:
      * <br>
@@ -261,10 +261,10 @@ public final class Intents {
      * The intent is sent every time the values of some properties change due to a {@link ConfigurationManager#commit} request or
      * a {@link #ACTION_CONFIGURATION_COMMIT} or a spontaneuos event caused by an environmental change.
      * The intent carries as extra data the new values of the changed properties, the time of the change event and, in case of error,
-     * the list of requested changes that were not possible to commit.
+     * the list of requested changes that were not possible to commit.<br>
      * <br>
      * The intent will have the following extra values: <br>
-     *
+     * <br>
      * {@link #EXTRA_CONFIGURATION_CHANGED_MAP} - Bundle containing the Map&lt;Integer, String&gt; of properties' changes. <br>
      * {@link #EXTRA_CONFIGURATION_ERROR_MAP} - Bundle containing the Map&lt;Integer, String&gt; of the refused properties' changes. <br>
      * {@link #EXTRA_CONFIGURATION_CHANGED_TIME} - Bundle containing the timestamp of the changes
@@ -314,6 +314,13 @@ public final class Intents {
      * Use 1 to request the reboot, 0 otherwise.
      */
     public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT = "reboot";
+    
+        /**
+     * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_ACTION</code> Used, as an int, in a startService intent to com.datalogic.systemupdate/.SystemUpgradeService to request a device firmware upgrade.
+     * <br>
+     * The value to be used is 2.
+     */
+    public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_ACTION = "action";
 
     /**
      * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET</code> Used as an int value to request a reset after successful update.
@@ -331,7 +338,7 @@ public final class Intents {
     /**
      * <code>ACTION_SYSTEM_FIRMWARE_UPGRADE</code> This intent allows to request a device firmware upgrade. <br>
      * <br>
-     * The intent will have the following extra values:
+     * The intent will have the following extra values: <br>
      * <br>
      * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_FILE_PATH} - Path of the fw to be used for the upgrade.
      * <br>
@@ -353,7 +360,7 @@ public final class Intents {
      * <p>
      * In addition to the broadcast intent a startService intent or a startActivity intent can be used with the same extra data of the broadcast intent.
      * <br>   
-     * Pay attention that with startService intent the extra data <i>action</i> must be specified with the value <i>2</i> while for the broadcast and the startActivity intents it is implicit.
+     * Pay attention that with startService intent the extra data {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_ACTION} must be specified with the value <i>2</i> while for the broadcast and the startActivity intents it is implicit.
      * <br>
      *
      *
@@ -378,4 +385,125 @@ public final class Intents {
      * </pre>
      */
     public static final String ACTION_SYSTEM_FIRMWARE_UPGRADE = "com.datalogic.systemupdate.action.FIRMWARE_UPDATE";
+
+    /**
+     * <code>ACTION_BATTERY_START_LOG</code> Broadcast Action: Enable Battery Manager logging, if disabled.<br>
+     * <br>
+     * The intent will have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} - boolean that indicates if logging must be executed in idle mode. <br>
+     * {@link #EXTRA_BATTERY_LOG_PERIOD} - int representing the log period in seconds. <br>
+     * {@link #EXTRA_BATTERY_LOG_STATUS} -  boolean that indicates if field "Status" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_SOURCE} - boolean that indicates if field "Source" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_CAPACITY} - boolean that indicates if field "Capacity" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_TEMPERATURE} - boolean that indicates if field "Temperature" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_VOLTAGE} - boolean that indicates if field "Voltage" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_CURRENT} - boolean that indicates if field "Current" must be logged. <br>
+     * {@link #EXTRA_BATTERY_LOG_CHARGE_LEFT} - boolean that indicates if field "Charge Left" must be logged. <br>
+     *
+     * <p>
+     * <b>Broadcast intent adb example:</b>
+     * <pre>
+     * adb shell am broadcast -a com.datalogic.device.intent.action.battery.START_LOG -n com.datalogic.battery/com.datalogic.battery.receiver.BatteryLogReceiver
+     * --ez com.datalogic.device.intent.extra.battery.LOG_IN_IDLE_MODE true
+     * --ei com.datalogic.device.intent.extra.battery.LOG_PERIOD 60
+     * --ez com.datalogic.device.intent.extra.battery.LOG_STATUS true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_SOURCE true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_CAPACITY true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_TEMPERATURE true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_VOLTAGE true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_CURRENT true
+     * --ez com.datalogic.device.intent.extra.battery.LOG_CHARGE_LEFT true
+     * </pre>
+     */
+    public final static String ACTION_BATTERY_START_LOG = "com.datalogic.device.intent.action.battery.START_LOG";
+
+    /**
+     * <code>ACTION_BATTERY_STOP_LOG</code> Broadcast Action: Disable Battery Manager logging, if enabled.
+     */
+    public final static String ACTION_BATTERY_STOP_LOG = "com.datalogic.device.intent.action.battery.STOP_LOG";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_IN_IDLE_MODE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables feature "Log In Idle Mode".
+     */
+    public final static String EXTRA_BATTERY_LOG_IN_IDLE_MODE = "com.datalogic.device.intent.extra.battery.LOG_IN_IDLE_MODE";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_PERIOD</code> Used as an int extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It selects the logging period expressed in seconds.<br>
+     * <br>
+     * If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is enabled, allowed values are (60, 120, 300, 600, 1800, 3600) with 300 as default. <br>
+     * If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is disabled, allowed values are (10,30, 60, 120, 300, 600, 1800, 3600) with 60 as default. <br>
+     */
+    public final static String EXTRA_BATTERY_LOG_PERIOD = "com.datalogic.device.intent.extra.battery.LOG_PERIOD";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_STATUS</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Status"
+     */
+    public final static String EXTRA_BATTERY_LOG_STATUS = "com.datalogic.device.intent.extra.battery.LOG_STATUS";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_SOURCE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Source"
+     */
+    public final static String EXTRA_BATTERY_LOG_SOURCE = "com.datalogic.device.intent.extra.battery.LOG_SOURCE";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_CAPACITY</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Capacity"
+     */
+    public final static String EXTRA_BATTERY_LOG_CAPACITY = "com.datalogic.device.intent.extra.battery.LOG_CAPACITY";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_TEMPERATURE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Temperature"
+     */
+    public final static String EXTRA_BATTERY_LOG_TEMPERATURE = "com.datalogic.device.intent.extra.battery.LOG_TEMPERATURE";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_VOLTAGE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Voltage"
+     */
+    public final static String EXTRA_BATTERY_LOG_VOLTAGE = "com.datalogic.device.intent.extra.battery.LOG_VOLTAGE";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_CURRENT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Current"
+     */
+    public final static String EXTRA_BATTERY_LOG_CURRENT = "com.datalogic.device.intent.extra.battery.LOG_CURRENT";
+
+    /**
+     * <code>EXTRA_BATTERY_LOG_CHARGE_LEFT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * It enables or disables log of feature "Charge Left"
+     */
+    public final static String EXTRA_BATTERY_LOG_CHARGE_LEFT = "com.datalogic.device.intent.extra.battery.LOG_CHARGE_LEFT";
+
+    /**
+     * <code>ACTION_BATTERY_SWAP</code> Broadcast Action: Sent to notify a battery swap event <br>
+     * <br>
+     * The intent will have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_BATTERY_EVENT_ID} -  int that indicates the type of event.<br>
+     * {@link #EXTRA_BATTERY_EVENT_TIMESTAMP} - long the indicates when the events happens.<br>
+     */
+    public static final String ACTION_BATTERY_SWAP = "com.datalogic.device.intent.action.battery.SWAP";
+
+    /**
+     * <code>EXTRA_BATTERY_EVENT_ID</code> Used as an int extra field in {@link #ACTION_BATTERY_SWAP},
+     * It defines the event associated to the battery swap: available values are:<br>
+     * <br>
+     * {@link BatteryDefinitions#BATTERY_SWAP_EVENT_UNKNOWN}: unknown event.<br>
+     * {@link BatteryDefinitions#BATTERY_SWAP_EVENT_BEGIN}: battery swap started: battery extracted.<br>
+     * {@link BatteryDefinitions#BATTERY_SWAP_EVENT_END}: battery swap ended: battery inserted.<br>
+     */
+    public static final String EXTRA_BATTERY_EVENT_ID = "com.datalogic.device.intent.extra.battery.EVENT_ID";
+
+    /**
+     * <code>EXTRA_BATTERY_EVENT_TIMESTAMP</code> Used as a long extra field in {@link #ACTION_BATTERY_SWAP},
+     * It specifies the time in milliseconds when event happens. Time is calculated by System.currentTimeMillis().
+     */
+    public static final String EXTRA_BATTERY_EVENT_TIMESTAMP = "com.datalogic.device.intent.extra.battery.EVENT_TIMESTAMP";
 }
+

@@ -107,6 +107,11 @@ public class PropertyGroupID {
     public final static int ETHERNET_GROUP = ETHERNET_MIB_BASE + 0x0001;
 
     /**
+     * Root of the subtree of the ethernet settings properties.
+     */
+    public final static int ETHERNET_SETTINGS_GROUP = ETHERNET_MIB_BASE + 0x0002;
+
+    /**
       * Root of the subtree of Dual SIM properties
       */
     public final static int DUAL_SIM_GROUP = DUAL_SIM_MIB_BASE;

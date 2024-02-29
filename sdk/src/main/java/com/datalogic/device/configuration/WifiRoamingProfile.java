@@ -20,5 +20,9 @@ public enum WifiRoamingProfile {
     * Custom Roaming profile: the values of the Roaming settings will be applied unsing the values of Roaming RSSI Threshold 
     * and Roaming RSSI Difference settings.
     */
-    CUSTOM;
+    CUSTOM,
+    /**
+     * Legacy Roaming profile.
+     */
+    LEGACY;
 }

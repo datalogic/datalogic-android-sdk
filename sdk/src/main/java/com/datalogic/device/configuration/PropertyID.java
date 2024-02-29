@@ -1,8 +1,8 @@
 package com.datalogic.device.configuration;
 
 
-import com.datalogic.device.configuration.PropertyGroupID;
 import com.datalogic.device.configuration.*;
+import com.datalogic.device.power.*;
 import com.datalogic.decode.configuration.*;
 import com.datalogic.device.*;
 /**
@@ -107,6 +107,7 @@ import com.datalogic.device.*;
  *             <ul>
  *                 <li> {@link #WIFI_802_DOT_11_MODE} </li>
  *                 <li> {@link #WIFI_BAND_SELECTION} </li>
+ *                 <li> {@link #WIFI_BAND} </li>
  *                 <li> {@link #WIFI_POWER_SAVE} </li>
  *                 <li> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
  *                 <li> {@link #WIFI_MAC_RANDOMIZATION} </li>
@@ -187,6 +188,7 @@ import com.datalogic.device.*;
  *                 <li> {@link #WIFI_ROAMING_RETRY_TIMES} </li>
  *                 <li> {@link #WIFI_ROAMING_RECALCULATION_INTERVAL} </li>
  *                 <li> {@link #WIFI_ROAMING_BEACON_PERIOD} </li>
+ *                 <li> {@link #WIFI_BSSID_SCAN_STABLE_TIME} </li>
  *             </ul>
  *         </details>
  *         </li>
@@ -246,6 +248,7 @@ import com.datalogic.device.*;
  *               <summary> {@link PropertyGroupID#POWER_CHARGING_MODE_GROUP}</summary>
  *               <ul>
  *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE} </li>
+ *                  <li> {@link #POWER_CHARGING_SOURCES} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -343,6 +346,25 @@ import com.datalogic.device.*;
  *         <ul>
  *            <li> {@link #ETHERNET_ENABLED} </li>
  *         </ul>
+ *         <ul>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#ETHERNET_SETTINGS_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #ETHERNET_USE_DHCP} </li>
+ *                  <li> {@link #ETHERNET_STATIC_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_GATEWAY_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_SUBNET_PREFIX_LENGTH} </li>
+ *                  <li> {@link #ETHERNET_DNS1_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_DNS2_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_PROXY_ENABLED} </li>
+ *                  <li> {@link #ETHERNET_PROXY_HOSTNAME} </li>
+ *                  <li> {@link #ETHERNET_PROXY_PORT} </li>
+ *                  <li> {@link #ETHERNET_PROXY_BYPASS} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *         </ul>
  *     </details>
  *     </li>
  *     <li>
@@ -367,6 +389,7 @@ import com.datalogic.device.*;
  *         <ul>
  *            <li> {@link #TOUCH_LOCK_INPUT} </li>
  *            <li> {@link #TOUCH_MODE_SENSITIVITY} </li>
+ *            <li> {@link #TOUCH_MODE} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1154,6 +1177,7 @@ public class PropertyID {
       * Selects the band used by the device (2.4/5 GHz).
       * This parameter controls the band the device will be using.
       * When one band is disabled, the device won’t transmit anything on that band.
+      * On new device models, starting from M30/M35, this parameter is substituted by {@link PropertyID#WIFI_BAND}.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link WifiBandSelection}
@@ -1583,6 +1607,26 @@ public class PropertyID {
     public final static int WIFI_NO_INTERNET_EXPECTED = PropertyGroupID.WIFI_MIB_BASE + 0x0106;
 
     /**
+     * Selects the bands used by the device (2.4/5/6 GHz).
+     * This parameter controls the bands the device will be using.
+     * When one band is not enabled, the device won’t transmit anything on that band.
+     * <p>
+     * The class of the property is {@link MultipleChoiceProperty}.
+     * The allowed values are a subset of the combinations of the values defined by {@link WifiBandFlags}.
+     */
+    public final static int WIFI_BAND = PropertyGroupID.WIFI_MIB_BASE + 0x0107;
+    /**
+     * The WIFI_BSSID_SCAN_STABLE_TIME (in seconds) means that after this period of time, the device will no longer scan this BSSID channel. 
+     * When a device moves between areas covered by multiple access points, it continuously scans for available networks 
+     * and evaluates their stability and signal strength. The device will clear the BSSID and its channel once it identifies 
+     * the BSSID last scan update time is more than the value of this parameter, so that the next roaming scan would scan updated BSSIDs.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * The allowed values are between 10 and 200.
+     */
+    public final static int WIFI_BSSID_SCAN_STABLE_TIME = PropertyGroupID.WIFI_MIB_BASE + 0x0108;
+
+    /**
       * @hide
       * DateAndTime Settings definitions
       */
@@ -1750,6 +1794,15 @@ public class PropertyID {
      * The allowed values are defined by enum {@link BatteryChargingProfile}.
      */
     public final static int POWER_BATTERY_CHARGING_PROFILE = PropertyGroupID.POWER_MIB_BASE + 0x0013;
+    /**
+     * Selects the device charging sources.
+     * This parameter controls the charging source the device will be using.
+     * All charging sources could be disabled.
+     * <p>
+     * The class of the property is {@link MultipleChoiceProperty}.
+     * The allowed values are all the combinations of the values defined by {@link ChargingSourcesFlags}.
+     */
+    public final static int POWER_CHARGING_SOURCES = PropertyGroupID.POWER_MIB_BASE + 0x0014;
 
     //
     // USB Settings definitions
@@ -1828,6 +1881,70 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int ETHERNET_ENABLED = PropertyGroupID.ETHERNET_MIB_BASE + 0x0001;
+
+    /**
+      * Controls whether the device will obtain its IP settings automatically, using DHCP,
+      * or manually, by an administrator using the relevant parameters, when connecting to a network through an Ethernet-equipped cradle.
+      * <p>
+      * The class of the property is {@link BooleanProperty}.
+      */
+    public final static int ETHERNET_USE_DHCP = PropertyGroupID.ETHERNET_MIB_BASE + 0x0002;
+    /**
+     * This parameter is used to enter the static IP address of the device when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_STATIC_ADDRESS = PropertyGroupID.ETHERNET_MIB_BASE + 0x0003;
+    /**
+     * This parameter is used to enter the IP address of the default gateway when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_GATEWAY_ADDRESS = PropertyGroupID.ETHERNET_MIB_BASE + 0x0004;
+    /**
+     * Prefix length specifies the number of bits in the IP address that are to be used as the subnet mask.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * The allowed values are between 0 and 32.
+     */
+    public final static int ETHERNET_SUBNET_PREFIX_LENGTH = PropertyGroupID.ETHERNET_MIB_BASE + 0x0005;
+    /**
+     * This parameter is used to enter the primary domain name server used when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_DNS1_ADDRESS = PropertyGroupID.ETHERNET_MIB_BASE + 0x0006;
+    /**
+     * This parameter is used to enter the secondary domain name server used when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_DNS2_ADDRESS = PropertyGroupID.ETHERNET_MIB_BASE + 0x0007;
+    /**
+     * Controls whether an Ethernet Proxy is used by the device when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ETHERNET_PROXY_ENABLED = PropertyGroupID.ETHERNET_MIB_BASE + 0x0008;
+    /**
+     * Used to enter the Host Name of the Proxy server through which network communications will pass when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_PROXY_HOSTNAME = PropertyGroupID.ETHERNET_MIB_BASE + 0x0009;
+    /**
+     * Used to enter the two-digit Port number for accessing the Proxy server through which network communications will pass when connecting to a network through an Ethernet-equipped cradle.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * The allowed values are between 0 to 65535.
+     */
+    public final static int ETHERNET_PROXY_PORT = PropertyGroupID.ETHERNET_MIB_BASE + 0x000A;
+    /**
+     * Used to enter the host name(s) and/or IP address(es) for direct access by the device, bypassing the Proxy server specified in the Proxy Host Name parameter.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int ETHERNET_PROXY_BYPASS = PropertyGroupID.ETHERNET_MIB_BASE + 0x000B;
 
     //
     // DualSim Settings definitions
@@ -1912,6 +2029,7 @@ public class PropertyID {
 
     /**
       * This is the property used to configure the touch controller.
+      * On new device models, starting from M30/M35, this parameter is substituted by {@link PropertyID#TOUCH_MODE}.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link TouchMode}.
@@ -1919,11 +2037,18 @@ public class PropertyID {
     public final static int TOUCH_MODE_SENSITIVITY = PropertyGroupID.TOUCH_MIB_BASE + 0x0001;
 
     /**
-     *	This parameter locks or unlocks the input from touch screen.
+     * This parameter locks or unlocks the input from touch screen.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int TOUCH_LOCK_INPUT = PropertyGroupID.TOUCH_MIB_BASE + 0x0002;
+    /**
+     * This is the property used to configure the touch controller.
+     * <p>
+     * The class of the property is {@link MultipleChoiceProperty}.
+     * The allowed values are a subset of the combinations of the values defined by {@link TouchModeFlags}.
+     */
+    public final static int TOUCH_MODE = PropertyGroupID.TOUCH_MIB_BASE + 0x0003;
 
     //
     // UI Settings definitions

@@ -110,11 +110,11 @@ public class PackageInstaller {
 	*	      - if the problem is found in the remote service the intent "com.datalogic.app.UPGRADE_ME_STATUS" is fired. <br>
     * The extra data of the "com.datalogic.app.UPGRADE_ME_STATUS" are:
 	* <br>
-	* 			- "android.content.pm.PackageInstaller.EXTRA_STATUS" <code>int</code>: a possible error code, matching one of the {@link PackageInstallerException} error constants.
+	* 			- {@link <a href="https://developer.android.com/reference/android/content/pm/PackageInstaller#EXTRA_STATUS">android.content.pm.PackageInstaller.EXTRA_STATUS</a>} <code>int</code>: a possible error code, matching one of the {@link PackageInstallerException} error constants.
 	* <br>
-	*			- "android.content.pm.PackageInstaller.EXTRA_STATUS_MESSAGE" <code>String</code>: an error string message.
+	*			- {@link <a href="https://developer.android.com/reference/android/content/pm/PackageInstaller#EXTRA_STATUS_MESSAGE">android.content.pm.PackageInstaller.EXTRA_STATUS_MESSAGE</a>}  <code>String</code>: an error string message.
 	* <br>
-	*			- "android.content.pm.PackageInstaller.EXTRA_PACKAGE_NAME" <code>String</code>: Package Name of the application.
+	*			- {@link <a href="https://developer.android.com/reference/android/content/pm/PackageInstaller#EXTRA_PACKAGE_NAME">android.content.pm.PackageInstaller.EXTRA_PACKAGE_NAME</a>}  <code>String</code>: Package Name of the application.
 	* <br>
 	* @param apk
 	*            <code>String</code> full path of the .apk to be used to upgrade the current application. <br>

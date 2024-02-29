@@ -25,6 +25,10 @@ public enum LoggerBufferSize {
      */
     LOGGER_BUFFER_SIZE_4M(4194304),
     /**
+     * 8M bytes.
+     */
+    LOGGER_BUFFER_SIZE_8M(8388608),
+    /**
      * 16M bytes.
      */
     LOGGER_BUFFER_SIZE_16M(16777216);
@@ -32,7 +36,9 @@ public enum LoggerBufferSize {
      * @hide
      */
     private final int value;
-
+    /**
+     * @hide
+     */
     private static LoggerBufferSize[] allValues = values();
 
     /**

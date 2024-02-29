@@ -1,5 +1,7 @@
 package com.datalogic.device.input;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,56 @@ import com.datalogic.device.ErrorManager;
  * This class provides access to keyboard related methods of the device.
  */
 public class KeyboardManager {
+	/**
+	 * An argument for changing the behavior of {@link MappingTriggerPolicy#LONG_PRESS_TIMED_OUT},
+	 * configure the duration in milliseconds before a press turns into a long press.
+	 * <br>
+	 * Used as a map entry key to configure arguments in {@link #mapKey(VScanEntry, Map, Map)}
+	 * <br>
+	 * Default value: 500 (ms)
+	 */
+	public static final String ARG_LONG_PRESS_TIMEOUT = "long_press_timeout";
+
+	/**
+	 * An argument for changing the behavior of {@link MappingTriggerPolicy#VERY_LONG_PRESS_TIMED_OUT},
+	 * configure the duration in milliseconds before a press turns into a very long press.
+	 * <br>
+	 * Used as a map entry key to configure arguments in {@link #mapKey(VScanEntry, Map, Map)}
+	 * <br>
+	 * Default value: 5000 (ms)
+	 */
+	public static final String ARG_VERY_LONG_PRESS_TIMEOUT = "very_long_press_timeout";
+
+	/**
+	 * An argument for changing the behavior of {@link MappingTriggerPolicy#MULTIPLE_PRESS_UP},
+	 * configure the number of presses for multiple press detection.
+	 * <br>
+	 * Used as a map entry key to configure arguments in {@link #mapKey(VScanEntry, Map, Map)}
+	 * <br>
+	 * Default value: 2
+	 */
+	public static final String ARG_MULTIPLE_PRESS_COUNT = "multiple_press_count";
+
+	/**
+	 * An argument for changing the behavior of {@link MappingTriggerPolicy#MULTIPLE_PRESS_UP},
+	 * configure the maximum interval between DOWN and UP of a multiple press (in milliseconds).
+	 * <br>
+	 * Used as a map entry key to configure arguments in {@link #mapKey(VScanEntry, Map, Map)}
+	 * <br>
+	 * Default value: 200 (ms)
+	 */
+	public static final String ARG_MULTIPLE_PRESS_MAX_INTERVAL = "multiple_press_max_interval";
+
+	/**
+	 * An argument for changing the behavior of {@link MappingTriggerPolicy#MULTIPLE_PRESS_UP},
+	 * configure the maximum break time between consecutive presses of a multiple press (in milliseconds).
+	 * <br>
+	 * Used as map entry key to configure arguments in {@link #mapKey(VScanEntry, Map, Map)}
+	 * <br>
+	 * Default value: 200 (ms)
+	 */
+	public static final String ARG_MULTIPLE_PRESS_MAX_BREAK = "multiple_press_max_break";
+
 	/**
 	 * This is the constructor of KeyboardManager.
 	 *
@@ -173,6 +225,90 @@ public class KeyboardManager {
 	public Intent getIntent(VScanEntry scanCode) {
 	    return null;
 	}
+
+	/**
+	 * Maps key events to customized actions.
+	 *<br>
+	 * This is a generic way to map a key to customized actions.
+	 *<br>
+	 * The actions are defined by providing a map of {@link MappingTriggerPolicy} to {@link MappingObject}.
+	 * For each entry in this map, the key defines a key events for detection and the value defines customized actions to be executed.
+	 *
+	 * @param scanCode a scan code to track events
+	 * @param mappingInfo a map defines the key events and the corresponding actions to be executed
+	 * @return DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int mapKey(VScanEntry scanCode, Map<MappingTriggerPolicy, MappingObject> mappingInfo) {
+		return 0;
+	}
+
+	/**
+	 * Maps key events to customized actions.
+	 *<br>
+	 * This is a generic way to map a key to customized actions.
+	 *<br>
+	 * The actions are defined by providing a map of {@link MappingTriggerPolicy} to {@link MappingObject}.
+	 * For each entry in this map, the key defines a key events for detection and the value defines customized actions to be executed.
+	 *<br>
+	 * Optionally, you can also provide several arguments to change the way {@link MappingTriggerPolicy} is detected.
+	 * For example, you may customize the long press timeout of {@link MappingTriggerPolicy#LONG_PRESS_TIMED_OUT} by providing
+	 * {@link KeyboardManager#ARG_LONG_PRESS_TIMEOUT} argument.
+	 *<br>
+	 * For more information about possible arguments, see:
+	 * 		{@link KeyboardManager#ARG_LONG_PRESS_TIMEOUT},
+	 * 		{@link KeyboardManager#ARG_MULTIPLE_PRESS_COUNT},
+	 * 		{@link KeyboardManager#ARG_MULTIPLE_PRESS_MAX_BREAK},
+	 * 		{@link KeyboardManager#ARG_MULTIPLE_PRESS_MAX_INTERVAL}
+	 *
+	 * @param scanCode a scan code to track events
+	 * @param mappingInfo a map defines the key events and the corresponding actions to be executed
+	 * @param arguments optional arguments to change the behavior of trigger policies
+	 * @return DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int mapKey(VScanEntry scanCode, Map<MappingTriggerPolicy, MappingObject> mappingInfo, Map<String, String> arguments) {
+		return 0;
+	}
+
+	/**
+	 * Retrieve all mapped scan codes.
+	 *
+	 * This method returns a list of all mapped scan codes.
+	 * You may query the mapping information of each scan codes in the returned list by using
+	 * {@link #getMappingObjects(VScanEntry)}
+	 *
+	 * @return a list of mapped scan codes. An empty list is returned if there is no mapping.
+	 */
+	public List<VScanEntry> getAllMappedScanEntries() {
+		return null;
+	}
+
+	/**
+	 * Query the mapping information of a key.
+	 *
+	 * Using this method to retrieve the mapping information that you have passed to {@link #mapKey(VScanEntry, Map, Map)}
+	 * as the second parameter.
+	 *
+	 * @param scanCode scan code to look for key mapping
+	 * @return the mapping information
+	 */
+	public Map<MappingTriggerPolicy, MappingObject> getMappingObjects(VScanEntry scanCode) {
+		return null;
+	}
+
+	/**
+	 * Gets the arguments of a key mapping.
+	 *
+	 * Using this method to retrieve the arguments that you have passed to {@link #mapKey(VScanEntry, Map, Map)}
+	 * as the third parameter.
+	 *
+	 * @param scanCode scan code to look for key mapping
+	 * @return the key mapping arguments
+	 */
+	public Map<String, String> getMappingArguments(VScanEntry scanCode) {
+		return null;
+	}
+
+	
 
 	/**
 	 * Removes all the configured mappings. Whenever this method is called, all

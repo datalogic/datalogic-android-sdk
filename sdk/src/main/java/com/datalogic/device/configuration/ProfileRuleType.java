@@ -2,7 +2,7 @@ package com.datalogic.device.configuration;
 
 import java.util.ArrayList;
 /**
- * <code>public class ProfileRuleType {</code> is the class that implements the descriptor of the association of a profile to a set of activities.
+ * <code>ProfileRuleType</code> is the class that implements the descriptor of the association of a profile to a set of activities.
  * When one of the listed activities comes to the foreground the profile is automatically loaded.
  * When the activity is no more in foreground the previous configuration will be restored.
  */

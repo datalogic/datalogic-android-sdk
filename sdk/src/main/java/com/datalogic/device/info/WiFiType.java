@@ -23,5 +23,13 @@ public enum WiFiType {
 	/**
 	 * Wi-Fi supports b/g/n
 	 */
-	BGN; //
+	BGN, //
+	/**
+	 * Wi-Fi supports a/b/g/n/ac
+	 */
+	ABGNAC, //
+	/**
+	 * Wi-Fi supports a/b/g/n/ax
+	 */
+	ABGNAX; //
 }

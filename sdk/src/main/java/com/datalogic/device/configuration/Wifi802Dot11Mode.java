@@ -5,25 +5,33 @@ package com.datalogic.device.configuration;
  */
 public enum Wifi802Dot11Mode {
     /**
-     * All the 802.11 mode (b/g/n/a/ac) are anabled
+     * Enables all the 802.11 modes (b/g/n/a/ac/ax).
      */
     WIFI_802_DOT_11_ALL_ENABLED,
     /**
-     * Only the 802.11 mode (b/g/a) are anabled
+     * Enables only the 802.11 modes (b/g/a).
      */
     WIFI_802_DOT_11_ABG,
     /**
-     * Only the 802.11 mode (b) is anabled
+     * Enables only the 802.11 modes (b).
      */
     WIFI_802_DOT_11_B,
     /**
-     * Only the 802.11 mode (b/g) are anabled
+     * Enables only the 802.11 modes (b/g).
      */
     WIFI_802_DOT_11_BG,
     /**
-     * Only the 802.11 mode (b/g/n/a) are anabled
+     * Enables only the 802.11 modes (b/g/n/a, AKA Wi-Fi 4).
      */
-    WIFI_802_DOT_11_ABGN;
+    WIFI_802_DOT_11_ABGN,
+    /**
+     * Enables only the 802.11 modes (b/g/n/a/ac, AKA Wi-Fi 5).
+     */
+    WIFI_802_DOT_11_ABGNAC,
+    /**
+     * Enables only the 802.11 modes (b/g/n/a/ax, AKA Wi-Fi 6).
+     */
+    WIFI_802_DOT_11_ABGNAX;
 
     private static Wifi802Dot11Mode[] allValues = values();
 
