@@ -54,5 +54,9 @@ public enum WakeupSource {
 	/**
 	 * The AutoScan trigger
 	 */
-	TRIG_AUTOSCAN; //
+	TRIG_AUTOSCAN, //
+	/**
+	 * The PTT trigger
+	 */
+	TRIG_PTT; //
 }

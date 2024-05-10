@@ -43,6 +43,11 @@ public class Datamatrix extends SymbologyLengths {
     public BooleanProperty dmre;
 
     /**
+     * <code>gs1_dl_datamatrix</code> enables or disables the GS1-DIGITAL-LINK-DATAMATRIX symbology.
+     */
+    public BooleanProperty gs1_dl_datamatrix;
+
+    /**
      * This is the constructor of Datamatrix. All symbology options are
      * initialized by editor.
      *

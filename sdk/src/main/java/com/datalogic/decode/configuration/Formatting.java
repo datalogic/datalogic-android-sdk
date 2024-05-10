@@ -61,6 +61,29 @@ public class Formatting extends PropertyGroup {
 	public BooleanProperty gs1StringFormat;
 
 	/**
+	 * <code>gtinFormat</code> selects the format to use for the GTIN representation.
+	 */
+	public EnumProperty<GtinFormat> gtinFormat;
+
+	/**
+	 * <code>gs1LabelSetTransmitMode</code> selects the mode used to transmit GS1 label sets.
+	 * A label set consists of all the GS1 barcodes that have the same GTIN value.
+	 */
+	public EnumProperty<Gs1LabelSetTransmitMode> gs1LabelSetTransmitMode;
+
+
+	/**
+	 * <code>gs1LabelSetPrefix</code> specifies the prefix of the label set used when
+	 * the label set transmit mode is set to <code>ALL_LABELS</code>.
+	 */
+	public TextProperty gs1LabelSetPrefix;
+
+	/**
+	 * <code>gs1Conversion2d</code> selects the conversion used for GS1 2D barcodes.
+	 */
+	public EnumProperty<Gs1Conversion2d> gs1Conversion2d;
+
+	/**
 	 * This is the constructor of Formatting. All options are initialized by
 	 * editor.
 	 * 

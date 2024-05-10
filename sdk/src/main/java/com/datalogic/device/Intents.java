@@ -86,6 +86,27 @@ public final class Intents {
      */
     public static final String ACTION_CRADLE_FIRMWARE_UPGRADE_ERROR = "com.datalogic.device.intent.action.cradle.FIRMWARE_UPGRADE_ERROR";
 
+   /**
+     * <code>ACTION_SWITCH_FOREGROUND</code> Broadcast Action: Sent to notify the change of the foreground activity. <br>
+     * The intent carries as extra data the activity that goes to the foreground.
+     * The intent is sent any time an activity with an associated profile goes to or leaves the foreground.
+     * When the activity goes to the foreground the extra data is the component name of the activity.
+     * When the activity leaves the foreground the extra data is the component name of the new activity
+     * that goes into the foreground no matter if the activity has an associated profile.
+     * <br>
+     * The intent will have the following extra values: <br>
+     *
+     * {@link #EXTRA_SWITCH_FOREGROUND_TO} - String containing the stringified form of the component name of the activity that goes to foreground.
+     */
+    public static final String ACTION_SWITCH_FOREGROUND = "com.datalogic.device.intent.action.profile.SWITCH_FOREGROUND";
+
+    /**
+     * <code>EXTRA_SWITCH_FOREGROUND_TO</code> Used as a String extra field in {@link #ACTION_SWITCH_FOREGROUND}.
+     * The field contains the stringified form of the component name of the activity that goes to foreground.
+     */
+    public static final String EXTRA_SWITCH_FOREGROUND_TO = "com.datalogic.device.intent.extra.profile.SWITCH_FOREGROUND_TO";
+
+
     /**
      * <code>EXTRA_CRADLE_FIRMWARE_UPGRADE_BYTES</code> Used as an int extra field in {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_STARTED},
      * {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_IN_PROGRESS} and {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_COMPLETED} that represents the number of bytes transferred to the cradle.
@@ -505,5 +526,23 @@ public final class Intents {
      * It specifies the time in milliseconds when event happens. Time is calculated by System.currentTimeMillis().
      */
     public static final String EXTRA_BATTERY_EVENT_TIMESTAMP = "com.datalogic.device.intent.extra.battery.EVENT_TIMESTAMP";
-}
 
+    /**
+     * <code>ACTION_BATTERY_SWAP_REQUEST</code> Broadcast Action: Sent to command a battery swap <br>
+     * <br>
+     * The intent can have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_BATTERY_SWAP_REQUEST} - string that indicates the type of battery swap request.<br>
+     */
+    public static final String ACTION_BATTERY_SWAP_REQUEST = "com.datalogic.device.intent.action.battery.SWAP_REQUEST";
+
+    /**
+     * <code>EXTRA_BATTERY_SWAP_REQUEST</code> Used as an string extra field in {@link #ACTION_BATTERY_SWAP_REQUEST},
+     * It defines the type of battery swap request. Available values are:<br>
+     * <br>
+     * {@link BatteryDefinitions#BATTERY_SWAP_REQUEST_UNATTENDED}: do not ask for confirmation to the user.<br>
+     * {@link BatteryDefinitions#BATTERY_SWAP_REQUEST_CONFIRMED}: ask for confirmation to the user through a dialog.<br>
+     */
+    public static final String EXTRA_BATTERY_SWAP_REQUEST = "com.datalogic.device.intent.extra.battery.SWAP_REQUEST";
+
+}

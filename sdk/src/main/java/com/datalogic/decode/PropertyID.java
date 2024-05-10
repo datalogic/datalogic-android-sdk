@@ -228,6 +228,24 @@ public class PropertyID {
 	 * This parameter enhances the Depth of Field.
 	 */
 	public final static int ENHANCE_DOF_ENABLE = 0x006A;
+        /**
+         * This parameter is set to specify the representation used for the GTIN format.
+         */
+	public final static int GTIN_FORMAT = 0x006B;
+        /**
+         * This parameter is set to specify the mode use to transmit GS1 label sets.
+         * A label set consists of all the GS1 barcodes that have the same GTIN value.
+         */
+	public final static int GS1_LABEL_SET_TRANSMIT_MODE = 0x006C;
+        /**
+         * This parameter is set to specify the label set prefix to use when the
+         * label set mode is set to <code>ALL_LABELS</code>.
+         */
+	public final static int GS1_LABEL_SET_PREFIX = 0x006D;
+        /**
+         * This parameter is set to specify the conversion used for GS1 2D barcodes.
+         */
+	public final static int GS1_2D_CONVERSION = 0x006E;
 
 	//
 	// Code 39 definitions
@@ -704,6 +722,10 @@ public class PropertyID {
 	  * This parameter allows to use EAN-13 labels in composite barcode.        
 	  */
 	public final static int EAN13_COMPOSITE_ENABLE = 0x0516;
+        /**
+         * This parameter allows to convert EAN-13 labels to GTIN.
+         */
+	public final static int EAN13_TO_GTIN = 0x0517;
 	 /**
 	  * This parameter specifies the symbology identifier (if any).
 	  * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID} is set to      
@@ -1159,6 +1181,10 @@ public class PropertyID {
 	  * 8x48, 8x64, 12x48, 12x64, 16x64, 24x32, 24x36, 24x48, 24x64, 26x32, 26x40, 26x48, 26x64
 	  */
 	public final static int DATAMATRIX_DMRE = 0x0B0A;
+        /**
+         * This parameter enables or disables the GS1-DIGITAL-LINK-DATAMATRIX symbology.
+         */
+	public final static int DATAMATRIX_GS1_DL_ENABLE = 0x0B0B;
 
 	//
 	// MaxiCode definitions
@@ -1259,6 +1285,10 @@ public class PropertyID {
 	  * only when the standard one fails. It may slow down decoding rate.
 	  */
 	public final static int QRCODE_ABSOLUTE_GRID = 0x0B09;
+        /**
+         * This parameter enables or disables the GS1-DIGITAL-LINK-QR Code symbology.
+         */
+	public final static int QRCODE_GS1_DL_ENABLE = 0x0B15;
 
 	//
 	// Micro QR Code definitions
@@ -1657,4 +1687,43 @@ public class PropertyID {
 	  */
 	public final static int HAN_XIN_USER_ID = 0x40504;
 
+	//
+	// TLC39
+	//
+        /**
+         * This parameter enables or disables the symbology.
+         */
+	public final static int TLC39_ENABLE = 0x40600;
+        /**
+         * This parameter is one of the two configurable label lengths.
+         * When {@link #TLC39_LENGTH_CONTROL} is set to TWO_FIXED, its value is one of the two possible accepted fixed lengths for a specific label.
+         * It can also represent the minor or major length value whenever RANGE is selected.
+         *
+         * If is set below the accepted minimum, the smallest accepted length will be used; instead it the set value exceed the maximum value, the
+         * biggest accepted length will be used.
+         */
+	public final static int TLC39_LENGTH1 = 0x40601;
+        /**
+         * This parameter is one of the two configurable label lengths.
+         * When {@link #TLC39_LENGTH_CONTROL} is set to TWO_FIXED, its value is one of the two possible accepted fixed lengths for a specific label.
+         * It can also represent the minor or major length value whenever RANGE is selected.
+         *
+         * If is set below the accepted minimum, the smallest accepted length will be used; instead it the set value exceed the maximum value, the
+         * biggest accepted length will be used.
+         */
+	public final static int TLC39_LENGTH2 = 0x40602;
+        /**
+         * This parameter specifies how each L1 and L2 length values should be applied to a label.
+         */
+	public final static int TLC39_LENGTH_CONTROL = 0x40603;
+        /**
+         * This parameter specifies the symbology identifier (if any).
+         * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID} is set to
+         * USERDEFINED_IDENTIFIER_BEFORE_LABEL or USERDEFINED_IDENTIFIER_AFTER_LABEL.
+         */
+	public final static int TLC39_USER_ID = 0x40604;
+        /**
+         * This parameter enables linear code transmission.
+         */
+	public final static int TLC39_LINEAR_TRANSMISSION_ENABLE = 0x40605;
 }

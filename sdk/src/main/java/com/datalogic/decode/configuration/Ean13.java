@@ -31,6 +31,12 @@ public class Ean13 extends SymbologyBase {
 	 */
 	public BooleanProperty convertToISSN;
 
+
+	/**
+	 * <code>convertToGTIN</code> allows to convert EAN-13 labels to GTIN.
+	 */
+	public BooleanProperty convertToGTIN;
+
 	/**
 	 * <code>compositeEnable</code> allows to use EAN-13 labels in composite barcode.
 	 */

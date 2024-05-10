@@ -44,7 +44,10 @@ public class PropertyGroupID {
     protected final static int KEYBOARD_MIB_BASE = 14<<18;
     /** @hide */
     protected final static int CRADLE_MIB_BASE = 15<<18;
-
+    /** @hide */
+    protected final static int BLUETOOTH_MIB_BASE = 16<<18;
+    /** @hide */
+    protected final static int DEVICE_MIB_BASE = 17<<18;
 
     /**
       * Root of the configuration tree.
@@ -152,8 +155,6 @@ public class PropertyGroupID {
      * Root of the subtree of battery charging mode properties.
      */
     public final static int POWER_CHARGING_MODE_GROUP = POWER_MIB_BASE + 0x0006;
-
-
     /**
      * Root of the subtree of the Developer Options properties.
      */
@@ -176,6 +177,11 @@ public class PropertyGroupID {
      * Root of the subtree of the Keyboard Advanced Settings properties.
      */
     public static final int KEYBOARD_ADVANCED_GROUP = KEYBOARD_MIB_BASE + 0x0003;
+
+    /**
+     * Root of Keyboard Push-to-Talk properties.
+     */
+    public static final int KEYBOARD_PTT_GROUP = KEYBOARD_MIB_BASE + 0x0004;
 
     /**
      * Root of the subtree of the Cradle properties.
@@ -436,6 +442,10 @@ public class PropertyGroupID {
      */
     public final static int HAN_XIN_GROUP = SCANNER_MIB_BASE + 0x003A;
     /**
+     * Root of the subtree of the TLC39 Barcode symbology properties
+     */
+    public final static int TLC39_GROUP = SCANNER_MIB_BASE + 0x003C;
+    /**
      * Root of the subtree of the Standard Formatting properties
      */
     public final static int STANDARD_FORMATTING_GROUP = SCANNER_MIB_BASE + 0x003B;
@@ -457,7 +467,15 @@ public class PropertyGroupID {
      */
     public final static int RF_GROUP = RF_MIB_BASE + 0x0001;
 
-
+    /**
+     * Root of the subtree of Device Information's properties.
+     */
+    public final static int DEVICE_INFO_GROUP = DEVICE_MIB_BASE + 0x0001;
+    
+    /**
+     * Root of the subtree of bluetooth's properties.
+     */
+    public final static int BLUETOOTH_GROUP = BLUETOOTH_MIB_BASE;
 
     /**
      * @hide

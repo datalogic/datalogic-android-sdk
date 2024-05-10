@@ -1117,6 +1117,11 @@ public class KeyboardManager {
         public static final int TRIGGER_ID_MOTION = 5;
 
         /**
+         * ID for PTT trigger.
+         */
+        public static final int TRIGGER_ID_PTT = 6;
+
+        /**
          * Returns the available triggers in the device.
          *
          * @return List of {@link Trigger} objects, each representing one of the supported triggers.
@@ -1141,4 +1146,12 @@ public class KeyboardManager {
         public AdvancedKeyboard getAdvancedKeyboard() {
             return null;
         }
+        
+        /**
+	 * Returns the key code used to command an unattended battery swap.
+	 * @return The battery swap request key code.
+	 */
+	public int getKeyCodeBatterySwap() {
+		return 0;
+	}
 }

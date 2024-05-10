@@ -41,6 +41,11 @@ public class QRCode extends SymbologyLengths {
     public BooleanProperty absoluteGrid;
 
     /**
+     * <code>gs1_qrcode</code> enables or disables the GS1-DIGITAL_LINK-QRCODE symbology.
+     */
+    public BooleanProperty gs1_dl_qrcode;
+
+    /**
      * This is the constructor of QRCode. All symbology options are initialized
      * by editor.
      *

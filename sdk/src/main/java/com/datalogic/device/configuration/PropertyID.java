@@ -248,6 +248,7 @@ import com.datalogic.device.*;
  *               <summary> {@link PropertyGroupID#POWER_CHARGING_MODE_GROUP}</summary>
  *               <ul>
  *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE} </li>
+ *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE_PERSISTENCE_POLICY} </li>
  *                  <li> {@link #POWER_CHARGING_SOURCES} </li>
  *               </ul>
  *            </details>
@@ -275,6 +276,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_WAKEUP_ACCELEROMETER} </li>
  *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
  *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -301,6 +303,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_SENSITIVITY} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_VIBRATION} </li>
+ *                  <li> {@link #KEYBOARD_PTT_TRIGGER} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -312,6 +315,17 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_BACKLIGHT_BRIGHTNESS} </li>
  *                  <li> {@link #KEYBOARD_BACKLIGHT_TIMEOUT} </li>
  *                  <li> {@link #KEYBOARD_MULTITAP_DELAY} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#KEYBOARD_PTT_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS} </li>
+ *                  <li> {@link #KEYBOARD_PTT_ACTIVE_WT_PACKAGE} </li>
+ *                  <li> {@link #KEYBOARD_PTT_NOTIFICATION_ENABLED} </li>
+ *                  <li> {@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -337,6 +351,8 @@ import com.datalogic.device.*;
  *            <li> {@link #USB_DATA} </li>
  *            <li> {@link #USB_DEFAULT_FUNCTION} </li>
  *            <li> {@link #USB_CURRENT_FUNCTION} </li>
+ *            <li> {@link #USB_CLIENT_DATA} </li>
+ *            <li> {@link #USB_HOST_DATA} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -385,6 +401,17 @@ import com.datalogic.device.*;
  *     </li>
  *     <li>
  *     <details>
+ *         <summary> {@link PropertyGroupID#BLUETOOTH_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #BT_DISCOVERABILITY} </li>
+ *            <li> {@link #BT_PAIRING_POLICY} </li>
+ *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE} </li>
+ *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *     <li>
+ *     <details>
  *         <summary> {@link PropertyGroupID#TOUCH_GROUP}</summary>
  *         <ul>
  *            <li> {@link #TOUCH_LOCK_INPUT} </li>
@@ -425,7 +452,18 @@ import com.datalogic.device.*;
  *            <li style="color:black" type="circle"> {@link #SCREEN_BRIGHTNESS} </li>
  *         </ul>
  *     </details>
- *     </li>   
+ *     </li>
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DEVICE_INFO_GROUP}</summary>
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #DEVICE_NAME_BASE} </li>
+ *         </ul>
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #DEVICE_NAME_SUFFIX} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
  *     <li>
  *         <details>
  *             <summary> {@link PropertyGroupID#SCANNER_GROUP}</summary>
@@ -556,6 +594,7 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #EAN13_SEND_CHECK} </li>
  *                                                     <li> {@link #EAN13_TO_ISBN} </li>
  *                                                     <li> {@link #EAN13_TO_ISSN} </li>
+ *                                                     <li> {@link #EAN13_TO_GTIN} </li>
  *                                                     <li> {@link #EAN13_SEND_SYS} </li>
  *                                                     <li> {@link #EAN13_COMPOSITE_ENABLE} </li>
  *                                                 </ul>
@@ -737,7 +776,8 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #DATAMATRIX_MIRROR} </li>
  *                                                     <li> {@link #DATAMATRIX_GS1_ENABLE} </li>
  *                                                     <li> {@link #DATAMATRIX_AGGRESSIVENESS} </li>
- *                                                     <li> {@link #DATAMATRIX_DMRE} </li> *                                                     
+ *                                                     <li> {@link #DATAMATRIX_DMRE} </li>
+ *                                                     <li> {@link #DATAMATRIX_GS1_DL_ENABLE} </li>
  *                                                 </ul>
  *                                             </details>
  *                                         </li>
@@ -820,6 +860,7 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #QRCODE_S2D_ENABLE} </li>
  *                                                     <li> {@link #QRCODE_MIRROR} </li>
  *                                                     <li> {@link #QRCODE_ABSOLUTE_GRID} </li>
+ *                                                     <li> {@link #QRCODE_GS1_DL_ENABLE} </li>
  *                                                 </ul>
  *                                             </details>
  *                                         </li>
@@ -846,7 +887,20 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #HAN_XIN_USER_ID} </li>
  *                                                 </ul>
  *                                             </details>
- *                                         </li>                                            
+ *                                         </li>
+ *                                         <li>
+ *                                             <details>
+ *                                                 <summary> {@link PropertyGroupID#TLC39_GROUP}</summary>
+ *                                                 <ul>
+ *                                                     <li> {@link #TLC39_ENABLE} </li>
+ *                                                     <li> {@link #TLC39_LENGTH1} </li>
+ *                                                     <li> {@link #TLC39_LENGTH2} </li>
+ *                                                     <li> {@link #TLC39_LENGTH_CONTROL} </li>
+ *                                                     <li> {@link #TLC39_USER_ID} </li>
+ *                                                     <li> {@link #TLC39_LINEAR_TRANSMISSION_ENABLE} </li>
+ *                                                 </ul>
+ *                                             </details>
+ *                                         </li>
  *                                     </ul>
  *                                 </details>
  *                             </li>
@@ -1011,6 +1065,10 @@ import com.datalogic.device.*;
  *                                             <li> {@link #ECI_POLICY} </li>
  *                                             <li> {@link #GS1_CHECK} </li>
  *                                             <li> {@link #GS1_STRING_FORMAT} </li>
+ *                                             <li> {@link #GTIN_FORMAT} </li>
+ *                                             <li> {@link #GS1_LABEL_SET_TRANSMIT_MODE} </li>
+ *                                             <li> {@link #GS1_LABEL_SET_PREFIX} </li>
+ *                                             <li> {@link #GS1_2D_CONVERSION} </li>
  *                                         </ul>
  *                                 </details>
  *                             </li>
@@ -1166,11 +1224,11 @@ public class PropertyID {
       */
     public final static int WIFI_CONNECTED_SCAN_INTERVAL_MAX = PropertyGroupID.WIFI_MIB_BASE + 0x0004;
     /**
-      * Selects the 802.11 mode to be used (b/g/n/a/ac).
+      * Selects the 802.11 mode to be used (b/g/n/a/ac/ax).
       * This parameter controls the 802.11 mode the device will be using.
-      * The allowed values for this property are defined by enum {@link Wifi802Dot11Mode}
       * <p>
-      * The class of the property is {@link NumericProperty}.
+      * The class of the property is {@link EnumProperty}.
+      * The allowed values for this property are defined by enum {@link Wifi802Dot11Mode}.
       */
     public final static int WIFI_802_DOT_11_MODE = PropertyGroupID.WIFI_MIB_BASE + 0x000D;
     /**
@@ -1804,6 +1862,24 @@ public class PropertyID {
      */
     public final static int POWER_CHARGING_SOURCES = PropertyGroupID.POWER_MIB_BASE + 0x0014;
 
+    /**
+    * This parameter controls whether the push to talk button trigger can be used as device wake-up source.
+    * <p>
+    * The class of the property is {@link BooleanProperty}.
+    */
+    public final static int POWER_WAKEUP_PTT_TRIGGER = PropertyGroupID.POWER_MIB_BASE + 0x0016;
+    /**
+     * Selects the battery charging profile persistence policy.
+     * This parameter controls the policy for configuring the battery charging profile.
+     * Depending on this property, when the user changes the battery, that battery will be charged with the profile 
+     * configured by the device or the profile stored in the battery memory.
+     * The behaviour is the same regardless of whether the battery is changed with a battery swap or during a device power-off.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link BatteryChargingProfilePersistencePolicy}.
+     */
+    public final static int POWER_BATTERY_CHARGING_PROFILE_PERSISTENCE_POLICY = PropertyGroupID.POWER_MIB_BASE + 0x0015;
+
     //
     // USB Settings definitions
     //
@@ -1830,6 +1906,14 @@ public class PropertyID {
       * The allowed values are defined by enum {@link UsbFunction}.
       */
     public final static int USB_CURRENT_FUNCTION = PropertyGroupID.USB_MIB_BASE + 0x0003;
+    /**
+      * Enables/disables USB data transmission when device works as client.
+     */
+    public final static int USB_CLIENT_DATA = PropertyGroupID.USB_MIB_BASE + 0x0004;
+    /**
+     * Enables/disables USB data transmission when device works as host.
+     */
+    public final static int USB_HOST_DATA = PropertyGroupID.USB_MIB_BASE + 0x0005;    
 
     //
     // Cradle Settings definitions
@@ -2175,6 +2259,13 @@ public class PropertyID {
     public final static int KEYBOARD_MOTION_TRIGGER_VIBRATION = PropertyGroupID.KEYBOARD_GROUP + 0x0009;
 
     /**
+     *	This parameter enables or disables the push to talk button
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_PTT_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x000F;
+
+    /**
      *	This parameter locks or unlocks the input from keyboard and physical buttons.
      * <p>
      * The class of the property is {@link BooleanProperty}.
@@ -2211,7 +2302,84 @@ public class PropertyID {
      */
     public final static int KEYBOARD_MULTITAP_DELAY = PropertyGroupID.KEYBOARD_GROUP + 0x000E;
 
+    /**
+     * This parameter contains the list of supported Walkie-Talkie applications can be used with the Push-to-Talk button.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     */
+    public final static int KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS = PropertyGroupID.KEYBOARD_GROUP + 0x0010;
+    
+    /**
+     * This parameter sets the package name of the Walkie-Talkie application to be used with the Push-to-Talk button.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * <p>
+     * Set the input value to "none" not to associate any Walkie-Talkie App with the PTT button; 
+     * Otherwise set the input value with one of the package names retrieved from the list of supported Walkie-Talkie Apps 
+     * through the {@link #KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS} property.
+     */
+    public final static int KEYBOARD_PTT_ACTIVE_WT_PACKAGE = PropertyGroupID.KEYBOARD_GROUP + 0x0011;
 
+    /**
+     * This parameter is used to enable or disable the Push-to-Talk notification.
+     * <p>
+     * The class of the property is {@link BooleanProperty}
+     */
+    public final static int KEYBOARD_PTT_NOTIFICATION_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x0012;
+
+    /**
+     * This parameter is used to enable or disable the viability of PUSH_TO_TALK functionality while the KeyGuard is on.
+     * <p>
+     * The class of the property is {@link BooleanProperty}
+     */
+    public final static int KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x0013;
+
+   /**
+     * This parameter is the Device Name base part. The whole Device Name is obtained adding the suffix specified by {@link #DEVICE_NAME_SUFFIX}.
+     * The set to an empty String is refused if {@link #DEVICE_NAME_SUFFIX} has value {@link DeviceNameSuffix#NONE}.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_NAME_BASE = PropertyGroupID.DEVICE_INFO_GROUP + 0x0001;
+    /**
+     *This parameter sets the device name suffix.
+     * The set to value {@link DeviceNameSuffix#NONE} is refused if {@link #DEVICE_NAME_BASE} is an empty String.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link DeviceNameSuffix}.
+     */
+    public final static int DEVICE_NAME_SUFFIX = PropertyGroupID.DEVICE_INFO_GROUP + 0x0002;
+
+    /**
+     * This parameter enables/disables bluetooth discoverability.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BT_DISCOVERABILITY = PropertyGroupID.BLUETOOTH_GROUP + 0x0001;
+
+    /**
+     * This parameter sets the default policy for pairing those devices supporting NFC Bluetooth pairing.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link BTPairingPolicy}.
+     */
+    public final static int BT_PAIRING_POLICY = PropertyGroupID.BLUETOOTH_GROUP + 0x0002;
+
+    /**
+     * This parameter enables the silent pairing for those devices supporting NFC Bluetooth pairing
+     * and whitelisted through the property {@link #BT_SILENT_PAIRING_WHITELISTING}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BT_SILENT_PAIRING_WHITELISTING_ENABLE = PropertyGroupID.BLUETOOTH_GROUP + 0x0003;
+
+    /**
+     * This parameter contains the devices whitelisted for silent pairing, if enabled by property {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE}.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specifical implementation for this type of blob is {@link BluetoothSilentPairingWhitelisting}.
+     */
+    public final static int BT_SILENT_PAIRING_WHITELISTING = PropertyGroupID.BLUETOOTH_GROUP + 0x0004;
 
     //
     // General Decoding definitions
@@ -2556,6 +2724,35 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int ENHANCE_DOF_ENABLE = 0x006A;
+    /**
+     * This parameter is set to specify the representation used for the GTIN format.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GtinFormat}.
+     */
+    public final static int GTIN_FORMAT = 0x006B;
+    /**
+     * This parameter is set to specify the mode use to transmit GS1 label sets.
+     * A label set consists of all the GS1 barcodes that have the same GTIN value.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link Gs1LabelSetTransmitMode}.
+     */
+    public final static int GS1_LABEL_SET_TRANSMIT_MODE = 0x006C;
+    /**
+     * This parameter is set to specify the label set prefix to use when the
+     * label set mode is set to <code>ALL_LABELS</code>.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int GS1_LABEL_SET_PREFIX = 0x006D;
+    /**
+     * This parameter is set to specify the conversion used for GS1 2D barcodes.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link Gs1Conversion2d}.
+     */
+    public final static int GS1_2D_CONVERSION = 0x006E;
 
     //
     // Code 39 definitions
@@ -3236,6 +3433,12 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int EAN13_COMPOSITE_ENABLE = 0x0516;
+    /**
+     * This parameter allows to convert EAN-13 labels to GTIN.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int EAN13_TO_GTIN = 0x0517;
      /**
       * This parameter specifies the symbology identifier (if any).
       * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID} is set to      
@@ -3877,6 +4080,12 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int DATAMATRIX_DMRE = 0x0B0A;
+    /**
+     * This parameter enables or disables the GS1-DIGITAL-LINK-DATAMATRIX symbology.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int DATAMATRIX_GS1_DL_ENABLE = 0x0B0B;
 
     //
     // MaxiCode definitions
@@ -4021,6 +4230,12 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int QRCODE_ABSOLUTE_GRID = 0x0B09;
+    /**
+     * This parameter enables or disables the GS1-DIGITAL-LINK-QR Code symbology.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QRCODE_GS1_DL_ENABLE = 0x0B15;
 
     //
     // Micro QR Code definitions
@@ -4595,6 +4810,64 @@ public class PropertyID {
       * The class of the property is {@link CharacterProperty}.
       */
     public final static int HAN_XIN_USER_ID = 0x40504;
+
+    //
+    // TLC39
+    //
+    //
+    /**
+     * This parameter enables or disables the symbology.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int TLC39_ENABLE = 0x40600;
+    /**
+     * This parameter is one of the two configurable label lengths.
+     * When {@link #TLC39_LENGTH_CONTROL} is set to {@link LengthControlMode#TWO_FIXED}, its value is one of the two possible accepted fixed lengths for a specific label.
+     * It can also represent the minor or major length value whenever {@link LengthControlMode#RANGE} is selected.
+     *
+     * If is set below the accepted minimum, the smallest accepted length will be used; instead it the set value exceed the maximum value, the
+     * biggest accepted length will be used.
+     *
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * @see #TLC39_LENGTH_CONTROL
+     */
+    public final static int TLC39_LENGTH1 = 0x40601;
+    /**
+     * This parameter is one of the two configurable label lengths.
+     * When {@link #TLC39_LENGTH_CONTROL} is set to {@link LengthControlMode#TWO_FIXED}, its value is one of the two possible accepted fixed lengths for a specific label.
+     * It can also represent the minor or major length value whenever {@link LengthControlMode#RANGE} is selected.
+     *
+     * If is set below the accepted minimum, the smallest accepted length will be used; instead it the set value exceed the maximum value, the
+     * biggest accepted length will be used.
+     *
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * @see #TLC39_LENGTH_CONTROL
+     */
+    public final static int TLC39_LENGTH2 = 0x40602;
+    /**
+     * This parameter specifies how each L1 and L2 length values should be applied to a label.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link LengthControlMode}.
+     */
+    public final static int TLC39_LENGTH_CONTROL = 0x40603;
+    /**
+     * This parameter specifies the symbology identifier (if any).
+     * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID} is set to
+     * {@link SendCodeID#USERDEFINED_IDENTIFIER_BEFORE_LABEL} or {@link SendCodeID#USERDEFINED_IDENTIFIER_AFTER_LABEL}.
+     * <p>
+     * The class of the property is {@link CharacterProperty}.
+     */
+    public final static int TLC39_USER_ID = 0x40604;
+    /**
+     * This parameter enables linear code transmission.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int TLC39_LINEAR_TRANSMISSION_ENABLE = 0x40605;
 
     /**
      * @hide

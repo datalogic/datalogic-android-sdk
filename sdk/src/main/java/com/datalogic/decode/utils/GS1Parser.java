@@ -90,4 +90,15 @@ public class GS1Parser {
     public static Map<String, GS1Field> parse(String barcodeText) throws ParsingException {
         return null;
     }
+
+    /**
+     * Executes the parsing of an input string that represents an URI in GS1 Digital Link format.
+     * @param barcodeUri The GS1 Digital Link URI string.
+     * @return A Map containing as keys the generic application identifiers and as entries
+     *         the GS1Field objects containing the parsed values.
+     * @throws ParsingException In case of parsing errors.
+     */
+    public static Map<String, GS1Field> parseDigitalLink(String barcodeUri) throws ParsingException {
+        return null;
+    }
 }

@@ -268,6 +268,18 @@ public enum BarcodeID {
 	/**
 	 * HAN XIN
 	 */
-	HAN_XIN //
+	HAN_XIN, //
+	/**
+	 * TLC 39
+	 */
+	TLC39,
+	/**
+	 * GS1 DigitalLink QR Code
+	 */
+	GS1_DL_QRCODE,
+	/**
+	 * GS1 DigitalLink Data Matrix
+	 */
+	GS1_DL_DATAMATRIX;
 
 }
