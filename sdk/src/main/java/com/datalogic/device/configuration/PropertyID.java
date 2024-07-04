@@ -353,6 +353,8 @@ import com.datalogic.device.*;
  *            <li> {@link #USB_CURRENT_FUNCTION} </li>
  *            <li> {@link #USB_CLIENT_DATA} </li>
  *            <li> {@link #USB_HOST_DATA} </li>
+ *            <li> {@link #USB_HOST_WHITELISTING} </li>
+ *            <li> {@link #USB_PREDEFINED_HOST_WHITELISTING} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -461,6 +463,14 @@ import com.datalogic.device.*;
  *         </ul>
  *         <ul>
  *            <li style="color:black" type="circle"> {@link #DEVICE_NAME_SUFFIX} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#PROFILES_GROUP}</summary>
+ *         <ul>
+ *            <li style="color:black" type="circle"> {@link #PROFILES_AUTO_SWITCHING_NOTIFICATION_ENABLE} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -980,6 +990,9 @@ import com.datalogic.device.*;
  *                                     <summary> {@link PropertyGroupID#DIGIMARC_GROUP}</summary>
  *                                     <ul>
  *                                         <li> {@link #DIGIMARC_ENABLE} </li>
+ *                                         <li> {@link #DIGIMARC_DATAFORMAT} </li>
+ *                                         <li> {@link #DIGIMARC_PRIORITY} </li>
+ *                                         <li> {@link #DIGIMARC_USER_ID} </li>
  *                                     </ul>
  *                                 </details>
  *                             </li>
@@ -1885,7 +1898,9 @@ public class PropertyID {
     //
 
     /**
-     *	Enables/disables USB data transmission.
+     * Enables/disables USB data transmission.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
      */
     public final static int USB_DATA = PropertyGroupID.USB_MIB_BASE + 0x0001;
 
@@ -1908,12 +1923,78 @@ public class PropertyID {
     public final static int USB_CURRENT_FUNCTION = PropertyGroupID.USB_MIB_BASE + 0x0003;
     /**
       * Enables/disables USB data transmission when device works as client.
+      * <p>
+      * The class of the property is {@link BooleanProperty}.
      */
     public final static int USB_CLIENT_DATA = PropertyGroupID.USB_MIB_BASE + 0x0004;
     /**
      * Enables/disables USB data transmission when device works as host.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
      */
     public final static int USB_HOST_DATA = PropertyGroupID.USB_MIB_BASE + 0x0005;    
+    /**
+     * Contains the editable list of whitelisted USB devices. This list can be edited adding or removing elements through SDK or DLSettings.
+     * This list survives only a reboot.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link UsbHostWhitelisting}.<br>
+     * To set this property by intent ({@link Intents#ACTION_CONFIGURATION_COMMIT}) use the serialized form:<br>
+     * <pre>
+     * [["vid","pid","name","description","persistence"],["vid","pid","name","description","persistence"]]
+     * </pre>
+     * <ul>
+     *  <li><b>vid</b>: device vid, in hexadecimal form. Admitted values in range (0000 - FFFF);
+     *  <li><b>pid</b>: device pid, in hexadecimal form. Admitted values in range (0000 - FFFF);
+     *  <li><b>name</b>: device name;
+     *  <li><b>description</b>: device description;
+     *  <li><b>persistence</b>: persistence. Only {@link WhitelistingPersistence#REBOOT} is allowed.
+     * </ul>
+     * <br>
+     * 
+     * Using commit intent by android app, character <code>  <mark>"</mark>   </code>  must be escaped as <code>   <mark>\"</mark></code>.<br><br>
+     * <b>To whiteslist two devices, for example 'mouse' and 'keyboard':</b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.USB_HOST_WHITELISTING, "[[\"04fb\",\"96a2\",\"mouse\",\"usb\",\"REBOOT\"],[\"05fb\",\"26a2\",\"keyboard\",\"usb\",\"REBOOT\"]]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <b>To delete all devices:</b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.USB_HOST_WHITELISTING, "[]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <br><br>
+     * 
+     * Using the commit intent by shell, characters <code>   <mark>,</mark>   </code><code>   <mark>"</mark>   </code> and <mark>space</mark> must be escaped as <code>   <mark>"\,"</mark>   </code><code>   <mark>\"</mark>   </code>and<code>   <mark>" "</mark>   </code> respectively.<br><br>
+     * <b>To whitelist two devices, for example 'mouse' and 'keyboard', with the commit intent:</b>
+     * <pre>
+     * adb shell am broadcast 
+     * -a com.datalogic.device.intent.action.configuration.COMMIT 
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'USB_HOST_WHITELISTING=[[\"04fb\""\,"\"96a2\""\,"\"mouse\""\,"\"usb" "mouse\""\,"\"REBOOT\"]"\,"[\"06b2\""\,"\"f9a2\""\,"\"keyboard\""\,"\"usb" "keyboard\""\,"\"REBOOT\"]]'
+     * </pre>
+     * <b>To delete all devices:</b>
+     * <pre>
+     * adb shell am broadcast 
+     * -a com.datalogic.device.intent.action.configuration.COMMIT 
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'USB_HOST_WHITELISTING=[]'
+     * </pre>
+     * 
+     */
+    public final static int USB_HOST_WHITELISTING = PropertyGroupID.USB_MIB_BASE + 0x0006;
+    /**
+     * Contains the not editable list of whitelisted USB devices.
+     * This list survives a reboot, a/o enterprise reset a/o factory reset.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link UsbHostWhitelisting}.
+     */
+    public final static int USB_PREDEFINED_HOST_WHITELISTING = PropertyGroupID.USB_MIB_BASE + 0x0007;    
 
     //
     // Cradle Settings definitions
@@ -2306,6 +2387,7 @@ public class PropertyID {
      * This parameter contains the list of supported Walkie-Talkie applications can be used with the Push-to-Talk button.
      * <p>
      * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link SupportedWtApplications}.
      */
     public final static int KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS = PropertyGroupID.KEYBOARD_GROUP + 0x0010;
     
@@ -2369,7 +2451,7 @@ public class PropertyID {
      * This parameter enables the silent pairing for those devices supporting NFC Bluetooth pairing
      * and whitelisted through the property {@link #BT_SILENT_PAIRING_WHITELISTING}.
      * <p>
-     * The class of the property is {@link BooleanProperty}.
+     * The class of the property is {@link BooleanProperty}.    
      */
     public final static int BT_SILENT_PAIRING_WHITELISTING_ENABLE = PropertyGroupID.BLUETOOTH_GROUP + 0x0003;
 
@@ -2377,9 +2459,61 @@ public class PropertyID {
      * This parameter contains the devices whitelisted for silent pairing, if enabled by property {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE}.
      * <p>
      * The class of the property is {@link BlobProperty}.
-     * The specifical implementation for this type of blob is {@link BluetoothSilentPairingWhitelisting}.
+     * The specific implementation for this type of blob is {@link BluetoothSilentPairingWhitelisting}.<br>
+     * 
+     * To set this property by intent ({@link Intents#ACTION_CONFIGURATION_COMMIT}) use the serialized form:<br>
+     * <pre>
+     * [["IDENTIFIER","value"],["IDENTIFIER","value"],["IDENTIFIER","value"]]
+     * </pre>     
+     * <ul>
+     *  <li><b>IDENTIFIER</b>: Only values in {@link BluetoothSilentPairingWhitelisting.IdentifierType} are allowed.
+     *  <li><b>value</b>: string containing the name, the MAC address or the OUI of the bluetooth device, in base of the used identifier.
+     * </ul>
+     * <br>
+     * Using commit intent by android app, character <code>  <mark>"</mark>   </code>  must be escaped as <code>   <mark>\"</mark></code>.<br><br>
+     * <b>To whitelist three devices by name, MAC and OUI with the commit intent:</b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.BT_SILENT_PAIRING_WHITELISTING, "[[\"NAME\",\"Bluetooth device\"],[\"MAC_ADDRESS\",\"51:A9:EE:81:FA:BA\"],[\"OUI\",\"50:A9:EE\"]]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <b>To delete all devices:</b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.BT_SILENT_PAIRING_WHITELISTING, "[]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <br><br>
+     * 
+     * Using the commit intent by shell, characters <code>   <mark>,</mark>   </code><code>   <mark>"</mark>   </code> and <mark>space</mark> must be escaped as <code>   <mark>"\,"</mark>   </code><code>   <mark>\"</mark>   </code>and<code>   <mark>" "</mark>   </code> respectively.<br><br>
+     * <b>To whitelist three devices by name, MAC and OUI with the commit intent:</b>
+     * <pre>
+     * adb shell am broadcast 
+     * -a com.datalogic.device.intent.action.configuration.COMMIT 
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'BT_SILENT_PAIRING_WHITELISTING=[[\"NAME\""\,"\"Bluetooth" "device\"]"\,"[\"MAC_ADDRESS\""\,"\"51:A9:EE:81:FA:BA\"]"\,"[\"OUI\""\,"\"50:A9:EE\"]]'
+     * </pre>
+     * <b>To delete all devices:</b>
+     * <pre>
+     * adb shell am broadcast 
+     * -a com.datalogic.device.intent.action.configuration.COMMIT 
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'BT_SILENT_PAIRING_WHITELISTING=[]'
+     * </pre>
      */
     public final static int BT_SILENT_PAIRING_WHITELISTING = PropertyGroupID.BLUETOOTH_GROUP + 0x0004;
+
+
+    /**
+     * This parameter enables the notification when a profile is automatically loaded because the associated application
+     * goes to foreground.
+     * As a consequence an icon is shown on the status bar.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int PROFILES_AUTO_SWITCHING_NOTIFICATION_ENABLE = PropertyGroupID.PROFILES_GROUP + 0x0001;
 
     //
     // General Decoding definitions
@@ -4365,6 +4499,30 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int DIGIMARC_ENABLE = 0x10000;
+
+     /**
+      * This paramater configures which data format is used for Digimarc barcode.
+      * <p>
+      * The class of the property is {@link EnumProperty}.
+      * The allowed values are defined by enum {@link DigimarcDataFormat}.
+      */
+    public final static int DIGIMARC_DATAFORMAT = 0x10001;
+
+     /**
+      * This parameter determines the frequency for attempting to decode using Digimarc., lower values are higher priority for Digimarc.
+      * <p>
+      * The class of the property is {@link NumericProperty}.
+      */
+    public final static int DIGIMARC_PRIORITY = 0x10002;
+
+    /**
+     * This parameter specifies the symbology identifier (if any).
+     * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID} is set to
+     * {@link SendCodeID#USERDEFINED_IDENTIFIER_BEFORE_LABEL} or {@link SendCodeID#USERDEFINED_IDENTIFIER_AFTER_LABEL}.
+     * <p>
+     * The class of the property is {@link CharacterProperty}.
+     */
+    public final static int DIGIMARC_USER_ID = 0x10003;
 
     //
     // DotCode definitions

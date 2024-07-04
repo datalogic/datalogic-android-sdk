@@ -1377,9 +1377,21 @@ public class PropertyID {
 	//
 	//
 	 /**
-	  * This parameter enables or disables the symbology.       
+	  * This parameter enables or disables the symbology.
 	  */
 	public final static int DIGIMARC_ENABLE = 0x10000;
+	 /**
+	  * This paramater configures which data format is used for Digimarc barcode.
+	  */
+	public final static int DIGIMARC_DATAFORMAT = 0x10001;
+	 /**
+	  * This parameter determines the frequency for attempting to decode using Digimarc.
+	  */
+	public final static int DIGIMARC_PRIORITY = 0x10002;
+	 /**
+	  * This parameter specifies the symbology identifier (if any).
+	  */
+	public final static int DIGIMARC_USER_ID = 0x10003;
 
 	//
 	// DotCode definitions

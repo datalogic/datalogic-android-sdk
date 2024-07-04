@@ -268,12 +268,12 @@ public final class Intents {
      * adb example with extra data as List&ltString&gt:
      * <pre>
      * adb shell am broadcast -a com.datalogic.device.intent.action.configuration.COMMIT
-     * --esal com.datalogic.device.intent.extra.configuration.CHANGED_MAP "TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false"
+     * --esal com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false'
      * </pre>
       * adb example with extra data as String:
      * <pre>
      * adb shell am broadcast -a com.datalogic.device.intent.action.configuration.COMMIT
-     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP "TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false"
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'TOUCH_MODE_SENSITIVITY=TOUCH_MODE_STYLUS,800=10,CODE128_ENABLE=false'
      * </pre>    */
     public static final String ACTION_CONFIGURATION_COMMIT = "com.datalogic.device.intent.action.configuration.COMMIT";
 

@@ -41,4 +41,13 @@ public enum BatteryChargingProfilePersistencePolicy {
     public static BatteryChargingProfilePersistencePolicy fromInt(int id){
         return UNDEFINED;
     }
+
+    /**
+     * Retrieves the corresponding int value.
+     *
+     * @return int
+     * */
+    public int toInt(){
+        return 0;
+    }
 }

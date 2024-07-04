@@ -48,6 +48,8 @@ public class PropertyGroupID {
     protected final static int BLUETOOTH_MIB_BASE = 16<<18;
     /** @hide */
     protected final static int DEVICE_MIB_BASE = 17<<18;
+    /** @hide */
+    protected final static int PROFILES_MIB_BASE = 18<<18;
 
     /**
       * Root of the configuration tree.
@@ -472,6 +474,10 @@ public class PropertyGroupID {
      */
     public final static int DEVICE_INFO_GROUP = DEVICE_MIB_BASE + 0x0001;
     
+    /**
+     * Root of the subtree of policies' management properties.
+     */
+    public final static int PROFILES_GROUP = PROFILES_MIB_BASE + 0x0001;
     /**
      * Root of the subtree of bluetooth's properties.
      */

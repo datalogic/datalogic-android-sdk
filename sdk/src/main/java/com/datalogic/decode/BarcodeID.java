@@ -280,6 +280,10 @@ public enum BarcodeID {
 	/**
 	 * GS1 DigitalLink Data Matrix
 	 */
-	GS1_DL_DATAMATRIX;
+	GS1_DL_DATAMATRIX,
+	/**
+	 * Digimarc Watermark
+	 */
+	DIGIMARC;
 
 }
