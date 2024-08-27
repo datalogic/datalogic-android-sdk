@@ -37,8 +37,13 @@ public class ScannerProperties extends PropertyGroup {
 	/**
 	 * Provides configuration related to Multi Scan functionalities.
 	 * {@see MultiScan}
-	 */	
-	 public MultiScan multiScan;
+	 */
+	public MultiScan multiScan;
+	/**
+	 * Provides configuration related to external scanner barcode injection functionalities.
+	 * {@see ExtScannerSource}
+	 */
+	public ExtScannerSource extScannerSource;
     /**
      * Provides configuration for the Intent Wedge.
      * {@see IntentWedge}

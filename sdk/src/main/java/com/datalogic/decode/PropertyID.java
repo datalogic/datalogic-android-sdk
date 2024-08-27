@@ -246,6 +246,18 @@ public class PropertyID {
          * This parameter is set to specify the conversion used for GS1 2D barcodes.
          */
 	public final static int GS1_2D_CONVERSION = 0x006E;
+        /**
+         * This parameter enables the injection of the barcodes from an external scanner source.
+         */
+	public final static int EXT_SCANNER_SOURCE_ENABLE = 0x006F;
+        /**
+         * This parameter allows using the standard formatter when the injection is enabled.
+         */
+	public final static int EXT_SCANNER_SOURCE_STANDARD_FORMATTER_ENABLE = 0x0070;
+        /**
+         * This parameter enables to format the read data as a readable hexadecimal string. Ignores other formatting options.
+         */
+	public final static int HEX_FORMAT = 0x0071;
 
 	//
 	// Code 39 definitions

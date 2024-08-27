@@ -84,6 +84,11 @@ public class Formatting extends PropertyGroup {
 	public EnumProperty<Gs1Conversion2d> gs1Conversion2d;
 
 	/**
+	 * <code>hexFormat</code> when enabled formats the read data as a readable hexadecimal string. Ignores other formatting options.
+	 */
+	public BooleanProperty hexFormat;
+
+	/**
 	 * This is the constructor of Formatting. All options are initialized by
 	 * editor.
 	 * 

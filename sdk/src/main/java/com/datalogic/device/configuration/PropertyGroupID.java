@@ -456,6 +456,10 @@ public class PropertyGroupID {
      */
     public final static int INPUT_SELECTION_GROUP = SCANNER_MIB_BASE + 0x0040;
     /**
+     * Root of the subtree of the properties that configure the barcode injection from an External Scanner Source.
+     */
+    public final static int EXT_SCANNER_SOURCE_GROUP = SCANNER_MIB_BASE + 0x0041;
+    /**
      * Root of the subtree of External Formatter Group's properties.
      */
     public final static int EXTERNAL_FORMATTING_GROUP = EXTERNAL_FORMATTING_MIB_BASE + 0x0001;

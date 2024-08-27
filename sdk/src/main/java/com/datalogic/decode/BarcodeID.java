@@ -284,6 +284,86 @@ public enum BarcodeID {
 	/**
 	 * Digimarc Watermark
 	 */
-	DIGIMARC;
+	DIGIMARC,
+	/**
+	 * BC412
+	 */
+	BC412,
+	/**
+	 * ABC Codabar Concatenation
+	 */
+	CODABAR_ABC,
+	/**
+	 * Codabar (NW-7)
+	 */
+	CODABAR_NW7,
+	/**
+	 * Code 11
+	 */
+	CODE11,
+	/**
+	 * Code 39 (CIP)
+	 */
+	CODE39_CIP,
+	/**
+	 *Code 39 (Danish PTT)
+	 */
+	CODE39_DANISH_PPT,
+	/**
+	 * Code 39 (Italian Post)
+	 */
+	CODE39_ITALIAN_POST,
+	/**
+	 * Code 39 (La Poste)
+	 */
+	CODE39_LAPOSTE,
+	/**
+	 * Code 39 (PZN)
+	 */
+	CODE39_PZN,
+	/**
+	 * Datalogic 2 of 5
+	 */
+	DATALOGIC25,
+	/**
+	 * Interleaved 2 of 5 (CIP)
+	 */
+	INTERLEAVED25_CIP,
+	/**
+	 * Interleaved 2 of 5 (Follett)
+	 */
+	INTERLEAVED25_FOLLETT,
+	/**
+	 * Pharmacode
+	 */
+	PHARMACODE,
+	/**
+	 * Plessey
+	 */
+	PLESSEY,
+	/**
+	 * Plessey (Anker)
+	 */
+	PLESSEY_ANKER,
+	/**
+	 * Finnish Post
+	 */
+	POSTAL_FINNISH,
+	/**
+	 * Mail Mark
+	 */
+	POSTAL_MAILMARK,
+	/**
+	 * Portugal Post
+	 */
+	POSTAL_PORTUGAL,
+	/**
+	 * Swedish Post
+	 */
+	POSTAL_SWEDISH,
+	/**
+	 * Telepen
+	 */
+	TELEPEN;
 
 }

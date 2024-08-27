@@ -1082,6 +1082,7 @@ import com.datalogic.device.*;
  *                                             <li> {@link #GS1_LABEL_SET_TRANSMIT_MODE} </li>
  *                                             <li> {@link #GS1_LABEL_SET_PREFIX} </li>
  *                                             <li> {@link #GS1_2D_CONVERSION} </li>
+ *                                             <li> {@link #HEX_FORMAT} </li>
  *                                         </ul>
  *                                 </details>
  *                             </li>
@@ -1114,12 +1115,12 @@ import com.datalogic.device.*;
  *                         <summary> {@link PropertyGroupID#WEDGE_GROUP}</summary>
  *                         <ul>
  *                             <li> {@link #WEDGE_INTENT_ENABLE} </li>
+ *                             <li> {@link #WEDGE_INTENT_DELIVERY_MODE} </li>
  *                             <li> {@link #WEDGE_INTENT_ACTION_NAME} </li>                                                
  *                             <li> {@link #WEDGE_INTENT_CATEGORY_NAME} </li>
- *                             <li> {@link #WEDGE_INTENT_DELIVERY_MODE} </li>
- *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_DATA} </li>
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_TYPE} </li>
- *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_STRING} </li>                                
+ *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_STRING} </li>
+ *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_DATA} </li>
  *                             <li> {@link #WEDGE_WEB_ENABLE} </li>
  *                         </ul>
  *                     </details>
@@ -1170,6 +1171,15 @@ import com.datalogic.device.*;
  *                             <li> {@link #WEDGE_KEYBOARD_ENABLE} </li>
  *                             <li> {@link #WEDGE_KEYBOARD_ONLY_ON_FOCUS} </li>                                                
  *                             <li> {@link #WEDGE_KEYBOARD_DELIVERY_MODE} </li>                            
+ *                         </ul>
+ *                     </details>
+ *                 </li>
+ *                 <li>
+ *                     <details>
+ *                         <summary> {@link PropertyGroupID#EXT_SCANNER_SOURCE_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #EXT_SCANNER_SOURCE_ENABLE} </li>
+ *                             <li> {@link #EXT_SCANNER_SOURCE_STANDARD_FORMATTER_ENABLE} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -2887,6 +2897,24 @@ public class PropertyID {
      * The allowed values are defined by enum {@link Gs1Conversion2d}.
      */
     public final static int GS1_2D_CONVERSION = 0x006E;
+    /**
+     * This parameter enables the injection of the barcodes from an external scanner source.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int EXT_SCANNER_SOURCE_ENABLE = 0x006F;
+    /**
+     * This parameter allows using the standard formatter when the injection is enabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int EXT_SCANNER_SOURCE_STANDARD_FORMATTER_ENABLE = 0x0070;
+    /**
+     * This parameter enables to format the read data as a readable hexadecimal string. Ignores other formatting options.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int HEX_FORMAT = 0x0071;
 
     //
     // Code 39 definitions
@@ -4646,55 +4674,110 @@ public class PropertyID {
      */
     public final static int WEDGE_KEYBOARD_INJECTION2COMMIT = 0x11173;
      /**
-      * This parameter enables the intent mode for the Decode Wedge capability.
+      * This parameter enables the intent mode for the Decode Wedge.
       * <p>
-      * This means that the label is sent to the foreground application in the form of an implicit intent. 
-      * In order to retrieve the label type string, "com.datalogic.decodewedge.label_type" is the name argument 
-      * to be used with Intent.getStringExtra(). In order to retrieve the output data as string, 
-      * "com.datalogic.decodewedge.data_string" is the name argument to be used with Intent.getStringExtra() . In case of 
-      * concatenated barcodes, the decode data is concatenated and sent out as a single string. In order to retrieve the 
-      * output data as a list of byte arrays, "com.datalogic.decodewedge.decode_data" is the name argument to be used with 
-      * Intent.getSerializableExtra(). For barcode symbologies that support concatenation, the decode data is stored in 
-      * multiple byte arrays (one byte array per bar code). Clients can get data in each byte array by passing an index.         
+      * This means that the decoding results are always sent through an intent, such as broadcast, start activity or start sevice,
+      * according to the value of the property {@link #WEDGE_INTENT_DELIVERY_MODE}.
+      * <p>
+      * The Decode Wedge can be configured to define the intent sent with the decoding result as expected by a given App.
+      * In particular, beside the delivery mode, common intent information can be configured, such as:
+      * <ul>
+      * <li>the intent <b>action</b> can be configured by the property {@link #WEDGE_INTENT_ACTION_NAME}
+      * <li>the intent <b>category</b> can be configured by the property {@link #WEDGE_INTENT_CATEGORY_NAME}
+      * </ul>
+      * <p>
+      * Moreover, some extra data can be configured to send custom information, such as symbology and read label:
+      * <ul>
+      * <li>the <b>extra name</b> where the <b>symbology</b> of the decoded barcode is provided as a <b>String</b>
+      * can be defined by the property {@link #WEDGE_INTENT_EXTRA_BARCODE_TYPE}.
+      * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the symbology of the decoded barcode.</li>
+      * <li>the <b>extra name</b> where the <b>read label</b> of the decoded barcode is provided as a <b>String</b>
+      * can be configured by the property {@link #WEDGE_INTENT_EXTRA_BARCODE_STRING}.
+      * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the read label of the decoded barcode.
+      * For those barcode symbologies that support concatenation, the read labels are concatenated and sent as a single string.</li>
+      * <li>the <b>extra name</b> where the <b>read label</b> of the decoded barcode is provided as a <b>list of byte arrays</b>
+      * can be configured by the property {@link #WEDGE_INTENT_EXTRA_BARCODE_DATA}.
+      * This extra name shall be used as the name argument of Intent.getSerializableExtra() to retrieve the read label of the decoded barcode.
+      * For those barcode symbologies that support concatenation, the decode data is stored in
+      * multiple byte arrays (one byte array per bar code). Clients can get data in each byte array by passing an index.</li>
+      * </ul>
+      * <p>
+      * <p>
+      * The default value is disabled.
+      * <p>
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int WEDGE_INTENT_ENABLE = 0x30D40;
      /**
-      * This parameter is the intent action name. The default value is "com.datalogic.decodewedge.decode_action". 
-      * <p>       
+      * This parameter defines the action name for the intent sent by the Decode Wedge.
+      * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}
+      * <p>
+      * The default value is "com.datalogic.decodewedge.decode_action".
+      * <p>
       * The class of the property is {@link TextProperty}.
       */
     public final static int WEDGE_INTENT_ACTION_NAME = 0x30D41;
      /**
-      * This parameter is the intent category name. The default value is "com.datalogic.decodewedge.decode_category". 
+      * This parameter defines the category name for the intent sent by the Decode Wedge.
+      * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}
+      * <p>
+      * The default value is "com.datalogic.decodewedge.decode_category".
       * <p>       
       * The class of the property is {@link TextProperty}.
       */
     public final static int WEDGE_INTENT_CATEGORY_NAME = 0x30D42;
      /**
-      * This parameter indicates the method by which the intent is delivered.
+      * This parameter defines the method used to deliver the intent.
+      * It can be a Broadcast, StartActivity or StartService intent.
+      * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}
+      * <p>
+      * The default value is Broadcast intent.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link IntentDeliveryMode}. 
       */
     public final static int WEDGE_INTENT_DELIVERY_MODE = 0x30D43;
      /**
-      * This parameter indicates the corresponding intent extra tag, associated to a byte array containing the read label. The default value is EXTRA_BARCODE_DATA. 
-      * <p>       
+      * This parameter defines the name of the extra field of the Decode Wedge intent containing the read label of the decoded barcode as extra value (as list of byte arrays).
+      * <p>
+      * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}.
+      * <p>
+      * This extra name shall be used as the name argument of Intent.getSerializableExtra() to retrieve the read label of the decoded barcode.
+      * The extra value is a byte array containing one or more read labels.
+      * For those barcode symbologies that support concatenation, the decode data is stored in
+      * multiple byte arrays (one byte array per bar code). Clients can get data in each byte array by passing an index.
+      * <p>
+      * The default value is "com.datalogic.decode.intentwedge.barcode_data".
+      * <p>
       * The class of the property is {@link TextProperty}.
       */
     public final static int WEDGE_INTENT_EXTRA_BARCODE_DATA = 0x30D44;
-     /**
-      * This parameter indicates the corresponding intent extra tag, associated to a string containing the type of read label. The default value is EXTRA_BARCODE_TYPE.   
-      * <p>       
-      * The class of the property is {@link TextProperty}.
-      */
+    /**
+     * This parameter defines the name of the extra field of the Decode Wedge intent containing the symbology of the decoded barcode as extra value.
+     * <p>
+     * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}.
+     * <p>
+     * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the symbology of the decoded barcode.
+     * The extra value is a String containing the symbology of the decoded barcode.
+     * <p>
+     * The default value is "com.datalogic.decode.intentwedge.barcode_type".
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
     public final static int WEDGE_INTENT_EXTRA_BARCODE_TYPE = 0x30D45;
-     /**
-      * This parameter indicates the corresponding intent extra tag, associated to a string containing the read label. The default value is EXTRA_BARCODE_STRING. 
-      * <p>       
-      * The class of the property is {@link TextProperty}.
-      */
+    /**
+     * This parameter defines the name of the extra field of the Decode Wedge intent containing the read label of the decoded barcode as extra value (as String).
+     * <p>
+     * It takes effect if the Decode Wedge is properly configured according to the property {@link #WEDGE_INTENT_ENABLE}.
+     * <p>
+     * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the read label of the decoded barcode.
+     * The extra value is a String containing one or more read labels.
+     * For those barcode symbologies that support concatenation, the read labels are concatenated and sent as a single string.
+     * <p>
+     * The default value is "com.datalogic.decode.intentwedge.barcode_string".
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
     public final static int WEDGE_INTENT_EXTRA_BARCODE_STRING = 0x30D46;
      /**
       * This parameter enables the Decode Wedge capability for direct web browsing. 
