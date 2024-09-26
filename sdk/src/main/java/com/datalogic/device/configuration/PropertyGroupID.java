@@ -186,6 +186,11 @@ public class PropertyGroupID {
     public static final int KEYBOARD_PTT_GROUP = KEYBOARD_MIB_BASE + 0x0004;
 
     /**
+     * Root of Keyboard action in suspend properties.
+     */
+    public static final int KEYBOARD_PHYSICAL_TRIGGER_ACTION_IN_SUSPEND = KEYBOARD_MIB_BASE + 0x0005;
+
+    /**
      * Root of the subtree of the Cradle properties.
      */
     public static final int CRADLE_GROUP = CRADLE_MIB_BASE + 0x0001;

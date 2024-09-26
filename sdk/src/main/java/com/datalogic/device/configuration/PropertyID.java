@@ -304,7 +304,12 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_SENSITIVITY} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_VIBRATION} </li>
  *                  <li> {@link #KEYBOARD_PTT_TRIGGER} </li>
- *               </ul>
+ *                  <li> {@link #KEYBOARD_LEFT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_RIGHT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                </ul>
  *            </details>
  *            </li>
  *            <li>
@@ -1042,6 +1047,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #ILLUMINATION_TIME} </li>
  *                             <li> {@link #ENHANCE_DOF_ENABLE} </li>
  *                             <li> {@link #IMAGE_DECODE_TIMEOUT} </li>
+ *                             <li> {@link #ENABLE_SCANNER} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -2426,6 +2432,156 @@ public class PropertyID {
      */
     public final static int KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x0013;
 
+    /**
+     * This parameter defines the behaviour of Left Trigger button when the device is in suspend mode.
+     * This takes effect only if the Left Trigger is enabled ({@link #KEYBOARD_LEFT_TRIGGER})
+     * and it has been configured as wakeup source ({@link #POWER_WAKEUP_LEFT_TRIGGER}).
+     * <p>
+     * If this property is disabled, when the Left Trigger button is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user shall press the button again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the Left Trigger button is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user is required to press the button just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_LEFT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0014;
+
+    /**
+     * This parameter defines the behaviour of Right Trigger button when the device is in suspend mode.
+     * This takes effect only if the Right Trigger is enabled ({@link #KEYBOARD_RIGHT_TRIGGER})
+     * and it has been configured as wakeup source ({@link #POWER_WAKEUP_RIGHT_TRIGGER}).
+     * <p>
+     * If this property is disabled, when the Right Trigger button is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user shall press the button again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the Right Trigger button is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user is required to press the button just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_RIGHT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0015;
+
+    /**
+     * This parameter defines the behaviour of Pistol Trigger button when the device is in suspend mode.
+     * This takes effect only if the Pistol Trigger is enabled ({@link #KEYBOARD_PISTOL_TRIGGER})
+     * and it has been configured as wakeup source ({@link #POWER_WAKEUP_PISTOL_TRIGGER}).
+     * <p>
+     * If this property is disabled, when the Pistol Trigger button is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user shall press the button again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the Pistol Trigger button is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user is required to press the button just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_PISTOL_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0016;
+
+    /**
+     * This parameter defines the behaviour of Front Trigger button when the device is in suspend mode.
+     * This takes effect only if the Front Trigger is enabled ({@link #KEYBOARD_FRONT_TRIGGER})
+     * and it has been configured as wakeup source ({@link #POWER_WAKEUP_FRONT_TRIGGER}).
+     * <p>
+     * If this property is disabled, when the Front Trigger button is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user shall press the button again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the Front Trigger button is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user is required to press the button just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0017;
+
+    /**
+     * This parameter defines the behaviour of PTT Trigger button when the device is in suspend mode.
+     * This takes effect only if the PTT Trigger is enabled ({@link #KEYBOARD_PTT_TRIGGER})
+     * and it has been configured as wakeup source ({@link #POWER_WAKEUP_PTT_TRIGGER}).
+     * <p>
+     * If this property is disabled, when the PTT Trigger button is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user shall press the button again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the PTT Trigger button is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action (e.g. decoding as default),
+     * the user is required to press the button just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0018;
+
    /**
      * This parameter is the Device Name base part. The whole Device Name is obtained adding the suffix specified by {@link #DEVICE_NAME_SUFFIX}.
      * The set to an empty String is refused if {@link #DEVICE_NAME_SUFFIX} has value {@link DeviceNameSuffix#NONE}.
@@ -2915,6 +3071,19 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int HEX_FORMAT = 0x0071;
+    /**
+     * This parameter enables scanner decoding.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ENABLE_SCANNER = 0x0072;
+    /**
+     * @hide
+     * This parameter set after how many frame the scanner tries decoding ignoring hardware accelleration.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int HW_ACCELERATION_FRAME_TO_SKIP = 0x0073;
 
     //
     // Code 39 definitions

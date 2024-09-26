@@ -15,15 +15,23 @@ package com.datalogic.decode.configuration;
  * <td>REMOVE</td>
  * <td>Remove ECI escape sequence</td>
  * </tr>
+ * <tr>
+ * <td>EVALUATE</td>
+ * <td>Evaluate ECI Identifier to encode barcode data</td>
+ * </tr>
  * </table>
  */
 public enum ECIPolicy {
-    /**
-     * Transmit ECI escape sequence
-     */
+	/**
+	 * Transmit ECI escape sequence
+	 */
 	TRANSMIT,
-    /**
-     * Remove ECI escape sequence
-     */
-	REMOVE;
+	/**
+	 * Remove ECI escape sequence
+	 */
+	REMOVE,
+	/**
+	 * Evaluate ECI Identifier to encode barcode data
+	 */
+	EVALUATE;
 }

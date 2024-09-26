@@ -258,6 +258,14 @@ public class PropertyID {
          * This parameter enables to format the read data as a readable hexadecimal string. Ignores other formatting options.
          */
 	public final static int HEX_FORMAT = 0x0071;
+        /**
+         * This parameter enables scanner decoding.
+         */
+	public final static int ENABLE_SCANNER = 0x0072;
+	/**
+	 * @hide
+	 */
+	public final static int HW_ACCELERATION_FRAME_TO_SKIP = 0x0073;
 
 	//
 	// Code 39 definitions

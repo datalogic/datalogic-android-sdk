@@ -115,6 +115,11 @@ public class ScannerOptions extends PropertyGroup {
 	public NumericProperty imageDecodeTimeout;
 
 	/**
+	 * <code>enableScanner</code> enables scanner decoding.
+	 */
+	public BooleanProperty enableScanner;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 
