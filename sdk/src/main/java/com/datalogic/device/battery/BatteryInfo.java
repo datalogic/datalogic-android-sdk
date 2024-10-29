@@ -86,7 +86,11 @@ public enum BatteryInfo {
 	/**
 	 * The battery product number as set internally in the battery pack by the manufacturer. The value type of this property is <code>String</code>.
 	 */
-	PRODUCT_NUMBER;
+	PRODUCT_NUMBER,
+	/**
+	 * The version of the firmware loaded inside the gauge. The value type of this property is <code>String</code>.
+	 */
+	FIRMWARE_VERSION;
 
 	/**
 	 * Converts the BatteryInfo to its integer corresponding value.

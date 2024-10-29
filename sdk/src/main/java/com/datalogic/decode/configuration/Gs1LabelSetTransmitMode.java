@@ -13,16 +13,19 @@ package com.datalogic.decode.configuration;
  * <tr>
  * <td>FIRST_LABEL</td>
  * <td>Send only the first GS1 label found with a given GTIN.
- * The same label can be sent if the double read timeout has expired without decoding it.</td>
+ * The same label can be sent if the double read timeout has expired without decoding it.
+ * This is known as software Mode 1 by the GS1 specification.</td>
  * </tr>
  * <tr>
  * <td>ALL_LABELS</td>
  * <td>Send all the labels found with a given GTIN, adding a prefix to identify the same label set.
- * The same label set can be sent if the double read timeout has expired without decoding it.</td>
+ * The same label set can be sent if the double read timeout has expired without decoding it.
+ * This is known as software Mode 3 by the GS1 specification.</td>
  * </tr>
  * <tr>
  * <td>PRIORITIZE_2D_LABEL</td>
- * <td>Send 2D label with a given GTIN if decoded, otherwise send the 1D label if found and if the double read timeout has expired.</td>
+ * <td>Send 2D label with a given GTIN if decoded, otherwise send the 1D label if found and if the double read timeout has expired.
+ * This is known as software Mode 2 by the GS1 specification.</td>
  * </tr>
  * </table>
  */
@@ -34,15 +37,18 @@ public enum Gs1LabelSetTransmitMode {
 	/**
 	 * Send only the first GS1 label found with a given GTIN.
 	 * The same label can be sent if the double read timeout has expired without decoding it.
+	 * This is known as software Mode 1 by the GS1 specification.
 	 */
 	FIRST_LABEL,
 	/**
 	 * Send all the labels found with a given GTIN, adding a prefix to identify the same label set.
 	 * The same label set can be sent if the double read timeout has expired without decoding it.
+	 * This is known as software Mode 3 by the GS1 specification.
 	 */
 	ALL_LABELS,
 	/**
 	 * Send 2D label with a given GTIN if decoded, otherwise send the 1D label if found and if the double read timeout has expired.
+	 * This is known as software Mode 2 by the GS1 specification.
 	 */
 	PRIORITIZE_2D_LABEL;
 }

@@ -39,6 +39,18 @@ public class IntentWedge extends PropertyGroup {
 	public final static String EXTRA_BARCODE_STRING = "com.datalogic.decode.intentwedge.barcode_string";
 
 	/**
+	 * When the IntentWedge is sent to a listening application, the decoded label user id is dispatched
+	 * under a specific String extra with the following name, by default.
+	 */
+	public final static String EXTRA_BARCODE_USER_ID = "com.datalogic.decode.intentwedge.barcode_user_id";
+
+	/**
+	 * When the IntentWedge is sent to a listening application, the decoded label AIM id is dispatched
+	 * under a specific String extra with the following name, by default.
+	 */
+	public final static String EXTRA_BARCODE_AIM_ID = "com.datalogic.decode.intentwedge.barcode_aim_id";
+
+	/**
 	 * <code>enable</code> sets the intent mode.
 	 */
 	public BooleanProperty enable;
@@ -78,6 +90,25 @@ public class IntentWedge extends PropertyGroup {
 	 * The default value is {@link IntentWedge#EXTRA_BARCODE_STRING}.
 	 */
 	public TextProperty extraBarcodeString;
+
+	/**
+	 * <code>excludeEmptyValues</code> is set to true to exclude the empty strings in the intent wedge fields.
+	 * This considers all extras' names and the category, while the action is always included in the intent.
+	 * The default value is false.
+	 */
+	public BooleanProperty excludeEmptyValues;
+
+	/**
+	 * <code>extraBarcodeUserId</code> indicates the corresponding intent extra tag, associated to a string containing the user id of the read label.
+	 * The default value is {@link IntentWedge#EXTRA_BARCODE_USER_ID}.
+	 */
+	public TextProperty extraBarcodeUserId;
+
+	/**
+	 * <code>extraBarcodeAimId</code> indicates the corresponding intent extra tag, associated to a string containing the AIM id of the read label.
+	 * The default value is {@link IntentWedge#EXTRA_BARCODE_AIM_ID}.
+	 */
+	public TextProperty extraBarcodeAimId;
 
 	/**
 	 * This is the constructor of IntentWedge. All options are initialized by

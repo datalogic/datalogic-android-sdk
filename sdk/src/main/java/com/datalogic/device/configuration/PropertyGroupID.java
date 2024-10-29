@@ -50,6 +50,10 @@ public class PropertyGroupID {
     protected final static int DEVICE_MIB_BASE = 17<<18;
     /** @hide */
     protected final static int PROFILES_MIB_BASE = 18<<18;
+    /** @hide */
+    protected final static int UX_SETTINGS_MIB_BASE = 19<<18;
+    /** @hide */
+    protected final static int SYSTEM_MIB_BASE = 20<<18;
 
     /**
       * Root of the configuration tree.
@@ -157,6 +161,8 @@ public class PropertyGroupID {
      * Root of the subtree of battery charging mode properties.
      */
     public final static int POWER_CHARGING_MODE_GROUP = POWER_MIB_BASE + 0x0006;
+
+
     /**
      * Root of the subtree of the Developer Options properties.
      */
@@ -179,7 +185,6 @@ public class PropertyGroupID {
      * Root of the subtree of the Keyboard Advanced Settings properties.
      */
     public static final int KEYBOARD_ADVANCED_GROUP = KEYBOARD_MIB_BASE + 0x0003;
-
     /**
      * Root of Keyboard Push-to-Talk properties.
      */
@@ -405,7 +410,6 @@ public class PropertyGroupID {
      */
     public final static int GS1_128_GROUP = SCANNER_MIB_BASE + 0x0030;
 
-
     /**
      * Root of the subtree of the Austarlian Postal Code symbology properties.
      */
@@ -479,18 +483,29 @@ public class PropertyGroupID {
     public final static int RF_GROUP = RF_MIB_BASE + 0x0001;
 
     /**
+     * Root of the subtree of bluetooth's properties.
+     */
+    public final static int BLUETOOTH_GROUP = BLUETOOTH_MIB_BASE;
+
+    /**
      * Root of the subtree of Device Information's properties.
      */
     public final static int DEVICE_INFO_GROUP = DEVICE_MIB_BASE + 0x0001;
-    
+
     /**
      * Root of the subtree of policies' management properties.
      */
     public final static int PROFILES_GROUP = PROFILES_MIB_BASE + 0x0001;
+
     /**
-     * Root of the subtree of bluetooth's properties.
+     * Root of the subtree of UX Settings properties.
      */
-    public final static int BLUETOOTH_GROUP = BLUETOOTH_MIB_BASE;
+    public final static int UX_SETTINGS_GROUP = UX_SETTINGS_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of System properties.
+     */
+    public final static int SYSTEM_GROUP = SYSTEM_MIB_BASE + 0x0001;
 
     /**
      * @hide

@@ -1,13 +1,13 @@
 package com.datalogic.device.app;
 
-
 import android.content.Context;
 import java.util.ArrayList;
 import com.datalogic.device.ErrorManager;
-
+import java.util.List;
+import android.app.NotificationChannel;
 
 /**
- * <code>AppManager</code> gives developers the ability to manage installed apllications.
+ * <code>AppManager</code> gives developers the ability to manage installed applications.
  * <p>
  */
 public class AppManager {
@@ -224,5 +224,65 @@ public class AppManager {
     public int setStatusBarDisabled(boolean disabled) {
         return 0;
     }
+
+    /**
+     * Call this method to get the list of <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a> defined by a given application. <br>
+     * This method is usefull to know the <a href="https://developer.android.com/reference/android/app/NotificationChannel#getId()">NotificationChannel identifier</a> to be used in {@link #enableNotificationChannels}.
+     * <br>
+     * <a href="https://developer.android.com/reference/android/app/NotificationChannel#getName()">NotificationChannel name</a> is the name, localized, used as label to show the NotificationChannel on the Android Settings..
+     * <br>
+     * @param packageName
+     *            <code>String</code> The package name of the application whose <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a> is given back.
+     * @param notificationChannels
+     *            <code>List<<a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a>></code> <br> Call the method passing an empty list. In output the list will contains the <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a>s defined by the given app.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int getNotificationChannels(String packageName, List<NotificationChannel> notificationChannels) {
+        return 0;
+    }
+
+    /**
+     * Call this method to enable/disable the specified list of <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a>s of a given application. <br>
+     * The NotificationChannels are specified using their <a href="https://developer.android.com/reference/android/app/NotificationChannel#getId()">identifier</a>.<br>
+     * To enable/disable all the NotificationChannels of an app use as value of the parameter notificationChannels the regular expression "^(?:[\\w| ]*)$". <br>
+     * <b>To disable all the NotificationChannels of the Clock app:
+     * <pre>
+     * AppManager appmanager = new AppManager(this);
+     * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:[\\w| ]*)$", false);
+     * </pre>
+     * <b>To disable the NotificationChannels Bedtime, Timers, Firing alarms & timers, Missed alarms of the Clock app:
+     * <pre>
+     * AppManager appmanager = new AppManager(this);
+     * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:Bedtime|Timers|Firing|Missed Alarms)$", false);
+     * </pre>
+     * The identifier of the NotificationChannels are obtained getting the list of all the NotificationChannels of the app and looking, in the returned list, for their identifier.
+     * <pre>
+     * AppManager appmanager = new AppManager(this);
+     * List<NotificationChannel> channels = new ArrayList<NotificationChannel>();
+     * int result = appmanager.getNotificationChannels("com.google.android.deskclock", channels);
+     * for (NotificationChannel channel : channels) {
+     *    Log.d(TAG, "channel=" + channel.getId());
+     * } 
+     * </pre>
+     * <br>
+     * @param packageName
+     *            <code>String</code> The package name of the application whose NotificationChannels are to be enabled/disabled.
+     * @param notificationChannels
+     *            <code>String</code> Regular expression that lists the identifiers of the NotificationChannels to be enabled/disabled.
+     * @param enabled
+     *            <code>boolean</code> False to disable the notification channels, true to enable the notification channels with the
+     *            importance defined when the channel was created.
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int enableNotificationChannels(String packageName, String notificationChannels, boolean enabled) {
+        return 0;
+    }
+
 
 }

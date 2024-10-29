@@ -1524,9 +1524,21 @@ public class PropertyID {
 	  * This parameter indicates the corresponding intent extra tag, associated to a string containing the read label. The default value is EXTRA_BARCODE_STRING. 
 	  */
 	public final static int WEDGE_INTENT_EXTRA_BARCODE_STRING = 0x30D46;
-	 /**
-	  * This parameter enables the Decode Wedge capability for direct web browsing. 
-	  */
+        /**
+         * This parameter indicates if the empty intent values have to be excluded.
+         */
+	public final static int WEDGE_INTENT_EXCLUDE_EMPTY_VALUES = 0x30D47;
+        /**
+         * This parameter indicates the corresponding intent extra tag, associated to a string containing the barcode user ID. The default value is EXTRA_BARCODE_USER_ID.
+         */
+	public final static int WEDGE_INTENT_EXTRA_BARCODE_USER_ID = 0x30D48;
+        /**
+         * This parameter indicates the corresponding intent extra tag, associated to a string containing the barcode aim ID. The default value is EXTRA_BARCODE_AIM_ID.
+         */
+	public final static int WEDGE_INTENT_EXTRA_BARCODE_AIM_ID = 0x30D49;
+        /**
+         * This parameter enables the Decode Wedge capability for direct web browsing. 
+         */
 	public final static int WEDGE_WEB_ENABLE = 0x30E40;
 
 	//

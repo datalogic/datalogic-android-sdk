@@ -3,7 +3,7 @@ package com.datalogic.device.configuration;
 import java.util.*;
 
 /**
- * <code>StringArrayBlob</code> implements the {@code SerializableBlob} that manages the list of {@code String}.
+ * <code>StringArrayBlob</code> implements the {@code SerializableBlob} that manages a list of {@code String}.
  */
 public class StringArrayBlob extends SerializableBlob implements Iterable<String> {
     /**

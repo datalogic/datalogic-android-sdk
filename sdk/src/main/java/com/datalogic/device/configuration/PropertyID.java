@@ -97,389 +97,7 @@ import com.datalogic.device.*;
  *   <details open>
  *   <summary>ROOT</summary>
  *   <ul>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#WIFI_GROUP}</summary>
- *         <ul>
- *         <li>
- *         <details>
- *             <summary> {@link PropertyGroupID#WIFI_MODULE_SETTINGS_GROUP}</summary>
- *             <ul>
- *                 <li> {@link #WIFI_802_DOT_11_MODE} </li>
- *                 <li> {@link #WIFI_BAND_SELECTION} </li>
- *                 <li> {@link #WIFI_BAND} </li>
- *                 <li> {@link #WIFI_POWER_SAVE} </li>
- *                 <li> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
- *                 <li> {@link #WIFI_MAC_RANDOMIZATION} </li>
- *                 <li> {@link #WIFI_NO_INTERNET_EXPECTED} </li>
- *                 <li>
- *                 <details>
- *                     <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP}</summary>
- *                     <ul>
- *                         <li> {@link #WIFI_COUNTRY_CODE} </li>
- *                         <li> {@link #WIFI_UNLOCK_CHANNELS} </li>
- *                         <li>
- *                         <details>
- *                             <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_2_4GHZ}</summary>
- *                             <ul>
- *                                 <li> {@link #WIFI_CHANNEL_1} </li>
- *                                 <li> {@link #WIFI_CHANNEL_2} </li>
- *                                 <li> {@link #WIFI_CHANNEL_3} </li>
- *                                 <li> {@link #WIFI_CHANNEL_4} </li>
- *                                 <li> {@link #WIFI_CHANNEL_5} </li>
- *                                 <li> {@link #WIFI_CHANNEL_6} </li>
- *                                 <li> {@link #WIFI_CHANNEL_7} </li>
- *                                 <li> {@link #WIFI_CHANNEL_8} </li>
- *                                 <li> {@link #WIFI_CHANNEL_9} </li>
- *                                 <li> {@link #WIFI_CHANNEL_10} </li>
- *                                 <li> {@link #WIFI_CHANNEL_11} </li>
- *                                 <li> {@link #WIFI_CHANNEL_12} </li>
- *                                 <li> {@link #WIFI_CHANNEL_13} </li>
- *                             </ul>
- *                         </details>
- *                         </li>
- *                         <li>
- *                         <details>
- *                             <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_5GHZ}</summary>
- *                             <ul>
- *                                 <li> {@link #WIFI_CHANNEL_36} </li>
- *                                 <li> {@link #WIFI_CHANNEL_40} </li>
- *                                 <li> {@link #WIFI_CHANNEL_44} </li>
- *                                 <li> {@link #WIFI_CHANNEL_48} </li>
- *                                 <li> {@link #WIFI_CHANNEL_52} </li>
- *                                 <li> {@link #WIFI_CHANNEL_56} </li>
- *                                 <li> {@link #WIFI_CHANNEL_60} </li>
- *                                 <li> {@link #WIFI_CHANNEL_64} </li>
- *                                 <li> {@link #WIFI_CHANNEL_100} </li>
- *                                 <li> {@link #WIFI_CHANNEL_104} </li>
- *                                 <li> {@link #WIFI_CHANNEL_108} </li>
- *                                 <li> {@link #WIFI_CHANNEL_112} </li>
- *                                 <li> {@link #WIFI_CHANNEL_116} </li>
- *                                 <li> {@link #WIFI_CHANNEL_120} </li>
- *                                 <li> {@link #WIFI_CHANNEL_124} </li>
- *                                 <li> {@link #WIFI_CHANNEL_128} </li>
- *                                 <li> {@link #WIFI_CHANNEL_132} </li>
- *                                 <li> {@link #WIFI_CHANNEL_136} </li>
- *                                 <li> {@link #WIFI_CHANNEL_140} </li>
- *                                 <li> {@link #WIFI_CHANNEL_144} </li>
- *                                 <li> {@link #WIFI_CHANNEL_149} </li>
- *                                 <li> {@link #WIFI_CHANNEL_153} </li>
- *                                 <li> {@link #WIFI_CHANNEL_157} </li>
- *                                 <li> {@link #WIFI_CHANNEL_161} </li>
- *                                 <li> {@link #WIFI_CHANNEL_165} </li>
- *                                 <li> {@link #WIFI_CHANNEL_169} </li>
- *                                 <li> {@link #WIFI_CHANNEL_173} </li>
- *                             </ul>
- *                         </details>
- *                         </li>
- *                     </ul>
- *                 </details>
- *                 </li>
- *             </ul>
- *         </details>
- *         </li>
- *         <li>
- *         <details>
- *              <summary> {@link PropertyGroupID#WIFI_ROAMING_SETTINGS_GROUP}</summary>
- *             <ul>
- *                 <li> {@link #WIFI_ROAMING_PROFILE} </li>
- *                 <li> {@link #WIFI_ROAMING_RSSI_THRESHOLD} </li>
- *                 <li> {@link #WIFI_ROAMING_RSSI_DIFFERENCE} </li>
- *                 <li> {@link #WIFI_ROAMING_RETRY_TIMES} </li>
- *                 <li> {@link #WIFI_ROAMING_RECALCULATION_INTERVAL} </li>
- *                 <li> {@link #WIFI_ROAMING_BEACON_PERIOD} </li>
- *                 <li> {@link #WIFI_BSSID_SCAN_STABLE_TIME} </li>
- *             </ul>
- *         </details>
- *         </li>
- *         <li>
- *         <details>
- *             <summary> {@link PropertyGroupID#WIFI_SCAN_SETTINGS_GROUP}</summary>
- *             <ul>
- *                 <li>
- *                 <details>
- *                     <summary> {@link PropertyGroupID#WIFI_SCAN_TIMINGS_GROUP}</summary>
- *                     <ul>
- *                         <li> {@link #WIFI_SCAN_INTERVAL} </li>
- *                         <li> {@link #WIFI_SCAN_INTERVAL_MAX} </li>
- *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL} </li>
- *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX} </li>
- *                     </ul>
- *                 </details>
- *                 </li>
- *             </ul>
- *         </details>
- *         </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#DATE_AND_TIME_GROUP}</summary>
- *         <ul>
- *            <li> {@link #DATE_AND_TIME_AUTO_TIME} </li>
- *            <li> {@link #DATE_AND_TIME_AUTO_TIME_ZONE} </li>
- *            <li> {@link #DATE_AND_TIME_TIMEZONE_ID} </li>
- *            <li> {@link #DATE_AND_TIME_TIME_24H_FORMAT} </li>
- *            <li> {@link #DATE_AND_TIME_NTP_SERVER} </li>
- *            <li> {@link #DATE_AND_TIME_NTP_SERVER_2} </li>
- *            <li> {@link #DATE_AND_TIME_NTP_TIMEOUT} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#POWER_GROUP}</summary>
- *         <ul>
- *            <li> {@link #POWER_SOURCE_USB} </li>
- *         </ul>
- *         <ul>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#POWER_OFF_CHARGING_MODE_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #POWER_OFF_CHARGING_MODE_THRESHOLD} </li>
- *                  <li> {@link #POWER_OFF_CHARGING_MODE_POLICY} </li>
- *               </ul>
- *            </details>
- *            </li>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#POWER_CHARGING_MODE_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE} </li>
- *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE_PERSISTENCE_POLICY} </li>
- *                  <li> {@link #POWER_CHARGING_SOURCES} </li>
- *               </ul>
- *            </details>
- *            </li>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#POWER_SUSPEND_TIMEOUT_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #POWER_SUSPEND_EXTERNAL_TIMEOUT} </li>
- *                  <li> {@link #POWER_SUSPEND_INTERNAL_TIMEOUT} </li>
- *               </ul>
- *            </details>
- *            </li>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#POWER_WAKEUP_SOURCES_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #POWER_WAKEUP_POWER_IN} </li>
- *                  <li> {@link #POWER_WAKEUP_LEFT_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_RIGHT_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_PISTOL_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_FRONT_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_WIFI} </li>
- *                  <li> {@link #POWER_WAKEUP_WWAN} </li>
- *                  <li> {@link #POWER_WAKEUP_ACCELEROMETER} </li>
- *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
- *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
- *               </ul>
- *            </details>
- *            </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#KEYBOARD_GROUP}</summary>
- *         <ul>
- *            <li> {@link #KEYBOARD_LOCK_INPUT} </li>
- *         </ul>
- *         <ul>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#KEYBOARD_TRIGGERS_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #KEYBOARD_LEFT_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_RIGHT_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_FRONT_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER_RANGE} </li>
- *                  <li> {@link #KEYBOARD_MOTION_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_SENSITIVITY} </li>
- *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_VIBRATION} </li>
- *                  <li> {@link #KEYBOARD_PTT_TRIGGER} </li>
- *                  <li> {@link #KEYBOARD_LEFT_TRIGGER_ACTION_IN_SUSPEND} </li>
- *                  <li> {@link #KEYBOARD_RIGHT_TRIGGER_ACTION_IN_SUSPEND} </li>
- *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_ACTION_IN_SUSPEND} </li>
- *                  <li> {@link #KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND} </li>
- *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
- *                </ul>
- *            </details>
- *            </li>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#KEYBOARD_ADVANCED_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #KEYBOARD_BACKLIGHT} </li>
- *                  <li> {@link #KEYBOARD_BACKLIGHT_BRIGHTNESS} </li>
- *                  <li> {@link #KEYBOARD_BACKLIGHT_TIMEOUT} </li>
- *                  <li> {@link #KEYBOARD_MULTITAP_DELAY} </li>
- *               </ul>
- *            </details>
- *            </li>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#KEYBOARD_PTT_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS} </li>
- *                  <li> {@link #KEYBOARD_PTT_ACTIVE_WT_PACKAGE} </li>
- *                  <li> {@link #KEYBOARD_PTT_NOTIFICATION_ENABLED} </li>
- *                  <li> {@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED} </li>
- *               </ul>
- *            </details>
- *            </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#CRADLE_GROUP}</summary>
- *         <ul>
- *            <li> {@link #CRADLE_FW_UPDATE_POLICY} </li>
- *            <li> {@link #CRADLE_UNLOCK_POLICY} </li>
- *            <li> {@link #CRADLE_UNLOCK_KEY_POLICY} </li>
- *            <li> {@link #CRADLE_FAILURE_POLICY} </li>
- *            <li> {@link #CRADLE_UNLOCK_NOTIFICATION_POLICY} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#USB_GROUP}</summary>
- *         <ul>
- *            <li> {@link #USB_DATA} </li>
- *            <li> {@link #USB_DEFAULT_FUNCTION} </li>
- *            <li> {@link #USB_CURRENT_FUNCTION} </li>
- *            <li> {@link #USB_CLIENT_DATA} </li>
- *            <li> {@link #USB_HOST_DATA} </li>
- *            <li> {@link #USB_HOST_WHITELISTING} </li>
- *            <li> {@link #USB_PREDEFINED_HOST_WHITELISTING} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#ETHERNET_GROUP}</summary>
- *         <ul>
- *            <li> {@link #ETHERNET_ENABLED} </li>
- *         </ul>
- *         <ul>
- *            <li>
- *            <details>
- *               <summary> {@link PropertyGroupID#ETHERNET_SETTINGS_GROUP}</summary>
- *               <ul>
- *                  <li> {@link #ETHERNET_USE_DHCP} </li>
- *                  <li> {@link #ETHERNET_STATIC_ADDRESS} </li>
- *                  <li> {@link #ETHERNET_GATEWAY_ADDRESS} </li>
- *                  <li> {@link #ETHERNET_SUBNET_PREFIX_LENGTH} </li>
- *                  <li> {@link #ETHERNET_DNS1_ADDRESS} </li>
- *                  <li> {@link #ETHERNET_DNS2_ADDRESS} </li>
- *                  <li> {@link #ETHERNET_PROXY_ENABLED} </li>
- *                  <li> {@link #ETHERNET_PROXY_HOSTNAME} </li>
- *                  <li> {@link #ETHERNET_PROXY_PORT} </li>
- *                  <li> {@link #ETHERNET_PROXY_BYPASS} </li>
- *               </ul>
- *            </details>
- *            </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#DUAL_SIM_GROUP}</summary>
- *         <ul>
- *            <li> {@link #DUALSIM_AVAILABLE} </li>
- *            <li> {@link #DUALSIM_SIM1_ENABLE} </li>
- *            <li> {@link #DUALSIM_SIM2_ENABLE} </li>
- *            <li> {@link #DUALSIM_CURRENT_DATA} </li>
- *            <li> {@link #DUALSIM_CURRENT_CALLS} </li>
- *            <li> {@link #DUALSIM_CURRENT_SMS} </li>
- *            <li> {@link #DUALSIM_PREFERRED_DATA} </li>
- *            <li> {@link #DUALSIM_PREFERRED_CALLS} </li>
- *            <li> {@link #DUALSIM_PREFERRED_SMS} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#BLUETOOTH_GROUP}</summary>
- *         <ul>
- *            <li> {@link #BT_DISCOVERABILITY} </li>
- *            <li> {@link #BT_PAIRING_POLICY} </li>
- *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE} </li>
- *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#TOUCH_GROUP}</summary>
- *         <ul>
- *            <li> {@link #TOUCH_LOCK_INPUT} </li>
- *            <li> {@link #TOUCH_MODE_SENSITIVITY} </li>
- *            <li> {@link #TOUCH_MODE} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#UI_SETTINGS_GROUP}</summary>
- *         <ul>
- *            <li> {@link #STATUS_BAR_HIDDEN} </li>
- *         </ul>
- *         <ul>
- *            <li> {@link #NAVIGATION_BAR_HIDDEN} </li>
- *         </ul>
- *     </details>
- *     </li> 
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#DEVELOPER_OPTIONS_GROUP}</summary>
- *         <ul>
- *            <li> {@link #USB_DEBUG_ENABLE} </li>
- *         </ul>
- *         <ul>
- *            <li> {@link #WIFI_DEBUG_ENABLE} </li>
- *         </ul>
- *         <ul>
- *            <li> {@link #LOGGER_BUFFER_SIZE} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#DISPLAY_GROUP}</summary>
- *         <ul>
- *            <li style="color:black" type="circle"> {@link #SCREEN_BRIGHTNESS} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#DEVICE_INFO_GROUP}</summary>
- *         <ul>
- *            <li style="color:black" type="circle"> {@link #DEVICE_NAME_BASE} </li>
- *         </ul>
- *         <ul>
- *            <li style="color:black" type="circle"> {@link #DEVICE_NAME_SUFFIX} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
- *     <details>
- *         <summary> {@link PropertyGroupID#PROFILES_GROUP}</summary>
- *         <ul>
- *            <li style="color:black" type="circle"> {@link #PROFILES_AUTO_SWITCHING_NOTIFICATION_ENABLE} </li>
- *         </ul>
- *     </details>
- *     </li>
- *     <li>
+ *       <li>
  *         <details>
  *             <summary> {@link PropertyGroupID#SCANNER_GROUP}</summary>
  *             <ul>
@@ -1127,6 +745,9 @@ import com.datalogic.device.*;
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_TYPE} </li>
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_STRING} </li>
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_DATA} </li>
+ *                             <li> {@link #WEDGE_INTENT_EXCLUDE_EMPTY_VALUES} </li>
+ *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_USER_ID} </li>
+ *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_AIM_ID} </li>
  *                             <li> {@link #WEDGE_WEB_ENABLE} </li>
  *                         </ul>
  *                     </details>
@@ -1191,15 +812,476 @@ import com.datalogic.device.*;
  *                 </li>
  *             </ul>
  *         </details>
- *     </li>      
- *  </ul>
- *  </li>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#KEYBOARD_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #KEYBOARD_LOCK_INPUT} </li>
+ *            <li> {@link #PHYSICAL_KEYBOARD_POLICY} </li>
+ *            <li> {@link #PHYSICAL_KEYBOARD_PROFILE} </li>
+ *            <li> {@link #VIRTUAL_KEYBOARD_PROFILE} </li>
+ *            <li> {@link #VIRTUAL_KEYBOARD_GBOARD_ENABLED} </li>
+ *            <li> {@link #VIRTUAL_KEYBOARD_VOICE_TYPING_ENABLED} </li>
+ *            <li> {@link #VIRTUAL_KEYBOARD_ANDROID_ENABLED} </li>
+ *            <li> {@link #VIRTUAL_KEYBOARDS_CUSTOM_ENABLED} </li>
+ *         </ul>
+ *         <ul>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#KEYBOARD_TRIGGERS_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #KEYBOARD_LEFT_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_RIGHT_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_FRONT_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER_RANGE} </li>
+ *                  <li> {@link #KEYBOARD_MOTION_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_SENSITIVITY} </li>
+ *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_VIBRATION} </li>
+ *                  <li> {@link #KEYBOARD_PTT_TRIGGER} </li>
+ *                  <li> {@link #KEYBOARD_LEFT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_RIGHT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#KEYBOARD_ADVANCED_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #KEYBOARD_BACKLIGHT} </li>
+ *                  <li> {@link #KEYBOARD_BACKLIGHT_BRIGHTNESS} </li>
+ *                  <li> {@link #KEYBOARD_BACKLIGHT_TIMEOUT} </li>
+ *                  <li> {@link #KEYBOARD_MULTITAP_DELAY} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#KEYBOARD_PTT_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS} </li>
+ *                  <li> {@link #KEYBOARD_PTT_ACTIVE_WT_PACKAGE} </li>
+ *                  <li> {@link #KEYBOARD_PTT_NOTIFICATION_ENABLED} </li>
+ *                  <li> {@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#TOUCH_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #TOUCH_LOCK_INPUT} </li>
+ *            <li> {@link #TOUCH_MODE_SENSITIVITY} </li>
+ *            <li> {@link #TOUCH_MODE} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#POWER_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #POWER_SOURCE_USB} </li>
+ *         </ul>
+ *         <ul>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_OFF_CHARGING_MODE_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_OFF_CHARGING_MODE_THRESHOLD} </li>
+ *                  <li> {@link #POWER_OFF_CHARGING_MODE_POLICY} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_CHARGING_MODE_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE} </li>
+ *                  <li> {@link #POWER_BATTERY_CHARGING_PROFILE_PERSISTENCE_POLICY} </li>
+ *                  <li> {@link #POWER_CHARGING_SOURCES} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_SUSPEND_TIMEOUT_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_SUSPEND_EXTERNAL_TIMEOUT} </li>
+ *                  <li> {@link #POWER_SUSPEND_INTERNAL_TIMEOUT} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_WAKEUP_SOURCES_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_WAKEUP_POWER_IN} </li>
+ *                  <li> {@link #POWER_WAKEUP_LEFT_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_RIGHT_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_PISTOL_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_FRONT_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_WIFI} </li>
+ *                  <li> {@link #POWER_WAKEUP_WWAN} </li>
+ *                  <li> {@link #POWER_WAKEUP_ACCELEROMETER} </li>
+ *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
+ *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#CRADLE_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #CRADLE_FW_UPDATE_POLICY} </li>
+ *            <li> {@link #CRADLE_UNLOCK_POLICY} </li>
+ *            <li> {@link #CRADLE_UNLOCK_KEY_POLICY} </li>
+ *            <li> {@link #CRADLE_FAILURE_POLICY} </li>
+ *            <li> {@link #CRADLE_UNLOCK_NOTIFICATION_POLICY} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#WIFI_GROUP}</summary>
+ *         <ul>
+ *         <li>
+ *         <details>
+ *             <summary> {@link PropertyGroupID#WIFI_MODULE_SETTINGS_GROUP}</summary>
+ *             <ul>
+ *                 <li> {@link #WIFI_802_DOT_11_MODE} </li>
+ *                 <li> {@link #WIFI_BAND_SELECTION} </li>
+ *                 <li> {@link #WIFI_BAND} </li>
+ *                 <li> {@link #WIFI_POWER_SAVE} </li>
+ *                 <li> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
+ *                 <li> {@link #WIFI_MAC_RANDOMIZATION} </li>
+ *                 <li> {@link #WIFI_NO_INTERNET_EXPECTED} </li>
+ *                 <li>
+ *                 <details>
+ *                     <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP}</summary>
+ *                     <ul>
+ *                         <li> {@link #WIFI_COUNTRY_CODE} </li>
+ *                         <li> {@link #WIFI_UNLOCK_CHANNELS} </li>
+ *                         <li>
+ *                         <details>
+ *                             <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_2_4GHZ}</summary>
+ *                             <ul>
+ *                                 <li> {@link #WIFI_CHANNEL_1} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_2} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_3} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_4} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_5} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_6} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_7} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_8} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_9} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_10} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_11} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_12} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_13} </li>
+ *                             </ul>
+ *                         </details>
+ *                         </li>
+ *                         <li>
+ *                         <details>
+ *                             <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP_5GHZ}</summary>
+ *                             <ul>
+ *                                 <li> {@link #WIFI_CHANNEL_36} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_40} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_44} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_48} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_52} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_56} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_60} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_64} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_100} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_104} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_108} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_112} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_116} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_120} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_124} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_128} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_132} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_136} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_140} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_144} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_149} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_153} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_157} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_161} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_165} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_169} </li>
+ *                                 <li> {@link #WIFI_CHANNEL_173} </li>
+ *                             </ul>
+ *                         </details>
+ *                         </li>
+ *                     </ul>
+ *                 </details>
+ *                 </li>
+ *             </ul>
+ *         </details>
+ *         </li>
+ *         <li>
+ *         <details>
+ *              <summary> {@link PropertyGroupID#WIFI_ROAMING_SETTINGS_GROUP}</summary>
+ *             <ul>
+ *                 <li> {@link #WIFI_ROAMING_PROFILE} </li>
+ *                 <li> {@link #WIFI_ROAMING_RSSI_THRESHOLD} </li>
+ *                 <li> {@link #WIFI_ROAMING_RSSI_DIFFERENCE} </li>
+ *                 <li> {@link #WIFI_ROAMING_RETRY_TIMES} </li>
+ *                 <li> {@link #WIFI_ROAMING_RECALCULATION_INTERVAL} </li>
+ *                 <li> {@link #WIFI_ROAMING_BEACON_PERIOD} </li>
+ *                 <li> {@link #WIFI_BSSID_SCAN_STABLE_TIME} </li>
+ *             </ul>
+ *         </details>
+ *         </li>
+ *         <li>
+ *         <details>
+ *             <summary> {@link PropertyGroupID#WIFI_SCAN_SETTINGS_GROUP}</summary>
+ *             <ul>
+ *                 <li>
+ *                 <details>
+ *                     <summary> {@link PropertyGroupID#WIFI_SCAN_TIMINGS_GROUP}</summary>
+ *                     <ul>
+ *                         <li> {@link #WIFI_SCAN_INTERVAL} </li>
+ *                         <li> {@link #WIFI_SCAN_INTERVAL_MAX} </li>
+ *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL} </li>
+ *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX} </li>
+ *                     </ul>
+ *                 </details>
+ *                 </li>
+ *             </ul>
+ *         </details>
+ *         </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#ETHERNET_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #ETHERNET_ENABLED} </li>
+ *         </ul>
+ *         <ul>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#ETHERNET_SETTINGS_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #ETHERNET_USE_DHCP} </li>
+ *                  <li> {@link #ETHERNET_STATIC_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_GATEWAY_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_SUBNET_PREFIX_LENGTH} </li>
+ *                  <li> {@link #ETHERNET_DNS1_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_DNS2_ADDRESS} </li>
+ *                  <li> {@link #ETHERNET_PROXY_ENABLED} </li>
+ *                  <li> {@link #ETHERNET_PROXY_HOSTNAME} </li>
+ *                  <li> {@link #ETHERNET_PROXY_PORT} </li>
+ *                  <li> {@link #ETHERNET_PROXY_BYPASS} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DUAL_SIM_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #DUALSIM_AVAILABLE} </li>
+ *            <li> {@link #DUALSIM_SIM1_ENABLE} </li>
+ *            <li> {@link #DUALSIM_SIM2_ENABLE} </li>
+ *            <li> {@link #DUALSIM_CURRENT_DATA} </li>
+ *            <li> {@link #DUALSIM_CURRENT_CALLS} </li>
+ *            <li> {@link #DUALSIM_CURRENT_SMS} </li>
+ *            <li> {@link #DUALSIM_PREFERRED_DATA} </li>
+ *            <li> {@link #DUALSIM_PREFERRED_CALLS} </li>
+ *            <li> {@link #DUALSIM_PREFERRED_SMS} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#BLUETOOTH_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #BT_DISCOVERABILITY} </li>
+ *            <li> {@link #BT_PAIRING_POLICY} </li>
+ *            <li> {@link #BT_SILENT_PAIRING_TRUSTED_ENABLED} </li>
+ *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE} </li>
+ *            <li> {@link #BT_SILENT_PAIRING_WHITELISTING} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#USB_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #USB_DATA} </li>
+ *            <li> {@link #USB_DEFAULT_FUNCTION} </li>
+ *            <li> {@link #USB_CURRENT_FUNCTION} </li>
+ *            <li> {@link #USB_CLIENT_DATA} </li>
+ *            <li> {@link #USB_HOST_DATA} </li>
+ *            <li> {@link #USB_HOST_WHITELISTING} </li>
+ *            <li> {@link #USB_PREDEFINED_HOST_WHITELISTING} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DATE_AND_TIME_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #DATE_AND_TIME_AUTO_TIME} </li>
+ *            <li> {@link #DATE_AND_TIME_AUTO_TIME_ZONE} </li>
+ *            <li> {@link #DATE_AND_TIME_TIMEZONE_ID} </li>
+ *            <li> {@link #DATE_AND_TIME_TIME_24H_FORMAT} </li>
+ *            <li> {@link #DATE_AND_TIME_NTP_SERVER} </li>
+ *            <li> {@link #DATE_AND_TIME_NTP_SERVER_2} </li>
+ *            <li> {@link #DATE_AND_TIME_NTP_TIMEOUT} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DEVICE_INFO_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #DEVICE_NAME_BASE} </li>
+ *            <li> {@link #DEVICE_NAME_SUFFIX} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DISPLAY_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #SCREEN_BRIGHTNESS} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#UI_SETTINGS_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #STATUS_BAR_HIDDEN} </li>
+ *            <li> {@link #STATUS_BAR_ENABLED} </li>
+ *            <li> {@link #STATUS_BAR_ON_LOCK_SCREEN_ENABLED} </li>
+ *            <li> {@link #NAVIGATION_BAR_HIDDEN} </li>
+ *            <li> {@link #RECENT_APPS_ENABLED} </li>
+ *            <li> {@link #SPLIT_SCREEN_APP_HIDDEN} </li>
+ *            <li> {@link #TASK_BAR_HIDDEN} </li>
+ *            <li> {@link #NOTIFICATION_PANEL_ON_HOME_SCREEN_ENABLED} </li>
+ *            <li> {@link #NOTIFICATION_PANEL_ON_LOCK_SCREEN_POLICY} </li>
+ *            <li> {@link #NOTIFICATION_MANAGE_BUTTON_HIDDEN} </li>
+ *            <li> {@link #NOTIFICATION_LONG_PRESS_ENABLED} </li>
+ *            <li> {@link #NOTIFICATION_MONITORED_NETWORK_HIDDEN} </li>
+ *            <li> {@link #QUICK_SETTINGS_PANEL_TILES} </li>
+ *            <li> {@link #QUICK_SETTINGS_PANEL_EDIT_HIDDEN} </li>
+ *            <li> {@link #QUICK_SETTINGS_PANEL_GEAR_HIDDEN} </li>
+ *            <li> {@link #QUICK_SETTINGS_TILES_HOTSPOT_HIDDEN} </li>
+ *            <li> {@link #QUICK_SETTINGS_TILES_AIRPLANE_MODE_HIDDEN} </li>
+ *            <li> {@link #QUICK_SETTINGS_TILES_DND_HIDDEN} </li>
+ *            <li> {@link #ANDROID_SETTINGS_SEARCH_BAR_HIDDEN} </li>
+ *            <li> {@link #HOTSPOT_SETTING_DIMMED} </li>
+ *            <li> {@link #AIRPLANE_MODE_SETTING_DIMMED} </li>
+ *            <li> {@link #DO_NOT_DISTURB_SETTING_DIMMED} </li>
+ *            <li> {@link #RESET_OPTIONS_SETTINGS_DIMMED} </li>
+ *            <li> {@link #ACCESSIBILITY_SETTINGS_DIMMED} </li>
+ *            <li> {@link #NOTIFICATION_APP_SETTINGS_DIMMED} </li>
+ *            <li> {@link #LONG_PRESS_HOME_BUTTON_SETTING_DIMMED} </li>
+ *            <li> {@link #NOTIFICATION_DOTS_SETTING_DIMMED} </li>
+ *            <li> {@link #PHYSICAL_KEYBOARD_SHORTCUTS_SETTING_DIMMED} </li>
+ *            <li> {@link #AUTO_SYNC_APP_DATA_SETTING_DIMMED} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#UX_SETTINGS_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #DESKTOP_MODE_POLICY} </li>
+ *            <li> {@link #SCREENSHOT_ENABLED} </li>
+ *            <li> {@link #ROTATION_180_ENABLED} </li>
+ *            <li> {@link #HOTSPOT_ENABLED} </li>
+ *            <li> {@link #DO_NOT_DISTURB_POLICY} </li>
+ *            <li> {@link #EMERGENCY_SOS_ENABLED} </li>
+ *            <li> {@link #QUICKLY_OPEN_CAMERA_ENABLED} </li>
+ *            <li> {@link #LONG_PRESS_HOME_BUTTON_ENABLED} </li>
+ *            <li> {@link #PHYSICAL_KEYBOARD_SHORTCUTS_ENABLED} </li>
+ *            <li> {@link #AUTO_SYNC_APP_DATA_ENABLED} </li>
+ *            <li> {@link #NOTIFICATION_DOTS_ENABLED} </li>
+ *            <li> {@link #NOTIFICATION_LED_ENABLED}</li>
+ *            <li> {@link #BATTERY_LED_ENABLED} </li>
+ *            <li> {@link #CLIPBOARD_POLICY} </li>
+ *            <li> {@link #CAPTIVE_PORTAL_POLICY} </li>
+ *            <li> {@link #CAST_ENABLED} </li>
+ *            <li> {@link #QUICKSHARE_ENABLED} </li>
+ *            <li> {@link #CHROMEBOOK_ENABLED} </li>
+ *            <li> {@link #ANDROID_AUTO_ENABLED} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#PROFILES_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #PROFILES_AUTO_SWITCHING_NOTIFICATION_ENABLE} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#SYSTEM_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #VIRTUAL_RAM_SWAP_POLICY} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#DEVELOPER_OPTIONS_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #USB_DEBUG_ENABLE} </li>
+ *            <li> {@link #WIFI_DEBUG_ENABLE} </li>
+ *            <li> {@link #LOGGER_BUFFER_SIZE} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     </details>
+ *     </li>
  *   </ul>
+
  *   </details>
  *   </li>
  * </ul>
  */
-
 
 
 public class PropertyID {
@@ -1285,7 +1367,6 @@ public class PropertyID {
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
-
     public final static int WIFI_VERBOSE_WIFI_MODULE_LOG = PropertyGroupID.WIFI_MIB_BASE + 0x0012;
     /**
       * Signal threshold for triggering the roaming background scan.
@@ -1783,8 +1864,9 @@ public class PropertyID {
       * The allowed values are defined by enum {@link OffChargingModePolicy}.
       */
     public final static int POWER_OFF_CHARGING_MODE_POLICY = PropertyGroupID.POWER_MIB_BASE + 0x0002;
-    /** 
-    *	Controls whether the USB is enabled as a power-source.
+
+   /** 
+    * Controls whether the USB is enabled as a power-source.
     */
     public final static int POWER_SOURCE_USB = PropertyGroupID.POWER_MIB_BASE + 0x0003;
 
@@ -1892,15 +1974,9 @@ public class PropertyID {
     public final static int POWER_CHARGING_SOURCES = PropertyGroupID.POWER_MIB_BASE + 0x0014;
 
     /**
-    * This parameter controls whether the push to talk button trigger can be used as device wake-up source.
-    * <p>
-    * The class of the property is {@link BooleanProperty}.
-    */
-    public final static int POWER_WAKEUP_PTT_TRIGGER = PropertyGroupID.POWER_MIB_BASE + 0x0016;
-    /**
      * Selects the battery charging profile persistence policy.
      * This parameter controls the policy for configuring the battery charging profile.
-     * Depending on this property, when the user changes the battery, that battery will be charged with the profile 
+     * Depending on this property, when the user changes the battery, that battery will be charged with the profile
      * configured by the device or the profile stored in the battery memory.
      * The behaviour is the same regardless of whether the battery is changed with a battery swap or during a device power-off.
      * <p>
@@ -1908,6 +1984,13 @@ public class PropertyID {
      * The allowed values are defined by enum {@link BatteryChargingProfilePersistencePolicy}.
      */
     public final static int POWER_BATTERY_CHARGING_PROFILE_PERSISTENCE_POLICY = PropertyGroupID.POWER_MIB_BASE + 0x0015;
+
+    /**
+    * This parameter controls whether the push to talk button trigger can be used as device wake-up source.
+    * <p>
+    * The class of the property is {@link BooleanProperty}.
+    */
+    public final static int POWER_WAKEUP_PTT_TRIGGER = PropertyGroupID.POWER_MIB_BASE + 0x0016;
 
     //
     // USB Settings definitions
@@ -1941,14 +2024,14 @@ public class PropertyID {
       * Enables/disables USB data transmission when device works as client.
       * <p>
       * The class of the property is {@link BooleanProperty}.
-     */
+      */
     public final static int USB_CLIENT_DATA = PropertyGroupID.USB_MIB_BASE + 0x0004;
     /**
      * Enables/disables USB data transmission when device works as host.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
-    public final static int USB_HOST_DATA = PropertyGroupID.USB_MIB_BASE + 0x0005;    
+    public final static int USB_HOST_DATA = PropertyGroupID.USB_MIB_BASE + 0x0005;
     /**
      * Contains the editable list of whitelisted USB devices. This list can be edited adding or removing elements through SDK or DLSettings.
      * This list survives only a reboot.
@@ -2010,7 +2093,7 @@ public class PropertyID {
      * The class of the property is {@link BlobProperty}.
      * The specific implementation for this type of blob is {@link UsbHostWhitelisting}.
      */
-    public final static int USB_PREDEFINED_HOST_WHITELISTING = PropertyGroupID.USB_MIB_BASE + 0x0007;    
+    public final static int USB_PREDEFINED_HOST_WHITELISTING = PropertyGroupID.USB_MIB_BASE + 0x0007;
 
     //
     // Cradle Settings definitions
@@ -2062,7 +2145,6 @@ public class PropertyID {
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int ETHERNET_ENABLED = PropertyGroupID.ETHERNET_MIB_BASE + 0x0001;
-
     /**
       * Controls whether the device will obtain its IP settings automatically, using DHCP,
       * or manually, by an administrator using the relevant parameters, when connecting to a network through an Ethernet-equipped cradle.
@@ -2132,7 +2214,7 @@ public class PropertyID {
     //
     /**
       * This parameter reports the availability of SIM card 1 and SIM card 2.
-      * The value is calculated by the device according to the availablity of the SIM cards, so this property cannot be set.
+      * The value is calculated by the device according to the availability of the SIM cards, so this property cannot be set.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link DualSimStatus}.
@@ -2142,14 +2224,14 @@ public class PropertyID {
       * This parameters controls the SIM card Slot 1 that can be enabled or disabled on the device.
       * When this slot is disabled, the SIM card cannot be used for voice calls, mobile data and SMS.
       * <p>
-      * The class of the property is {@link BooleanProperty}.
+      * The class of the property is {@link NumericProperty}.
       */
     public final static int DUALSIM_SIM1_ENABLE = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0002;
     /**
       * This parameters controls the SIM card Slot 2 that can be enabled or disabled on the device.
       * When this slot is disabled, the SIM card cannot be used for voice calls, mobile data and sms communication.
       * <p>
-      * The class of the property is {@link BooleanProperty}.
+      * The class of the property is {@link NumericProperty}.
       */
     public final static int DUALSIM_SIM2_ENABLE = PropertyGroupID.DUAL_SIM_MIB_BASE + 0x0003;
     /**
@@ -2223,6 +2305,7 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int TOUCH_LOCK_INPUT = PropertyGroupID.TOUCH_MIB_BASE + 0x0002;
+
     /**
      * This is the property used to configure the touch controller.
      * <p>
@@ -2249,19 +2332,887 @@ public class PropertyID {
       */
     public final static int NAVIGATION_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0002;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to notification shade.
+     * <p>
+     * Disabling the pull-down of the notification panel means preventing users from accessing the notification shade
+     * by swiping down from the top of the screen. 
+     * The notification bar, when pulled down, typically reveals notifications, quick settings, and other important information.
+     * Disabling this functionality can have several implications:
+     * <p>
+     * 1) <b>Restricting Access to Notifications</b>: Users will not be able to view incoming notifications directly from the notification shade,
+     * which might be used to prevent users to inract with them.
+     * <p>
+     * 2) <b>Limiting Quick Settings Access</b>: Quick settings for functions like Wi-Fi, Bluetooth, flashlight, and more, which are usually accessible from the pull-down menu, will be inaccessible.
+     * This can be useful in controlled environments where device settings should not be easily altered by users.
+     * <p>
+     * 3) <b>Enhancing Security</b>: it can prevent unauthorized access to certain device functions and settings when the device is locked.
+     * This setting might be used in corporate environments, on shared or public devices, or in situations where minimizing interruptions and controlling device functionality is important.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int STATUS_BAR_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0003;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to notification shade.
+     * <p>
+     * This property has the same effect of {@link #STATUS_BAR_ENABLED}, but its restriction is limited only on the lock screen.
+     * So, when the device is in home screen, the user is able to pull down the notification shade.
+     * <p>
+     * it can prevent unauthorized access to certain device functions and settings when the device is locked.
+     * This setting might be used in corporate environments, on shared or public devices, to prevent unauthorized access to notifications 
+     * or to certain device functions and settings when the device is locked.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int STATUS_BAR_ON_LOCK_SCREEN_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0004;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restric the user to pull down the Notification & Quick Settings panel.
+     * <p>
+     * Blocking the Notification Panel means preventing the ability to swipe down
+     * from the top of the screen to access the notification panel and quick settings.
+     * So, restricting the user to interact with notifications and quick access tiles for frequently settings and toggles.
+     * <p>
+     * This can be configured for ensuring controlled access to device notifications and settings on the device.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_PANEL_ON_HOME_SCREEN_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0005;
+    
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restric the user to pull down the Notification & Quick Settings panel.
+     * <p>
+     * This property has the same effect of {@link #NOTIFICATION_PANEL_ON_HOME_SCREEN_ENABLED}, but its restriction is limited only on the lock screen.
+     * So, when the device is in home screen, the user is able to pull down the notification shade.
+     * <p>
+     * it can prevent unauthorized access to certain device functions and settings when the device is locked.
+     * This setting might be used in corporate environments, on shared or public devices, to prevent unauthorized access to notifications 
+     * or to certain device functions and settings when the device is locked.
+     * <p>    
+     * <p>
+     * The class of the property is {@link NotificationPanelPolicy}.
+     */
+    public final static int NOTIFICATION_PANEL_ON_LOCK_SCREEN_POLICY = PropertyGroupID.UI_SETTINGS_GROUP + 0x0006;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to notification settings.
+     * <p>
+     * Hiding the Manage button in Notification bar pull down panel means preventing users from accessing the settings and options associated with individual notifications.
+     * The 'Manage' button typically appears when the user expand a notification, allowing the user to modify notification settings for the app that sent it.
+     * <p>
+     * Disabling this functionality means that users will not be able to directly adjust notification settings from the notification bar.
+     * They would need to go into the main Settings menu to make any changes to how notifications are handled for different apps.
+     * This restriction can be used to ensure consistent notification settings or to prevent accidental changes by users.
+     * <p>
+     * This parameter only prevents accessing the notification settings through Manage button, since it's hidden.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_MANAGE_BUTTON_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0007;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to notification settings.
+     * <p>
+     * Long press on the notifications allows the user to access the quick settings and options associated with notifications.
+     * <p>
+     * Disabling this functionality means that users will not be able to directly adjust notification settings from the notification bar.
+     * They would need to go into the main Settings menu to make any changes to how notifications are handled for different apps.
+     * <p>
+     * This parameter only prevents accessing the notification settings through long pressing on the notification.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_LONG_PRESS_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0008;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to hide some kind of notifications, such as monitored network.
+     * <p>
+     * Hiding managed network notifications means preventing the device from displaying alerts or
+     * notifications related to managed networks. Managed networks are typically Wi-Fi networks that are administratively
+     * controlled and may have specific configurations or restrictions.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_MONITORED_NETWORK_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0009;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user
+     * from changing the configuration of Quick Settings tiles.
+     * <p>
+     * Tiles are interactive icons that appear in the Notification Quick Settings panel of the device.
+     * They provide users with quick access to commonly used device settings
+     * without the need to navigate through the full settings menu.
+     * <p>
+     * This parameter allows to create a custom configuration of Quick Settings tiles
+     * by defining the tiles which should be shown to the user.
+     * Configuring the tiles can prevent users from accessing to certain features.
+     * This is done to restrict and limit the users' capability to enhance security,
+     * device management, and prevent unauthorized or unintended changes.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * This property is a string structured as a comma-separated list containing the tile names to be shown.
+     * If the list contains an invalid tile name, that tile will be ignored, while the others will be displayed in the UI.
+     * Since it's not possible to remove all the tiles from the UI, an empty string will not be accepted,
+     * therefore at least one valid tile name must be included in the list.
+     * Otherwise, the configuration will be discarded.
+     * <p>
+     * <b>Examples:</b>
+     * <ul>
+     *  <li> "airplane,internet,battery" sets airplane mode, internet, and battery saver;
+     *  <li> "airplane,foo,bar,internet" sets only airplane and internet, while 'foo' and 'bar' are discarded because they are not valid tile names;
+     *  <li> "" is not allowed, therefore this configuration will be rejected;
+     *  <li> "foo" is discarded because it is not a valid tile name. Since no valid tile names are in the list, this configuration will be rejected;
+     *  <li> "default" resets tiles to the default list. It's a special value managed by Android;
+     * </ul>
+     * <p>
+     * <br>
+     * Android offers two types of tiles in the Quick Settings panel: System and App tiles.<br>
+     * System tiles are built into the Android operating system and provide essential device functionalities.
+     * In contrast, App or Custom tiles offer quick access to functionalities provided by applications, such as Google Mobile Services (GMS).
+     * Therefore, they can be customized and added by installing third-party applications that provide this capability.
+     * <p>
+     * The list below shows the tiles available in Android 13.
+     * Please note that not all tiles in this list are supported by Datalogic devices, as this varies by model.
+     * Use the APIs {@link QuickSettingsTiles#getAvailableSystemTiles} and {@link QuickSettingsTiles#getAvailableCustomTiles}
+     * to retrieve the lists of system and custom tiles available at runtime on a Datalogic device.
+     * <p>
+     * <b>Note on Tile Visibility and Interaction:</b>
+     * <p>
+     * The Quick Settings panel includes two categories for tiles:
+     * <ul>
+     *  <li><b>Visible Tiles:</b> Tiles accessible to the user by scrolling down the notification panel.
+     *  <li><b>Additional Tiles:</b> Tiles not visible by default but can be dragged to the visible list by the user for quick access.
+     * </ul>
+     * <p>
+     * When tiles are disabled, they are removed from both the visible and additional tiles lists.
+     * Users cannot interact with disabled tiles, nor can they trigger actions or drag them into the visible list.
+     * When a disabled tile is enabled again, it is added to the additional tiles list,
+     * but not automatically to the visible tiles list.
+     * The user can configure that tile to be visible by dragging it from the additional tiles list
+     * to the visible tiles list using the pen icon in the bottom right corner of the Quick Settings panel.
+     * Alternatively, this can be done programmatically by configuring the visible tiles
+     * through the Visible Tiles property.
+     * </p>
+     * <p>
+     * <b>System tiles:</b>
+     * <ul>
+     *  <li> Internet: 'internet'
+     *  <li> Bluetooth: 'bt'
+     *  <li> Flashlight: 'flashlight'
+     *  <li> Do Not Disturb: 'dnd'
+     *  <li> Alarm: 'alarm'
+     *  <li> Airplane: 'airplane'
+     *  <li> Device Controls: 'controls'
+     *  <li> Wallet: 'wallet'
+     *  <li> Auto-rotate: 'rotation'
+     *  <li> Battery Save: 'battery'
+     *  <li> Screen Cast: 'cast'
+     *  <li> Screen Record: 'screenrecord'
+     *  <li> Mic Access: 'mictoggle'
+     *  <li> Camera Access: 'cameratoggle'
+     *  <li> Stylus/Glove Touch: 'touch_stylus'
+     *  <li> Location: 'location'
+     *  <li> Hotspot: 'hotspot'
+     *  <li> Color Inversion: 'inversion'
+     *  <li> Data Saver: 'saver'
+     *  <li> Dark Theme: 'dark'
+     *  <li> Work Apps: 'work'
+     *  <li> Night Light: 'night'
+     *  <li> Extra Dim: 'reduce_brightness'
+     *  <li> QR Code Scanner: 'qr_code_scanner'
+     *  <li> One Handed: 'onehanded'
+     *  <li> Color Correction: 'color_correction'
+     *  <li> Screen Saver: 'dream'
+     *  <li> Font Size: 'font_scaling'
+     * </ul>
+     *
+     * <br>
+     * <b>Google custom tiles:</b>
+     * <ul>
+     *  <li> Nearby Share: 'custom(com.google.android.gms/.nearby.sharing.SharingTileService)'
+     *  <li> Storage: 'custom(com.google.android.apps.nbu.files/.quicksettings.StorageAssistantTileService)'
+     *  <li> Focus Mode: 'custom(com.google.android.apps.wellbeing/.focusmode.quicksettings.FocusModeTileService)'
+     *  <li> Bedtime mode: 'custom(com.google.android.apps.wellbeing/.screen.ui.GrayscaleTileService)'
+     *  <li> Calculator: 'custom(com.google.android.calculator/com.android.calculator2.CalculatorTileService)'
+     * </ul>
+     *
+     * <br>
+     * <b>Other tiles:</b>
+     * <ul>
+     *  <li> Memory Usage: 'custom(com.android.permissioncontroller/.permission.service.SafetyCenterQsTileService)'
+     * </ul>
+     */
+    public final static int QUICK_SETTINGS_PANEL_TILES = PropertyGroupID.UI_SETTINGS_GROUP + 0x000A;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the Quick Settings tiles.
+     * <p>
+     * If this setting is enabled, the edit icon of quick settings panel is hidden and the user is prevented to add, remove or change the order of tiles.
+     * This property might be used to restrict the user to access to quick settings configuration.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICK_SETTINGS_PANEL_EDIT_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x000C;
+    
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to change settings options.
+     * <p>
+     * If this setting is enabled, the gear icon of quick settings panel is hidden and the user is prevented to launch Android Settings from that button.
+     * This property might be used to restrict the user to access to settings configuration.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICK_SETTINGS_PANEL_GEAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x000D;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Hotspot feature.
+     * <p>
+     * If this parameter is enabled, the toggle button to enable or disable the Hotspot feature
+     * is no longer visible in the quick settings menu.
+     * The quick settings menu is the area that appears when the user swipes down from the top of the screen.
+     * So the user is not able to enable or disable the hotspot feature from there.
+     * <p>
+     * When the Hotspot tile was previously hidden and this property value changes to disabled,
+     * then the tile becomes accessible to the users again in the quick settings menu.
+     * But, the tile is not automatically added to the visible tile list.
+     * Therefore, in order to be visible, that tile shall be added to {@link #QUICK_SETTINGS_PANEL_TILES}.
+     * <p>
+     * The user would still be able to access and control the hotspot feature from the main Settings.
+     * Therefore, this parameter can be use with {@link #HOTSPOT_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICK_SETTINGS_TILES_HOTSPOT_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x000E;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Airplane mode.
+     * <p>
+     * If this parameter is enabled, the toggle button to enable or disable the Airplane mode
+     * is no longer visible in the quick settings menu.
+     * The quick settings menu is the area that appears when the user swipes down from the top of the screen.
+     * So the user is not able to enable or disable the hotspot feature from there.
+     * <p>
+     * When the Airplane mode tile was previously hidden and this property value changes to disabled,
+     * then the tile becomes accessible to the users again in the quick settings menu.
+     * But, the tile is not automatically added to the visible tile list.
+     * Therefore, in order to be visible, that tile shall be added to {@link #QUICK_SETTINGS_PANEL_TILES}.
+     * <p>
+     * The user would still be able to access and control the hotspot feature from the main Settings.
+     * Therefore, this parameter can be use with {@link #AIRPLANE_MODE_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICK_SETTINGS_TILES_AIRPLANE_MODE_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x000F;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Do Not Disturb mode.
+     * <p>
+     * If this parameter is enabled, the toggle button to enable or disable the Do Not Disturb mode
+     * is no longer visible in the quick settings menu.
+     * The quick settings menu is the area that appears when the user swipes down from the top of the screen.
+     * So the user is not able to enable or disable the hotspot feature from there.
+     * <p>
+     * When the Do Not Disturb tile was previously hidden and this property value changes to disabled,
+     * then the tile becomes accessible to the users again in the quick settings menu.
+     * But, the tile is not automatically added to the visible tile list.
+     * Therefore, in order to be visible, that tile shall be added to {@link #QUICK_SETTINGS_PANEL_TILES}.
+     * <p>
+     * The user would still be able to access and control the hotspot feature from the main Settings.
+     * Therefore, this parameter can be use with {@link #DO_NOT_DISTURB_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICK_SETTINGS_TILES_DND_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0010;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to recent apps view.
+     * <p>
+     * Hiding the Recent Apps means restricting the users to view and switch between recently used applications.
+     * The Recent Apps are usually displayed when pressing a button on the navigation bar at the bottom of the screen.
+     * Pressing the button opens a list of recently opened apps.
+     * <p>
+     * Disabling this functionality means the user will always see an empty list of apps, which
+     * means they won't be able to quickly switch between or close recent apps using this button.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int RECENT_APPS_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0011;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to use multiple Apps in split screen mode.
+     * <p>
+     * Hiding the Split Screen button means preventing the user to run two apps simultaneously in a split-screen view.
+     * When this parameter is disabled, users can open the Recent Apps menu, select an app, and choose the option to view it in split-screen mode alongside another app. 
+     * When this parameter is enabled, users can't using the split-screen mode, meaning they can only use one app at a time and cannot view or 
+     * interact with multiple apps simultaneously on the screen.
+     * <p>
+     * This parameter only prevents activation of the split-screen feature through Settings UI.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SPLIT_SCREEN_APP_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0012;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to search settings options.
+     * <p>
+     * If this setting is enabled, the search bar is hidden from Android Settings and the user is prevented to search specific settings.
+     * This property might be used to restrict the user to change part of configuration.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ANDROID_SETTINGS_SEARCH_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0013;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Hotspot feature.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the Hotspot feature is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * For enabling o disabling it, please refer to parameter {@link #HOTSPOT_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int HOTSPOT_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0014;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Airplane mode.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the Airplane mode is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int AIRPLANE_MODE_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0015;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the use of the Do Not Disturb mode.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the Do Not Disturb mode is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int DO_NOT_DISTURB_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0016;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to trigger the devices resets.
+     * <p>
+     * Reset settings refer to various options that allow to restore the device to a previous or default state,
+     * clearing personal data, or preparing the device for a new user.
+     * <p>
+     * If this parameter is enabled, the "Reset option" in the Settings menu is "dimmed".
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible
+     * and the user is not able to trigger any reset option.
+     * <p>
+     * When this property is enabled, the properties under "Reset option" menu are still accessible
+     * through the Search Bar in Android Settings. Therefore, it is recommended to also hide
+     * the Search Bar in the Settings using property {@link #ANDROID_SETTINGS_SEARCH_BAR_HIDDEN}.
+     * This ensures that access to the settings remains controlled and aligned
+     * with the desired configurations of the device.
+     * <p>
+     * This parameter only prevents the user to trigger any reset through Settings UI.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int RESET_OPTIONS_SETTINGS_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0017;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the accessibility settings.
+     * <p>
+     * Accessibility settings refer to a set of features and options designed to make the device easier
+     * to use for individuals with disabilities or impairments
+     * <p>
+     * If this parameter is enabled, the "Accessibility" in the Settings is "dimmed".
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible
+     * and the user is not able to configure the accessibility settings.
+     * <p>
+     * When this property is enabled, the properties under "Accessibility" menu are still accessible
+     * through the Search Bar in Android Settings. Therefore, it is recommended to also hide
+     * the Search Bar in the Settings using property {@link #ANDROID_SETTINGS_SEARCH_BAR_HIDDEN}.
+     * This ensures that access to the settings remains controlled and aligned
+     * with the desired configurations of the device.
+     * <p>
+     * This parameter only prevents the user to change the status of accessibility options through Settings UI.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ACCESSIBILITY_SETTINGS_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0018;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the notification settings.
+     * <p>
+     * Notification App settings refer to the options available to manage how different apps send notifications to the user.
+     * <p>
+     * If this parameter is enabled, the notification settings options are "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to configure the notification options.
+     * <p>
+     * This parameter only prevents the user to change the configuration of notifications through Settings UI.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_APP_SETTINGS_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0019;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the long press action on the home button.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the long press action on the home button is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This parameter only prevents the user to change the long press action on the home button in Settings UI.
+     * For configuring the action, please refer to parameter {@link #LONG_PRESS_HOME_BUTTON_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int LONG_PRESS_HOME_BUTTON_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x001B;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the notification dot.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the notification dot is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This parameter only prevents the user to change the notification dot in Settings UI.
+     * For enabling o disabling it, please refer to parameter {@link #NOTIFICATION_DOTS_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_DOTS_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x001D;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to configure the keyboard combinations.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the keyboard combinations is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This parameter only prevents the user to change the keyboard combinations in Settings UI.
+     * For enabling o disabling it, please refer to parameter {@link #PHYSICAL_KEYBOARD_SHORTCUTS_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int PHYSICAL_KEYBOARD_SHORTCUTS_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x001F;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the automatic synchronization of data.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable the automatic synchronization of data is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This parameter only prevents the user to change the automatic synchronization of data in Settings UI.
+     * For enabling o disabling it, please refer to parameter {@link #AUTO_SYNC_APP_DATA_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int AUTO_SYNC_APP_DATA_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0021;
+
+    /**
+     * This parameter hides the taskbar.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int TASK_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0022;
+
+    //
+    // UX Settings definitions
+    //
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to control the desktop mode configuration.
+     * <p>
+     * This parameter controls the desktop mode feature, that allows the device to be provide a
+     * desktop-like experience, when it connected to an external display, a mouse and a keyboard,
+     * through a dedicated docking station.
+     * <p>
+     * This feature offers several configuration modes, typically to optimized the user interface
+     * for larger screens or to provide an user experience similar to a desktop computer:
+     * <p>
+     * <b>Mirroring Mode</b>: this mode is the simplest connection mode.
+     * The screen of the device is duplicated exactly on the external monitor,
+     * typically with portrait orientation.
+     * There are no differences between the device screen and the external monitor.
+     * This mode does not provide neither an optimized resolution for the external monitor
+     * nor a desktop-like user experience.
+     * <p>
+     * <b>External Mode</b>: this mode is optimized for the external display resolution and orientation.
+     * The screen of the device is duplicated exactly on the external monitor, as for the Mirroring Mode,
+     * but typically the user interface is adapted to the resolution of the external monitor with
+     * landscape orientation.
+     * There are still no differences between the device screen and the external monitor.
+     * The resolution is optimized for the external monitor, opposite to the Mirroring Mode,
+     * but  the user experience is still not desktop-like.
+     * It offers a better visual experience compared to Mirroring Mode, more comfortable
+     * for viewing videos or multimedia content.
+     * However, it does not modify the Apps interfaces for a full desktop experience.
+     * <p>
+     * <b>Dual Display Mode </b>: this mode transforms the device into a desktop-like experience.
+     * This mode is designed to make full use of the external monitor and includes a user interface
+     * similar to that of a desktop operating system.
+     * The screen of the device and the external monitor are separated, each with its own content and layout.
+     * The external monitor displays a desktop-like interface, which can include a taskbar, while
+     * the screen device displays the Android interface and it could be used as a secondary screen.
+     * It provides a complete desktop experience, similar to a traditional computer.
+     * Ideal for productivity tasks such as document editing, web browsing,
+     * and using Apps that require a larger interface.
+     * <p>
+     * The class of the property is {@link DesktopModePolicy}.
+     */
+    public final static int DESKTOP_MODE_POLICY = PropertyGroupID.UX_SETTINGS_GROUP + 0x0001;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to activate the "Do Not Disturb" mode.
+     * <p>
+     * "Do Not Disturb" (DND) is a feature provided by Android that allows you to silence all or specific types
+     * of notifications, calls, and alerts, helping you avoid interruptions.
+     * <p>
+     * This parameter allows to control the "Do Not Disturb" status.
+     * <p>
+     * Disabling "Do Not Disturb" will ensure that the device resumes normal operation regarding notifications and alerts,
+     * allowing you to receive all incoming sounds, vibrations, and notifications without restriction.
+     * <p>
+     * The class of the property is {@link DoNotDisturbPolicy}.
+     */
+    public final static int DO_NOT_DISTURB_POLICY = PropertyGroupID.UX_SETTINGS_GROUP + 0x0007;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to take screenshots.
+     * <p>
+     * Disabling the functionality of screenshots means preventing users from capturing images of the current screen.
+     * Normally, users can take screenshots by pressing a combination of physical buttons or using gestures.
+     * Disabling this functionality can have several implications:
+     * <p>
+     * 1) <b>Protecting Sensitive Information</b>: it can help protect sensitive information displayed on the screen from being easily captured and shared.
+     * This is particularly important in secure environments or when dealing with confidential data.
+     * <p>
+     * 2) <b>Enhancing Security and Privacy</b>: it can reduce the risk of accidental or intentional data leakage, enhancing the overall security and privacy of the device.
+     * <p>
+     * 3) <b>Compliance with Policies</b>: In certain corporate or regulatory environments, disabling screenshots might be required to comply with data protection policies
+     * or to prevent the unauthorized distribution of proprietary information.
+     * <p>
+     * This setting might be used in corporate environments, on devices handling sensitive information, or in applications where privacy is a high priority.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCREENSHOT_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0008;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to clipbord functionality.
+     * <p>
+     * The clipboard is a temporary storage area used to hold data that has been cut or copied
+     * from one location so that it can be pasted into another location.
+     * Disabling the clipboard means preventing users from copying and pasting text or other content.
+     * In particular, it can have several implications:
+     * <p>
+     * 1) <b>Preventing Copy and Paste</b>: Users will not be able to copy text, images, or other data from one app or document and paste it into another.
+     * This restriction might be applied to enhance security, especially in environments where data leakage is a concern.
+     * <p>
+     * 2) <b>Limiting Data Sharing</b>: it becomes more difficult to transfer information between apps,
+     * which can help prevent unauthorized sharing of sensitive data.
+     * <p>
+     * 3) <b>Reducing Risk of Malware</b>: it can help mitigate certain types of malware that exploit clipboard data to steal information or inject malicious content.
+     * This setting might be used in corporate environments, on shared devices, or in other situations where controlling data movement is critical.
+     * <p>
+     * The class of the property is {@link ClipboardPolicy}.
+     */
+    public final static int CLIPBOARD_POLICY = PropertyGroupID.UX_SETTINGS_GROUP + 0x0009;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to prevent the 180-degree rotation for a better user experience.
+     * <p>
+     * Disabling the functionality of 180-degree vertical rotation means preventing the screen from rotating upside down
+     * when the device is turned to a completely inverted position. Typically, smartphones can rotate their display in four directions:
+     * 0 degrees (standard portrait), 90 degrees (landscape), 180 degrees (upside-down portrait), and 270 degrees (reverse landscape).
+     * Disabling the 180-degree vertical rotation, the screen will remain in the standard portrait orientation or rotate only to landscape modes,
+     * avoiding the upside-down view. This provides a more consistent and predictable user experience.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ROTATION_180_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x000A;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to connect to other devices via Cast.
+     * <p>
+     * Android Cast the feature that allows the device to wirelessly stream or mirror its screen and audio to other devices,
+     * such as TVs, smart displays, or streaming devices like Chromecast.
+     * <p>
+     * So, if this parameter is enabled, Android Cast is disabled and the device will no longer search for
+     * or connect to these devices for screen mirroring or media streaming purposes.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int CAST_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x000B;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to connect to other devices via Android Quick Share.
+     * <p>
+     * Android Quick Share is the feature that allows the user to quickly and easily share files, photos, videos, and other content with nearby devices.
+     * Android Quick Share uses wireless technologies like Bluetooth and Wi-Fi Direct to establish a direct connection between devices, enabling fast and seamless file transfers.
+     * <p>
+     * So, if this parameter is enabled, Android Quick Share is disabled and the device will no longer be able to initiate or receive these quick file transfers,
+     * which can enhance privacy and security by preventing unwanted sharing of user content.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICKSHARE_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x000C;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to connect to other devices via Android Chromebook.
+     * <p>
+     * Android Chromebook is the feature that allows the device to connect and interact with other devices for sharing notifications, text messages, and other data.
+     * <p>
+     * So, if this parameter is enabled, Android Chromebook is disabled and the device will no longer be able for these synchronization and sharing features,
+     * which can enhance privacy and security by preventing unwanted sharing of user content.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int CHROMEBOOK_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x000D;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to connect to Android Auto.
+     * <p>
+     * Android Auto is the feature that allows the device to connect and interface with your car's infotainment system.
+     * Android Auto provides a simplified, driver-friendly interface for accessing navigation, music, phone calls, messages, and other apps while driving.
+     * <p>
+     * So, if this parameter is enabled, Android Auto is disabled and the device will no longer be able for these synchronization and sharing features,
+     * which can enhance privacy and security by preventing unwanted sharing of user content.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int ANDROID_AUTO_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x000E;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the usage of Captive Portal.
+     * <p>
+     * Captive Portal is the feature that detects and manages network connections requiring user interaction,
+     * such as logging in or accepting terms and conditions.
+     * A captive portal is typically encountered in public Wi-Fi networks, like those in cafes, airports, or hotels,
+     * where the user is redirected to a web page to enter credentials or agree to terms before accessing the internet.
+     * <p>
+     * So, according to the mode selected with this property, networks requiring this kind of authentication can be automatically disconnected,
+     * or user could be or not be prompted to authenticate in order to have access to internet. 
+     * <p>
+     * The class of the property is {@link CaptivePortalPolicy}.
+     * <p>
+     * <b>Note on Captive Portal and Wi-Fi Settings:</b>
+     * When the Captive Portal is set to {@link CaptivePortalPolicy#DISCONNECTED},
+     * while the Wi-Fi module property {@link #WIFI_NO_INTERNET_EXPECTED} is configured to either
+     * {@link WifiNoInternetExpected#RECONNECT_VERBOSE} or {@link WifiNoInternetExpected#RECONNECT_QUIET} a conflict arises.
+     * In this scenario, the device attempts to auto-reconnect to a network that has no internet access,
+     * leading to a repetitive cycle of "Connecting > ... > Checking for internet access > back to Connecting".
+     * This behavior can be visually distracting to users, as the Wi-Fi icon keeps changing,
+     * creating an unintended and somewhat humorous appearance.
+     * <p>
+     * To ensure coherent functionality, it is crucial that when the Captive Portal is set to {@link CaptivePortalPolicy#DISCONNECTED},
+     * the {@link #WIFI_NO_INTERNET_EXPECTED} property is also set to {@link WifiNoInternetExpected#DONT_RECONNECT}.
+     * This alignment prevents the device from continually trying to connect to a network
+     * that is known to have no internet access, thus improving the user experience and
+     * eliminating unnecessary distractions.
+     */
+    public final static int CAPTIVE_PORTAL_POLICY = PropertyGroupID.UX_SETTINGS_GROUP + 0x000F;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable the automatic synchronization of data.
+     * <p>
+     * Hotspot enabled refers to enable or disable wifi tethering.
+     * <p>
+     * When hotspot is enabled, the devices allows other devices to connect to its internet connection.
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings,
+     * or dedicated tile in quick settings panel.
+     * Therefore, this parameter can be use with {@link #HOTSPOT_SETTING_DIMMED} and {@link #QUICK_SETTINGS_TILES_HOTSPOT_HIDDEN},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int HOTSPOT_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0010;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable the automatic synchronization of data.
+     * <p>
+     * Battery LED enabled refers to enable or disable automatic battery LED control.
+     * <p>
+     * When battery LED is enabled, the devices automatically control the battery LED.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BATTERY_LED_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0011;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable the emergency SOS call.
+     * <p>
+     * Emergency SOS refers to enable or disable that feature designed to help users quickly contact
+     * emergency services and notify their emergency contacts in critical situations.<br>
+     * This feature can be activated by pressing the power button multiple times in rapid succession
+     * (usually five times).
+     * It can be undesired, so IT admins could prefer to disable it.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int EMERGENCY_SOS_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0012;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable the open camera shortcut.
+     * <p>
+     * Quickly open camera enabled refers to enable or disable that feature allowing the users
+     * to access the camera app swiftly.
+     * This feature can be activated by double-pressing the power button.
+     * It can be undesired, so IT admins could prefer to disable it.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int QUICKLY_OPEN_CAMERA_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0013;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to control the notification LED.
+     * <p>
+     * Notification LED enabled refers to enable or disable the LED for visual notifications.
+     * The user would still be able to access and control this configuration from the main Settings.
+     * When enabled, the LED blinks to alert the user of incoming notifications, missed calls, or other important events.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_LED_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0014;
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to prevent the user to interact with Google Assistant.
+     * <p>
+     * If this parameter is disabled, the long press action on the home button doesn't take any effect.
+     * That means pressing and holding the home button will no longer activate the Google Assistant.
+     * <p>
+     * Administrators might want to disable this feature to avoid accidental triggers, save battery life,
+     * or because they prefer to prevent the users to access to the associated service (like Google Assistant).
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings.
+     * Therefore, this parameter can be use with {@link #LONG_PRESS_HOME_BUTTON_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int LONG_PRESS_HOME_BUTTON_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0015;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to hide the notification dot.
+     * <p>
+     * The notification dot refers to the small dot that appears on app icons
+     * when there are unread notifications for those apps.
+     * <p>
+     * When notification dots are enabled, a small dot will appear on the top right corner of an app's icon on the home screen,
+     * as visual indicator that alerts for pending notifications.
+     * <p>
+     * When notification dots are disabled, these small dots will no longer appear on app icons,
+     * meaning the user won't have this visual indication of unread notifications directly on the app icons.
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings.
+     * Therefore, this parameter can be use with {@link #NOTIFICATION_DOTS_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NOTIFICATION_DOTS_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0016;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable keyboard combinations.
+     * <p>
+     * When physical keyboard shortcuts are enabled, the user can use keyboard combinations to perform various actions quickly.
+     * This feature enhances productivity by allowing users to navigate and control their device more efficiently using familiar keyboard shortcuts.
+     * <p>
+     * When physical keyboard shortcuts are disabled, these combinations will not perform any actions on the device.
+     * This might
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings.
+     * Therefore, this parameter can be use with {@link #PHYSICAL_KEYBOARD_SHORTCUTS_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int PHYSICAL_KEYBOARD_SHORTCUTS_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0017;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to disable the automatic synchronization of data.
+     * <p>
+     * Auto sync app data refers to enable or disable the automatic synchronization of data between the device and online accounts for various apps.
+     * <p>
+     * When auto sync is enabled, apps automatically sync data like emails, contacts, calendar events, and other app-specific information with their respective online services.
+     * This ensures that the information on the device is up-to-date with the data on the server.
+     * <p>
+     * When auto sync is disabled, apps will not automatically sync data in the background.
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings.
+     * Therefore, this parameter can be use with {@link #AUTO_SYNC_APP_DATA_SETTING_DIMMED},
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int AUTO_SYNC_APP_DATA_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0018;
+
     //
     // Developer Options definitions
     //
 
     /**
-      *	This parameter enables/disables the debug mode, over USB, when USB is connected.
+      * This parameter enables/disables the debug mode, over USB, when USB is connected.
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
     public final static int USB_DEBUG_ENABLE = PropertyGroupID.DEVELOPER_OPTIONS_GROUP + 0x0001;
 
     /**
-      *	This parameter sets the size of the log.
+      * This parameter sets the size of the log.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link LoggerBufferSize}.
@@ -2269,7 +3220,7 @@ public class PropertyID {
     public final static int LOGGER_BUFFER_SIZE = PropertyGroupID.DEVELOPER_OPTIONS_GROUP + 0x0002;
 
     /**
-      *	This parameter enables/disables the debug mode, over Wi-Fi, when Wi-Fi is connected.
+      * This parameter enables/disables the debug mode, over Wi-Fi, when Wi-Fi is connected.
       * <p>
       * The class of the property is {@link BooleanProperty}.
       */
@@ -2280,7 +3231,7 @@ public class PropertyID {
     //
 
     /**
-     *	This parameter sets the Brightness level of the screen. The allowed values are between 0 and 255.
+     * This parameter sets the Brightness level of the screen. The allowed values are between 0 and 255.
       * <p>
       * The class of the property is {@link NumericProperty}.
       */
@@ -2291,42 +3242,42 @@ public class PropertyID {
    //
 
    /**
-    *	This parameter enables the Left trigger.
+    * This parameter enables the Left trigger.
     * <p>
     * The class of the property is {@link BooleanProperty}.
     */
    public final static int KEYBOARD_LEFT_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0001;
 
     /**
-     *	This parameter enables the Right trigger.
+     * This parameter enables the Right trigger.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_RIGHT_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0002;
 
     /**
-     *	This parameter enables the Front trigger.
+     * This parameter enables the Front trigger.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_FRONT_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0003;
 
     /**
-     *	This parameter enables the Pistol trigger.
+     * This parameter enables the Pistol trigger.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_PISTOL_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0004;
 
     /**
-     *	This parameter enables the Autoscan trigger.
+     * This parameter enables the Autoscan trigger.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_AUTOSCAN_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0005;
 
     /**
-     *	This parameter sets the Autoscan trigger range.
+     * This parameter sets the Autoscan trigger range.
      * <p>
      * The class of the property is {@link EnumProperty}.
      * The allowed values are defined by enum {@link AutoScanTriggerRange}.
@@ -2334,14 +3285,14 @@ public class PropertyID {
     public final static int KEYBOARD_AUTOSCAN_TRIGGER_RANGE = PropertyGroupID.KEYBOARD_GROUP + 0x0006;
 
     /**
-     *	This parameter enables the Motion trigger.
+     * This parameter enables the Motion trigger.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_MOTION_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x0007;
 
     /**
-     *	This parameter defines the sensitivity for motion detection.
+     * This parameter defines the sensitivity for motion detection.
      * <p>
      * The class of the property is {@link EnumProperty}.
      * The allowed values are defined by enum {@link MotionTriggerSensitivity}.
@@ -2349,51 +3300,51 @@ public class PropertyID {
     public final static int KEYBOARD_MOTION_TRIGGER_SENSITIVITY = PropertyGroupID.KEYBOARD_GROUP + 0x0008;
 
     /**
-     *	This parameter enables or disables the vibration when a motion is detected.
+     * This parameter enables or disables the vibration when a motion is detected.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_MOTION_TRIGGER_VIBRATION = PropertyGroupID.KEYBOARD_GROUP + 0x0009;
 
     /**
-     *	This parameter enables or disables the push to talk button
+     * This parameter enables or disables the push to talk button
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_PTT_TRIGGER = PropertyGroupID.KEYBOARD_GROUP + 0x000F;
 
     /**
-     *	This parameter locks or unlocks the input from keyboard and physical buttons.
+     * This parameter locks or unlocks the input from keyboard and physical buttons.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_LOCK_INPUT = PropertyGroupID.KEYBOARD_GROUP + 0x000A;
 
     /**
-     *	This parameter enables or disables the keyboard backlight control.
+     * This parameter enables or disables the keyboard backlight control.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int KEYBOARD_BACKLIGHT = PropertyGroupID.KEYBOARD_GROUP + 0x000B;
 
     /**
-     *	This parameter sets the keyboard backlight brightness.
-     *	This is parameter is enabled only when {@link #KEYBOARD_BACKLIGHT} is enabled.
+     * This parameter sets the keyboard backlight brightness.
+     * This is parameter is enabled only when {@link #KEYBOARD_BACKLIGHT} is enabled.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
     public final static int KEYBOARD_BACKLIGHT_BRIGHTNESS = PropertyGroupID.KEYBOARD_GROUP + 0x000C;
 
     /**
-     *	This parameter sets the keyboard backlight inactivity timeout. In case of inactivity, the keyboard backlight will turn off after this amount of time.
-     *	This parameter is enabled only when {@link #KEYBOARD_BACKLIGHT} is enabled.
+     * This parameter sets the keyboard backlight inactivity timeout. In case of inactivity, the keyboard backlight will turn off after this amount of time.
+     * This parameter is enabled only when {@link #KEYBOARD_BACKLIGHT} is enabled.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
     public final static int KEYBOARD_BACKLIGHT_TIMEOUT = PropertyGroupID.KEYBOARD_GROUP + 0x000D;
 
     /**
-     *	This parameter sets the keyboard multitap delay used to define after how much time from the first multitap key press the associated character will be submitted to the UI.
+     * This parameter sets the keyboard multitap delay used to define after how much time from the first multitap key press the associated character will be submitted to the UI.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -2406,7 +3357,7 @@ public class PropertyID {
      * The specific implementation for this type of blob is {@link SupportedWtApplications}.
      */
     public final static int KEYBOARD_PTT_SUPPORTED_WT_APPLICATIONS = PropertyGroupID.KEYBOARD_GROUP + 0x0010;
-    
+
     /**
      * This parameter sets the package name of the Walkie-Talkie application to be used with the Push-to-Talk button.
      * <p>
@@ -2582,7 +3533,359 @@ public class PropertyID {
      */
     public final static int KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0018;
 
-   /**
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to configure the default layout of
+     * an external physical keyboard in combination with {@link #DESKTOP_MODE_POLICY}.
+     * <p>
+     * This parameter allows to configure the layout for customizing settings
+     * related to an external physical keyboard connected to the device.
+     * When this settings is set to CUSTOM, then the value of property
+     * {@link #PHYSICAL_KEYBOARD_PROFILE} shall be used for defining the layout.
+     * <p>
+     * The class of the property is {@link PhysicalKeyboardPolicy}.
+     */
+    public final static int PHYSICAL_KEYBOARD_POLICY = PropertyGroupID.KEYBOARD_GROUP + 0x0019;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to configure the default layout
+     * of an external physical keyboard in combination with {@link #DESKTOP_MODE_POLICY}.
+     * <p>
+     * This parameter allows to configure the layout for customizing settings
+     * related to an external physical keyboard connected to the device.
+     * This configuration takes effect only if the value of property
+     * {@link #PHYSICAL_KEYBOARD_POLICY} is set to {@link PhysicalKeyboardPolicy#CUSTOM}.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * <p>
+     * This property can be set with a String defining the keyboard layout identifier,
+     * keyboard layout short identifier or the locale:
+     * <ul>
+     * <li><b>keyboard layout identifier</b>: it is the physical keyboard layout identifier
+     * defined by "[package name]/[receiver name]/keyboard_layout_xxx".<br>
+     * For example:
+     *     <ul>
+     *        <li>com.android.inputdevices/com.android.inputdevices.InputDeviceReceiver/keyboard_layout_polish
+     *        corresponds to Polish keyboard layout provided by Android.</li>
+     *     </ul>
+     * </li>
+     * <li><b>keyboard layout short identifier</b>: it is the physical keyboard layout identifier
+     * defined by "keyboard_layout_xxx". This is a shorter version of keyboard layout identifier,
+     * obtained by omitting the "[package name]/[receiver name]/" prefix.
+     * Since, an App could define a custom layout using the same short identifier keyboard_layout_xxx
+     * already used by a pre-loaded layout, when the user sets this property using that value,
+     * the pre-loaded keyboard layout will be used instead of the custom one.
+     * So, in case of custom layouts, it is required to configure this property using the keyboard
+     * layout identifier, instead of the shorter definition.<br>
+     * For example:
+     *     <ul>
+     *        <li>keyboard_layout_german corresponds to German keyboard layout.</li>
+     *        <li>keyboard_layout_french corresponds to French-France keyboard layout.</li>
+     *        <li>keyboard_layout_french_ca corresponds to French-Canada keyboard layout.</li>
+     *        <li>keyboard_layout_italian corresponds to Italian keyboard layout.</li>
+     *     </ul>
+     * </li>
+     * <li></><b>locale</b>: it is the locale identifier defined by
+     * [language identifier with two lowercase letters]-[country code identifier with uppercase two letters],
+     * where the country code is optional and it depends on the language.<br>
+     * For example:
+     *      <ul>
+     *         <li>"de" or "de-DE" corresponds to German language.</li>
+     *         <li>"de-CH" corresponds to German language in Switzerland.</li>
+     *         <li>"fr" or "fr-FR" corresponds to French language in France.</li>
+     *         <li>"fr-CA" corresponds to French keyboard layout in Canada.</li>
+     *         <li>"it" corresponds to Italian language.</li>
+     *      </ul><br>
+     * Locale is a compact representation, but it does not always match uniquely with a keyboard layout.
+     * In particular:
+     *     <ul>
+     *         <li> not all the Locales have a corresponding layout (e.g chinese). In this case, when the user
+     * sets this property with one of those Locales, an error will be returned.</li>
+     *         <li>not all the Locales have only one corresponding layout (e.g "en-US"). In this case, setting this property
+     * when the user sets this property with one of those Locales, the most common layout for that
+     * Locale will be chosen.</li>
+     *     </ul>
+     * </li>
+     * </ul>
+     * <p>
+     * <p>
+     * The following command can be used to retrieve the identifier for all the pre-loaded
+     * and custom keyboard layouts available on the device:
+     * <pre>adb shell dumpsys activity service com.datalogic.extension.uxsettings/.MainService</pre>
+     * <p>
+     * Below the list of pre-loaded physical keyboard layouts:
+     * <ul>
+     * <li> keyboard_layout_english_uk </li>
+     * <li> keyboard_layout_english_us </li>
+     * <li> keyboard_layout_english_us_intl </li>
+     * <li> keyboard_layout_english_us_colemak </li>
+     * <li> keyboard_layout_english_us_dvorak </li>
+     * <li> keyboard_layout_english_us_workman </li>
+     * <li> keyboard_layout_german </li>
+     * <li> keyboard_layout_french </li>
+     * <li> keyboard_layout_french_ca </li>
+     * <li> keyboard_layout_russian </li>
+     * <li> keyboard_layout_russian_mac </li>
+     * <li> keyboard_layout_spanish </li>
+     * <li> keyboard_layout_swiss_french </li>
+     * <li> keyboard_layout_swiss_german </li>
+     * <li> keyboard_layout_belgian </li>
+     * <li> keyboard_layout_bulgarian </li>
+     * <li> keyboard_layout_bulgarian_phonetic </li>
+     * <li> keyboard_layout_italian </li>
+     * <li> keyboard_layout_danish </li>
+     * <li> keyboard_layout_norwegian </li>
+     * <li> keyboard_layout_swedish </li>
+     * <li> keyboard_layout_finnish </li>
+     * <li> keyboard_layout_croatian </li>
+     * <li> keyboard_layout_czech </li>
+     * <li> keyboard_layout_czech_qwerty </li>
+     * <li> keyboard_layout_estonian </li>
+     * <li> keyboard_layout_hungarian </li>
+     * <li> keyboard_layout_icelandic </li>
+     * <li> keyboard_layout_brazilian </li>
+     * <li> keyboard_layout_portuguese </li>
+     * <li> keyboard_layout_slovak </li>
+     * <li> keyboard_layout_slovenian </li>
+     * <li> keyboard_layout_turkish </li>
+     * <li> keyboard_layout_turkish_f </li
+     * <li> keyboard_layout_ukrainian </li>
+     * <li> keyboard_layout_arabic </li>
+     * <li> keyboard_layout_greek </li>
+     * <li> keyboard_layout_hebrew </li>
+     * <li> keyboard_layout_lithuanian </li>
+     * <li> keyboard_layout_spanish_latin </li>
+     * <li> keyboard_layout_latvian </li>
+     * <li> keyboard_layout_persian </li>
+     * <li> keyboard_layout_azerbaijani </li>
+     * <li> keyboard_layout_polish </li>
+     * <li> keyboard_layout_belarusian </li>
+     * <li> keyboard_layout_mongolian </li>
+     * <li> keyboard_layout_georgian </li>
+     * <li> keyboard_layout_thai_kedmanee </li>
+     * <li> keyboard_layout_thai_pattachote </li>
+     * <li> keyboard_layout_romanian </li>
+     * <li> keyboard_layout_romanian_qwertz </li>
+     * <li> keyboard_layout_moldovan </li>
+     * <li> keyboard_layout_moldovan_qwertz </li>
+     * <li> keyboard_layout_serbian_cyrillic </li>
+     * <li> keyboard_layout_serbian_latin </li>
+     * <li> keyboard_layout_montenegrin_cyrillic </li>
+     * <li> keyboard_layout_montenegrin_latin </li>
+     * <li> keyboard_layout_english_india </li>
+     * <li> keyboard_layout_hindi_inscript </li>
+     * <li> keyboard_layout_japanese109 </li>
+     * </ul>
+     */
+    public final static int PHYSICAL_KEYBOARD_PROFILE = PropertyGroupID.KEYBOARD_GROUP + 0x001A;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to configure the default virtual keyboard.
+     * <p>
+     * A virtual keyboard is a software interface that allows users to input text,
+     * for example via the device's touchscreen. It appears on the display whenever text input is needed,
+     * such as when typing a message, filling out a form, or entering a password.
+     * <p>
+     * This parameter allows to configure the desired virtual keyboard among the installed ones.
+     * It shall be set as a string representing a valid input method ID.
+     * <p>
+     * If the input method ID refers to an input method installed on the device and currently enabled,
+     * then this input method will be selected.
+     * If the input method ID refers to an input method installed on the device, but currently disabled,
+     * then this input method will be both enabled and selected.
+     * An empty string is accepted as a valid input method,
+     * this means that no input method will be selected for the user.
+     * <p>
+     * Setting a malformed input method ID or an input method not installed yet on the device,
+     * an error is returned and the value of this property will not be changed.
+     * <p>
+     * <b>Input method ID</b>: Android defines the input method ID as a string in the form
+     * "package_name/class_name", composed by the package name of the virtual keyboard application
+     * and the class name of the main input method service within the keyboard application.
+     * <p>
+     * E.g. Gboard input method ID is defined as "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME", where:
+     * <ul>
+     * <li>com.google.android.inputmethod.latin: the package name is a unique identifier for the App,
+     * and in this case, it corresponds to the Latin IME (Input Method Editor) provided by Google.
+     * This package name is used by the Android system to recognize and manage the keyboard App.</li>
+     * <li>com.android.inputmethod.latin.LatinIME: this is the fully qualified class name of
+     * the main input method service within the keyboard application.
+     * It specifies the particular class within the package that provides the actual functionality of the keyboard.</li>
+     * </ul>
+     * <p>
+     * In summary, the first part identifies the App package, and the second part specifies
+     * the class within that package that implements the keyboard service.
+     * <p>
+     * <b>Disclaimer</b>: the fully qualified class name is used only if the namespace does not correspond to the package name.
+     * Otherwise, the short qualified class name is used instead. For example.:
+     * <ul>
+     * <li>Gboard uses the full class name, since package name and class namespace do not correspond:
+     * com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME</li>
+     * <li>Labankey uses the short class name, since package name and class namespace corresponds:
+     * com.vng.inputmethod.labankey/.LatinIME</li>
+     * </ul>
+     * <p>
+     * <b>How to list the installed input methods and their IDs</b>: use the command "adb shell ime list -a -s"
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int VIRTUAL_KEYBOARD_PROFILE = PropertyGroupID.KEYBOARD_GROUP + 0x001B;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to the Gboard,
+     * as default keyboard provided by Android.
+     * <p>
+     * If this property is disabled, it prevents the Gboard from being available for text input.
+     * Disabling Gboard means that this keyboard will no longer appear when the user needs to input text.
+     * <p>
+     * This property is available only for Android GMS version.
+     * <p>
+     * Gboard is the Google's default UI keyboard distributed with GMS version of Android,
+     * offering seamless integration with Google services, predictive text, voice typing,
+     * and multilingual support. The Gboard is enable by default and it is also the default option
+     * provided to the user for GMS version of Android.
+     * <p>
+     * The keyboard shown to the user by default can be defined though {@link #VIRTUAL_KEYBOARD_PROFILE}
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int VIRTUAL_KEYBOARD_GBOARD_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001C;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to the Voice Typing,
+     * as default keyboard provided by Android.
+     * <p>
+     * If this property is disabled, it prevents the Voice Typing from being available for text input.
+     * Disabling Voice Typing means that this keyboard will no longer appear when the user needs to input text.
+     * <p>
+     * This property is available only for Android GMS version.
+     * <p>
+     * Gboard is a Google's default virtual keyboard distributed with GMS version of Android,
+     * offering seamless integration with Google services, predictive text, voice typing,
+     * and multilingual support. The Gboard is enable by default and it is also the default option
+     * provided to the user.
+     * Voice Typing is a Google's built-in voice recognition feature in Android that allows users
+     * to input text by speaking. It enables hands-free text entry through accurate speech-to-text conversion.
+     * The Voice Typing is enable by default.
+     * <p>
+     * The keyboard shown to the user by default can be defined though {@link #VIRTUAL_KEYBOARD_PROFILE}
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int VIRTUAL_KEYBOARD_VOICE_TYPING_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001D;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access to the Android Keyboard,
+     * as default keyboard provided by Android.
+     * <p>
+     * If this property is disabled, it prevents the Android Keyboard from being available for text input.
+     * Disabling Android Keyboard means that this keyboard will no longer appear when the user needs to input text.
+     * <p>
+     * This property is available only for Android AOSP version.
+     * <p>
+     * Android Keyboard is the Google's default UI keyboard distributed with AOSP versions of Android,
+     * providing basic text input functionality. It includes predictive text, auto-correction,
+     * and support for multiple languages, but lacks the advanced features of Gboard.
+     * The Android Keyboard is enable by default and it is also the default option
+     * provided to the user for AOSP version of Android.
+     * <p>
+     * The keyboard shown to the user by default can be defined though {@link #VIRTUAL_KEYBOARD_PROFILE}
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int VIRTUAL_KEYBOARD_ANDROID_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001E;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to enable or disable the custom virtual keyboards
+     * which could be installed in addition to the ones provided by default.
+     * <p>
+     * This parameter is a list containing the input method editor IDs related to the
+     * custom virtual keyboards to be enabled.
+     * It allows to enable one or multiple custom virtual keyboards by adding them to the list,
+     * or to disable them by removing from the list.
+     * <p>
+     * It is not required that the custom virtual keyboards added to the list have been already installed on the device.
+     * In that case, if a custom virtual keyboard is added to this list, but it has not been installed yet,
+     * the configuration is accepted. When that custom virtual keyboard will be installed later,
+     * it will be enabled or disabled accordingly to its presence into this list.
+     * <p>
+     * Coherently, when a custom virtual keyboard will be uninstalled, this property will not change.
+     * That ID is kept in the list, in order to restore the required configuration
+     * when that custom virtual keyboard will be installed again in the future.
+     * <p>
+     * This property is intended for creating a configuration of custom virtual keyboards.
+     * In order to enabled or disable the virtual keyboards provided by default,
+     * the following properties shall be used instead:
+     * <ul>
+     *     <li>Gboard with {@link #VIRTUAL_KEYBOARD_GBOARD_ENABLED}</li>
+     *     <li>Voice Typing with {@link #VIRTUAL_KEYBOARD_VOICE_TYPING_ENABLED}</li>
+     *     <li>Android keyboard with {@link #VIRTUAL_KEYBOARD_ANDROID_ENABLED}</li>
+     * </ul>
+     * <b></b>
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link StringSetBlob}.
+     * <p>
+     * <b>Input method editor ID</b>: Android defines a input method editor ID as a string in the form
+     * "package_name/class_name", composed by the package name of the virtual keyboard application
+     * and the class name of the main input method service within the keyboard application.
+     * For a comprehensive definition of the structure of virtual keyboard ID and some examples,
+     * refers to the details provided in the description of {@link #VIRTUAL_KEYBOARD_PROFILE}.
+     * <p>
+     * Custom virtual keyboards are usually distributed as APKs. In that case, the custom virtual keyboard
+     * can be installed on or uninstalled from the device as any other App.
+     * <p>
+     * The link to the <a href=https://developer.android.com/reference/android/view/inputmethod/InputMethodManager>InputMethodManager</a>
+     * at the Google's documentation can be helpful to correctly interact with the Input Methods and
+     * to retrieve the details related to the Input Methods.
+     * <p>
+     * The list of virtual keyboards currently installed on the device can be retrieved as shown by
+     * the example below:
+     * <pre>
+     * InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+     * List<InputMethodInfo> installedIMEs = inputMethodManager.getInputMethodList();
+     * </pre>
+     * In alternative, the following command retrieves the list of input method editor IDs
+     * currently installed on the device:
+     * <pre>adb shell ime list -a -s</pre>
+     * <p>
+     * The list of virtual keyboards currently enabled on the device can be retrieved as shown by
+     * the example below:
+     * <pre>
+     * InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+     * List<InputMethodInfo> enabledIMEs = inputMethodManager.getEnabledInputMethodList();
+     * </pre>
+     * In alternative, the following command retrieves the list of input method IDs
+     * currently enabled on the device:
+     * <pre>adb shell ime list -s</pre>
+     * In order to enable or disable desired virtual keyboards, the following commands provide
+     * an alternative to {@link #VIRTUAL_KEYBOARD_GBOARD_ENABLED},
+     * {@link #VIRTUAL_KEYBOARD_VOICE_TYPING_ENABLED}, {@link #VIRTUAL_KEYBOARD_ANDROID_ENABLED},
+     * {@link #VIRTUAL_KEYBOARDS_CUSTOM_ENABLED}:
+     * <pre>adb shell ime enable [input method id]</pre>
+     * or
+     * <pre>adb shell ime disable [input method id]</pre>
+     * <p>
+     * But, as mention above, the property {@link #VIRTUAL_KEYBOARDS_CUSTOM_ENABLED} can be used also
+     * to enable virtual keyboards not yet installed on the device, while the Android methods allow
+     * to enable virtual keyboard which are already installed on the device.
+     * <p>
+     * Finally, in order to select the virtual keyboard which should be displayed to the user,
+     * refer to property {@link #VIRTUAL_KEYBOARD_PROFILE}.
+     */
+    public final static int VIRTUAL_KEYBOARDS_CUSTOM_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001F;
+
+    //
+    // Device Info definitions
+    //
+
+    /**
      * This parameter is the Device Name base part. The whole Device Name is obtained adding the suffix specified by {@link #DEVICE_NAME_SUFFIX}.
      * The set to an empty String is refused if {@link #DEVICE_NAME_SUFFIX} has value {@link DeviceNameSuffix#NONE}.
      * <p>
@@ -2598,6 +3901,10 @@ public class PropertyID {
      */
     public final static int DEVICE_NAME_SUFFIX = PropertyGroupID.DEVICE_INFO_GROUP + 0x0002;
 
+    //
+    // Bluetooth definitions
+    //
+
     /**
      * This parameter enables/disables bluetooth discoverability.
      * <p>
@@ -2606,7 +3913,8 @@ public class PropertyID {
     public final static int BT_DISCOVERABILITY = PropertyGroupID.BLUETOOTH_GROUP + 0x0001;
 
     /**
-     * This parameter sets the default policy for pairing those devices supporting NFC Bluetooth pairing.
+     * This parameter sets the default policy for the pairing procedure with external devices
+     * for Bluetooth connections.
      * <p>
      * The class of the property is {@link EnumProperty}.
      * The allowed values are defined by enum {@link BTPairingPolicy}.
@@ -2614,15 +3922,59 @@ public class PropertyID {
     public final static int BT_PAIRING_POLICY = PropertyGroupID.BLUETOOTH_GROUP + 0x0002;
 
     /**
-     * This parameter enables the silent pairing for those devices supporting NFC Bluetooth pairing
-     * and whitelisted through the property {@link #BT_SILENT_PAIRING_WHITELISTING}.
+     * This parameter enables the silent procedure for pairing bluetooth devices.
+     * The silent procedure allows certain external pre-approved devices to connect to
+     * the mobile device via bluetooth without requiring user interaction during the initial pairing process.
+     * <p>
+     * By reducing the need for user interaction for trusted devices,
+     * the SDK streamlines the user experience while maintaining security protocols for all other devices.
+     * <p>
+     * <b>How It Works:</b><p>
+     * When an external device attempts to pair with the mobile device using Bluetooth,
+     * Android typically prompts the user to confirm the connection thought several steps.
+     * However, with Bluetooth Silent Pairing mechanism, developers can preemptively whitelist one or more devices.
+     * So, when a whitelisted device initiates a pairing request,
+     * the mobile device bypasses the confirmation dialogs, allowing the device
+     * to connect automatically and seamlessly without any user intervention.
+     * Only devices that have been whitelisted will bypass the pairing dialogs.
+     * This ensures security and control over which devices can connect automatically.
+     * <p>
+     * In order to define the list of pre-approved devices,
+     * the property {@link #BT_SILENT_PAIRING_WHITELISTING} shall be configured.
+     * <p>
+     * <b>Default Pairing:</b><p>
+     * The silent pairing procedure does not modify or interfere with the default Android pairing and connection processes.
+     * For devices that are not whitelisted, the default Android behavior is maintained.
+     * The user will be prompted with the standard Android pairing dialogs,
+     * ensuring that non-whitelisted devices still require explicit user approval before they can connect.
+     * In case the default Android behavior required to be modified or the user shall be restricted
+     * in pairing external devices, the property {@link #BT_PAIRING_POLICY} can be configured
+     * with this purpose.
+     * <p>
+     * <b>Developer Responsibilities:</b><p>
+     * Even when using the silent pairing procedure, developers are still responsible for managing
+     * the Bluetooth connection and its associated events within their application.
+     * This includes utilizing the standard Android APIs and event receivers to handle
+     * the Bluetooth connection process after the pairing is completed.
+     * As documented by Google in https://developer.android.com/reference/android/bluetooth/BluetoothDevice
+     * <p>
+     * Developers must ensure that their application properly listens for Bluetooth connection events,
+     * manages connections, and handles any disconnections or other relevant events.
+     * The silent pairing procedure only affects the user interaction during the initial pairing process,
+     * and does not alter the standard procedures for Bluetooth connection management within the Android ecosystem.
+     * <p>
+     * By integrating this feature, developers can provide a more streamlined user experience
+     * while still leveraging the full capabilities of Android's Bluetooth API
+     * to manage device connections effectively.
      * <p>
      * The class of the property is {@link BooleanProperty}.    
      */
     public final static int BT_SILENT_PAIRING_WHITELISTING_ENABLE = PropertyGroupID.BLUETOOTH_GROUP + 0x0003;
 
     /**
-     * This parameter contains the devices whitelisted for silent pairing, if enabled by property {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE}.
+     * This parameter defines the devices whitelisted for the Bluetooth Silent Pairing.
+     * The bluetooth silent pairing procedure required to be enabled by configuring the property
+     * {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE}.
      * <p>
      * The class of the property is {@link BlobProperty}.
      * The specific implementation for this type of blob is {@link BluetoothSilentPairingWhitelisting}.<br>
@@ -2671,6 +4023,19 @@ public class PropertyID {
      */
     public final static int BT_SILENT_PAIRING_WHITELISTING = PropertyGroupID.BLUETOOTH_GROUP + 0x0004;
 
+    /**
+     * This parameter enables or disables the silent procedure for pairing bluetooth devices
+     * manufactured by Datalogic.
+     * The silent procedure allows certain external pre-approved devices to connect to the mobile
+     * device via bluetooth without requiring user interaction during the initial pairing process.
+     * <p>
+     * This approach can be extended also to trusted devices not manufactured by Datalogic
+     * through the properties {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE} and
+     * {@link #BT_SILENT_PAIRING_WHITELISTING}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BT_SILENT_PAIRING_TRUSTED_ENABLED = PropertyGroupID.BLUETOOTH_GROUP + 0x0005;
 
     /**
      * This parameter enables the notification when a profile is automatically loaded because the associated application
@@ -2680,6 +4045,31 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int PROFILES_AUTO_SWITCHING_NOTIFICATION_ENABLE = PropertyGroupID.PROFILES_GROUP + 0x0001;
+
+    //
+    // System definitions
+    //
+
+    /**
+     * The Virtual RAM is a cutting-edge feature designed to enhance the device's performance.
+     * In particular, swap allows to free up physical RAM by moving less frequently accessed data to
+     * slower but larger memory (e.g. flash), allowing more space for active application and processes in RAM.
+     * Users can enjoy the benefits of extended memory capacity without physical hardware upgrades,
+     * enabling more robust multitasking and improved app performance.
+     * <p>
+     * The required space in flash storage for Virtual RAM is configurable and can be tailored
+     * to meet specific needs. This flexibility ensures that the device maintains a balance between
+     * performance and storage capacity, resulting in an optimized user experience without unnecessary constraints.
+     * The memory swap parameter allows developers to manage and optimize the allocation of Virtual RAM,
+     * effectively utilizing a portion of the device's flash storage to extend the available RAM.
+     * <p>
+     * By allocating flash storage for Virtual RAM, this feature minimizes the likelihood of slowdowns,
+     * providing a responsive and fluid user experience that can handle more applications and data simultaneously.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link VirtualRAMSwapPolicy}.
+     */
+    public final static int VIRTUAL_RAM_SWAP_POLICY = PropertyGroupID.SYSTEM_GROUP + 0x0001;
 
     //
     // General Decoding definitions
@@ -4948,6 +6338,32 @@ public class PropertyID {
      * The class of the property is {@link TextProperty}.
      */
     public final static int WEDGE_INTENT_EXTRA_BARCODE_STRING = 0x30D46;
+    /**
+     * This parameter indicates if the empty intent values have to be excluded. This considers all extras' names and the category, while the action is always included in the intent.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int WEDGE_INTENT_EXCLUDE_EMPTY_VALUES = 0x30D47;
+    /**
+     * This parameter defines the name of the extra field of the Decode Wedge intent containing the user ID of the decoded barcode as extra value (as String).
+     * <p>
+     * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the user ID of the decoded barcode.
+     * <p>
+     * The default value is "com.datalogic.decode.intentwedge.barcode_user_id".
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+     public final static int WEDGE_INTENT_EXTRA_BARCODE_USER_ID = 0x30D48;
+     /**
+     * This parameter defines the name of the extra field of the Decode Wedge intent containing the AIM ID of the decoded barcode as extra value (as String)
+     * <p>
+     * This extra name shall be used as the name argument of Intent.getStringExtra() to retrieve the AIM ID of the decoded barcode.
+     * <p>
+     * The default value is "com.datalogic.decode.intentwedge.barcode_aim_id".
+     * <p>
+     * The class of the property is {@link TextProperty}.
+      */
+    public final static int WEDGE_INTENT_EXTRA_BARCODE_AIM_ID = 0x30D49;
      /**
       * This parameter enables the Decode Wedge capability for direct web browsing. 
       * <p>
@@ -5295,3 +6711,4 @@ public class PropertyID {
         return null;
     }
 }
+

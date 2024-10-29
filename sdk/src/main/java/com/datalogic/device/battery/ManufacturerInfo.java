@@ -103,4 +103,15 @@ public class ManufacturerInfo
     {
         return null;
     }
+
+    /**
+     * Returns the battery firmware version.
+     *
+     * @return <code>String</code>
+     *         The battery firmware version.
+     */
+    public String getFirmwareVersion()
+    {
+        return null;
+    }
 }
