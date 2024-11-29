@@ -263,6 +263,12 @@ public class ScannerProperties extends PropertyGroup {
      */
     public OCR ocr;
 
+    /**
+     * Controls the Snap OCR feature.
+     * {@see SnapOcr}
+     */
+    public SnapOcr snapOcr;
+
 	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 

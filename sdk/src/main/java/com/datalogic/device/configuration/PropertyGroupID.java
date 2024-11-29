@@ -162,6 +162,10 @@ public class PropertyGroupID {
      */
     public final static int POWER_CHARGING_MODE_GROUP = POWER_MIB_BASE + 0x0006;
 
+    /**
+     * Root of the subtree of pocket mode properties.
+     */
+    public final static int POWER_POCKET_MODE_GROUP = POWER_MIB_BASE + 0x0007;
 
     /**
      * Root of the subtree of the Developer Options properties.
@@ -468,6 +472,22 @@ public class PropertyGroupID {
      * Root of the subtree of the properties that configure the barcode injection from an External Scanner Source.
      */
     public final static int EXT_SCANNER_SOURCE_GROUP = SCANNER_MIB_BASE + 0x0041;
+    /**
+     * Root of the subtree of the SNAP OCR properties
+     */
+    public final static int SNAP_OCR_GROUP = SCANNER_MIB_BASE + 0x0042;
+    /**
+     * Root of the subtree of the SNAP OCR result settings properties
+     */
+    public final static int SNAP_OCR_RESULT_SETTINGS_GROUP = SCANNER_MIB_BASE + 0x0043;
+    /**
+     * Root of the subtree of the SNAP OCR UI customization properties
+     */
+    public final static int SNAP_OCR_UI_CUSTOMIZATION_GROUP = SCANNER_MIB_BASE + 0x0044;
+    /**
+     * Root of the subtree of Good Read Overlay Group's properties.
+     */
+    public final static int GOOD_READ_OVERLAY_GROUP = SCANNER_MIB_BASE + 0x0045;
     /**
      * Root of the subtree of External Formatter Group's properties.
      */

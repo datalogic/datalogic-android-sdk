@@ -683,6 +683,39 @@ import com.datalogic.device.*;
  *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y} </li>
  *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH} </li>
  *                             <li> {@link #PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT} </li>
+ *                             <li> {@link #PREVIEW_ZOOM_LEVEL} </li>
+ *                         </ul>
+ *                     </details>
+ *                 </li>
+ *                 <li>
+ *                     <details>
+ *                         <summary> {@link PropertyGroupID#SNAP_OCR_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #SNAP_OCR_ENABLE} </li>
+ *                             <li> {@link #SNAP_OCR_FIRST_SELECTION_MODE} </li>
+ *                             <li> {@link #SNAP_OCR_SCANNING_POLICY} </li>
+ *                             <li> {@link #SNAP_OCR_ROI_SETTINGS} </li>
+ *                             <li>
+ *                                 <details>
+ *                                     <summary> {@link PropertyGroupID#SNAP_OCR_RESULT_SETTINGS_GROUP}</summary>
+ *                                     <ul>
+ *                                         <li> {@link #SNAP_OCR_RESULTS_COMBINATION} </li>
+ *                                         <li> {@link #SNAP_OCR_RESULT_SEPARATOR} </li>
+ *                                         <li> {@link #SNAP_OCR_REGEX_FILTER} </li>
+ *                                         <li> {@link #SNAP_OCR_ROI_PREFIX_VISIBILITY} </li>
+ *                                     </ul>
+ *                                 </details>
+ *                             </li>
+ *                             <li>
+ *                                 <details>
+ *                                     <summary> {@link PropertyGroupID#SNAP_OCR_UI_CUSTOMIZATION_GROUP}</summary>
+ *                                     <ul>
+ *                                         <li> {@link #SNAP_OCR_COLOR_BLOCK} </li>
+ *                                         <li> {@link #SNAP_OCR_COLOR_TEXT} </li>
+ *                                         <li> {@link #SNAP_OCR_REFERENCE_ROI_VISIBILITY} </li>
+ *                                     </ul>
+ *                                 </details>
+ *                             </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -788,6 +821,29 @@ import com.datalogic.device.*;
  *                             <li> {@link #GREEN_SPOT_ENABLE} </li>                                                
  *                             <li> {@link #GOOD_READ_LED_ENABLE} </li>
  *                             <li> {@link #GOOD_READ_VIBRATE_ENABLE} </li>
+ *                             <li>
+ *                                 <details>
+ *                                 <summary> {@link PropertyGroupID#GOOD_READ_OVERLAY_GROUP}</summary>
+ *                                 <ul>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_ENABLE} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_COLOR} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_SHAPE_POLICY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_CUSTOM_SHAPE_NAME_PROFILE} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_POSITION_POLICY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_POSITION_X} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_POSITION_Y} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_DISPLAY_POLICY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_SIZE_MAX_WIDTH} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_SIZE_MAX_HEIGHT} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_POSITION_POLICY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_POSITION_X} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_POSITION_Y} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_DISPLAY_POLICY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_WIDTH} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_HEIGHT} </li>
+ *                                </ul>
+ *                                </details>
+ *                            </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -919,6 +975,17 @@ import com.datalogic.device.*;
  *               <ul>
  *                  <li> {@link #POWER_SUSPEND_EXTERNAL_TIMEOUT} </li>
  *                  <li> {@link #POWER_SUSPEND_INTERNAL_TIMEOUT} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_POCKET_MODE_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_POCKET_MODE_ENABLED} </li>
+ *                  <li> {@link #POWER_POCKET_MODE_POLICY} </li>
+ *                  <li> {@link #POWER_POCKET_MODE_DELAY} </li>
+ *                  <li> {@link #POWER_POCKET_MODE_LOCK_TIMEOUT} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1991,6 +2058,41 @@ public class PropertyID {
     * The class of the property is {@link BooleanProperty}.
     */
     public final static int POWER_WAKEUP_PTT_TRIGGER = PropertyGroupID.POWER_MIB_BASE + 0x0016;
+
+    /**
+     * Activates the Pocket-Mode feature. When this feature is enabled, the device will automatically
+     * go into sleep mode when the display sensor detects any nearby object (e.g. into a pocket).
+     * The device will reactivate once the object is no longer detected.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_POCKET_MODE_ENABLED = PropertyGroupID.POWER_MIB_BASE + 0x0017;
+
+    /**
+     * Configures the Pocket-Mode behaviour policy.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link PocketModePolicy}.
+     */
+    public final static int POWER_POCKET_MODE_POLICY = PropertyGroupID.POWER_MIB_BASE + 0x0018;
+
+    /**
+     * Once a nearby object is detected, the Pocket-Mode will triggered after a brief delay.
+     * This pause serves as a "debounce" period to prevent accidental activations. The duration of
+     * the interval is measured in milliseconds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int POWER_POCKET_MODE_DELAY = PropertyGroupID.POWER_MIB_BASE + 0x0019;
+
+    /**
+     * When the {@link PocketModePolicy#PROGRESSIVE_DEVICE_LOCK} policy is selected, this value is
+     * used to configure the amount of time that needs to pass before the device switches from
+     * "display off" to "suspend". The duration of the interval is measured in milliseconds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int POWER_POCKET_MODE_LOCK_TIMEOUT = PropertyGroupID.POWER_MIB_BASE + 0x001A;
 
     //
     // USB Settings definitions
@@ -4308,6 +4410,111 @@ public class PropertyID {
      */
     public final static int GOOD_READ_TIMEOUT = 0x0038;
      /**
+     * This parameter enables the overlay notification for a successful read.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_ENABLE = 0x0039;
+    /**
+     * This parameter selects the color of the overlay used as notification on a successful read.If the property <code>GOOD_READ_OVERLAY_SHAPE_POLICY</code> is set to <code>FULL_SCREEN</code>
+     * once a code is decoded, the full screen of the device is painted with the color selected otherwise
+     * the color is applied on the whole image selected excluding the trasparent areas and painted on top 
+     * of the screen.     
+     * The color is in ARGB format.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_COLOR = 0x003A;
+    /**
+     * This parameter selects the shape of the overlay used as notification on a successful read.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GoodReadOverlayShapePolicy}.
+     */
+    public final static int GOOD_READ_OVERLAY_SHAPE_POLICY = 0x003B;
+    /**
+     * This parameter selects the custom shape profile name for the overlay notification.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_CUSTOM_SHAPE_NAME_PROFILE = 0x003C;
+    /**
+     * This parameter selects the position policy for the overlay in portrait mode.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GoodReadOverlayPositionPolicy}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_POSITION_POLICY = 0x003D;
+    /**
+     * This parameter defines the custom starting X coordinate (starting from the left side of the screen) for the overlay in portrait mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_POSITION_X = 0x003E;
+    /**
+     * This parameter defines the custom starting Y coordinate (starting from the top of the screen) for the overlay in portrait mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_POSITION_Y = 0x003F;
+    /**
+     * This parameter selects how the overlay is displayed in portrait mode.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GoodReadOverlayDisplayPolicy}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_DISPLAY_POLICY = 0x0040;
+    /**
+     * This parameter defines the maximum custom width of the overlay in portrait mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_SIZE_MAX_WIDTH = 0x0041;
+    /**
+     * This parameter defines the maximum custom height of the overlay in portrait mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_PORTRAIT_CUSTOM_SIZE_MAX_HEIGHT = 0x0042;
+    /**
+     * This parameter selects the position policy for the overlay in landscape mode.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GoodReadOverlayPositionPolicy}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_POSITION_POLICY = 0x0043;
+    /**
+     * This parameter defines the custom starting X coordinate (starting from the left side of the screen) for the overlay in landscape mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_POSITION_X = 0x0044;
+    /**
+     * This parameter defines the custom starting Y coordinate (starting from the top of the screen) for the overlay in landscape mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_POSITION_Y = 0x0045;
+    /**
+     * This parameter selects how the overlay is displayed in landscape mode.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link GoodReadOverlayDisplayPolicy}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_DISPLAY_POLICY = 0x0046;
+    /**
+     * This parameter defines the maximum custom width of the overlay in landscape mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_WIDTH = 0x0047;
+    /**
+     * This parameter defines the maximum custom height of the overlay in landscape mode.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_HEIGHT = 0x0048;
+    /**
       * This parameter enables the ability to collect a defined number of barcodes in a single session and transmit them at the same time.       
       * <p>
       * The class of the property is {@link BooleanProperty}.
@@ -6548,6 +6755,12 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT = 0x4040A;
+    /**
+     * This parameter indicates the zoom level applied to the camera preview.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PREVIEW_ZOOM_LEVEL = 0x4040B;
 
     //
     // Frame capture
@@ -6694,6 +6907,90 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int TLC39_LINEAR_TRANSMISSION_ENABLE = 0x40605;
+
+    //
+    // SNAP OCR
+    //
+    //
+    /**
+     * This parameter enables or disables the Snap Ocr feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SNAP_OCR_ENABLE = 0x40700;
+    /**
+     * This parameter specifies how the OCR text is selected.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link SnapOcrFirstSelectionMode}.
+     */
+    public final static int SNAP_OCR_FIRST_SELECTION_MODE = 0x40701;
+    /**
+     * This parameter specifies how to send the OCR results, if they are concatenated
+     * in the same result or divided in different results.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link SnapOcrResultsCombination}.
+     */
+    public final static int SNAP_OCR_RESULTS_COMBINATION = 0x40702;
+    /**
+     * This parameter is a String providing the separator between results,
+     * only used in concatenated mode.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SNAP_OCR_RESULT_SEPARATOR = 0x40703;
+    /**
+     * This parameter specifies the settings used to define ROIs on the image, inside of which the
+     * OCR text is decoded. These settings are used only when the first selection mode is set to ROI_PROPOSE or
+     * ROI_SEND.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link SnapOcrRoiSettings}.
+     */
+    public final static int SNAP_OCR_ROI_SETTINGS = 0x40704;
+    /**
+     * This parameter specifies the scanning policy.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link SnapOcrScanningPolicy}.
+     */
+    public final static int SNAP_OCR_SCANNING_POLICY = 0x40705;
+    /**
+     * This parameter is a regular expression used to filter any OCR text, excluding
+     * the values that don't match the filter.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SNAP_OCR_REGEX_FILTER = 0x40706;
+    /**
+     * This parameter is used to setup the background color in the OCR result dialog.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SNAP_OCR_COLOR_BLOCK = 0x40707;
+    /**
+     * This parameter is used to setup the text color in the OCR result dialog.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SNAP_OCR_COLOR_TEXT = 0x40708;
+    /**
+     * This parameter is used to show or hide the reference ROI from
+     * the preview and from the OCR result dialog.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SNAP_OCR_REFERENCE_ROI_VISIBILITY = 0x40709;
+    /**
+     * This parameter allows to show the ROI number as prefix inside the OCR
+     * results, when enabled. The prefix is set in the format ROI_NUMBER:OCR_TEXT, where
+     * ROI_NUMBER indicates the index of the ROI inside the ROI settings (starting from 1)
+     * and OCR_TEXT is the original result.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SNAP_OCR_ROI_PREFIX_VISIBILITY = 0x4070A;
 
     /**
      * @hide

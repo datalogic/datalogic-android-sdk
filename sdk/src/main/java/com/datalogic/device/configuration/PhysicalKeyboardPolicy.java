@@ -9,11 +9,13 @@ public enum PhysicalKeyboardPolicy {
      */
     DEFAULT(0),
     /**
-     * Layout automatically retrieved from the external physical keyboard connected to the device.
+     * Layout set with the current Locale.
+     * Physical Keyboard is defined by system language.
      */
     AUTOMATIC(1),
     /**
      * User defined preference.
+     * Physical Keyboard Layout is defined by {@link PropertyID#PHYSICAL_KEYBOARD_PROFILE}.
      */
     CUSTOM(2);
 

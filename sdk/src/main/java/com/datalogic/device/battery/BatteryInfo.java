@@ -90,7 +90,19 @@ public enum BatteryInfo {
 	/**
 	 * The version of the firmware loaded inside the gauge. The value type of this property is <code>String</code>.
 	 */
-	FIRMWARE_VERSION;
+	FIRMWARE_VERSION,
+	/**
+	 * The number of cycles the battery has undergone. The value type of this property is <code>int</code>.
+	 */
+	CHARGE_CYCLES,
+	/**
+	 * The battery rated capacity. The value type of this property is <code>int</code>.
+	 */
+	RATED_CAPACITY,
+	/**
+	 * The battery typical capacity. The value type of this property is <code>int</code>.
+	 */
+	TYPICAL_CAPACITY;
 
 	/**
 	 * Converts the BatteryInfo to its integer corresponding value.
