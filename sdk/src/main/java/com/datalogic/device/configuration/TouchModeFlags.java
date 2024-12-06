@@ -26,6 +26,10 @@ public class TouchModeFlags {
      * Thick gloves touch-screen sensitivity.
      */
     public final static int FLAG_THICK_GLOVES = 16;
+    /**
+      * Rain touch-screen sensitivity.
+      */
+    public final static int FLAG_RAIN = 32;
 
     /**
      * @hide

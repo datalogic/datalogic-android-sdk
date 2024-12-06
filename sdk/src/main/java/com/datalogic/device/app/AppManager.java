@@ -42,7 +42,8 @@ public class AppManager {
 
 
     /**
-     * Call this method to grant an application all the permissions declared in its manifest. <br>
+     * Call this method to grant an application all the <a href="https://developer.android.com/guide/topics/permissions/overview#runtime">runtime permissions</a> declared in its manifest. <br>
+     * If the application is a system application the method fails and returns the exception {@link AppManagerException#SECURITY_ERROR} or the corresponding error.
      * <br>
      * The method works in best effort. If almost one of the requested permissions is not granted an error is returned.
      * In case of error to check which permissions are granted use
@@ -63,7 +64,8 @@ public class AppManager {
 	}
 
     /**
-     * Call this method to grant an application the specified permissions. <br>
+     * Call this method to grant an application the specified <a href="https://developer.android.com/guide/topics/permissions/overview#runtime">runtime permissions</a>. <br>
+     * If the application is a system application the method fails and returns the exception {@link AppManagerException#SECURITY_ERROR} or the corresponding error.
      * <br>
      * The method works in best effort. If almost one of the requested permissions is not granted an error is returned.
      * In case of error to check which permissions are granted use
@@ -86,7 +88,8 @@ public class AppManager {
 	}
 
     /**
-     * Call this method to revoke an application the specified permissions. <br>
+     * Call this method to revoke an application the specified <a href="https://developer.android.com/guide/topics/permissions/overview#runtime">runtime permissions</a>. <br>
+     * If the application is a system application the method fails and returns the exception {@link AppManagerException#SECURITY_ERROR} or the corresponding error.
      * <br>
      * The method works in best effort. If almost one of the requested permissions is not revoked an error is returned.
      * In case of error to check which permissions are revoked use
@@ -248,17 +251,17 @@ public class AppManager {
      * Call this method to enable/disable the specified list of <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a>s of a given application. <br>
      * The NotificationChannels are specified using their <a href="https://developer.android.com/reference/android/app/NotificationChannel#getId()">identifier</a>.<br>
      * To enable/disable all the NotificationChannels of an app use as value of the parameter notificationChannels the regular expression "^(?:[\\w| ]*)$". <br>
-     * <b>To disable all the NotificationChannels of the Clock app:
+     * <b>To disable all the NotificationChannels of the Clock app:</b>
      * <pre>
      * AppManager appmanager = new AppManager(this);
      * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:[\\w| ]*)$", false);
      * </pre>
-     * <b>To disable the NotificationChannels Bedtime, Timers, Firing alarms & timers, Missed alarms of the Clock app:
+     * <b>To disable the NotificationChannels Bedtime, Timers, Firing alarms & timers, Missed alarms of the Clock app:</b>
      * <pre>
      * AppManager appmanager = new AppManager(this);
      * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:Bedtime|Timers|Firing|Missed Alarms)$", false);
      * </pre>
-     * The identifier of the NotificationChannels are obtained getting the list of all the NotificationChannels of the app and looking, in the returned list, for their identifier.
+     * <b>The identifier of the NotificationChannels are obtained getting the list of all the NotificationChannels of the app and looking, in the returned list, for their identifier.</b>
      * <pre>
      * AppManager appmanager = new AppManager(this);
      * List<NotificationChannel> channels = new ArrayList<NotificationChannel>();
@@ -284,5 +287,28 @@ public class AppManager {
         return 0;
     }
 
+    /**
+     * Call this method to set the mode of the specified <a href="https://developer.android.com/guide/topics/permissions/overview#special">app-ops permissions</a> of a given application. <br>
+     * If the application is a system application the method fails and returns the exception {@link AppManagerException#SECURITY_ERROR} or the corresponding error.
+     * <br>
+     *
+     * @param packageName
+     *            <code>String</code>The application to grant permissions to.  If the application is a system application the method fails.
+     * @param permissions
+     *            <code>ArrayList<String></code> The list of app-ops permissions to be set.
+     * @param mode
+     *            <code>int</code> <br>
+     * <a href="https://developer.android.com/reference/android/app/AppOpsManager#MODE_ALLOWED">AppOpsManager.MODE_ALLOWED</a>: the given application is allowed to perform the given operation. <br>
+     * <a href="https://developer.android.com/reference/android/app/AppOpsManager#MODE_IGNORED">AppOpsManager.MODE_IGNORED</a>: the given application not allowed to perform the given operation, and the attempt should silently
+     * fail (it should not cause the app to crash). <br>
+     * <a href="https://developer.android.com/reference/android/app/AppOpsManager#MODE_ERRORED">AppOpsManager.MODE_ERRORED</a>: the given application not allowed to perform the given operation, and the attempt should cause it to have a fatal error. <br>
+     * @return <code>int</code>
+     *            {@link AppManagerException#SUCCESS} in case of success,
+     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
+     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int setModeAppOps(String packageName, List<String> permissions, int mode) {
+        return 0;
+    }
 
 }

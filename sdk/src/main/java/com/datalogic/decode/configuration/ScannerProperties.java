@@ -270,6 +270,12 @@ public class ScannerProperties extends PropertyGroup {
     public SnapOcr snapOcr;
 
 	/**
+	 * Controls the TLC39 barcode reading capabilities.
+	 * {@see Tlc39}
+	 */
+	public Tlc39 tlc39;
+
+	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 
 	 * @param editor A {@link PropertyGetter} used to load the current barcode families and properties.

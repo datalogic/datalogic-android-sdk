@@ -33,7 +33,13 @@ public enum DLKeyEvent {
      * Datalogic's Android keycode meant to represent
      * Undefined keycode
      */
-    KEYCODE_UNKNOWN(0);
+    KEYCODE_UNKNOWN(0),
+
+    /**
+     * Datalogic's Android keycode meant to represent
+     * the Snap OCR trigger button
+     */
+    KEYCODE_OCR_DECODE(1129);
 
     /**
      * @hide
