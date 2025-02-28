@@ -26,7 +26,16 @@ public class QuickSettingsTiles {
     public QuickSettingsTiles(){}
 
     /**
-     * Get a map with all available system tiles in the format <id,label>.
+     * Retrieves a map of all available system tiles in the format <id, label>, where:
+     * <ul>
+     *   <li><b>id</b> represents the identifier used by Android to recognize the tile.</li>
+     *   <li><b>label</b> is the user-facing title displayed in the Quick Settings panel.</li>
+     * </ul>
+     * 
+     * <p>
+     * For example, if the available system tiles are "Internet", "Bluetooth", and "Do Not Disturb",
+     * the returned map would be: <code>{internet=Internet, bt=Bluetooth, dnd=Do Not Disturb}</code>.
+     * </p>
      *
      * @param context
      *            <code>Context</code>
@@ -39,14 +48,20 @@ public class QuickSettingsTiles {
     }
 
     /**
-     * Get a map with all available custom tiles in the format <id,label>.
-     *
-     * @param context
-     *            <code>Context</code>
-     * 
-     * @return HashMap<String, String> the map of available custom tiles.
-     * 
-     * */
+    * Retrieves a map of all available custom tiles in the format <id, label>, where:
+    * <ul>
+    *   <li><b>id</b> represents the identifier used by Android to recognize the tile.</li>
+    *   <li><b>label</b> is the user-facing title displayed in the Quick Settings panel.</li>
+    * </ul>
+    * 
+    * <p>The format of the returned map is identical to that of {@link QuickSettingsTiles#getAvailableSystemTiles}.</p>
+    * 
+    * @param context
+    *            <code>Context</code>
+    * 
+    * @return HashMap<String, String> the map of available custom tiles.
+    * 
+    * */
     public static HashMap<String, String> getAvailableCustomTiles(Context context) {
         return null;
     }

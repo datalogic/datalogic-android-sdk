@@ -121,12 +121,6 @@ public class PropertyGroupID {
     public final static int ETHERNET_SETTINGS_GROUP = ETHERNET_MIB_BASE + 0x0002;
 
     /**
-      * Root of the subtree of Dual SIM properties
-      */
-    public final static int DUAL_SIM_GROUP = DUAL_SIM_MIB_BASE;
-
-
-    /**
      * Root of the subtree of Touch Mode properties.
      */
     public static final int TOUCH_GROUP = TOUCH_MIB_BASE + 0x0001;
@@ -140,10 +134,6 @@ public class PropertyGroupID {
       * Root of the subtree of the Dual SIM properties
       */
     public static final int DUAL_SIM_MGMT_GROUP = DUAL_SIM_MIB_BASE + 0x0001;
-    /**
-     * Root of specific sim properties
-     */
-    public static final int SPECIFIC_SIM_MGMT_GROUP = DUAL_SIM_MIB_BASE + 0x0002;
 
     /**
       * Root of the subtree of Power Sources properties.
@@ -488,6 +478,10 @@ public class PropertyGroupID {
      * Root of the subtree of Good Read Overlay Group's properties.
      */
     public final static int GOOD_READ_OVERLAY_GROUP = SCANNER_MIB_BASE + 0x0045;
+    /**
+     * Root of the subtree of the properties that configure the scan engine to work in place of the standard rear camera.
+     */
+    public final static int CAMERA_WEDGE_GROUP = SCANNER_MIB_BASE + 0x0046;
     /**
      * Root of the subtree of External Formatter Group's properties.
      */

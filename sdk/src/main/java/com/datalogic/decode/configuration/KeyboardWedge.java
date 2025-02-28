@@ -30,6 +30,12 @@ public class KeyboardWedge extends PropertyGroup {
 	public EnumProperty<KeyWedgeMode> wedgeMode;
 
 	/**
+	 * <code>nonPrintableKeyEventDelay</code> represents a delay applied before and after every non printable character.
+	 * This is valid only for the commit text and the text injection modes of the keyboard wedge.
+	 */
+	public NumericProperty nonPrintableKeyEventDelay;
+
+	/**
 	 * This is the constructor of KeyboardWedge. All options are initialized by
 	 * editor.
 	 * 

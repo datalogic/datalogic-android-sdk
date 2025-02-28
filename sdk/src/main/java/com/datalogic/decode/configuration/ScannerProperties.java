@@ -269,6 +269,12 @@ public class ScannerProperties extends PropertyGroup {
      */
     public SnapOcr snapOcr;
 
+    /**
+     * Provides configuration for the Camera Wedge.
+     * {@see CameraWedge}
+     */
+	public CameraWedge cameraWedge;
+
 	/**
 	 * Controls the TLC39 barcode reading capabilities.
 	 * {@see Tlc39}

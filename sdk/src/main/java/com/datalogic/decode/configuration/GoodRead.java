@@ -58,10 +58,9 @@ public class GoodRead extends PropertyGroup {
 
 	/**
 	 * <code>goodReadOverlayColor</code> selects which color to use on the overlay as notification
-	 * on a successful read. If the property <code>GOOD_READ_OVERLAY_SHAPE_POLICY</code> is set to <code>FULL_SCREEN</code>
-	 * once a code is decoded, the full screen of the device is painted with the color selected otherwise
-	 * the color is applied on the whole image selected excluding the trasparent areas and painted on top 
-	 * of the screen. The color of the selected image has no effect, only its opacity. This property uses an ARGB format (32bit 8bpc).
+	 * on a successful read. The color is used when the field <code>goodReadOverlayShapePolicy</code> is set to <code>FULL_SCREEN</code>
+	 * or, when the field <code>goodReadOverlayPreserveColors</code> is set to <code>false</code>.
+	 * This property uses an ARGB format (32bit 8bpc), alpha channel is not used, the transparency is set by the <code>goodReadOverlayTransparency</code> field.
 	 */
 	public NumericProperty goodReadOverlayColor;
 
@@ -148,6 +147,29 @@ public class GoodRead extends PropertyGroup {
 	 * overlay to use in landscape mode.
 	 */
 	public NumericProperty goodReadOverlayLandscapeCustomSizeMaxHeight;
+
+	/**
+	 * <code>goodReadOverlayTransparency</code> selects the level of transparency to be applied
+	 * to the overlay. The value is specified as a numeric property, typically ranging from 0 (fully
+	 * opaque) to 100 (fully transparent). Values between 0 and 100 define varying degrees of transparency.
+	 */
+	public NumericProperty goodReadOverlayTransparency;
+
+	/**
+	 * <code>goodReadOverlayPreserveColors</code> selects whether the original colors of the overlay
+	 * should be preserved. When set to <code>true</code>, the colors specified in the overlay will
+	 * not be altered during rendering, otherwise effects or modifications may be applied to the colors
+	 * for a different display appearance.
+	 */
+	public BooleanProperty goodReadOverlayPreserveColors;
+
+	/**
+	 * <code>goodReadOverlayBlackAsTransparent</code> selects whether the black or white color in the overlay
+	 * should be treated as transparent. When set to <code>false</code>, the white areas in the overlay will be considered transparent;
+	 * when set to <code>true</code>, the black areas will be treated as transparent. In both cases, all other colors are converted to grayscale,
+	 * and their transparency is interpolated between the two extremes.
+	 */
+	public BooleanProperty goodReadOverlayBlackAsTransparent;
 
 	/**
 	 * This is the constructor of GoodRead. All options are initialized by

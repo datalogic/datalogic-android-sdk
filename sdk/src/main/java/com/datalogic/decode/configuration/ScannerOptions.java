@@ -120,6 +120,14 @@ public class ScannerOptions extends PropertyGroup {
 	public BooleanProperty enableScanner;
 
 	/**
+	 * <code>scannerCameraInteroperability</code> enables the interoperability between
+	 * scanner and other cameras, allowing to scan barcodes while another camera is previewing.
+	 * By default, the scanner is prevented from starting barcode scanning
+	 * when the camera is in use.
+	 */
+	public BooleanProperty scannerCameraInteroperability;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 

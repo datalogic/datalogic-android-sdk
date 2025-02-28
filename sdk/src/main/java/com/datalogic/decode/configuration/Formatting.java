@@ -51,12 +51,19 @@ public class Formatting extends PropertyGroup {
 	public EnumProperty<ECIPolicy> eciPolicy;
 
 	/**
-	 * <code>gs1Check</code> enables the check for the GS1 format.
+	 * <code>gs1Check</code> enables a check to verify that the content of the barcode matches the GS1
+	 * AIs format (<a href="https://ref.gs1.org/ai/">https://ref.gs1.org/ai/</a>), so that GS1 codes not well
+	 * formatted will not be decoded.
 	 */
 	public BooleanProperty gs1Check;
 
 	/**
-	 * <code>gs1StringFormat</code> enables conversion of GS1 barcodes to the readable GS1 string format.
+	 * <code>gs1StringFormat</code> enables automatic formatting of the barcode content, based on the
+	 * "GS1 Human Readable Interpretation (HRI)" rules 
+	 * (<a href="https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf">
+	 * https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf</a>), by dividing the code into the
+	 * different fields and marking each 
+	 * Application Identifier by enclosing it in parentheses. Example: "(01)195001101530000(17)140704(10)AB-123"
 	 */
 	public BooleanProperty gs1StringFormat;
 

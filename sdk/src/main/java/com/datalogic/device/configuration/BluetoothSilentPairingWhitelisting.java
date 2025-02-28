@@ -81,14 +81,23 @@ public class BluetoothSilentPairingWhitelisting extends SerializableBlob {
         return null;
     }
 
-
     /**
-     * Whitelist a new device identified with the given name. If the entry already exists, the value will not be updated.
+     * Whitelist a new device identified with the given name.
+     * If the entry already exists, the value will not be updated.
+     * The device name can also be provided as a regular expression (regex),
+     * allowing for more flexible matching of device names.
+     * This feature enables the addition of multiple devices that match a certain pattern,
+     * rather than requiring an exact name match.
+     * <p>
+     * The advantage of supporting regular expressions is that it allows for more flexible and dynamic whitelisting,
+     * such as adding devices that share a common naming pattern without having to specify each name individually.
      *
      * @param deviceName
-     *            <code>String</code>
-     * @return <code>boolean</code> retrieves true if the entry has been successfully added to the whitelist; otherwise, false.
-     * */
+     *            <code>String</code> - The device name can be provided as a plain string or as a regular expression (regex).
+     *            If a regex is used, any device whose name matches the pattern will be added to the whitelist.
+     * @return <code>boolean</code> - Returns <code>true</code> if the entry has been successfully added to the whitelist;
+     *         otherwise, <code>false</code>.
+     */
     public boolean addByName(String deviceName) {
         return true;
     }
@@ -116,12 +125,21 @@ public class BluetoothSilentPairingWhitelisting extends SerializableBlob {
     }
 
     /**
-     * Remove from the whitelist a device with the given name. If the entry doesn't exists, nothing happens and the method returns false.
+     * Remove from the whitelist a device with the given name.
+     * If the entry doesn't exist, nothing happens and the method returns false.
+     * If the device name is provided as a regular expression (regex),
+     * the method will remove the whitelist entry that matches the given regex,
+     * but only if the whitelist was previously configured with a regex for device names.
+     * <p>
+     * The ability to use a regex allows for the removal of a specific whitelisting rule that was previously added using a regex,
+     * providing flexibility in managing device whitelisting based on patterns.
      *
      * @param deviceName
-     *            <code>String</code>
-     * @return <code>boolean</code> retrieves true if the entry has been successfully removed from the whitelist; otherwise, false.
-     * */
+     *            <code>String</code> - The device name can be provided as a plain string or as a regular expression (regex).
+     *            If a regex was used when adding devices to the whitelist, this method will remove the specific whitelisting rule for that regex pattern.
+     * @return <code>boolean</code> - Returns <code>true</code> if the whitelist entry associated with the given name or regex has been successfully removed;
+     *         otherwise, <code>false</code>.
+     */
     public boolean removeByName(String deviceName) {
         return true;
     }

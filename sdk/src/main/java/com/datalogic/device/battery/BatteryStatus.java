@@ -136,26 +136,4 @@ public final class BatteryStatus
     {
         return 0;
     }
-
-    /**
-     * Returns the battery rated capacity.
-     *
-     * @return <code>int</code>
-     *         The battery rated capacity.
-     */
-    public int getRatedCapacity()
-    {
-        return 0;
-    }
-
-    /**
-     * Returns the battery typical capacity.
-     *
-     * @return <code>int</code>
-     *         The battery typical capacity.
-     */
-    public int getTypicalCapacity()
-    {
-        return 0;
-    }
 }

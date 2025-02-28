@@ -666,6 +666,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #ENHANCE_DOF_ENABLE} </li>
  *                             <li> {@link #IMAGE_DECODE_TIMEOUT} </li>
  *                             <li> {@link #ENABLE_SCANNER} </li>
+ *                             <li> {@link #SCANNER_CAMERA_INTEROPERABILITY} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -841,6 +842,9 @@ import com.datalogic.device.*;
  *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_DISPLAY_POLICY} </li>
  *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_WIDTH} </li>
  *                                     <li> {@link #GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_HEIGHT} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_TRANSPARENCY} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_PRESERVE_COLORS} </li>
+ *                                     <li> {@link #GOOD_READ_OVERLAY_BLACK_AS_TRANSPARENT} </li>
  *                                </ul>
  *                                </details>
  *                            </li>
@@ -852,8 +856,9 @@ import com.datalogic.device.*;
  *                         <summary> {@link PropertyGroupID#KEYBOARD_WEDGE_GROUP}</summary>
  *                         <ul>
  *                             <li> {@link #WEDGE_KEYBOARD_ENABLE} </li>
- *                             <li> {@link #WEDGE_KEYBOARD_ONLY_ON_FOCUS} </li>                                                
- *                             <li> {@link #WEDGE_KEYBOARD_DELIVERY_MODE} </li>                            
+ *                             <li> {@link #WEDGE_KEYBOARD_ONLY_ON_FOCUS} </li>
+ *                             <li> {@link #WEDGE_KEYBOARD_DELIVERY_MODE} </li>
+ *                             <li> {@link #WEDGE_KEYBOARD_NON_PRINTABLE_KEY_EVENT_DELAY} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -863,6 +868,24 @@ import com.datalogic.device.*;
  *                         <ul>
  *                             <li> {@link #EXT_SCANNER_SOURCE_ENABLE} </li>
  *                             <li> {@link #EXT_SCANNER_SOURCE_STANDARD_FORMATTER_ENABLE} </li>
+ *                         </ul>
+ *                     </details>
+ *                 </li>
+ *                 <li>
+ *                     <details>
+ *                         <summary> {@link PropertyGroupID#CAMERA_WEDGE_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #CAMERA_WEDGE_ENABLE} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_TYPE} </li>
+ *                             <li> {@link #CAMERA_WEDGE_MAX_BARCODE_PERSISTENCE} </li>
+ *                             <li> {@link #CAMERA_WEDGE_MIN_BARCODE_PERSISTENCE} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_ORIENTATION} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_SIZE} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_POSITION} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_X} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_Y} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BACKGROUND_COLOR} </li>
+ *                             <li> {@link #CAMERA_WEDGE_BARCODE_COLOR} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -1171,7 +1194,7 @@ import com.datalogic.device.*;
  *
  *     <li>
  *     <details>
- *         <summary> {@link PropertyGroupID#DUAL_SIM_GROUP}</summary>
+ *         <summary> {@link PropertyGroupID#DUAL_SIM_MGMT_GROUP}</summary>
  *         <ul>
  *            <li> {@link #DUALSIM_AVAILABLE} </li>
  *            <li> {@link #DUALSIM_SIM1_ENABLE} </li>
@@ -4010,6 +4033,18 @@ public class PropertyID {
     /**
      * This parameter enables/disables bluetooth discoverability.
      * <p>
+     * When this property is true, the device will always be visible from any other devices
+     * that are performing bluetooth discovery.
+     * When this property is false, the device will not be visible to the other devices
+     * that are performing bluetooth discovery.
+     * This property affects only the discovery process, so also with the property set to false,
+     * the device will still be reachable from all of the other devices already paired.
+     * This means that when the discoverability is set to false,
+     * even if the whitelisting for silently pairing Bluetooth devices has been configured
+     * through the properties {@link #BT_SILENT_PAIRING_WHITELISTING_ENABLE} and {@link #BT_SILENT_PAIRING_WHITELISTING},
+     * a whitelisted bluetooth device will not be able to pair and connect to the device,
+     * because the device cannot be discovered via Bluetooth.
+     * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int BT_DISCOVERABILITY = PropertyGroupID.BLUETOOTH_GROUP + 0x0001;
@@ -4388,15 +4423,22 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int IMAGE_DECODE_TIMEOUT = 0x0035;
-    /**
-     * This parameter is set to true to enable check of GS1 format for GS1 symbologies.
+	/**
+	 * This parameter enables a check to verify that the content of the barcode matches the GS1
+	 * AIs format (<a href="https://ref.gs1.org/ai/">https://ref.gs1.org/ai/</a>), so that GS1 codes not well
+	 * formatted will not be decoded.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int GS1_CHECK = 0x0036;
-    /**
-     * This parameter is set to true to convert the GS1 barcode string in the GS1 readable string format.
-     * It is used only if {@link #GS1_CHECK} is set to true.
+	/**
+	 * This parameter enables automatic formatting of the barcode content, based on the
+	 * "GS1 Human Readable Interpretation (HRI)" rules 
+	 * (<a href="https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf">
+	 * https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf</a>), by dividing the code into the
+	 * different fields and marking each 
+	 * Application Identifier by enclosing it in parentheses. Example: "(01)195001101530000(17)140704(10)AB-123"
+	 * It is used only if {@link #GS1_CHECK} is set to true.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
@@ -4416,11 +4458,12 @@ public class PropertyID {
      */
     public final static int GOOD_READ_OVERLAY_ENABLE = 0x0039;
     /**
-     * This parameter selects the color of the overlay used as notification on a successful read.If the property <code>GOOD_READ_OVERLAY_SHAPE_POLICY</code> is set to <code>FULL_SCREEN</code>
-     * once a code is decoded, the full screen of the device is painted with the color selected otherwise
-     * the color is applied on the whole image selected excluding the trasparent areas and painted on top 
-     * of the screen.     
-     * The color is in ARGB format.
+     * This parameter selects the color of the overlay used as a notification on a successful read.  
+     * If the property <code>GOOD_READ_OVERLAY_SHAPE_POLICY</code> is set to <code>FULL_SCREEN</code>, the entire screen is painted with the selected color once a code is decoded.  
+     * If <code>GOOD_READ_OVERLAY_PRESERVE_COLORS</code> is set to <code>false</code>, the selected color is applied to the whole overlay, excluding transparent areas, and painted on top of the screen.  
+     * The transparency level is controlled by the property <code>GOOD_READ_OVERLAY_TRANSPARENCY</code>.  
+     * <p>
+     * The color is specified in ARGB format (32-bit, 8 bits per channel). The alpha channel is ignored, as transparency is managed separately.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -4514,6 +4557,30 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int GOOD_READ_OVERLAY_LANDSCAPE_CUSTOM_SIZE_MAX_HEIGHT = 0x0048;
+    /**
+     * This parameter selects the level of transparency to be applied to the overlay notification for a successful read.
+     * The value ranges from 0 (fully opaque) to 100 (fully transparent), allowing varying degrees of transparency.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_TRANSPARENCY = 0x0049;
+    /**
+     * This parameter determines whether the original colors of the overlay should be preserved.
+     * When set to <code>true</code>, the overlay's colors remain unchanged during rendering.
+     * When set to <code>false</code>, the colors may be modified to achieve different visual effects.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_PRESERVE_COLORS = 0x004A;
+    /**
+     * This parameter selects whether the black or white color in the overlay should be treated as transparent.
+     * When set to <code>false</code>, the white areas in the overlay will be considered transparent;
+     * when set to <code>true</code>, the black areas will be treated as transparent.
+     * In both cases, all other colors are converted to grayscale, and their transparency is interpolated between the two extremes.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int GOOD_READ_OVERLAY_BLACK_AS_TRANSPARENT = 0x004B;
     /**
       * This parameter enables the ability to collect a defined number of barcodes in a single session and transmit them at the same time.       
       * <p>
@@ -4681,6 +4748,104 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int HW_ACCELERATION_FRAME_TO_SKIP = 0x0073;
+    /**
+     * This parameter enables the use of the scanner in place of the rear camera.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int CAMERA_WEDGE_ENABLE = 0x0074;
+    /**
+     * This parameter represents the symbology of the barcode generated by the camera wedge.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link CameraWedgeBarcodeType}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_TYPE = 0x0075;
+    /**
+     * This parameter represents the maximum amount of time (in milliseconds) a generated
+     * barcode is shown in the camera frames. After this time has expired, the camera frames
+     * with come back to show only the background.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_MAX_BARCODE_PERSISTENCE = 0x0076;
+    /**
+     * This parameter represents the minimum amount of time (in milliseconds) a generated
+     * barcode is shown in the camera frames. If another barcode is decoded before the time
+     * has expired, it will be shown only after the expiration.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_MIN_BARCODE_PERSISTENCE = 0x0077;
+    /**
+     * This parameter represents the orientation of the barcode generated by the camera wedge.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link CameraWedgeBarcodeOrientation}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_ORIENTATION = 0x0078;
+    /**
+     * This parameter represents the size in pixels of the barcode generated by the camera wedge.
+     * For barcodes that have different width and height, the size refers to the biggest
+     * value between them.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_SIZE = 0x0079;
+    /**
+     * This parameter represents the position of the barcode generated by the camera wedge.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link CameraWedgeBarcodePosition}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_POSITION = 0x007A;
+    /**
+     * In case of custom positioning, this parameter represents the position of
+     * the barcode generated by the camera wedge on the X coordinate.<br/>
+     * <b>NOTE:</b> The camera frame is considered as being rotated clockwise
+     * by 90 degrees, which means that the starting coordinate will be on the top
+     * right of the screen in portrait orientation. In this configuration, an
+     * increase of the X coordinate causes the barcode to move down on the vertical axis
+     * of the screen.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_X = 0x007B;
+    /**
+     * In case of custom positioning, this parameter represents the position of
+     * the barcode generated by the camera wedge on the Y coordinate.
+     * <b>NOTE:</b> The camera frame is considered as being rotated clockwise
+     * by 90 degrees, which means that the starting coordinate will be on the top
+     * right of the screen in portrait orientation. In this configuration, an
+     * increase of the Y coordinate causes the barcode to move left on the horizontal axis
+     * of the screen.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_Y = 0x007C;
+    /**
+     * This parameter represents the background color of the frames containing a
+     * barcode generated by the camera wedge.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_BACKGROUND_COLOR = 0x007D;
+    /**
+     * This parameter represents the barcode color of the frames containing a
+     * barcode generated by the camera wedge.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int CAMERA_WEDGE_BARCODE_COLOR = 0x007E;
+    /**
+     * By default, the scanner is prevented from starting barcode scanning
+     * when the camera is in preview.
+     * This parameter enables interoperability between the scanner and other cameras,
+     * allowing the user to scan barcodes even while another camera is in use.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNER_CAMERA_INTEROPERABILITY = 0x007F;
 
     //
     // Code 39 definitions
@@ -6439,6 +6604,13 @@ public class PropertyID {
      * @hide
      */
     public final static int WEDGE_KEYBOARD_INJECTION2COMMIT = 0x11173;
+    /**
+     * Delay applied before and after every non printable character. This is valid only for the commit text and the text injection modes
+     * of the keyboard wedge.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WEDGE_KEYBOARD_NON_PRINTABLE_KEY_EVENT_DELAY = 0x11174;
      /**
       * This parameter enables the intent mode for the Decode Wedge.
       * <p>
@@ -6677,7 +6849,9 @@ public class PropertyID {
     // Camera
     //
     /**
-     * This parameter indicates the input type to use for decoding.
+     * This parameter indicates the input type to use for decoding.<br/>
+     * <b>NOTE:</b> After changing this parameter, the scanner will take a few seconds to reconfigure (generally around 2 or 3 seconds).
+     * During this time, any subsequent property change might fail and needs to be applied again.
      * <p>
      * The class of the property is {@link EnumProperty}.
      * The allowed values are defined by enum {@link com.datalogic.decode.configuration.InputType}.
@@ -6710,7 +6884,9 @@ public class PropertyID {
     /**
      * This parameter indicates the width of the preview shown
      * in case of manual display mode and camera input type, when the
-     * device is positioned in portrait.
+     * device is positioned in portrait. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * perview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6718,7 +6894,9 @@ public class PropertyID {
     /**
      * This parameter indicates the height of the preview shown
      * in case of manual display mode and camera input type, when the
-     * device is positioned in portrait.
+     * device is positioned in portrait. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * perview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6742,7 +6920,9 @@ public class PropertyID {
     /**
      * This parameter indicates the width of the preview shown
      * in case of manual display mode and camera input type, when the
-     * device is positioned in landscape.
+     * device is positioned in landscape. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * perview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6750,7 +6930,9 @@ public class PropertyID {
     /**
      * This parameter indicates the height of the preview shown
      * in case of manual display mode and camera input type, when the
-     * device is positioned in landscape.
+     * device is positioned in landscape. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * perview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
