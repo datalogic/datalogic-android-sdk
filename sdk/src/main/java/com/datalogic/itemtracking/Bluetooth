@@ -1,0 +1,132 @@
+
+package com.datalogic.example.bluetoothwhitelistingsampleapi;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.datalogic.device.configuration.BTPairingPolicy;
+import com.datalogic.device.configuration.BlobProperty;
+import com.datalogic.device.configuration.BluetoothSilentPairingWhitelisting;
+import com.datalogic.device.configuration.BooleanProperty;
+import com.datalogic.device.configuration.ConfigurationManager;
+import com.datalogic.device.configuration.EnumProperty;
+import com.datalogic.device.configuration.PropertyID;
+
+import androidx.annotation.Nullable;
+
+/**
+ * MainActivity is an example of how to use the Datalogic SDK to configure Bluetooth Silent Pairing functionality.
+ * <p>
+ * More generally, the Bluetooth configuration has been extended to address specific enterprise use cases
+ * where user interaction with system notifications or device settings is restricted.
+ * In particular, Bluetooth Silent Pairing allows devices to be paired automatically and silently without requiring any intervention from the user,
+ * ensuring a seamless and controlled pairing process.
+ * This is particularly useful in environments such as kiosk-mode or scenarios where device connectivity must be limited to a pre-approved set of peripherals.
+ * Links to the Datalogic SDK documentation for the relevant properties:
+ * <ul>
+ *   <li><a href="https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_SILENT_PAIRING_WHITELISTING_ENABLE">BT_SILENT_PAIRING_WHITELISTING_ENABLE</a></li>
+ *   <li><a href="https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_SILENT_PAIRING_WHITELISTING">BT_SILENT_PAIRING_WHITELISTING</a></li>
+ *   <li><a href="https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_SILENT_PAIRING_TRUSTED_ENABLED">BT_SILENT_PAIRING_TRUSTED_ENABLED</a></li>
+ *   <li><a href="https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_PAIRING_POLICY">BT_PAIRING_POLICY</a></li>
+ *   <li><a href="https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_DISCOVERABILITY">BT_DISCOVERABILITY</a></li>
+ * </ul>
+ * </p>
+ */
+public class MainActivity extends Activity {
+    // ============================================================
+    // NOTE: THIS SECTION CAN BE MODIFIED TO TEST WITH SPECIFIC DEVICES
+    // ============================================================
+    // In this section, you can replace the sample values with the actual Bluetooth devices
+    // that the developer has on hand to test the Bluetooth Silent Pairing configuration.
+    //
+    // - WHITELISTED_MAC_ADDRESS: Enter the MAC address of the Bluetooth device to be whitelisted.
+    // - WHITELISTED_OUI: Enter the OUI (Organizationally Unique Identifier) of the manufacturer of the device.
+    // - WHITELISTED_DEV_NAME: Enter the exact name of the device to whitelist.
+    // - WHITELISTED_REGEX: Enter a regex pattern for device names to match multiple devices (e.g., "SampleDevice[0-9]{4}").
+    // - NOT_WHITELISTED_OUI: Enter an OUI that is NOT associated with a whitelisted device to test negative scenarios.
+    // - NOT_WHITELISTED_DEV_NAME: Enter a device name that is NOT on the whitelist to test negative scenarios.
+    //
+    // Replacing these values with real data allows you to test the functionality of the Bluetooth
+    // Silent Pairing feature and ensure the correct devices are being paired automatically.
+
+    private static final String TAG = "Datalogic Bluetooth Sample";
+    private static final String WHITELISTED_MAC_ADDRESS = "00:25:52:FA:64:07"; // Replace with actual device MAC address
+    private static final String WHITELISTED_OUI = "00:25:52"; // Replace with actual device OUI
+    private static final String WHITELISTED_DEV_NAME = "SampleDeviceFullName"; // Replace with actual device name
+    private static final String WHITELISTED_REGEX = "SampleDevice[0-9]{4}"; // Replace with desired regex pattern for device names
+    private static final String NOT_WHITELISTED_OUI = "01:07:BE"; // Replace with an OUI not associated with a whitelisted device
+    private static final String NOT_WHITELISTED_DEV_NAME = "SampleDev1234"; // Replace with a device name not on the whitelist
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // ======================================================================
+        // STEP 1: INITIALIZING THE CONFIGURATION MANAGER
+        // ======================================================================
+        // The ConfigurationManager allows interaction with the device's configuration properties.
+        // It provides methods for retrieving and setting specific configuration properties.
+        //
+        // Refer to the official Datalogic SDK documentation here:
+        // https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/ConfigurationManager.html
+        //
+        ConfigurationManager configManager = new ConfigurationManager(getApplicationContext());
+
+        // ======================================================================
+        // STEP 2: SETTING THE PROPERTIES OF INTEREST FOR BLUETOOTH WHITELISTING
+        // ======================================================================
+        // Retrieve the property controlling Bluetooth discoverability (whether this device can be discovered by others)
+        BooleanProperty btDiscoverability = (BooleanProperty) configManager.getPropertyById(PropertyID.BT_DISCOVERABILITY);
+        // Enable discoverability to allow other devices to see this one and enable programmatic pairing
+        btDiscoverability.set(true);
+
+        // Retrieve the property controlling Bluetooth pairing policy,
+        // which determines how the Bluetooth device should behave when attempting to pair with non-whitelisted devices.
+        EnumProperty btPairingPolicy = (EnumProperty) configManager.getPropertyById(PropertyID.BT_PAIRING_POLICY);
+        // By setting this property to "SIMPLE", the user will be prompted with a single confirmation pop-up if they attempt to pair with a Bluetooth
+        // device that is not included in the whitelist. This allows for greater flexibility while still maintaining the whitelist functionality.
+        btPairingPolicy.set(BTPairingPolicy.SIMPLE);
+
+        // Retrieve the property that enables or disables Bluetooth silent pairing whitelisting
+        BooleanProperty silentPairingEnable = (BooleanProperty) configManager.getPropertyById(PropertyID.BT_SILENT_PAIRING_WHITELISTING_ENABLE);
+        // Enable the Bluetooth silent pairing whitelisting functionality
+        silentPairingEnable.set(true);
+
+        // Retrieve the BlobProperty that contains Bluetooth whitelisting settings
+        BlobProperty bluetoothBlobProp = (BlobProperty)configManager.getPropertyById(PropertyID.BT_SILENT_PAIRING_WHITELISTING);
+
+        // Extract the BluetoothSilentPairingWhitelisting instance to configure whitelisting rules
+        BluetoothSilentPairingWhitelisting btSilentWhitelist = (BluetoothSilentPairingWhitelisting) bluetoothBlobProp.get();
+
+        // Adding specific devices to the whitelist by different criteria (MAC address, OUI, device name, and regex)
+        btSilentWhitelist.addByMac(WHITELISTED_MAC_ADDRESS); // Adding a device by its MAC address
+        btSilentWhitelist.addByOui(WHITELISTED_OUI); // Adding devices from a specific manufacturer by OUI
+        btSilentWhitelist.addByName(WHITELISTED_DEV_NAME); // Adding a device by its exact name
+        btSilentWhitelist.addByName(WHITELISTED_REGEX); // Adding devices whose names match the regex pattern
+
+        // After setting the properties, update the BlobProperty with the modified BluetoothSilentPairingWhitelisting instance
+        bluetoothBlobProp.set(btSilentWhitelist);
+
+        // ======================================================================
+        // STEP 3: COMMITTING THE CHANGES TO APPLY THE CONFIGURATION
+        // ======================================================================
+        // Commit the changes to persist the updated configuration to the device's storage.
+        // This saves and applies the changes to the device configuration, making them persistent across reboots.
+        configManager.commit();
+
+        // Verify that the whitelisted devices were successfully added by checking the status of each condition
+        Boolean hasMac = btSilentWhitelist.hasByMac(WHITELISTED_MAC_ADDRESS);
+        Log.d(TAG, "hasByMac("+ WHITELISTED_MAC_ADDRESS +"): " + hasMac); // Expected output: true, since the MAC address is whitelisted
+
+        Boolean hasName = btSilentWhitelist.hasByName(WHITELISTED_DEV_NAME);
+        Log.d(TAG, "hasByName("+ WHITELISTED_DEV_NAME +"): " + hasName); // Expected output: true, since the device name is whitelisted
+
+        Boolean hasOui = btSilentWhitelist.hasByOui(NOT_WHITELISTED_OUI);
+        Log.d(TAG, "hasByOui("+ NOT_WHITELISTED_OUI +"): " + hasOui); // Expected output: false, since the OUI is not whitelisted
+
+        hasName = btSilentWhitelist.hasByName(NOT_WHITELISTED_DEV_NAME);
+        Log.d(TAG, "hasByName("+ NOT_WHITELISTED_DEV_NAME +"): " + hasName); // Expected output: false, since the device name is not whitelisted
+    }
+}

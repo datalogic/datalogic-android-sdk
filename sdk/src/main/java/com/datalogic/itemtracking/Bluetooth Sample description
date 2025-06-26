@@ -1,0 +1,28 @@
+Technical Note: Bluetooth pairing extension
+Overview
+The Bluetooth Silent Pairing feature has been introduced to address specific enterprise use cases where user interaction with system notifications is either restricted or undesirable.
+The Bluetooth functionality has been extended beyond the standard behavior in Android, offering the capability to address specific enterprise use cases where user interactions is either restricted or undesirable.
+By introducing a customizable Bluetooth pairing policy, Datalogic provides a more flexible and controlled approach to Bluetooth connectivity.
+Link to docs: https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_PAIRING_POLICY
+Additionally, the creation of a whitelisting mechanism, called Silent Pairing, enables automatic pairing with pre-approved devices.
+Link to docs: https://datalogic.github.io/android-sdk-docs/reference/com/datalogic/device/configuration/PropertyID.html#BT_SILENT_PAIRING_WHITELISTING_ENABLE
+This functionality ensures a seamless, automated pairing process, particularly in environments like kiosk modes where system notifications is restricted or environments where device connectivity must be limited to pre-approved peripherals only.
+Use Cases
+1.	Kiosk Mode: Eliminating User Interaction with Notifications
+In kiosk mode, the device operates in a restricted state where users cannot interact with the system’s UI, including any notifications. Traditional Bluetooth pairing methods typically rely on system notifications to prompt users for approval, which is impractical in such a controlled setup.
+With Bluetooth policy set to “Simple”:
+•	The pairing process bypasses system notification;
+•	A "fast-pairing" dialog pop-up is shown to the user to accept the pairing.
+•	The devices can be paired with a single user intervention, even if the notification system is restricted.
+2.	Restricting Device Connectivity to Approved Peripherals
+In enterprise environments, particularly in high-security settings, it is often necessary to enforce strict control over which Bluetooth devices are allowed to connect to a corporate device. Traditional Bluetooth pairing mechanisms allow any discoverable Bluetooth device to initiate a connection, which can lead to potential security vulnerabilities and operational risks.
+With Bluetooth Silent Pairing, enterprises can:
+•	Disable Bluetooth discoverability (discoverability = false), effectively preventing unauthorized devices from discovering and attempting to connect to the device.
+•	Configure a whitelist, allowing only pre-approved devices to connect.
+•	Enable automatic silent pairing with these whitelisted devices, eliminating the need for user intervention.
+•	Block connections from unauthorized peripherals, enhancing both security and operational efficiency by preventing accidental or malicious device pairings.
+Conclusion
+Bluetooth Silent Pairing is a critical enhancement for enterprise environments, offering an efficient, secure, and user-friendly solution for managing Bluetooth devices. By ensuring automatic pairing with pre-approved peripherals and bypassing the need for user intervention or notifications, it greatly improves security, device management, and overall usability in locked-down or high-security environments.
+Sample App
+For developers looking to implement and test the Bluetooth extended functionality, Datalogic provides a sample app designed to facilitate the integration and verification of this feature in their solutions. The app demonstrates how to configure and use the customizable Bluetooth pairing policy, as well as how to implement the whitelisting mechanism for Silent Pairing. Developers can download and explore the app to better understand how to integrate this functionality into their own solutions.
+The app can be accessed here: https://github.com/datalogic/android-samples-astudio/blob/BluetoothWhitelistingSampleApi/Java/BluetoothWhitelistingSampleApi/app/src/main/java/com/datalogic/example/bluetoothwhitelistingsampleapi/MainActivity.java

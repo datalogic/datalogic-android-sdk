@@ -1014,6 +1014,16 @@ import com.datalogic.device.*;
  *            </li>
  *            <li>
  *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_SMART_CHARGE_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_SMART_CHARGE_ENABLE} </li>
+ *                  <li> {@link #POWER_SMART_CHARGE_DISCHARGE_DELAY} </li>
+ *                  <li> {@link #POWER_SMART_CHARGE_WORK_TIMES} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
  *               <summary> {@link PropertyGroupID#POWER_WAKEUP_SOURCES_GROUP}</summary>
  *               <ul>
  *                  <li> {@link #POWER_WAKEUP_POWER_IN} </li>
@@ -1027,6 +1037,17 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
  *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
  *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_ENTERPRISE_BATTERY_SAVER_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_ENTERPRISE_BATTERY_SAVER_ENABLED} </li>
+ *                  <li> {@link #POWER_ENTERPRISE_BATTERY_SAVER_IGNORE_POWER} </li>
+ *                  <li> {@link #POWER_ENTERPRISE_BATTERY_SAVER_PROFILES} </li>
+ *                  <li> {@link #POWER_ENTERPRISE_BATTERY_SAVER_ACTIVATION_ITEMS} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1304,6 +1325,12 @@ import com.datalogic.device.*;
  *            <li> {@link #NOTIFICATION_DOTS_SETTING_DIMMED} </li>
  *            <li> {@link #PHYSICAL_KEYBOARD_SHORTCUTS_SETTING_DIMMED} </li>
  *            <li> {@link #AUTO_SYNC_APP_DATA_SETTING_DIMMED} </li>
+ *            <li> {@link #WIFI_NETWORK_SHARE_DIMMED} </li>
+ *            <li> {@link #SCREENSAVER_ENABLED} </li>
+ *            <li> {@link #SCREENSAVER_SETTING_DIMMED} </li>
+ *            <li> {@link #SCREENSAVER_POLICY} </li>
+ *            <li> {@link #SCREENSAVER_COMPONENT} </li>
+ *            <li> {@link #SCREENSAVER_DATALOGIC} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1331,6 +1358,9 @@ import com.datalogic.device.*;
  *            <li> {@link #QUICKSHARE_ENABLED} </li>
  *            <li> {@link #CHROMEBOOK_ENABLED} </li>
  *            <li> {@link #ANDROID_AUTO_ENABLED} </li>
+ *            <li> {@link #CRADLE_APP_ON_INSERT} </li>
+ *            <li> {@link #CRADLE_APP_ON_EXTRACT} </li>
+ *            <li> {@link #DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -2116,6 +2146,79 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int POWER_POCKET_MODE_LOCK_TIMEOUT = PropertyGroupID.POWER_MIB_BASE + 0x001A;
+
+    /**
+     * This property enables or disables the smart charge feature.
+     * <p>
+     * Enabling the smart charge feature helps prevent battery degradation by managing the battery charging process intelligently.
+     * <p>
+     * When enabled, users can customize the battery charging process according to their working hours.
+     * <p>
+     * The Smart Charge feature can be configured with the following properties:
+     *  <ul>
+     *    <li>{@link #POWER_SMART_CHARGE_DISCHARGE_DELAY} - Time the battery remains at 100% charge before discharging to a safe level.</li>
+     *    <li>{@link #POWER_SMART_CHARGE_WORK_TIMES} - Schedule of working hours is evaluated to plan fully charging the battery before the next working period.</li>
+     *  </ul>
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_SMART_CHARGE_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x001B;
+
+    /**
+     * This property defines the maximum time to keep the battery at 100% charge, while charging.
+     * <p>
+     * Once fully charged, the device will stay at 100% for the duration configured by this property.
+     * After this period, the device will discharge to a safe level and recharge as a new working window approaches.
+     * The duration is measured in seconds.
+     * <p>
+     * This property is effective if the smart charging is enabled using {@link #POWER_SMART_CHARGE_ENABLE}.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int POWER_SMART_CHARGE_DISCHARGE_DELAY = PropertyGroupID.POWER_MIB_BASE + 0x001C;
+
+    /**
+     * This property defines the working hours for the smart chaging evaluation.
+     * <p>
+     * Based on the working hours, the device will optimize the battery charging to provide a fully charged battery,
+     * before next working shift, thereby reducing battery life degradation.
+     * <p>
+     * This property is effective if the smart charging is enabled using {@link #POWER_SMART_CHARGE_ENABLE}.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link WorkSchedule}.
+     */
+    public final static int POWER_SMART_CHARGE_WORK_TIMES = PropertyGroupID.POWER_MIB_BASE + 0x001D;
+
+    /**
+     * When set to true, it enables the enterprise battery saver.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_ENTERPRISE_BATTERY_SAVER_ENABLED = PropertyGroupID.POWER_MIB_BASE + 0x0020;
+
+    /**
+     * When set to true, it allows entering the battery saver mode even when the device is connected to a power source.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_ENTERPRISE_BATTERY_SAVER_IGNORE_POWER = PropertyGroupID.POWER_MIB_BASE + 0x0021;
+
+    /**
+     * List of the profiles installed in the enterprise battery saver.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link EnterpriseBatterySaverProfiles}.
+     */
+    public final static int POWER_ENTERPRISE_BATTERY_SAVER_PROFILES = PropertyGroupID.POWER_MIB_BASE + 0x0022;
+
+    /**
+     * List of the activation items installed in the enterprise battery saver.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link EnterpriseBatterySaverActivationItems}.
+     */
+    public final static int POWER_ENTERPRISE_BATTERY_SAVER_ACTIVATION_ITEMS = PropertyGroupID.POWER_MIB_BASE + 0x0023;
 
     //
     // USB Settings definitions
@@ -2975,6 +3078,179 @@ public class PropertyID {
      */
     public final static int TASK_BAR_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0022;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the WiFi connection or options.
+     * <p>
+     * If this parameter is enabled, the Wi-Fi sharing option is disabled in the user interface.
+     * This means the `Share` functionality (e.g., displaying a QR code or the network password) is grayed out
+     * and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This restriction only prevents the *sharing* of the Wi-Fi network; it does not affect the device's ability 
+     * to connect to and use the Wi-Fi network itself.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int WIFI_NETWORK_SHARE_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0023;
+    
+    /**
+     * This property refers to enable or disable screensaver.
+     * <p>
+     * Enabling the screensaver helps prevent screen burn-in by ensuring that static images are not displayed for prolonged periods.
+     * This distributes pixel usage more evenly, reducing the risk of permanent image retention on the display.
+     * <p>
+     * When enabled, users can customize the screensaver according to their preferences.
+     * <p>
+     * Beside the enabling, the screensaver can be configured with the following properties:
+     * <ul>
+     * <li> {@link #SCREENSAVER_POLICY} determines when screensaver is activated;</li>
+     * <li> {@link #SCREENSAVER_COMPONENT} determines which screensaver app is used; </li>
+     * <li> {@link #SCREENSAVER_DATALOGIC} contains the list of screensavers managed by `Datalogic Screensaver` application. </li> 
+     * </ul>
+     * <p>
+     * The user would still be able to access and control this configuration from the main Settings,
+     * or dedicated tile in quick settings panel.
+     * Therefore, this parameter can be use with {@link #SCREENSAVER_SETTING_DIMMED}
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCREENSAVER_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0024;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the activation and the configuration of the screensaver.
+     * <p>
+     * If this parameter is enabled, the setting to enable or disable screen saver is "dimmed" in the Settings.
+     * It means that the option is grayed out and it cannot be interacted with through UI.
+     * This indicates to the user that the feature is currently not accessible and the user is not able to change its state.
+     * <p>
+     * This parameter only prevents the user to change screen saver settings in Settings UI.
+     * For enabling o disabling it, please refer to parameter {@link #SCREENSAVER_ENABLED}.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCREENSAVER_SETTING_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0025;
+
+    /**
+     * This property determines when screensaver is activated.
+     * <p>
+     * The screensaver can be configured to activate under various conditions,
+     * such as when it is charging, or when is inserted into a cradle.
+     * <p>
+     * This property is effective if the screensaver is enabled using {@link #SCREENSAVER_ENABLED}.
+     * <p>
+     * The user would still be able to access and control this configuration from the Android Settings.
+     * Therefore, this parameter can be use with {@link #SCREENSAVER_SETTING_DIMMED}
+     * to prevent the user to change the configuration of this feature.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link ScreensaverPolicy}.
+     */
+    public final static int SCREENSAVER_POLICY = PropertyGroupID.UI_SETTINGS_GROUP + 0x0026;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require restricting the user from selecting the app for the screensaver.
+     * <p>
+     * This property allows the user to select the app that will manage the screensaver.
+     * The value of the property should be a string in the format `package_name/activity_name`,
+     * where `package_name` is the screensaver app and `activity_name` is the name of the specific app activity
+     * that manages the screensaver.
+     * For example, if `SCREENSAVER_COMPONENT="com.google.android.deskclock/com.android.deskclock.Screensaver"`,
+     * the clock screensaver will be launched.
+     * To use `Datalogic Screensaver` set `SCREENSAVER_COMPONENT="com.datalogic.android.datalogicscreensaver/com.datalogic.android.datalogicscreensaver.ScreensaverService"`
+     * The screensaver app can also be selected under `Display -> Screen saver` in Android settings.
+     * Any app can be used to manage the screensaver if it extends a `DreamService`.
+     * <p>
+     * For more information, refer to the Android documentation:
+     * <a href="https://developer.android.com/reference/android/service/dreams/DreamService">DreamService</a>.
+     * <p>
+     * For enabling or disabling the screensaver, please refer to the parameter {@link #SCREENSAVER_ENABLED}.
+     * To change the policy to start the screensaver, please refer to the parameter {@link #SCREENSAVER_POLICY}.
+     * This parameter can be used with {@link #SCREENSAVER_SETTING_DIMMED} to prevent
+     * the user from changing the configuration of this feature.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SCREENSAVER_COMPONENT = PropertyGroupID.UI_SETTINGS_GROUP + 0x0027;
+
+    /**
+     * Contains an editable list of screensavers managed by the Datalogic Screensaver application.
+     * This list can be modified at runtime by adding or removing elements via the SDK or Datalogic Screensaver settings. <br>
+     * The type of this property is {@link BlobProperty} and the concrete implementation is {@link DatalogicScreensaver}.<br>
+     *
+     * To use Datalogic Screensaver, {@link #SCREENSAVER_COMPONENT} must be set to
+     * "com.datalogic.android.datalogicscreensaver/com.datalogic.android.datalogicscreensaver.ScreensaverService".
+     * <p>
+     * Datalogic Screensaver continuously cycles through the screensaver list to display a carousel of screensavers.
+     * Each screensaver is represented by a {@link ScreensaverItem} which can either be an animated image or a video.
+     * A {@link ScreensaverItem} has the following parameters:
+     * <ul>
+     *   <li><b>file</b>: The file name with extension. The file must be either an image or a video; otherwise, it will be ignored.</li>
+     *   <li><b>background</b>: The background color in the format "#RRGGBB" or "#AARRGGBB" as used by Android (<a href=https:\/\/developer.android.com\/reference\/android\/graphics\/Color#parseColor(java.lang.String)>Color.parseColor</a>). This parameter is used only for images.</li>
+     *   <li><b>duration</b>: The screensaver duration in seconds. Valid values are between {@link DatalogicScreensaver#DURATION_MIN_S} (0s) and {@link DatalogicScreensaver#DURATION_MAX_S} (1h).
+     *       Values outside this range will be rounded to the nearest bound. This parameter is used only for images.</li>
+     *   <li><b>animation</b>: The animation type defined by the {@link ScreensaverAnimation} enumeration.
+     *       This parameter is used only for images.</li>
+     * </ul>
+     * Screensaver files must be located in the directory <i>"/sdcard/DCIM/Screensavers"</i>.
+     * During execution, Datalogic Screensaver searches for the file in this directory and displays it only if found. <br>
+     * If the screensaver is an image, Datalogic Screensaver displays it over a single-colored background for the specified duration.
+     * Images with a duration of 0 are ignored. <br>
+     * If the screensaver is a video, it is displayed unscaled over the default background
+     * ({@link DatalogicScreensaver#DEFAULT_BACKGROUND_COLOR}) for the entire duration of the video. In this case, the background color,
+     * duration, and animation parameters are ignored. So, to clearness use these default values:
+     * <ul>
+     *  <li><b>background</b>: {@link DatalogicScreensaver#DEFAULT_BACKGROUND_COLOR};
+     *  <li><b>duration</b>: {@link DatalogicScreensaver#DURATION_MIN_S};
+     *  <li><b>animation</b>: {@link ScreensaverAnimation#UNDEFINED}.
+     * </ul>
+     * 
+     * Using commit intent by android app, character <code>  <mark>"</mark>   </code>  must be escaped as <code>   <mark>\"</mark></code>.<br><br>
+     * <b> For example, to add two screensavers, an image and a video: </b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.SCREENSAVER_DATALOGIC, "[[\"image.jpg\",\"#000000FF\",\"60\",\"ZIG_ZAG\"],[\"video.jpg\",\"#00000000\",\"0\",\"UNDEFINED\"]]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <b>To delete all devices:</b>
+     * <pre>
+     * Intent intent = new Intent(Intents.ACTION_CONFIGURATION_COMMIT);
+     * HashMap map = new HashMap();
+     * map.put(PropertyID.SCREENSAVER_DATALOGIC, "[]");
+     * intent.putExtra(Intents.EXTRA_CONFIGURATION_CHANGED_MAP, map);
+     * mContext.sendBroadcast(intent);
+     * </pre>
+     * <br><br>
+     * 
+     * To set this property via intent ({@link Intents#ACTION_CONFIGURATION_COMMIT}), use the following serialized format:<br>
+     * <pre>
+     * [["file","background","duration","animation"],["file","background","duration","animation"]]
+     * </pre>
+     * <br>
+     * Using the commit intent by shell, characters <code>   <mark>,</mark>   </code><code>   <mark>"</mark>   </code> and <mark>space</mark> must be escaped as <code>   <mark>"\,"</mark>   </code><code>   <mark>\"</mark>   </code>and<code>   <mark>" "</mark>   </code> respectively.<br><br>
+     *
+     * For example, to add two screensavers, an image and a video, with the commit intent:
+     * <pre>
+     * adb shell am broadcast \
+     * -a com.datalogic.device.intent.action.configuration.COMMIT \
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'SCREENSAVER_DATALOGIC=[[\"image.jpg\""\,"\"#0000FF\""\,"10"\,"\"ZIG_ZAG\"]"\,"[\"video.mp4\""\,"\"#00000000\""\,"0"\,"\"ZIG_ZAG\"]]'
+     * </pre>
+     *
+     * To delete all screensavers:
+     * <pre>
+     * adb shell am broadcast \
+     * -a com.datalogic.device.intent.action.configuration.COMMIT \
+     * --es com.datalogic.device.intent.extra.configuration.CHANGED_MAP 'SCREENSAVER_DATALOGIC=[]'
+     * </pre>
+     */
+    public final static int SCREENSAVER_DATALOGIC = PropertyGroupID.UI_SETTINGS_GROUP + 0x0028;
+
+
     //
     // UX Settings definitions
     //
@@ -3324,6 +3600,63 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int AUTO_SYNC_APP_DATA_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0018;
+
+    /**
+     * This property allows to define an app to be launched on the main screen (device display)
+     * when the device is inserted into a cradle.
+     * <p>
+     * The value of the property should be a string in the format `package_name/activity_name`,
+     * where `package_name` is the app to be launched and `activity_name` is the name of the specific app activity to be launched.
+     * For example if CRADLE_APP_ON_INSERT="com.datalogic.scan/.MainActivity", the `MainActivity` of `Scan Demo` app will be
+     * launched upon insertion event.
+     * <p>
+     * The app will be displayed in the main screen (device display)
+     * Note:
+     * This property complements {@link #CRADLE_APP_ON_EXTRACT} which launches an app upon extraction event.
+     * It behaves similarly to {@link #DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT} which is specific to `Desktop Mode`.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int CRADLE_APP_ON_INSERT = PropertyGroupID.UX_SETTINGS_GROUP + 0x001A;
+
+    /**
+     * This property allows to define an app to be launched on the main screen (device display)
+     * when the device is extracted from a cradle.
+     * <p>
+     * The value of the property should be a string in the format `package_name/activity_name`,
+     * where `package_name` is the app to be launched and `activity_name` is the name of the specific app activity to be launched.
+     * For example if CRADLE_APP_ON_EXTRACT="com.datalogic.scan/.MainActivity", the `MainActivity` of `Scan Demo` app will be
+     * launched upon insertion event.
+     * <p>
+     * The app will be displayed in the main screen
+     * Note:
+     * This property complements {@link #CRADLE_APP_ON_INSERT} which launches an app upon insertion event.
+     * It behaves similarly to {@link #DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT} which is specific to `Desktop Mode`.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int CRADLE_APP_ON_EXTRACT = PropertyGroupID.UX_SETTINGS_GROUP + 0x001B;
+
+    /**
+     * This property allows to define an app to be launched on the external screen (secondary display)
+     * when the device is inserted in a Docking Station.
+     * <p>
+     * The value of the property should be a string in the format `package_name/activity_name`,
+     * where `package_name` is the app to be launched and `activity_name` is the name of the specific app activity to be launched.
+     * For example if DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT="com.datalogic.scan/.MainActivity", the `MainActivity` of `Scan Demo` app will be
+     * launched upon insertion event.
+     * <p>
+     * The app will be displayed on the external screen only and only if {@link #DESKTOP_MODE_POLICY}
+     * is set to {@link DesktopModePolicy#DUAL_SCREEN}. Otherwise, the external screen will show
+     * the app set by {@link #CRADLE_APP_ON_INSERT} because the external display is mirroring the
+     * main display.
+     * Note:
+     * It behaves similarly to {@link #CRADLE_APP_ON_INSERT} and {@link #CRADLE_APP_ON_EXTRACT} which are
+     * not specific to `Desktop Mode' but are related only to insertion and extraction events.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT = PropertyGroupID.UX_SETTINGS_GROUP + 0x001C;
 
     //
     // Developer Options definitions
@@ -6886,7 +7219,7 @@ public class PropertyID {
      * in case of manual display mode and camera input type, when the
      * device is positioned in portrait. The camera frames will retain their
      * original aspect ratio but they will resize in order to fit inside the
-     * perview box specified by the width and height parameters.
+     * preview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6896,7 +7229,7 @@ public class PropertyID {
      * in case of manual display mode and camera input type, when the
      * device is positioned in portrait. The camera frames will retain their
      * original aspect ratio but they will resize in order to fit inside the
-     * perview box specified by the width and height parameters.
+     * preview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6922,7 +7255,7 @@ public class PropertyID {
      * in case of manual display mode and camera input type, when the
      * device is positioned in landscape. The camera frames will retain their
      * original aspect ratio but they will resize in order to fit inside the
-     * perview box specified by the width and height parameters.
+     * preview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */
@@ -6932,7 +7265,7 @@ public class PropertyID {
      * in case of manual display mode and camera input type, when the
      * device is positioned in landscape. The camera frames will retain their
      * original aspect ratio but they will resize in order to fit inside the
-     * perview box specified by the width and height parameters.
+     * preview box specified by the width and height parameters.
      * <p>
      * The class of the property is {@link NumericProperty}.
      */

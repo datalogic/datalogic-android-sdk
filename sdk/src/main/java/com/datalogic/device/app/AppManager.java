@@ -248,40 +248,60 @@ public class AppManager {
     }
 
     /**
-     * Call this method to enable/disable the specified list of <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a>s of a given application. <br>
-     * The NotificationChannels are specified using their <a href="https://developer.android.com/reference/android/app/NotificationChannel#getId()">identifier</a>.<br>
-     * To enable/disable all the NotificationChannels of an app use as value of the parameter notificationChannels the regular expression "^(?:[\\w| ]*)$". <br>
-     * <b>To disable all the NotificationChannels of the Clock app:</b>
-     * <pre>
-     * AppManager appmanager = new AppManager(this);
-     * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:[\\w| ]*)$", false);
-     * </pre>
-     * <b>To disable the NotificationChannels Bedtime, Timers, Firing alarms & timers, Missed alarms of the Clock app:</b>
-     * <pre>
-     * AppManager appmanager = new AppManager(this);
-     * int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:Bedtime|Timers|Firing|Missed Alarms)$", false);
-     * </pre>
-     * <b>The identifier of the NotificationChannels are obtained getting the list of all the NotificationChannels of the app and looking, in the returned list, for their identifier.</b>
-     * <pre>
-     * AppManager appmanager = new AppManager(this);
-     * List<NotificationChannel> channels = new ArrayList<NotificationChannel>();
-     * int result = appmanager.getNotificationChannels("com.google.android.deskclock", channels);
-     * for (NotificationChannel channel : channels) {
-     *    Log.d(TAG, "channel=" + channel.getId());
-     * } 
-     * </pre>
+     * Enables or disables a <a href="https://developer.android.com/reference/android/app/NotificationChannel">NotificationChannel</a> for a specified application.
+     * <p>
+     * The NotificationChannel is identified using its Android <a href="https://developer.android.com/reference/android/app/NotificationChannel#getId()">identifier</a>.
+     * </p>
+     * <p>
+     * Regular expressions can be used to enable or disable multiple notification channels and/or applications in a single call:
+     * </p>
+     * <ul>
+     *   <li>To target all notification channels of a specific app, use the regular expression: <code>"^(?:[\\w ]*)$"</code>.</li>
+     *   <li>To target all installed apps, use the regular expression: <code>"^[a-zA-Z_][\\w]*(\\.[a-zA-Z_][\\w]*)*$"</code>.</li>
+     * </ul>
      * <br>
+     * <br>
+     * <p><b>Examples:</b></p>
+     * <ul>
+     *   <li>Disable all NotificationChannels of the Clock app:
+     *     <pre>
+     *     AppManager appManager = new AppManager(this);
+     *     int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:[\\w ]*)$", false);
+     *     </pre>
+     *   </li>
+     *   <li>Disable specific NotificationChannels (e.g., Bedtime, Timers, Firing alarms & timers, Missed alarms) of the Clock app:
+     *     <pre>
+     *     AppManager appManager = new AppManager(this);
+     *     int result = appManager.enableNotificationChannels("com.google.android.deskclock", "^(?:Bedtime|Timers|Firing|Missed Alarms)$", false);
+     *     </pre>
+     *   </li>
+     *   <li>Retrieve NotificationChannel identifiers for Clock app:
+     *     <pre>
+     *     AppManager appManager = new AppManager(this);
+     *     List<NotificationChannel> channels = new ArrayList<>();
+     *     int result = appManager.getNotificationChannels("com.google.android.deskclock", channels);
+     *     for (NotificationChannel channel : channels) {
+     *         Log.d(TAG, "channel=" + channel.getId());
+     *     }
+     *     </pre>
+     *   </li>
+     *   <li>Disable all NotificationChannels for all apps:
+     *     <pre>
+     *     AppManager appManager = new AppManager(this);
+     *     int result = appManager.enableNotificationChannels("^[a-zA-Z_][\\w]*(\\.[a-zA-Z_][\\w]*)*$", "^(?:[\\w ]*)$", false);
+     *     </pre>
+     *   </li>
+     * </ul>
+     *
      * @param packageName
-     *            <code>String</code> The package name of the application whose NotificationChannels are to be enabled/disabled.
+     *            <code>String</code> A regular expression matching the package names of the applications whose NotificationChannels are to be enabled/disabled.
      * @param notificationChannels
-     *            <code>String</code> Regular expression that lists the identifiers of the NotificationChannels to be enabled/disabled.
+     *            <code>String</code> A regular expression matching the identifiers of the NotificationChannels to be enabled/disabled.
      * @param enabled
-     *            <code>boolean</code> False to disable the notification channels, true to enable the notification channels with the
-     *            importance defined when the channel was created.
+     *            <code>boolean</code> Set to <code>false</code> to disable the notification channels, or <code>true</code> to enable them with their original importance.
      * @return <code>int</code>
-     *            {@link AppManagerException#SUCCESS} in case of success,
-     * otherwise a possible error code, matching one of the {@link AppManagerException} error constants.
-     * @throws AppManagerException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     *            {@link AppManagerException#SUCCESS} if successful, or an error code matching one of the {@link AppManagerException} constants.
+     * @throws AppManagerException if an error occurs and exceptions are enabled through the {@link ErrorManager} singleton.
      */
     public int enableNotificationChannels(String packageName, String notificationChannels, boolean enabled) {
         return 0;

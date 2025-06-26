@@ -6,38 +6,33 @@ package com.datalogic.device.input;
 public enum DLKeyEvent {
 
     /**
-     * Datalogic's Android keycode meant to represent
-     * the scan request button.
-     */
-    KEYCODE_BARCODE(180), //val = 1125 for the qcm4490 platform devices -> This value will be dynamically retrieve
-
-    /**
-     * Datalogic's android keycode meant to represent
-     * the request to switch the scanner input from camera to scan engine.
-     */
-    KEYCODE_SCANNER_INPUT_SWITCH(1126),
-
-    /**
-     * Datalogic's android keycode meant to represent
-     * the PTT button.
-     */
-    KEYCODE_PUSH_TO_TALK(1127),
-
-    /**
-     * Datalogic's android keycode meant to represent
-     * the battery swap request button.
-     */
-    KEYCODE_BATTERY_SWAP(1128),
-
-    /**
-     * Datalogic's Android keycode meant to represent
      * Undefined keycode
      */
     KEYCODE_UNKNOWN(0),
 
     /**
-     * Datalogic's Android keycode meant to represent
-     * the Snap OCR trigger button
+     * Datalogic Keycode to trigger a scanning session with the barcode scanner.
+     * This value is determined based on the device platform.
+     */
+    KEYCODE_BARCODE(180), //val = 1125 for the qcm4490 platform devices -> This value will be dynamically retrieve
+
+    /**
+     * Datalogic Keycode to switch the scanner input from camera to scan engine.
+     */
+    KEYCODE_SCANNER_INPUT_SWITCH(1126),
+
+    /**
+     * Datalogic Keycode to trigger a Push-To-Talk (PTT) session.
+     */
+    KEYCODE_PUSH_TO_TALK(1127),
+
+    /**
+     * Datalogic Keycode to trigger a battery swap request.
+     */
+    KEYCODE_BATTERY_SWAP(1128),
+
+    /**
+     * Datalogic Keycode to trigger a Snap OCR scanning session with the barcode scanner.
      */
     KEYCODE_OCR_DECODE(1129);
 

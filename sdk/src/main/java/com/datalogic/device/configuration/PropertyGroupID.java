@@ -158,6 +158,16 @@ public class PropertyGroupID {
     public final static int POWER_POCKET_MODE_GROUP = POWER_MIB_BASE + 0x0007;
 
     /**
+     * Root of the subtree of smart charge properties.
+     */
+    public final static int POWER_SMART_CHARGE_GROUP = POWER_MIB_BASE + 0x0008;
+
+    /**
+     * Root of the subtree of enterprise battery saver properties.
+     */
+    public final static int POWER_ENTERPRISE_BATTERY_SAVER_GROUP = POWER_MIB_BASE + 0x0009;
+
+    /**
      * Root of the subtree of the Developer Options properties.
      */
     public static final int DEVELOPER_OPTIONS_GROUP = DEVELOPER_OPTIONS_MIB_BASE + 0x0001;
