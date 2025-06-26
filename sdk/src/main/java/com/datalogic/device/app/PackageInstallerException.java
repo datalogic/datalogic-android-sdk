@@ -142,43 +142,10 @@ public class PackageInstallerException extends RuntimeException {
 	public int error_number;
 
 	/**
+	 * @hide
 	 * Constructs an PackageInstallerException object.
 	 */
-	public PackageInstallerException() {
-    }
-
-	/**
-	 * Constructs an GENERIC_ERROR PackageInstallerException object.
-	 * The <code>String</code> parameter is concatenated to the exception message.
-	 *
-	 * @param s
-	 *            <code>String</code> String concatenated to the error message.
-	 */
-	public PackageInstallerException(String s) {
-    }
-
-	/**
-	 * Constructs an PackageInstallerException object that takes a
-	 * <code>int</code> parameter containing the reason the exception was
-	 * thrown. The <code>String</code> prameter is concatenated to the exception message.
-	 *
-	 * @param s
-	 *            <code>String</code> String concatenated to the error message.
-	 * @param number
-	 *            <code>int</code> indicating the error code number.
-	 */
-	public PackageInstallerException(String s, int number) {
-    }
-
-	/**
-	 * Constructs an PackageInstallerException object that takes a
-	 * <code>int</code> parameter containing the reason the exception was
-	 * thrown.
-	 *
-	 * @param number
-	 *            <code>int</code> indicating the error code number.
-	 */
-	public PackageInstallerException(int number) {
+	private PackageInstallerException() {
     }
 
 	// Method to return a meaningful string of the error code.

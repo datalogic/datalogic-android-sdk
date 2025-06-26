@@ -24,4 +24,11 @@ package com.datalogic.device.app;
 		 * <code>result</code> result of the command, value matching one of the {@link PackageInstallerException} error constants.
          */
 		public int result;
+
+		/**
+		 * @hide
+		 * This is the constructor of PackageInstallerResult.
+		 */
+		private PackageInstallerResult() {
+		}
 	}

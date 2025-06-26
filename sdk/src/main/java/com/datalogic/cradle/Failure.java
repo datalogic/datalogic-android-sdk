@@ -76,7 +76,11 @@ public enum Failure
     /**
      * The cradle's internal flash is corrupted.
      */
-    FAILURE_FLASH_CORRUPTED;
+    FAILURE_FLASH_CORRUPTED,
+    /**
+     * The cradle's pogo pins are in thermal protection.
+     */
+    FAILURE_THERMAL_PROTECTION_POGO;
 
     /**
      * Converts the Failure enum to its integer representing value.

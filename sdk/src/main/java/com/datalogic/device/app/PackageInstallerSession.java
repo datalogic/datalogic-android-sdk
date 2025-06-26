@@ -32,6 +32,12 @@ import com.datalogic.device.ErrorManager;
  */
 public class PackageInstallerSession implements ServiceConnection {
 
+	/**
+	 * @hide
+	 * This is the constructor of PackageInstallerSession.
+	 */
+	private PackageInstallerSession() {
+	}
 
    /**
 	* Call this method to start a session. <br>
