@@ -159,6 +159,40 @@ public class EnterpriseBatterySaverActivationItems extends SerializableBlob {
         public static final int WEEK_DAY_SUNDAY = 7;
 
         /**
+         * This is the list of keys used to identify the parameters of the activation item
+         * from the `Map<String, String>` returned by the {@link #getParams()} method.
+         * The values are represented as strings, and their actual type depends on the type of the
+         * activation item and an explicit conversion might be needed.
+         * The type of each parameter is as follows:
+         * <ul>
+         *     <li>{@link #PARAM_BATTERY_LEVEL_THRESHOLD} - Integer (0-100)</li>
+         *     <li>{@link #PARAM_POWER_SOURCE_TYPE_MASK} - Integer (bit mask)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_WEEK_DAY_START} - Integer (1-7)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_HOUR_START} - Integer (0-23)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_MINUTE_START} - Integer (0-59)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_WEEK_DAY_END} - Integer (1-7)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_HOUR_END} - Integer (0-23)</li>
+         *     <li>{@link #PARAM_TIME_INTERVAL_MINUTE_END} - Integer (0-59)</li>
+         *     <li>{@link #PARAM_POCKET_MODE_ACTIVE} - Boolean (true/false)</li>
+         *     <li>{@link #PARAM_CONNECTION_SOURCE_MASK} - Integer (bit mask)</li>
+         * </ul>
+         */
+        public static final String PARAM_BATTERY_LEVEL_THRESHOLD = "batteryLevel";
+
+        public static final String PARAM_POWER_SOURCE_TYPE_MASK = "sourceTypeMask";
+
+        public static final String PARAM_TIME_INTERVAL_WEEK_DAY_START = "dayOfWeekStart";
+        public static final String PARAM_TIME_INTERVAL_HOUR_START = "hourOfDayStart";
+        public static final String PARAM_TIME_INTERVAL_MINUTE_START = "minuteStart";
+        public static final String PARAM_TIME_INTERVAL_WEEK_DAY_END = "dayOfWeekEnd";
+        public static final String PARAM_TIME_INTERVAL_HOUR_END = "hourOfDayEnd";
+        public static final String PARAM_TIME_INTERVAL_MINUTE_END = "minuteEnd";
+
+        public static final String PARAM_POCKET_MODE_ACTIVE = "active";
+
+        public static final String PARAM_CONNECTION_SOURCE_MASK = "connectionMask";
+
+        /**
          * Returns the name of the activation item.
          */
         public String getName() {
@@ -184,6 +218,12 @@ public class EnterpriseBatterySaverActivationItems extends SerializableBlob {
          * Returns the representation of the internal parameters of the activation item. The
          * parameters are represented as a map of key-value pairs, and their actual values
          * depend on the type of the activation item.
+         * See {@link #PARAM_BATTERY_LEVEL_THRESHOLD}, {@link #PARAM_POWER_SOURCE_TYPE_MASK},
+         * {@link #PARAM_TIME_INTERVAL_WEEK_DAY_START}, {@link #PARAM_TIME_INTERVAL_MINUTE_START},
+         * {@link #PARAM_TIME_INTERVAL_HOUR_START}, {@link #PARAM_TIME_INTERVAL_WEEK_DAY_END},
+         * {@link #PARAM_TIME_INTERVAL_MINUTE_END}, {@link #PARAM_TIME_INTERVAL_HOUR_END},
+         * {@link #PARAM_POCKET_MODE_ACTIVE}, {@link #PARAM_CONNECTION_SOURCE_MASK} for the
+         * list of parameters and their meaning.
          */
         public Map<String, String> getParams() {
             return null;

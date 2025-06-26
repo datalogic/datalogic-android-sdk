@@ -493,6 +493,10 @@ public class PropertyGroupID {
      */
     public final static int CAMERA_WEDGE_GROUP = SCANNER_MIB_BASE + 0x0046;
     /**
+     * Root of the subtree of the properties that configure the image crops shown in the decode result.
+     */
+    public final static int DECODE_RESULT_CROP_GROUP = SCANNER_MIB_BASE + 0x0047;
+    /**
      * Root of the subtree of External Formatter Group's properties.
      */
     public final static int EXTERNAL_FORMATTING_GROUP = EXTERNAL_FORMATTING_MIB_BASE + 0x0001;

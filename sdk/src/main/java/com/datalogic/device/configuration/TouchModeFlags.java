@@ -1,9 +1,9 @@
 package com.datalogic.device.configuration;
 
-/*
-* The <code>TouchModeFlags</code> defines the base touch-screen sensitivities.
-* Based on the device model more that one can be set.
-*/
+/**
+ * The <code>TouchModeFlags</code> defines the base touch-screen sensitivities for settings property {@link PropertyID#TOUCH_MODE}.
+ * Based on the device model more that one can be set.
+ */
 public class TouchModeFlags {
 
     /**
