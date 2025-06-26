@@ -1,9 +1,9 @@
 package com.datalogic.device.configuration;
 
-
-
 /**
- * Enum <code>TouchMode</code> defines the allowed touch-screen sensitivity values for settings property {@link PropertyID#TOUCH_MODE_SENSITIVITY}  
+ * Enum <code>TouchMode</code> defines the allowed touch-screen sensitivity values for settings property {@link PropertyID#TOUCH_MODE_SENSITIVITY}.
+ * On new device models, starting from M30/M35, property {@link PropertyID#TOUCH_MODE_SENSITIVITY} is replaced by {@link PropertyID#TOUCH_MODE}.
+ * @deprecated Use {@link PropertyID#TOUCH_MODE} and {@link TouchModeFlags} instead.
  */
 public enum TouchMode {
     /**

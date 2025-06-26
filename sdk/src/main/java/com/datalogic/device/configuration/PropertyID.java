@@ -782,6 +782,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #WEDGE_INTENT_EXCLUDE_EMPTY_VALUES} </li>
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_USER_ID} </li>
  *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_AIM_ID} </li>
+ *                             <li> {@link #WEDGE_INTENT_EXTRA_BARCODE_CROP} </li>
  *                             <li> {@link #WEDGE_WEB_ENABLE} </li>
  *                         </ul>
  *                     </details>
@@ -886,6 +887,17 @@ import com.datalogic.device.*;
  *                             <li> {@link #CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_Y} </li>
  *                             <li> {@link #CAMERA_WEDGE_BACKGROUND_COLOR} </li>
  *                             <li> {@link #CAMERA_WEDGE_BARCODE_COLOR} </li>
+ *                         </ul>
+ *                     </details>
+ *                 </li>
+ *                 <li>
+ *                     <details>
+ *                         <summary> {@link PropertyGroupID#DECODE_RESULT_CROP_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #DECODE_RESULT_CROP_BARCODE_ENABLE} </li>
+ *                             <li> {@link #DECODE_RESULT_CROP_SNAP_OCR_ENABLE} </li>
+ *                             <li> {@link #DECODE_RESULT_CROP_MARGIN} </li>
+ *                             <li> {@link #DECODE_RESULT_CROP_ENTIRE_FRAME} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -2520,10 +2532,11 @@ public class PropertyID {
 
     /**
       * This is the property used to configure the touch controller.
-      * On new device models, starting from M30/M35, this parameter is substituted by {@link PropertyID#TOUCH_MODE}.
+      * On new device models, starting from M30/M35, this parameter is replaced by {@link PropertyID#TOUCH_MODE}.
       * <p>
       * The class of the property is {@link EnumProperty}.
       * The allowed values are defined by enum {@link TouchMode}.
+      * @deprecated Use {@link PropertyID#TOUCH_MODE} and {@link TouchModeFlags} instead.
       */
     public final static int TOUCH_MODE_SENSITIVITY = PropertyGroupID.TOUCH_MIB_BASE + 0x0001;
 
@@ -7076,6 +7089,18 @@ public class PropertyID {
      * The class of the property is {@link TextProperty}.
       */
     public final static int WEDGE_INTENT_EXTRA_BARCODE_AIM_ID = 0x30D49;
+    /**
+     * This parameter defines the name of the extra field of the Decode Wedge intent containing the crop of the decoded barcode as extra value (as byte array).
+     * The crop must be first enabled in the decoded result by setting the property {@link #DECODE_RESULT_CROP_BARCODE_ENABLE} or {@link #DECODE_RESULT_CROP_SNAP_OCR_ENABLE}.
+     * The resulting byte array represents an image in JPEG format.
+     * <p>
+     * This extra name shall be used as the name argument of Intent.getByteArrayExtra() to retrieve the crop of the decoded barcode.
+     * <p>
+     * The default value is "com.datalogic.decode.intentwedge.barcode_crop".
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int WEDGE_INTENT_EXTRA_BARCODE_CROP = 0x30D4A;
      /**
       * This parameter enables the Decode Wedge capability for direct web browsing. 
       * <p>
@@ -7506,6 +7531,38 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int SNAP_OCR_ROI_PREFIX_VISIBILITY = 0x4070A;
+
+    //
+    // DECODE RESULT CROP
+    //
+    //
+    /**
+     * This parameter allows to show the cropped image corresponding to the decoded
+     * barcode. The image is shown as a Bitmap provided in the decode result.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int DECODE_RESULT_CROP_BARCODE_ENABLE = 0x40800;
+    /**
+     * This parameter allows to show the cropped image corresponding to the decoded
+     * OCR text. The image is shown as a Bitmap provided in the decode result.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int DECODE_RESULT_CROP_SNAP_OCR_ENABLE = 0x40801;
+    /**
+     * This parameter allows to select the amount of pixels to include as margin
+     * in the cropped image that is shown as a Bitmap in the decode result.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int DECODE_RESULT_CROP_MARGIN = 0x40802;
+    /**
+     * This parameter allows to send the entire frame shown as a Bitmap in the decode result.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int DECODE_RESULT_CROP_ENTIRE_FRAME = 0x40803;
 
     /**
      * @hide

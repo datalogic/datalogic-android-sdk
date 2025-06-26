@@ -1694,6 +1694,12 @@ public class PropertyID {
          */
 	public final static int WEDGE_INTENT_EXTRA_BARCODE_AIM_ID = 0x30D49;
         /**
+         * This parameter defines the name of the extra field of the Decode Wedge intent containing the crop of the decoded barcode as extra value (as byte array).
+         * The resulting byte array represents an image in JPEG format.
+         * The default value is EXTRA_BARCODE_CROP.
+         */
+	public final static int WEDGE_INTENT_EXTRA_BARCODE_CROP = 0x30D4A;
+        /**
          * This parameter enables the Decode Wedge capability for direct web browsing. 
          */
 	public final static int WEDGE_WEB_ENABLE = 0x30E40;
@@ -1998,4 +2004,27 @@ public class PropertyID {
          * and OCR_TEXT is the original result.
          */
 	public final static int SNAP_OCR_ROI_PREFIX_VISIBILITY = 0x4070A;
+
+	//
+	// DECODE RESULT CROP
+	//
+        /**
+         * This parameter allows to show the cropped image corresponding to the decoded
+         * barcode. The image is shown as a Bitmap provided in the decode result.
+         */
+	public final static int DECODE_RESULT_CROP_BARCODE_ENABLE = 0x40800;
+        /**
+         * This parameter allows to show the cropped image corresponding to the decoded
+         * OCR text. The image is shown as a Bitmap provided in the decode result.
+         */
+	public final static int DECODE_RESULT_CROP_SNAP_OCR_ENABLE = 0x40801;
+        /**
+         * This parameter allows to select the amount of pixels to include as margin
+         * in the cropped image that is shown as a Bitmap in the decode result.
+         */
+	public final static int DECODE_RESULT_CROP_MARGIN = 0x40802;
+        /**
+         * This parameter allows to send the entire frame shown as a Bitmap in the decode result.
+         */
+	public final static int DECODE_RESULT_CROP_ENTIRE_FRAME = 0x40803;
 }

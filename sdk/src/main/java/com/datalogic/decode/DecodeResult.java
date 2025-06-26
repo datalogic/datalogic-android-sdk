@@ -1,6 +1,9 @@
 package com.datalogic.decode;
 
+import android.graphics.Bitmap;
+
 import com.datalogic.decode.ReadListener;
+
 /**
  * <code>DecodeResult</code> is an interface passed by
  * {@link ReadListener#onRead(DecodeResult)} to retrieve scanned data from the
@@ -27,4 +30,10 @@ public interface DecodeResult {
 	 */
 	public BarcodeID getBarcodeID();
 
+	/**
+	 * Returns the crop of the decoded data in case this has been enabled in the
+	 * {@link com.datalogic.decode.configuration.DecodeResultCrop} class.
+	 * @return <code>Bitmap</code> representing the crop if available, null otherwise.
+	 */
+	public Bitmap getCrop();
 }

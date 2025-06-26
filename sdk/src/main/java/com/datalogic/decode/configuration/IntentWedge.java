@@ -51,6 +51,12 @@ public class IntentWedge extends PropertyGroup {
 	public final static String EXTRA_BARCODE_AIM_ID = "com.datalogic.decode.intentwedge.barcode_aim_id";
 
 	/**
+	 * When the IntentWedge is sent to a listening application, the decoded label crop is dispatched
+	 * under a specific byte array extra with the following name, by default.
+	 */
+	public final static String EXTRA_BARCODE_CROP = "com.datalogic.decode.intentwedge.barcode_crop";
+
+	/**
 	 * <code>enable</code> sets the intent mode.
 	 */
 	public BooleanProperty enable;
@@ -109,6 +115,14 @@ public class IntentWedge extends PropertyGroup {
 	 * The default value is {@link IntentWedge#EXTRA_BARCODE_AIM_ID}.
 	 */
 	public TextProperty extraBarcodeAimId;
+
+	/**
+	 * <code>extraBarcodeCrop</code> indicates the corresponding intent extra tag, associated to a byte array containing the
+	 * crop of the read label in JPEG format.
+	 * The crop must be first enabled in the decoded result with the settings available in the {@link DecodeResultCrop} class.
+	 * The default value is {@link IntentWedge#EXTRA_BARCODE_CROP}.
+	 */
+	public TextProperty extraBarcodeCrop;
 
 	/**
 	 * This is the constructor of IntentWedge. All options are initialized by

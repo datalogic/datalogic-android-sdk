@@ -282,6 +282,12 @@ public class ScannerProperties extends PropertyGroup {
 	public Tlc39 tlc39;
 
 	/**
+	 * Provides configuration for the Decode Result Crop.
+	 * {@see DecodeResultCrop}
+	 */
+	public DecodeResultCrop decodeResultCrop;
+
+	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 
 	 * @param editor A {@link PropertyGetter} used to load the current barcode families and properties.
