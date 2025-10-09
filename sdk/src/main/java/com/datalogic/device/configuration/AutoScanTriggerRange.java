@@ -15,7 +15,12 @@ public enum AutoScanTriggerRange {
     /**
      * Far range.
      */
-    FAR_RANGE;
+    FAR_RANGE,
+    /**
+     * Custom range; configurable by means of {@link PropertyID#KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_LOW_THRESHOLD}
+     * and {@link PropertyID#KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_HIGH_THRESHOLD} properties.
+     */
+    CUSTOM_RANGE;
 
 
     private static AutoScanTriggerRange[] allValues = values();

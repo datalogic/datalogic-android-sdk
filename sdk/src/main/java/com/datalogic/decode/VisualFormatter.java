@@ -99,6 +99,7 @@ public class VisualFormatter {
 
     /**
      * Installs a new formatter project by specifying a zip file. It also sets the active item to one of the items found inside the zip file.
+     * The zip to be installed must not be located within an application's internal storage.
      *
      * @param path
      *        The path to a zip file containing the formatter project. The file can contain multitple scripts corresponding to

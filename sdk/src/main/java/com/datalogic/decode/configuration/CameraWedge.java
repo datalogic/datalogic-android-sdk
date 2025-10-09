@@ -94,6 +94,12 @@ public class CameraWedge extends PropertyGroup {
 	public NumericProperty barcodeColor;
 
 	/**
+	 * <code>enableAlwaysOn</code>, when set to true, sets the scan mode to always on when the
+	 * camera wedge is active.
+	 */
+	public BooleanProperty enableAlwaysOn;
+
+	/**
 	 * This is the constructor of CameraWedge. All options are initialized by
 	 * editor.
 	 *

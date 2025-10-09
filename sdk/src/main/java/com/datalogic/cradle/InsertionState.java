@@ -25,7 +25,11 @@ public enum InsertionState
     /**
      * Device has been extracted from the Cradle.
      */
-    EXTRACTED;
+    EXTRACTED,
+    /**
+     * Device has been inserted into the Trolley.
+     */
+    INSERTED_IN_TROLLEY;
 
     /**
      * Converts the InsertionState enum to its integer representing value.

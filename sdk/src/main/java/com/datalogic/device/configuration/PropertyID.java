@@ -627,6 +627,9 @@ import com.datalogic.device.*;
  *                                         <li> {@link #OCR_USER_ID} </li>
  *                                         <li> {@link #OCR_PASSPORT_ENABLE} </li>
  *                                         <li> {@link #OCR_ID_ENABLE} </li>
+ *                                         <li> {@link #OCR_TD2_ENABLE} </li>
+ *                                         <li> {@link #OCR_MRVA_ENABLE} </li>
+ *                                         <li> {@link #OCR_MRVB_ENABLE} </li>
  *                                         <li> {@link #OCR_CONFIDENCE} </li>
  *                                         <li> {@link #OCR_MULTIFRAME} </li>
  *                                     </ul>
@@ -887,6 +890,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #CAMERA_WEDGE_BARCODE_CUSTOM_POSITION_Y} </li>
  *                             <li> {@link #CAMERA_WEDGE_BACKGROUND_COLOR} </li>
  *                             <li> {@link #CAMERA_WEDGE_BARCODE_COLOR} </li>
+ *                             <li> {@link #CAMERA_WEDGE_ENABLE_ALWAYS_ON} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -929,6 +933,8 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER} </li>
  *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER} </li>
  *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER_RANGE} </li>
+ *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_LOW_THRESHOLD} </li>
+ *                  <li> {@link #KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_HIGH_THRESHOLD} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_SENSITIVITY} </li>
  *                  <li> {@link #KEYBOARD_MOTION_TRIGGER_VIBRATION} </li>
@@ -1031,6 +1037,14 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_SMART_CHARGE_ENABLE} </li>
  *                  <li> {@link #POWER_SMART_CHARGE_DISCHARGE_DELAY} </li>
  *                  <li> {@link #POWER_SMART_CHARGE_WORK_TIMES} </li>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_NOTIFICATION_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_NOTIFICATION_CHARGE_ENABLE} </li>
+ *                  <li> {@link #POWER_NOTIFICATION_FAILURE_ENABLE} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1300,6 +1314,9 @@ import com.datalogic.device.*;
  *         <summary> {@link PropertyGroupID#DISPLAY_GROUP}</summary>
  *         <ul>
  *            <li> {@link #SCREEN_BRIGHTNESS} </li>
+ *            <li> {@link #SCREEN_BRIGHTNESS_RANGE_MIN} </li>
+ *            <li> {@link #SCREEN_BRIGHTNESS_RANGE_MAX} </li>
+ *            <li> {@link #SCREEN_FACEDOWN_DETECTOR_ENABLED} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1315,6 +1332,7 @@ import com.datalogic.device.*;
  *            <li> {@link #RECENT_APPS_ENABLED} </li>
  *            <li> {@link #SPLIT_SCREEN_APP_HIDDEN} </li>
  *            <li> {@link #TASK_BAR_HIDDEN} </li>
+ *            <li> {@link #TASK_BAR_HOTSEAT_HIDDEN} </li>
  *            <li> {@link #NOTIFICATION_PANEL_ON_HOME_SCREEN_ENABLED} </li>
  *            <li> {@link #NOTIFICATION_PANEL_ON_LOCK_SCREEN_POLICY} </li>
  *            <li> {@link #NOTIFICATION_MANAGE_BUTTON_HIDDEN} </li>
@@ -1343,6 +1361,7 @@ import com.datalogic.device.*;
  *            <li> {@link #SCREENSAVER_POLICY} </li>
  *            <li> {@link #SCREENSAVER_COMPONENT} </li>
  *            <li> {@link #SCREENSAVER_DATALOGIC} </li>
+ *            <li> {@link #APP_INFO_HIDDEN} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1364,6 +1383,8 @@ import com.datalogic.device.*;
  *            <li> {@link #NOTIFICATION_DOTS_ENABLED} </li>
  *            <li> {@link #NOTIFICATION_LED_ENABLED}</li>
  *            <li> {@link #BATTERY_LED_ENABLED} </li>
+ *            <li> {@link #BATTERY_FAILURE_LED_ENABLED}</li>
+ *            <li> {@link #START_CHARGING_LED_ENABLED} </li>
  *            <li> {@link #CLIPBOARD_POLICY} </li>
  *            <li> {@link #CAPTIVE_PORTAL_POLICY} </li>
  *            <li> {@link #CAST_ENABLED} </li>
@@ -1402,6 +1423,21 @@ import com.datalogic.device.*;
  *            <li> {@link #USB_DEBUG_ENABLE} </li>
  *            <li> {@link #WIFI_DEBUG_ENABLE} </li>
  *            <li> {@link #LOGGER_BUFFER_SIZE} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ * 
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#EMERGENCY_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #SOS_TRIGGER_ENABLED} </li>
+ *            <li> {@link #SOS_TRIGGER_METHOD} </li>
+ *            <li> {@link #SOS_TRIGGER_LONG_PRESS_TIMEOUT} </li>
+ *            <li> {@link #SOS_TRIGGER_MULTIPRESS_COUNT} </li>
+ *            <li> {@link #SOS_TRIGGER_ACTION} </li>
+ *            <li> {@link #SOS_TRIGGER_EMERGENCY_NUMBER} </li>
+ *            <li> {@link #SOS_TRIGGER_EMERGENCY_MESSAGE} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -2231,6 +2267,20 @@ public class PropertyID {
      * The specific implementation for this type of blob is {@link EnterpriseBatterySaverActivationItems}.
      */
     public final static int POWER_ENTERPRISE_BATTERY_SAVER_ACTIVATION_ITEMS = PropertyGroupID.POWER_MIB_BASE + 0x0023;
+
+    /**
+     * Activates the reporting of low-level user notifications about the charge status of the power subsystem.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_NOTIFICATION_CHARGE_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0030;
+
+    /**
+     * Activates the reporting of low-level user notifications about failures of the power subsystem.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_NOTIFICATION_FAILURE_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0031;
 
     //
     // USB Settings definitions
@@ -3173,7 +3223,7 @@ public class PropertyID {
      * that manages the screensaver.
      * For example, if `SCREENSAVER_COMPONENT="com.google.android.deskclock/com.android.deskclock.Screensaver"`,
      * the clock screensaver will be launched.
-     * To use `Datalogic Screensaver` set `SCREENSAVER_COMPONENT="com.datalogic.android.datalogicscreensaver/com.datalogic.android.datalogicscreensaver.ScreensaverService"`
+     * To use `Datalogic Screensaver` set `SCREENSAVER_COMPONENT="com.datalogic.settings.datalogicscreensaver/com.datalogic.settings.datalogicscreensaver.ScreensaverService"`
      * The screensaver app can also be selected under `Display -> Screen saver` in Android settings.
      * Any app can be used to manage the screensaver if it extends a `DreamService`.
      * <p>
@@ -3195,7 +3245,7 @@ public class PropertyID {
      * The type of this property is {@link BlobProperty} and the concrete implementation is {@link DatalogicScreensaver}.<br>
      *
      * To use Datalogic Screensaver, {@link #SCREENSAVER_COMPONENT} must be set to
-     * "com.datalogic.android.datalogicscreensaver/com.datalogic.android.datalogicscreensaver.ScreensaverService".
+     * "com.datalogic.settings.datalogicscreensaver/com.datalogic.settings.datalogicscreensaver.ScreensaverService".
      * <p>
      * Datalogic Screensaver continuously cycles through the screensaver list to display a carousel of screensavers.
      * Each screensaver is represented by a {@link ScreensaverItem} which can either be an animated image or a video.
@@ -3263,6 +3313,42 @@ public class PropertyID {
      */
     public final static int SCREENSAVER_DATALOGIC = PropertyGroupID.UI_SETTINGS_GROUP + 0x0028;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to show or hide the hotseat in the external dual screen.
+     * <p>
+     * This parameter controls the visibility of the hotseat in the taskbar displayed by an external display,
+     * when desktop mode (see {@link #DESKTOP_MODE_POLICY}) is set to {@link DesktopModePolicy#EXTERNAL_SCREEN}.
+     * <p>
+     * The hotseat is the area on the taskbar that provides quick access to frequently used applications.
+     * When the hotseat is hidden, users cannot access the quick launch area for applications,
+     * which may limit their ability to quickly switch between apps or access frequently used tools.
+     * When the hotseat is visible, users can easily access and launch applications from the taskbar,
+     * which enhances productivity and convenience.
+     * This parameter is effective only if the taskbar is enabled using {@link #TASK_BAR_HIDDEN},
+     * otherwise the taskbar is not displayed at all and the hotseat is hidden in any case.
+     * displayed.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int TASK_BAR_HOTSEAT_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0029;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to access Setting application from App Info shortcut.
+     * <p>
+     * Hiding the App Info button means preventing the user access to Setting application from App Info shortcut when:
+     * - Long pressing application icon in Launcher screen
+     * - Click application icon in Recent Task Manager
+     * - Applition crash
+     * When this parameter is disabled, users can open the Recent Apps menu, select an app, and choose the option to view App Info.
+     * When this parameter is enabled, users can't see App Info shortcut in anywhere
+     * <p>
+     * This parameter only prevents activation of the App Info feature through Settings UI.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int APP_INFO_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0030;
 
     //
     // UX Settings definitions
@@ -3671,6 +3757,34 @@ public class PropertyID {
      */
     public final static int DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT = PropertyGroupID.UX_SETTINGS_GROUP + 0x001C;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to provide visual feedback to the user about battery failures.
+     * <p>
+     * Battery failure LED property refers to enabling or disabling the LED that indicates
+     * a battery failure or malfunction.
+     * <p>
+     * When enabled, the LED will blink red repeatedly to notify the user of a battery issue.
+     * This can help users quickly identify hardware problems related to the battery.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BATTERY_FAILURE_LED_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x001D;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to provide visual feedback to the user about the start of charging.
+     * <p>
+     * Start charging LED property refers to enabling or disabling the LED that lights up
+     * when the device begins charging.
+     * <p>
+     * When enabled, the LED will blink green once to notify the use that the device is successfully connected
+     * to a power source and charging has started.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+     public final static int START_CHARGING_LED_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x001E;
+
     //
     // Developer Options definitions
     //
@@ -3707,6 +3821,34 @@ public class PropertyID {
       * The class of the property is {@link NumericProperty}.
       */
     public final static int SCREEN_BRIGHTNESS = PropertyGroupID.DISPLAY_GROUP + 0x0001;
+
+    /**
+     * This parameter is used as a lower limit for the actual brightness level set by
+     * {@link #SCREEN_BRIGHTNESS}. Internally, the effective brightness level will be scaled to be
+     * between {@link #SCREEN_BRIGHTNESS_RANGE_MIN} and {@link #SCREEN_BRIGHTNESS_RANGE_MAX}.
+     * The allowed values are between 0 and 255.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCREEN_BRIGHTNESS_RANGE_MIN = PropertyGroupID.DISPLAY_GROUP + 0x0002;
+
+    /**
+     * This parameter is used as a upper limit for the actual brightness level set by
+     * {@link #SCREEN_BRIGHTNESS}. Internally, the effective brightness level will be scaled to be
+     * between {@link #SCREEN_BRIGHTNESS_RANGE_MIN} and {@link #SCREEN_BRIGHTNESS_RANGE_MAX}.
+     * The allowed values are between 0 and 255.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCREEN_BRIGHTNESS_RANGE_MAX = PropertyGroupID.DISPLAY_GROUP + 0x0003;
+
+    /**
+     * Enables the face-down detection feature. When this feature is enabled, the device will
+     * automatically turn off the display when it detects that it is placed face-down.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCREEN_FACEDOWN_DETECTOR_ENABLED = PropertyGroupID.DISPLAY_GROUP + 0x0004;
 
    //
    // Keyboard definitions
@@ -3754,6 +3896,20 @@ public class PropertyID {
      * The allowed values are defined by enum {@link AutoScanTriggerRange}.
      */
     public final static int KEYBOARD_AUTOSCAN_TRIGGER_RANGE = PropertyGroupID.KEYBOARD_GROUP + 0x0006;
+
+    /**
+     * This parameter sets the Autoscan trigger range low threshold when the range is set to custom.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_LOW_THRESHOLD = PropertyGroupID.KEYBOARD_GROUP + 0x0020;
+
+    /**
+     * This parameter sets the Autoscan trigger range high threshold when the range is set to custom.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int KEYBOARD_AUTOSCAN_TRIGGER_CUSTOM_HIGH_THRESHOLD = PropertyGroupID.KEYBOARD_GROUP + 0x0021;
 
     /**
      * This parameter enables the Motion trigger.
@@ -4351,6 +4507,133 @@ public class PropertyID {
      * refer to property {@link #VIRTUAL_KEYBOARD_PROFILE}.
      */
     public final static int VIRTUAL_KEYBOARDS_CUSTOM_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001F;
+
+    //
+    // Emergency definitions
+    //
+
+    /**
+     * This parameter enables or disables the SOS trigger functionality.
+     * <p>
+     * When this property is enabled and the KEYCODE_SOS trigger is pressed,
+     * the device will execute the action specified by {@link #SOS_TRIGGER_ACTION}.
+     * The specific trigger method (single press, long press, or multipress) is configured
+     * through the {@link #SOS_TRIGGER_METHOD} property.
+     * <p>
+     * When this property is disabled, pressing the KEYCODE_SOS trigger will have no effect
+     * and no emergency action will be performed.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SOS_TRIGGER_ENABLED = PropertyGroupID.EMERGENCY_GROUP + 0x0001;
+
+    /**
+     * This parameter sets the trigger method for activating the SOS emergency functionality.
+     * <p>
+     * The SOS trigger can be activated through different methods:
+     * <ul>
+     * <li><b>Single press</b>: The SOS action is triggered with a single press of the KEYCODE_SOS trigger.</li>
+     * <li><b>Long press timeout</b>: The SOS action is triggered when the KEYCODE_SOS trigger is held down
+     * for the duration specified by {@link #SOS_TRIGGER_LONG_PRESS_TIMEOUT}.</li>
+     * <li><b>Multipress</b>: The SOS action is triggered when the KEYCODE_SOS trigger is pressed
+     * multiple times in sequence, as specified by {@link #SOS_TRIGGER_MULTIPRESS_COUNT}.</li>
+     * </ul>
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link com.datalogic.device.emergency.SosTriggerMethod}.
+     */
+    public final static int SOS_TRIGGER_METHOD = PropertyGroupID.EMERGENCY_GROUP + 0x0002;
+
+    /**
+     * This parameter sets the timeout duration for the long press SOS trigger method.
+     * <p>
+     * This property is only effective when {@link #SOS_TRIGGER_METHOD} is set to long press timeout.
+     * The value specifies how long the KEYCODE_SOS trigger must be held down before
+     * the SOS action is triggered.
+     * <p>
+     * The allowed range is from 500 milliseconds (0.5 seconds) to 5000 milliseconds (5 seconds).
+     * When the specified timeout duration is reached while the trigger is held down,
+     * the emergency action configured in {@link #SOS_TRIGGER_ACTION} will be executed.
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled
+     * and {@link #SOS_TRIGGER_METHOD} is set to {@link com.datalogic.device.emergency.SosTriggerMethod#LONG_PRESS_TIMEOUT}.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SOS_TRIGGER_LONG_PRESS_TIMEOUT = PropertyGroupID.EMERGENCY_GROUP + 0x0003;
+
+    /**
+     * This parameter sets the number of presses required for the multipress SOS trigger method.
+     * <p>
+     * This property is only effective when {@link #SOS_TRIGGER_METHOD} is set to multipress.
+     * The value specifies how many consecutive presses of the KEYCODE_SOS trigger are required
+     * to activate the SOS emergency functionality.
+     * <p>
+     * The allowed range is from 2 to 5 presses. When the specified number of presses is detected
+     * in sequence, the emergency action configured in {@link #SOS_TRIGGER_ACTION} will be executed.
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled
+     * and {@link #SOS_TRIGGER_METHOD} is set to {@link com.datalogic.device.emergency.SosTriggerMethod#MULTIPRESS}.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SOS_TRIGGER_MULTIPRESS_COUNT = PropertyGroupID.EMERGENCY_GROUP + 0x0004;
+
+    /**
+     * This parameter defines the emergency phone number to be used for SOS emergency calls.
+     * <p>
+     * This property specifies the phone number that will be dialed when the SOS trigger is activated
+     * and {@link #SOS_TRIGGER_ACTION} is set to call a specific emergency number.
+     * The number should be in the format appropriate for the device's locale and carrier.
+     * <p>
+     * If this property is empty or not set, the system will fall back to default emergency numbers
+     * when the SOS trigger action is configured to make emergency calls.
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled
+     * and {@link #SOS_TRIGGER_ACTION} is configured to {@link com.datalogic.device.emergency.SosTriggerAction#EMERGENCY_CALL}.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SOS_TRIGGER_EMERGENCY_NUMBER = PropertyGroupID.EMERGENCY_GROUP + 0x0005;
+
+    /**
+     * This parameter defines the emergency message to be sent during SOS emergency situations.
+     * <p>
+     * This property specifies the text message that can be used to be sent when the SOS trigger is activated
+     * and {@link #SOS_TRIGGER_ACTION} is set to message an emergency number. The message will be sent via SMS.
+     * <p>
+     * The message should contain relevant information such as the nature of the emergency,
+     * location details if available, or any other critical information that would assist
+     * emergency responders or contacts.
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled
+     * and the configured {@link #SOS_TRIGGER_ACTION} is configured to {@link com.datalogic.device.emergency.SosTriggerAction#EMERGENCY_SMS}.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SOS_TRIGGER_EMERGENCY_MESSAGE = PropertyGroupID.EMERGENCY_GROUP + 0x0006;
+
+    /**
+     * This parameter defines the action to be performed when the SOS trigger is activated.
+     * <p>
+     * The SOS trigger can perform different types of emergency actions:
+     * <ul>
+     * <li><b>Call emergency number</b>: Automatically dials the default emergency number if no specific number is defined.</li>
+     * <li><b>Call a specific number</b>: Dials a predefined emergency contact number.</li>
+     * <li><b>Launch custom intent</b>: Executes a custom application or service through an Android intent.</li>
+     * </ul>
+     * <p>
+     * The action is triggered when the SOS trigger method conditions are met, as configured by
+     * {@link #SOS_TRIGGER_METHOD}, {@link #SOS_TRIGGER_LONG_PRESS_TIMEOUT}, or {@link #SOS_TRIGGER_MULTIPRESS_COUNT}.
+     * <p>
+     * This property takes effect only when {@link #SOS_TRIGGER_ENABLED} is enabled.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The specific implementation for this type of blob is {@link com.datalogic.device.emergency.SosTriggerAction}.
+     */
+    public final static int SOS_TRIGGER_ACTION = PropertyGroupID.EMERGENCY_GROUP + 0x0007;
 
     //
     // Device Info definitions
@@ -5192,6 +5475,13 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int SCANNER_CAMERA_INTEROPERABILITY = 0x007F;
+    /**
+     * This parameter, when set to true, sets the scan mode to always on when the
+     * camera wedge is active.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int CAMERA_WEDGE_ENABLE_ALWAYS_ON = 0x0081;
 
     //
     // Code 39 definitions
@@ -7202,6 +7492,24 @@ public class PropertyID {
       * The class of the property is {@link NumericProperty}.
       */
     public final static int OCR_MULTIFRAME = 0x40305;
+    /**
+     * This parameter allows to read the TD2 OCR format. The data of the machine-readable zone consists of two rows of 36 characters each.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int OCR_TD2_ENABLE = 0x40307;
+    /**
+     * This parameter allows to read the MRV-A OCR format. The data of the machine-readable zone consists of two rows of 44 characters each.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int OCR_MRVA_ENABLE = 0x40308;
+    /**
+     * This parameter allows to read the MRV-B OCR format. The data of the machine-readable zone consists of two rows of 36 characters each.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int OCR_MRVB_ENABLE = 0x40309;
 
     //
     // Camera
@@ -7580,4 +7888,3 @@ public class PropertyID {
         return null;
     }
 }
-

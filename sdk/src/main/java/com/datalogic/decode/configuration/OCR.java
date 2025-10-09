@@ -10,13 +10,13 @@ public class OCR extends SymbologyBase {
 
 	/**
 	 * <code>passportEnable</code> allows to read passport booklet in TD3 size.
-	 * The data of the machine-readable zone consists of two rows of 44 characters each. 
+	 * The data of the machine-readable zone consists of two rows of 44 characters each.
 	 */
 	public BooleanProperty passportEnable;
 
 	/**
 	 * <code>idEnable</code> allows to read official travel document in TD1 size.
-	 * The data of the machine-readable zone consists of three rows of 30 characters each. 
+	 * The data of the machine-readable zone consists of three rows of 30 characters each.
 	 */
 	public BooleanProperty idEnable;
 
@@ -25,12 +25,30 @@ public class OCR extends SymbologyBase {
 	 * algorithm. An higher confidence decreases misdecoding probabilities.
 	 */
 	public NumericProperty confidence;
-	
+
 	/**
 	 * <code>multiframe</code> specifies how many decoded frames must match 
 	 * before accepting OCR data.
 	 */
 	public NumericProperty multiframe;
+
+	/**
+	 * <code>td2Enable</code> allows to read the TD2 OCR format.
+	 * The data of the machine-readable zone consists of two rows of 36 characters each.
+	 */
+	public BooleanProperty td2Enable;
+
+	/**
+	 * <code>mrvaEnable</code> allows to read the MRV-A OCR format.
+	 * The data of the machine-readable zone consists of two rows of 44 characters each.
+	 */
+	public BooleanProperty mrvaEnable;
+
+	/**
+	 * <code>mrvbEnable</code> allows to read the MRV-B OCR format.
+	 * The data of the machine-readable zone consists of two rows of 36 characters each.
+	 */
+	public BooleanProperty mrvbEnable;
 
 	/**
 	 * This is the constructor of OCR. All symbology options are initialized by

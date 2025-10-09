@@ -418,6 +418,11 @@ public class PropertyID {
          * allowing to scan barcodes while another camera is previewing.
          */
 	public final static int SCANNER_CAMERA_INTEROPERABILITY = 0x007F;
+        /**
+	 * This parameter, when set to true, sets the scan mode to always on when the
+	 * camera wedge is active.
+	 */
+	public final static int CAMERA_WEDGE_ENABLE_ALWAYS_ON = 0x0081;
 
 	//
 	// Code 39 definitions
@@ -1795,6 +1800,18 @@ public class PropertyID {
 	  * This parameter specifies how many decoded frames must match before accepting OCR data.           
 	  */
 	public final static int OCR_MULTIFRAME = 0x40305;
+	 /**
+	  * This parameter allows to read the TD2 OCR format. The data of the machine-readable zone consists of two rows of 36 characters each.        
+	  */
+	public final static int OCR_TD2_ENABLE = 0x40307;
+	 /**
+	  * This parameter allows to read the MRV-A OCR format. The data of the machine-readable zone consists of two rows of 44 characters each.        
+	  */
+	public final static int OCR_MRVA_ENABLE = 0x40308;
+	 /**
+	  * This parameter allows to read the MRV-B OCR format. The data of the machine-readable zone consists of two rows of 36 characters each.        
+	  */
+	public final static int OCR_MRVB_ENABLE = 0x40309;
 
 	//
 	// Camera

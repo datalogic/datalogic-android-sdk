@@ -34,7 +34,13 @@ public enum DLKeyEvent {
     /**
      * Datalogic Keycode to trigger a Snap OCR scanning session with the barcode scanner.
      */
-    KEYCODE_OCR_DECODE(1129);
+    KEYCODE_OCR_DECODE(1129),
+
+    /**
+     * Datalogic's Android keycode meant to represent
+     * the SOS emergency trigger button.
+     */
+    KEYCODE_SOS(1130);
 
     /**
      * @hide

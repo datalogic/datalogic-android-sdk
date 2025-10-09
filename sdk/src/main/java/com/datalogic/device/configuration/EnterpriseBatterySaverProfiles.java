@@ -118,57 +118,27 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
         /**
          * Constant to apply a download-rate limit of 128 Kbps.
          */
-        public static final int DOWNLOAD_RATE_LIMIT_128K = 131072;
+        public static final int DOWNLOAD_RATE_LIMIT_128K = 128;
 
         /**
          * Constant to apply a download-rate limit of 256 Kbps.
          */
-        public static final int DOWNLOAD_RATE_LIMIT_256K = 262144;
+        public static final int DOWNLOAD_RATE_LIMIT_256K = 256;
 
         /**
          * Constant to apply a download-rate limit of 1 Mbps.
          */
-        public static final int DOWNLOAD_RATE_LIMIT_1M = 1048576;
+        public static final int DOWNLOAD_RATE_LIMIT_1M = 1024;
 
         /**
          * Constant to apply a download-rate limit of 5 Mbps.
          */
-        public static final int DOWNLOAD_RATE_LIMIT_5M = 5242880;
+        public static final int DOWNLOAD_RATE_LIMIT_5M = 5120;
 
         /**
          * Constant to apply a download-rate limit of 15 Mbps.
          */
-        public static final int DOWNLOAD_RATE_LIMIT_15M = 15728640;
-
-        /**
-         * Constant to disable the background process limit and use the standard limit.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_STANDARD = -1;
-
-        /**
-         * Constant to set the background process limit to have no background processes.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_0 = 0;
-
-        /**
-         * Constant to set the background process limit to have at most one background process.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_1 = 1;
-
-        /**
-         * Constant to set the background process limit to have at most two background processes.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_2 = 2;
-
-        /**
-         * Constant to set the background process limit to have at most three background processes.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_3 = 3;
-
-        /**
-         * Constant to set the background process limit to have at most four background processes.
-         */
-        public static final int BACKGROUND_PROCESS_LIMIT_4 = 4;
+        public static final int DOWNLOAD_RATE_LIMIT_15M = 15360;
 
         /**
          * Returns the profile name.
@@ -206,13 +176,6 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
         }
 
         /**
-         * Returns whether the gold cluster is disabled.
-         */
-        public boolean getDisableGoldCluster() {
-            return false;
-        }
-
-        /**
          * Returns the download rate limit in Kbps.
          */
         public int getDownloadRateLimitKbps() {
@@ -224,20 +187,6 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
          */
         public boolean getMobileDataAlwaysActive() {
             return false;
-        }
-
-        /**
-         * Returns whether activities are not kept.
-         */
-        public boolean getDontKeepActivities() {
-            return false;
-        }
-
-        /**
-         * Returns the background process limit.
-         */
-        public int getBackgroundProcessLimit() {
-            return 0;
         }
 
         /**

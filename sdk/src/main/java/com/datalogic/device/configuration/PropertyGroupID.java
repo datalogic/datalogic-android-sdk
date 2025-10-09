@@ -54,6 +54,8 @@ public class PropertyGroupID {
     protected final static int UX_SETTINGS_MIB_BASE = 19<<18;
     /** @hide */
     protected final static int SYSTEM_MIB_BASE = 20<<18;
+    /** @hide */
+    protected final static int EMERGENCY_MIB_BASE = 21<<20;
 
     /**
       * Root of the configuration tree.
@@ -166,6 +168,11 @@ public class PropertyGroupID {
      * Root of the subtree of enterprise battery saver properties.
      */
     public final static int POWER_ENTERPRISE_BATTERY_SAVER_GROUP = POWER_MIB_BASE + 0x0009;
+
+    /**
+     * Root of the subtree of power notification manager properties.
+     */
+    public final static int POWER_NOTIFICATION_GROUP = POWER_MIB_BASE + 0x0010;
 
     /**
      * Root of the subtree of the Developer Options properties.
@@ -534,6 +541,11 @@ public class PropertyGroupID {
      * Root of the subtree of System properties.
      */
     public final static int SYSTEM_GROUP = SYSTEM_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of Emergency properties.
+     */
+    public final static int EMERGENCY_GROUP = EMERGENCY_MIB_BASE + 0x0001;
 
     /**
      * @hide

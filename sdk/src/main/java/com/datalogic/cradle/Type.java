@@ -53,7 +53,27 @@ public enum Type
     /**
      * Cradle JT22 with multiple slots.
      */
-    TYPE_JT22_MULTIPLE;
+    TYPE_JT22_MULTIPLE,
+    /**
+     * Cradle M3X wired.
+     */
+    TYPE_M3X_WIRED,
+    /**
+     * Cradle M3X wireless.
+     */
+    TYPE_M3X_WIRELESS,
+    /**
+     * Cradle Joya Smart single slot dock wireless.
+     */
+    TYPE_JOYA_SMART_SSD_WIRELESS,
+    /**
+     * Cradle Joya Smart 3 slot dock wireless.
+     */
+    TYPE_JOYA_SMART_3SD_WIRELESS,
+    /**
+     * Cradle Joya Smart simplified single slot dock wireless.
+     */
+    TYPE_JOYA_SMART_SIMPLIFIED_SSD_WIRELESS;
 
     /**
      * Converts the Type enum to its integer representing value.

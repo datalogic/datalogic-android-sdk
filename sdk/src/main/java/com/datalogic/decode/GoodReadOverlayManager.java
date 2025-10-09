@@ -33,6 +33,7 @@ public class GoodReadOverlayManager {
     /**
      * Adds a new good read overlay image by specifying a png file.
      * If the image share the same filename of another image already installed the second image will be overwritten.
+     * The image to be installed must not be located within an application's internal storage.
      *
      * @param path
      *        The full path to a png file of the image.

@@ -35,6 +35,16 @@ public final class Intents {
     public static final String ACTION_CRADLE_DEVICE_EXTRACTED = "com.datalogic.device.intent.action.cradle.DEVICE_EXTRACTED";
 
     /**
+     * <code>ACTION_TROLLEY_DEVICE_CORRECTLY_INSERTED</code> Broadcast Action: Sent when the device has been correctly inserted into the trolley.
+     */
+    public static final String ACTION_TROLLEY_DEVICE_CORRECTLY_INSERTED = "com.datalogic.device.intent.action.trolley.DEVICE_CORRECTLY_INSERTED";
+
+    /**
+     * <code>ACTION_TROLLEY_DEVICE_EXTRACTED</code> Broadcast Action: Sent when the device has been extracted from the trolley.
+     */
+    public static final String ACTION_TROLLEY_DEVICE_EXTRACTED = "com.datalogic.device.intent.action.trolley.DEVICE_EXTRACTED";
+
+    /**
      * <code>ACTION_CRADLE_DEVICE_LOCKED</code> Broadcast Action: Sent when the device has been locked into the cradle.
      */
     public static final String ACTION_CRADLE_DEVICE_LOCKED = "com.datalogic.device.intent.action.cradle.DEVICE_LOCKED";
@@ -245,6 +255,13 @@ public final class Intents {
     public static final String EXTRA_CRADLE_FAILURE_FLASH_CORRUPTED = "com.datalogic.device.intent.extra.cradle.FAILURE_FLASH_CORRUPTED";
 
     /**
+     * <code>EXTRA_CRADLE_FAILURE_THERMAL_PROTECTION_POGO </code> Used as an int value for {@link #EXTRA_CRADLE_FAILURE} to request the failure type.
+     * The Cradle's pogo pins are suffering a thermal protection failure.
+     */
+    public static final String EXTRA_CRADLE_FAILURE_THERMAL_PROTECTION_POGO = "com.datalogic.device.intent.extra.cradle.FAILURE_THERMAL_PROTECTION_POGO";
+
+
+    /**
      * <code>ACTION_CONFIGURATION_COMMIT</code> This intent allows to request a change of the device configuration. <br>
      * The intent carries as extra data the list of requested properties' changes.<br>
      * <br>
@@ -335,8 +352,8 @@ public final class Intents {
      * Use 1 to request the reboot, 0 otherwise.
      */
     public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT = "reboot";
-    
-        /**
+
+    /**
      * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_ACTION</code> Used, as an int, in a startService intent to com.datalogic.systemupdate/.SystemUpgradeService to request a device firmware upgrade.
      * <br>
      * The value to be used is 2.
@@ -357,6 +374,14 @@ public final class Intents {
     public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET = "reset";
 
     /**
+     * <code>EXTRA_SYSTEM_FIRMWARE_UPGRADE_WIPE_ESIM_PROFILES</code> Used as an int value
+     * to request the wipe of all the eSIM profiles after successful update.
+     * <br>
+     *  Use 1 to request the wipe, 0 otherwise.
+     */
+    public static final String EXTRA_SYSTEM_FIRMWARE_UPGRADE_WIPE_ESIM_PROFILES = "wipe_esim_profiles";
+
+    /**
      * <code>ACTION_SYSTEM_FIRMWARE_UPGRADE</code> This intent allows to request a device firmware upgrade. <br>
      * <br>
      * The intent will have the following extra values: <br>
@@ -366,6 +391,10 @@ public final class Intents {
      * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_REBOOT} - To request a reboot device after a successful update.
      * <br>
      * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_RESET} - To request a device reset after a successful update.
+     * <br>
+     * {@link #EXTRA_SYSTEM_FIRMWARE_UPGRADE_WIPE_ESIM_PROFILES} - To request the wipe of all the eSIM profiles after a successful update.
+     * <br>
+     * The intent can be sent as a broadcast intent, a startService intent or a startActivity intent.
      *
      *
      * <p>
@@ -375,6 +404,7 @@ public final class Intents {
      * --es path /sdcard/ota.zip
      * --ei reset 0
      * --ei reboot 1
+     * --ei wipe_esim_profiles 1
      * </pre>
      *
      *
@@ -393,6 +423,7 @@ public final class Intents {
      * --es path /sdcard/ota.zip
      * --ei reset 0
      * --ei reboot 1
+     * --ei wipe_esim_profiles 1
      * </pre>
      *
      *
@@ -403,6 +434,7 @@ public final class Intents {
      * --es path /sdcard/ota.zip
      * --ei reset 0
      * --ei reboot 1
+     * --ei wipe_esim_profiles 1
      * </pre>
      */
     public static final String ACTION_SYSTEM_FIRMWARE_UPGRADE = "com.datalogic.systemupdate.action.FIRMWARE_UPDATE";
@@ -544,5 +576,157 @@ public final class Intents {
      * {@link BatteryDefinitions#BATTERY_SWAP_REQUEST_CONFIRMED}: ask for confirmation to the user through a dialog.<br>
      */
     public static final String EXTRA_BATTERY_SWAP_REQUEST = "com.datalogic.device.intent.extra.battery.SWAP_REQUEST";
+
+    /**
+     * <code>ACTION_BATTERY_FORCE_CHARGE</code> Broadcast Action: forces a full charge of the battery.
+     */
+    public final static String ACTION_BATTERY_FORCE_CHARGE = "com.datalogic.device.intent.action.battery.FORCE_CHARGE";
+
+    /**
+     * <code>ACTION_POWER_STATUS_CHARGE_UPDATE</code> Broadcast Action: notifies about a power status charge update. <br>
+     * <br>
+     * The intent will have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_POWER_STATUS_CHARGE} - int that indicates the current Charge status.<br>
+     */
+    public final static String ACTION_POWER_STATUS_CHARGE_UPDATE = "com.datalogic.device.intent.action.power.status.CHARGE_UPDATE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE</code> - Used as an int extra field in {@link #ACTION_POWER_STATUS_CHARGE_UPDATE}
+     * <br>
+     * Indicates the current Charge status. Possible values are {@link #EXTRA_POWER_STATUS_CHARGE_NONE}, {@link #EXTRA_POWER_STATUS_CHARGE_END_OF_CHARGE},
+     * {@link #EXTRA_POWER_STATUS_CHARGE_CHARGE_PAUSE}, {@link #EXTRA_POWER_STATUS_CHARGE_DISCHARGE}, {@link #EXTRA_POWER_STATUS_CHARGE_SMART_WLC},
+     * {@link #EXTRA_POWER_STATUS_CHARGE_MANUAL_CHARGE} or {@link #EXTRA_POWER_STATUS_CHARGE_ONE_TIME_FULL_CHARGE}.
+     */
+    public final static String EXTRA_POWER_STATUS_CHARGE = "com.datalogic.device.intent.extra.power.status.CHARGE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_NONE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the device is regularly charging.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_NONE = "com.datalogic.device.intent.extra.power.status.CHARGE_NONE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_END_OF_CHARGE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the battery is fully charged.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_END_OF_CHARGE = "com.datalogic.device.intent.extra.power.status.CHARGE_END_OF_CHARGE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_CHARGE_PAUSE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that charging is paused due to smart charge schedule.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_CHARGE_PAUSE = "com.datalogic.device.intent.extra.power.status.CHARGE_CHARGE_PAUSE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_DISCHARGE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the device is discharging due to smart charge schedule.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_DISCHARGE = "com.datalogic.device.intent.extra.power.status.CHARGE_DISCHARGE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_SMART_WLC</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the device is performing a smart wireless charge, meaning that the device will oscillate between charge and
+     * discharge in order to reduce the temperature of the battery.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_SMART_WLC = "com.datalogic.device.intent.extra.power.status.CHARGE_SMART_WLC";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_MANUAL_CHARGE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the device is performing a manual charge up to 100% due to user intervention.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_MANUAL_CHARGE = "com.datalogic.device.intent.extra.power.status.CHARGE_MANUAL_CHARGE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CHARGE_ONE_TIME_FULL_CHARGE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CHARGE} to request the charge status.
+     * Indicates that the device is performing a charge up to 100% in order to automatically recalibrate the gauge telemetry.
+     */
+    public static final String EXTRA_POWER_STATUS_CHARGE_ONE_TIME_FULL_CHARGE = "com.datalogic.device.intent.extra.power.status.CHARGE_ONE_TIME_FULL_CHARGE";
+
+    /**
+     * <code>ACTION_POWER_STATUS_FAILURE_OCCURRED</code> Broadcast Action: Sent when a power status failure occurs. <br>
+     * <br>
+     * The intent will have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_POWER_STATUS_FAILURE} - int that indicates the current Failure status.
+     */
+    public final static String ACTION_POWER_STATUS_FAILURE_OCCURRED = "com.datalogic.device.intent.action.power.status.FAILURE_OCCURRED";
+
+    /**
+     * <code>ACTION_POWER_STATUS_FAILURE_RECOVERED</code> Broadcast Action: Sent when a power status failure recovers. <br>
+     * <br>
+     * The intent will have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_POWER_STATUS_FAILURE} - int that indicates the current Failure status.
+     */
+    public final static String ACTION_POWER_STATUS_FAILURE_RECOVERED = "com.datalogic.device.intent.action.power.status.FAILURE_RECOVERED";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_FAILURE</code> - Used as an int extra field in {@link #ACTION_POWER_STATUS_FAILURE_OCCURRED}
+     * and {@link #ACTION_POWER_STATUS_FAILURE_RECOVERED}
+     * <br>
+     * Indicates the current Failure status. Possible values are {@link #EXTRA_POWER_STATUS_FAILURE_HOT} or {@link #EXTRA_POWER_STATUS_FAILURE_COLD}.
+     */
+    public final static String EXTRA_POWER_STATUS_FAILURE = "com.datalogic.device.intent.extra.power.status.FAILURE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_FAILURE_HOT</code> Used as an int value for {@link #EXTRA_POWER_STATUS_FAILURE} to request the failure type.
+     * The device is experiencing hot temperatures and charge may be inhibited.
+     */
+    public static final String EXTRA_POWER_STATUS_FAILURE_HOT = "com.datalogic.device.intent.extra.power.status.FAILURE_HOT";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_FAILURE_COLD</code> Used as an int value for {@link #EXTRA_POWER_STATUS_FAILURE} to request the failure type.
+     * The device is experiencing cold temperatures and charge may be inhibited.
+     */
+    public static final String EXTRA_POWER_STATUS_FAILURE_COLD = "com.datalogic.device.intent.extra.power.status.FAILURE_COLD";
+
+    /**
+     * <code>ACTION_POWER_STATUS_CRITICAL_FAILURE_OCCURRED</code> Broadcast Action: Sent when a power status critical failure occurs. <br>
+     * <br>
+     * The intent will have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE} - int that indicates the current CriticalFailure status.
+     */
+    public final static String ACTION_POWER_STATUS_CRITICAL_FAILURE_OCCURRED = "com.datalogic.device.intent.action.power.status.CRITICAL_FAILURE_OCCURRED";
+
+    /**
+     * <code>ACTION_POWER_STATUS_CRITICAL_FAILURE_RECOVERED</code> Broadcast Action: Sent when a power status critical failure recovers. <br>
+     * <br>
+     * The intent will have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE} - int that indicates the current CriticalFailure status.
+     */
+    public final static String ACTION_POWER_STATUS_CRITICAL_FAILURE_RECOVERED = "com.datalogic.device.intent.action.power.status.CRITICAL_FAILURE_RECOVERED";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CRITICAL_FAILURE</code> - Used as an int extra field in {@link #ACTION_POWER_STATUS_CRITICAL_FAILURE_OCCURRED}
+     * and {@link #ACTION_POWER_STATUS_CRITICAL_FAILURE_RECOVERED}
+     * <br>
+     * Indicates the current CriticalFailure status. Possible values are {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE_GAUGE},
+     * {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE_AUTHENTICATION} or {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE_EEPROM_CORRUPTED}.
+     */
+    public final static String EXTRA_POWER_STATUS_CRITICAL_FAILURE = "com.datalogic.device.intent.extra.power.status.CRITICAL_FAILURE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CRITICAL_FAILURE_GAUGE</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE}
+     * to request the failure type.
+     * The device is experiencing a crtical failure in communicating with the battery gauge and charge may be inhibited.
+     */
+    public static final String EXTRA_POWER_STATUS_CRITICAL_FAILURE_GAUGE = "com.datalogic.device.intent.extra.power.status.CRITICAL_FAILURE_GAUGE";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CRITICAL_FAILURE_AUTHENTICATION</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE}
+     * to request the failure type.
+     * The device is unable to authenticate the battery and charge will be inhibited. Please replace the battery.
+     */
+    public static final String EXTRA_POWER_STATUS_CRITICAL_FAILURE_AUTHENTICATION = "com.datalogic.device.intent.extra.power.status.CRITICAL_FAILURE_AUTHENTICATION";
+
+    /**
+     * <code>EXTRA_POWER_STATUS_CRITICAL_FAILURE_EEPROM_CORRUPTED</code> Used as an int value for {@link #EXTRA_POWER_STATUS_CRITICAL_FAILURE}
+     * to request the failure type.
+     * The battery's EEPROM is corrupted and charge may be inhibited. Please replace the battery.
+     */
+    public static final String EXTRA_POWER_STATUS_CRITICAL_FAILURE_EEPROM_CORRUPTED = "com.datalogic.device.intent.extra.power.status.CRITICAL_FAILURE_EEPROM_CORRUPTED";
 
 }
