@@ -27,9 +27,9 @@ public enum InsertionState
      */
     EXTRACTED,
     /**
-     * Device has been inserted into the Trolley.
+     * Device has been correctly inserted into the Trolley.
      */
-    INSERTED_IN_TROLLEY;
+    INSERTED_CORRECTLY_IN_TROLLEY;
 
     /**
      * Converts the InsertionState enum to its integer representing value.
