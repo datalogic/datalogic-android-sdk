@@ -17,19 +17,29 @@ import com.datalogic.device.ErrorManager;
 
 /**
  * <code>ProfileManager</code> gives the developer the ability to create a profile and to load it explicitly or to associate it to a loading condition to be automatically loaded. <br>
- * A profile is a set of {@link Property}s with their value.<br>
+ * A profile is a set of properties ({@link Property}) with their value.<br>
  * The utility of a profile is that we can collect in it the setting of the properties we need for a
- * specific purpose and then we can load it explicitly calling {@link #loadProfile} or automatically when
- * an activity comes to foreground, defining a rule ({@link #addProfileRule}) that associates that profile with the activity.
- * <br>
+ * specific purpose and then we can load it explicitly calling {@link #loadProfile} or automatically when the loading condition is verified.
+ * The loading condition is defined by a profile rule. There are two types of profile rules:
+ * <ul>
+ *  <li> {@link ProfileRuleType}: the profile is loaded when an activity comes to
+ *  foreground. 
+ *  The rule associates the profile to be loaded with an activity, or a list of activities, that must be in foreground. 
+ *  This type of rule is created using the method {@link #addProfileRule}.
+ * 
+ *  <li> {@link ProfileUrlRuleType}: the profile is loaded when a specified URL is loaded by a given activity.
+ *  The rule associates the profile to be loaded with an activity, or a list of activities, and a regular expression (regex) that defines a valid URL.
+ *  This type of rule is created using the method {@link #addProfileUrlRule}.
+ * </ul>
+ 
  * A profile is identified by a symbolic name that must be unique on the device.
  * When a profile is created it is assigned a {@link PersistenceType} that can be:
  * </p>
- * <ol>
+ * <ul>
  * <li> Factory Reset Persistent, the file containing the profile will survive to a factory reset.
  * <li> Enterprise Reset Persistent, the file containing the profile will survive to an enterprise reset.
  * <li> Reboot Persistent, the file containing the profile will survive to a reboot.
- * </ol>
+ * </ul>
  * </p>
  * A Factory Reset Persistent profile can only be preinstalled on the device by an Espresso OTA and cannot be deleted.
  * <br>
@@ -89,23 +99,16 @@ import com.datalogic.device.ErrorManager;
  * }
  * </pre>
  * <br>
- * As said a profile can be load in two different mode:
+ * As said a profile can be load in two different ways:
  * </p>
  * <ol>
- * <li> manually, calling method {@link #loadProfile},
- * <li> automatically, calling the method {@link #addProfileRule} to define a rule that associates the profile to a set of activities.
- * When one of the specified activities comes to the foreground
- * the profile will be automatically loaded. The previous configuration will be restored when the activity will be no more in foreground. 
- *  An activity can have only one profile associated.
+ * <li> manually, calling method {@link #loadProfile};
+ * <li> automatically, calling {@link #addProfileRule} or {@link #addProfileUrlRule} to define a rule that associates the profile to an activation condition.
+ * As soon as the condition is verified, the related profile is automatically loaded. 
+ * The previous configuration is restored when that condition is no more satisfied.
  * </ol>
  * </p>
- * Given their nature there can be only one profile automatically loaded at the time, because:
- * </p>
- * <ol>
- * <li> there is the constraint on the definition of a rule to forbid for an activity to be associated to more than one profile, and
- * <li> there is only one activity in top foreground at a time.
- * </ol>
- * </p>
+ * There can be only one profile automatically loaded at the time.
  * The method {@link #loadProfile} fails if there is already a profile manually loaded.
  * <br>
  * It is allowed to have at the same moment a manually loaded profile and an automatically loaded profile.
@@ -115,18 +118,23 @@ import com.datalogic.device.ErrorManager;
  * The persistence type of a profile controls:
  * </p>
  * <ol>
- * <li> the persistence to reboot or reset of the file saved on the device not the persistence of the applied profile configuration, and
- * <li> the persistence to reboot or reset of the rules that associate the profile to activities, if any. A rule that associates a profile with persistence REBOOT_PERSISTENT to an activity will be recreated after a normal reset but will be deleted by an enterprise reset. A rule that associates a profile with persistence ENTERPRISE_RESET_PERSISTENT to an activity will be recreated after a normal or enterprise reset but will be deleted by a factory reset.
+ * <li> the persistence to reboot or reset of the profile file saved on the device, but not the persistence of the applied profile configuration;
+ * <li> the persistence to reboot or reset of the rules that associate the profile to activation conditions, if any. 
+ *  A rule that associates a profile with persistence `REBOOT_PERSISTENT` to an activation condition will survive to a reboot but it will be deleted 
+ *  by an enterprise or factory reset. 
+ *  A rule that associates a profile with persistence `ENTERPRISE_RESET_PERSISTENT` to an activation condition will survice to a reboot
+ *  or enterprise reset but it will be deleted by a factory reset.
  </ol>
- * <br>
- * The configuration applied by an automatically loaded profile is automatically unloaded when the associated activity is no more in foreground or the device restarts.
+ * The configuration applied by an automatically loaded profile is automatically unloaded when the associated activation condition is no more satisfied 
+ * or the device restarts.
  * <br>
  * The configuration applied by a manually loaded profile is persistent to a reboot and must be explicitly unloaded.
- * <br>
- * <b>To create a profile do the following steps:</b>
+ * <br><br>
+ * 
+ * <b>To create a profile follow these steps:</b>
  * <ol>
- * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
- * <li>Create an HashMap and add it the couples {{@link PropertyID},value} to be set applying the profile.
+ * <li>Obtain an instance of ProfileManager with {@link #ProfileManager};
+ * <li>Create an HashMap and add it the couples {{@link PropertyID}, value} to be set when applying the profile;
  * <li>Create the profile calling {@link #createProfile(String,HashMap,String,PersistenceType)}.
  * </ol>
  * <pre>
@@ -142,8 +150,10 @@ import com.datalogic.device.ErrorManager;
  *                  "enable code128, disable datamatrix", 
  *                  PersistenceType.ENTERPRISE_RESET_PERSISTENT);
  * </pre>
- * <b>To add a rule to automatically load the profile <i>profilo_128.json</i> when the app with package <i>com.datalogic.testprofilo1</i> 
- * comes to the foreground do the following steps:</b>
+ * 
+ * <b>To add a rule that automatically loads the profile <i>profilo_128.json</i> 
+ * when the application with package name <i>com.datalogic.testprofilo1</i> 
+ * comes to the foreground, follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Create a StringBuffer and initialize it with the preferred identifier to be used to register the rule.
@@ -157,7 +167,25 @@ import com.datalogic.device.ErrorManager;
  *                   "com.datalogic.testprofilo1", 
  *                   new ArrayList<String>());
  * </pre>
- * <b>To manually load the profile <i>profilo_128.json</i> do the following steps:</b>
+ * 
+ * <b>To define a rule that automatically loads the profile <i>profilo_128.json</i> when the app with package name <i>com.datalogic.testprofilo1</i> 
+ * comes to the foreground and accesses any URL under <i>"https://www.datalogic.com"</i>, follow these steps:</b>
+ * <ol>
+ * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
+ * <li>Create a StringBuffer and initialize it with the preferred identifier to be used to register the rule.
+ * <li>Create the rule calling {@link #addProfileUrlRule}.
+ * </ol>
+ * <pre>
+ * ProfileManager pm = new ProfileManager(this);
+ * StringBuffer rule1_name = new StringBuffer("rule_1");
+ * pm.addProfileUrlRule(rule1_name,
+ *                   "profilo_1.json", 
+ *                   "com.datalogic.testprofilo1", 
+ *                   new ArrayList<String>(),
+ *                   "^https://www\\.datalogic\\.com(/.*)?$");
+ * </pre>
+ * 
+ * <b>To manually load the profile <i>profilo_128.json</i> follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Load the profile calling {@link #loadProfile}.
@@ -166,7 +194,8 @@ import com.datalogic.device.ErrorManager;
  * ProfileManager pm = new ProfileManager(this);
  * pm.loadProfile("profilo_1.json");
  * </pre>
- * <b>To get the identifier of the profile manually loaded, if any, do the following steps:</b>
+ * 
+ * <b>To get the identifier of the manually loaded profile, if any, follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Get the profile identifier calling {@link #getLoadedProfile}.
@@ -175,7 +204,8 @@ import com.datalogic.device.ErrorManager;
  * ProfileManager pm = new ProfileManager(this);
  * String profile = pm.getLoadedProfile();
  * </pre>
- * <b>To unload the profile manually loaded do the following steps:</b>
+ * 
+ * <b>To unload the manually loaded profile follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Unload the profile calling {@link #unloadProfile}.
@@ -184,7 +214,8 @@ import com.datalogic.device.ErrorManager;
  * ProfileManager pm = new ProfileManager(this);
  * pm.unloadProfile();
  * </pre>
- * <b>To delete the profile <i>profilo_128.json</i> do the following steps:</b>
+ * 
+ * <b>To delete the profile <i>profilo_128.json</i> follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Delete the profile calling {@link #deleteProfile}.
@@ -193,7 +224,8 @@ import com.datalogic.device.ErrorManager;
  * ProfileManager pm = new ProfileManager(this);
  * pm.deleteProfile("profilo_1.json");
  * </pre>
- * <b>To remove the rule "rule_1" do the following steps:</b>
+ * 
+ * <b>To remove the rule "rule_1" follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Remove the rule calling {@link #removeProfileRule}.
@@ -202,23 +234,25 @@ import com.datalogic.device.ErrorManager;
  * ProfileManager pm = new ProfileManager(this);
  * pm.removeProfileRule("rule_1");
  * </pre>
- * <b>To get the list of all the profiles saved on the device do the following steps:</b>
+ * 
+ * <b>To get the list of all the profiles saved on the device follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Get the list calling {@link #getProfilesList}.
  * </ol>
  * <pre>
  * ProfileManager pm = new ProfileManager(this);
- * ArrayList<ProfileType> profileList = pm.getProfilesList();
+ * ArrayList&lt;ProfileType&gt; profileList = pm.getProfilesList();
  * </pre>
- * <b>To get the list of all the rules defined on the device do the following steps:</b>
+ * 
+ * <b>To get the list of all the rules defined on the device follow these steps:</b>
  * <ol>
  * <li>Obtain an instance of ProfileManager with {@link #ProfileManager}.
  * <li>Get the list calling {@link #getProfileRulesList}.
  * </ol>
  * <pre>
  * ProfileManager pm = new ProfileManager(this);
- * ArrayList<ProfileRuleType> profileRuleList = pm.getProfileRulesList();
+ * ArrayList&lt;ProfileRuleType&gt; profileRuleList = pm.getProfileRulesList();
  * </pre>
  * </p>
  */
@@ -396,7 +430,7 @@ public class ProfileManager {
     }
 
     /**
-     * Gets the list of all the profile rules defined on the device.
+     * Gets the list of all the profile rules defined on the device. See @link{ProfileRuleType} and @link{ProfileRuleUrlType} for more info.
      * @return ArrayList<{@link ProfileRuleType}> in case of success, otherwise, if exceptions are not enabled, a null pointer.
      * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
      */
@@ -434,6 +468,47 @@ public class ProfileManager {
      * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
      */
     public int addProfileRule(StringBuffer name, String profile, String packageName, ArrayList<String> classes) {
+        return 0;
+    }
+
+    /**
+     * Creates a rule to automatically load the given profile when one of the specified activities comes to foreground loading an url that matches the specified rule in regex format.
+     * The specified activities must all belong to the same package.
+     * When the activity is no more in foreground or the url is unloaded the previous configuration is restored.
+     * <br>
+     * <b>Important:</b> This URL-based profile rule feature is only supported for applications that use Android's
+     * Webview component. Applications that use proprietary or custom WebView implementations,
+     * such as Google Chrome or Mozilla Firefox, are <b>not supported</b>. These browsers compile their own
+     * rendering engines (Blink for Chrome, Gecko for Firefox) and do not use the standard Android WebView,
+     * which prevents the system from detecting URL changes within those applications.
+     * <br>
+     * A rule is uniquely identified by its name which must therefore be unique. In input, through parameter name, you can specify the name to be associated with the rule.
+     * If name is unique it is used, otherwise the method makes it unique adding it a suffix.
+     * The caller can learn the string used to name the rule because the StringBuffer object name is updated.
+     * <br>
+     * The profile associated to the rule is the one found with the given name.
+     * There must be only one rule to be loaded when the activation condition (activity in foreground and url loaded) becomes true.
+     * If the rule doesn't satisfy this condition the method fails.
+     * <br>
+     * The persistence to reboot of a rule is that of the referred profile. If the referred profile is deleted by reboot all the rules in which it is referred are deleted.
+     *
+     * @param name
+     *            <code>StringBuffer</code> in input an empty string or the preferred name for the rule, in output the unique name assigned
+     *            to the rule; if the value in input is unique and not empty is the value used otherwise the method makes it unique adding a suffix.
+     * @param profile
+     *            <code>String</code> the name of the profile to be loaded when one of the given activities comes to foreground.
+     * @param packageName
+     *            <code>String</code> name of the package containing the given activities.
+     * @param classes
+     *            <code>ArrayList<String></String></code> list of class names inside of the package for which the profile must be loaded.
+     *            If the list is empty it means all the classes of the package.
+     * @param urlRegex
+     *            <code>String</code> regex for the URL. Exact URL string is valid.
+     * @return int {@link ConfigException#SUCCESS} in case of success, otherwise a possible error
+     *          code, matching one of the {@link ConfigException} error constants.
+     * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int addProfileUrlRule(StringBuffer name, String profile, String packageName, ArrayList<String> classes, String urlRegex) {
         return 0;
     }
 

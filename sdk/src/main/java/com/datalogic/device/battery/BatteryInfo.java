@@ -102,7 +102,11 @@ public enum BatteryInfo {
 	/**
 	 * The battery typical capacity. The value type of this property is <code>int</code>.
 	 */
-	TYPICAL_CAPACITY;
+	TYPICAL_CAPACITY,
+	/**
+	 * The battery first boot date. The value type of this property is <code>String</code>.
+	 */
+	FIRST_BOOT_DATE;
 
 	/**
 	 * Converts the BatteryInfo to its integer corresponding value.

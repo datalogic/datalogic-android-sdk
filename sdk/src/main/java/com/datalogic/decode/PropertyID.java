@@ -418,11 +418,49 @@ public class PropertyID {
          * allowing to scan barcodes while another camera is previewing.
          */
 	public final static int SCANNER_CAMERA_INTEROPERABILITY = 0x007F;
+	/**
+	 * This parameter allows to specify the source of the preview to be shown.
+	 */
+	public final static int SCANNING_PREVIEW_SOURCE = 0x0080;
         /**
 	 * This parameter, when set to true, sets the scan mode to always on when the
 	 * camera wedge is active.
 	 */
 	public final static int CAMERA_WEDGE_ENABLE_ALWAYS_ON = 0x0081;
+        /**
+         * This parameter allows to specify the amount of time (in ms) the preview will be shown after
+         * a barcode has been successfully decoded.
+         */
+	public final static int SCANNING_PREVIEW_HIDE_DELAY = 0x0082;
+	/**
+	 * This parameter allows to specify if the preview will be turned on during decoding.
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_DECODING = 0x0083;
+	/**
+	 * This parameter allows to specify if the preview can be turned on using the specific SDK methods
+	 * ({@link BarcodeManager#startScanningPreview()} and {@link BarcodeManager#stopScanningPreview()}).
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_SDK = 0x0084;
+	/**
+	 * This parameter allows to specify if the preview can be turned on using the specific intent actions
+	 * in a broadcast intent ({@link BarcodeManager#ACTION_START_SCANNING_PREVIEW} and
+	 * {@link BarcodeManager#ACTION_STOP_SCANNING_PREVIEW}).
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_INTENT = 0x0085;
+	/**
+	 * This parameter allows to specify if the preview will be turned on using a ToF range.
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY = 0x0086;
+	/**
+	 * This parameter allows to specify the low threshold of the ToF range (in mm) when the preview
+	 * can be turned on by the ToF.
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_LOW_THRESHOLD = 0x0087;
+	/**
+	 * This parameter allows to specify the high threshold of the ToF range (in mm) when the preview
+	 * can be turned on by the ToF.
+	 */
+	public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD = 0x0088;
 
 	//
 	// Code 39 definitions
@@ -1658,6 +1696,10 @@ public class PropertyID {
          * of the keyboard wedge.
          */
 	public final static int WEDGE_KEYBOARD_NON_PRINTABLE_KEY_EVENT_DELAY = 0x11174;
+        /**
+         * IME action to send after the keyboard wedge has emitted the barcode content.
+         */
+	public final static int WEDGE_KEYBOARD_IME_ACTION_AFTER = 0x11175;
 	 /**
 	  * This parameter enables the intent mode for the Decode Wedge capability.
 	  */

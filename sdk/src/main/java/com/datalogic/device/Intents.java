@@ -116,7 +116,6 @@ public final class Intents {
      */
     public static final String EXTRA_SWITCH_FOREGROUND_TO = "com.datalogic.device.intent.extra.profile.SWITCH_FOREGROUND_TO";
 
-
     /**
      * <code>EXTRA_CRADLE_FIRMWARE_UPGRADE_BYTES</code> Used as an int extra field in {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_STARTED},
      * {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_IN_PROGRESS} and {@link #ACTION_CRADLE_FIRMWARE_UPGRADE_COMPLETED} that represents the number of bytes transferred to the cradle.

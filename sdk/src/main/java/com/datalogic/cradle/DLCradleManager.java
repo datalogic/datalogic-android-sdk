@@ -1,17 +1,18 @@
 package com.datalogic.cradle;
 
+import com.datalogic.device.DeviceException;
+
 /**
  * This class provides access to Cradle related methods of the device.
  */
 public class DLCradleManager
 {
     /**
-     * @hide
      * This is the constructor of CradleImpl.
      *
      * @throws Exception in case of error.
      */
-    private DLCradleManager() {}
+    public DLCradleManager() {}
 
     /**
      * Returns an instance of the {@link DLCradleManager}.
@@ -56,7 +57,7 @@ public class DLCradleManager
      *            The {@link CradleInsertionEventListener} to be added.
      *
      * @return <code>boolean</code> true in case of success, false otherwise.
-    */
+     */
     public boolean addInsertionEventListener(CradleInsertionEventListener listener)
     {
         return false;
@@ -82,7 +83,7 @@ public class DLCradleManager
      *            The {@link CradleFailureEventListener} to be added.
      *
      * @return <code>boolean</code> true in case of success, false otherwise.
-    */
+     */
     public boolean addFailureEventListener(CradleFailureEventListener listener)
     {
         return false;
@@ -108,7 +109,7 @@ public class DLCradleManager
      *            The {@link CradleUnlockKeyEventListener} to be added.
      *
      * @return <code>boolean</code> true in case of success, false otherwise.
-    */
+     */
     public boolean addUnlockKeyEventListener(CradleUnlockKeyEventListener listener)
     {
         return false;
@@ -134,7 +135,7 @@ public class DLCradleManager
      *            The {@link CradleUnlockEventListener} to be added.
      *
      * @return <code>boolean</code> true in case of success, false otherwise.
-    */
+     */
     public boolean addUnlockEventListener(CradleUnlockEventListener listener)
     {
         return false;
@@ -247,17 +248,13 @@ public class DLCradleManager
     }
 
     /**
-     * Performs Cradle Firmware update procedure.
+     * Performs Cradle Application Firmware update procedure.
      *
-     * @param binaryPath
-     *            the <code>String</code> path where the binary file is stored.
+     * @param binaryPath <code>String</code> The path where the binary file is stored.
      *
-     * @param size
-     *            the <code>String</code> dimension of the binary file.
+     * @param size <code>long</code> The dimension of the binary file.
      *
-     * @return <code>boolean</code> true in case of success, false otherwise.
-     * 
-     * @throws DeviceException in case of error.
+     * @return <code>int</code> A non-negative integer in case of success, -1 or error code otherwise.
      */
     public int firmwareUpgrade(String binaryPath, long size)
     {
@@ -285,15 +282,15 @@ public class DLCradleManager
 
     /**
      * Sets the state of a specific LED on the cradle.
-     * This method allows enabling or disabling a specific LED identified by its ID.
+     * This method allows enabling or disabling a specific {@link CradleLed}.
      * The LED color can also be set using an ARGB value.
      *
-     * @param ledId The {@link CradleLed} representing the LED to be controlled.
+     * @param led The {@link CradleLed} representing the LED to be controlled.
      * @param colorARGB The ARGB color value to set for the LED.
      * @param enable <code>true</code> to enable the LED, <code>false</code> to disable it.
      * @return <code>true</code> if the operation was successful, <code>false</code> otherwise.
      */
-    public boolean setLed(CradleLed ledId, int colorARGB, boolean enable) {
+    public boolean setLed(CradleLed led, int colorARGB, boolean enable) {
         return false;
     }
 
@@ -301,24 +298,24 @@ public class DLCradleManager
      * Blinks a specific LED on the cradle.
      * This method allows blinking a specific LED identified by its ID. The blink count,
      * duration of the ON state, and duration of the OFF state can be configured.
-     * @param id The {@link CradleLed} representing the LED to be blinked.
+     * @param led The {@link CradleLed} representing the LED to be blinked.
      * @param colorArgb The ARGB color value to set for the LED during blinking.
      * @param blinkCount The number of times the LED should blink. Range: [0 : 65535]. If set to 0, the LED will blink indefinitely.
      * @param onDurationMs The duration (in milliseconds) the LED stays ON during each blink. Range: [0 : 65535].
      * @param offDurationMs The duration (in milliseconds) the LED stays OFF during each blink. Range: [0 : 65535].
      * @return <code>true</code> if the operation was successful, <code>false</code> otherwise.
      */
-    public boolean blinkLed(CradleLed id, int colorArgb, int blinkCount, int onDurationMs, int offDurationMs) {
+    public boolean blinkLed(CradleLed led, int colorArgb, int blinkCount, int onDurationMs, int offDurationMs) {
         return false;
     }
 
     /**
      * Checks if a specific LED is supported by the cradle.
      * This method verifies whether the cradle supports a specific LED identified by its ID.
-     * @param id The {@link CradleLed} representing the LED to be checked.
+     * @param led The {@link CradleLed} representing the LED to be checked.
      * @return <code>true</code> if the LED is supported, <code>false</code> otherwise.
      */
-    public boolean isLedSupported(CradleLed id) {
+    public boolean isLedSupported(CradleLed led) {
         return false;
     }
 

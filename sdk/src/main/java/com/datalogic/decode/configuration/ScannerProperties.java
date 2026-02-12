@@ -288,6 +288,12 @@ public class ScannerProperties extends PropertyGroup {
 	public DecodeResultCrop decodeResultCrop;
 
 	/**
+	 * Provides configuration for the Scanning Preview.
+	 * {@see ScanningPreview}
+	 */
+	public ScanningPreview scanningPreview;
+
+	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 
 	 * @param editor A {@link PropertyGetter} used to load the current barcode families and properties.

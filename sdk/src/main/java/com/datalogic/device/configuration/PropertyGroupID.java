@@ -56,6 +56,10 @@ public class PropertyGroupID {
     protected final static int SYSTEM_MIB_BASE = 20<<18;
     /** @hide */
     protected final static int EMERGENCY_MIB_BASE = 21<<20;
+    /** @hide */
+    protected final static int LOCATION_MIB_BASE = 22<<18;
+    /** @hide */
+    protected final static int POSE_MANAGER_MIB_BASE = 23<<18;
 
     /**
       * Root of the configuration tree.
@@ -504,6 +508,11 @@ public class PropertyGroupID {
      */
     public final static int DECODE_RESULT_CROP_GROUP = SCANNER_MIB_BASE + 0x0047;
     /**
+     * Root of the subtree of the properties that configure the preview shown while decoding or in
+     * other situations (started by intent, SDK or controlled by the ToF measurements).
+     */
+    public final static int SCANNING_PREVIEW_GROUP = SCANNER_MIB_BASE + 0x0048;
+    /**
      * Root of the subtree of External Formatter Group's properties.
      */
     public final static int EXTERNAL_FORMATTING_GROUP = EXTERNAL_FORMATTING_MIB_BASE + 0x0001;
@@ -546,6 +555,16 @@ public class PropertyGroupID {
      * Root of the subtree of Emergency properties.
      */
     public final static int EMERGENCY_GROUP = EMERGENCY_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of Location properties.
+     */
+    public final static int LOCATION_GROUP = LOCATION_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of PoseManager properties.
+     */
+    public final static int POSE_MANAGER_GROUP = POSE_MANAGER_MIB_BASE + 0x0001;
 
     /**
      * @hide

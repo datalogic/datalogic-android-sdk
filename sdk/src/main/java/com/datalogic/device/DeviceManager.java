@@ -61,4 +61,19 @@ public final class DeviceManager
     {        
         return false;
     }
+
+    /**
+     * Shuts down the device and powers it off. The call is asynchronous, the method
+     * returns immediately after requesting the shutdown.
+     */
+    public void shutdown() {
+    }
+
+    /**
+     * Locks the device. The call is asynchronous, the method returns immediately
+     * after requesting the lock.
+     */
+    public void lock() {
+    }
+
 }

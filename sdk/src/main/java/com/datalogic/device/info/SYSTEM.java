@@ -20,7 +20,7 @@ public class SYSTEM {
 		/**
 		 * @hide This changes frequently
 		 */
-		public static final short SDK_VERSION_MINOR = 46;
+		public static final short SDK_VERSION_MINOR = 47;
 
 		/**
 		 * Broadcast Action:  This is a <em>sticky broadcast</em> containing the
@@ -149,6 +149,11 @@ public class SYSTEM {
 	public static final String PRODUCT_NUMBER = getDeviceProductNumber();
 
 	/**
+	 * Returns the device name identifier.
+	 */
+	public static final String DEVICE_NAME = getDeviceName();
+
+	/**
 	 * Returns a number indicating the installed Datalogic SDK version on
 	 * the device. Future SDK releases will always have a greater number.
 	 */
@@ -168,6 +173,15 @@ public class SYSTEM {
 	private static BootType getBootType() {
 		return null;
 	}
+
+	/**
+     * Retrieves the Device name
+     *
+     * @hide
+     */
+    private static String getDeviceName() {
+        return null;
+    }
 
     /**
 	 * Retrieves the Serial Number

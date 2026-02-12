@@ -36,6 +36,11 @@ public class KeyboardWedge extends PropertyGroup {
 	public NumericProperty nonPrintableKeyEventDelay;
 
 	/**
+	 * <code>imeActionAfter</code> represents the IME action to send after the keyboard wedge has emitted the barcode content.
+	 */
+	public EnumProperty<ImeAction> imeActionAfter;
+
+	/**
 	 * This is the constructor of KeyboardWedge. All options are initialized by
 	 * editor.
 	 * 

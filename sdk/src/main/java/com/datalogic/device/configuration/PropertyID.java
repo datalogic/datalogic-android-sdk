@@ -1,6 +1,6 @@
 package com.datalogic.device.configuration;
 
-
+import com.datalogic.decode.BarcodeManager;
 import com.datalogic.device.configuration.*;
 import com.datalogic.device.power.*;
 import com.datalogic.decode.configuration.*;
@@ -863,6 +863,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #WEDGE_KEYBOARD_ONLY_ON_FOCUS} </li>
  *                             <li> {@link #WEDGE_KEYBOARD_DELIVERY_MODE} </li>
  *                             <li> {@link #WEDGE_KEYBOARD_NON_PRINTABLE_KEY_EVENT_DELAY} </li>
+ *                             <li> {@link #WEDGE_KEYBOARD_IME_ACTION_AFTER} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -905,6 +906,21 @@ import com.datalogic.device.*;
  *                         </ul>
  *                     </details>
  *                 </li>
+ *                 <li>
+ *                     <details>
+ *                         <summary> {@link PropertyGroupID#SCANNING_PREVIEW_GROUP}</summary>
+ *                         <ul>
+ *                             <li> {@link #SCANNING_PREVIEW_SOURCE} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_HIDE_DELAY} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_DECODING} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_SDK} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_INTENT} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_LOW_THRESHOLD} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD} </li>
+ *                         </ul>
+ *                     </details>
+ *                 </li>
  *             </ul>
  *         </details>
  *     </li>
@@ -944,6 +960,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_REMAPPED_POWER_KEY_ACTION_IN_SUSPEND} </li>
  *                </ul>
  *            </details>
  *            </li>
@@ -1045,6 +1062,7 @@ import com.datalogic.device.*;
  *               <ul>
  *                  <li> {@link #POWER_NOTIFICATION_CHARGE_ENABLE} </li>
  *                  <li> {@link #POWER_NOTIFICATION_FAILURE_ENABLE} </li>
+ *                  <li> {@link #POWER_NOTIFICATION_INFO_ENABLE} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1063,6 +1081,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
  *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
  *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
+ *                  <li> {@link #POWER_WAKEUP_REMAPPED_POWER_KEY} </li
  *               </ul>
  *            </details>
  *            </li>
@@ -1295,6 +1314,7 @@ import com.datalogic.device.*;
  *            <li> {@link #DATE_AND_TIME_NTP_SERVER} </li>
  *            <li> {@link #DATE_AND_TIME_NTP_SERVER_2} </li>
  *            <li> {@link #DATE_AND_TIME_NTP_TIMEOUT} </li>
+ *            <li> {@link #DATE_AND_TIME_CURRENT_TIME} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1362,6 +1382,7 @@ import com.datalogic.device.*;
  *            <li> {@link #SCREENSAVER_COMPONENT} </li>
  *            <li> {@link #SCREENSAVER_DATALOGIC} </li>
  *            <li> {@link #APP_INFO_HIDDEN} </li>
+ *            <li> {@link #REBOOT_SAFE_MODE_ENABLED} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1441,7 +1462,24 @@ import com.datalogic.device.*;
  *         </ul>
  *     </details>
  *     </li>
- *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#LOCATION_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #LOCATION_MODE_ENABLE} </li>
+ *            <li> {@link #WIFI_SCAN_ENABLE} </li>
+ *            <li> {@link #BLUETOOTH_SCAN_ENABLE} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#POSE_MANAGER_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #POSE_MANAGER_DEVICE_POSES} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
  *     </details>
  *     </li>
  *   </ul>
@@ -2015,6 +2053,38 @@ public class PropertyID {
       * The class of the property is {@link NumericProperty}.
       */
     public final static int DATE_AND_TIME_NTP_TIMEOUT = PropertyGroupID.DNT_MIB_BASE + 0x0007;
+    /**
+     * The current wall time, represented in RFC3339 date-time format.
+     * <p>
+     * Example values:
+     * <ul>
+     *   <li><code>2024-01-31T13:45:00Z</code> (UTC time)</li>
+     *   <li><code>2024-01-31T15:45:00+02:00</code> (local time with +02:00 offset)</li>
+     * </ul>
+     * <p>
+     * For more information about the RFC3339 format, see
+     * <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC3339</a>.
+     * <p>
+     * This property can be used to get or set the current date and time of the device.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * <p>
+     * <b>Example: Convert milliseconds to RFC3339 string in Java</b>
+     * <pre>
+     * {@code
+     * import java.time.Instant;
+     * import java.time.ZoneOffset;
+     * import java.time.format.DateTimeFormatter;
+     *
+     * long millis = System.currentTimeMillis();
+     * String rfc3339 = Instant.ofEpochMilli(millis)
+     *     .atOffset(ZoneOffset.UTC)
+     *     .format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+     * // rfc3339 will be like "2024-01-31T13:45:00Z"
+     * }
+     * </pre>
+     */
+    public final static int DATE_AND_TIME_CURRENT_TIME = PropertyGroupID.DNT_MIB_BASE + 0x0008;
 
     //
     // Power Settings definitions
@@ -2281,6 +2351,21 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int POWER_NOTIFICATION_FAILURE_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0031;
+
+    /**
+     * Activates the reporting of low-level user notifications of informations from the power subsystem.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_NOTIFICATION_INFO_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0032;
+
+    /**
+     * This parameter controls whether the Power button trigger that has been remapped to another function via Key Remapping Settings still can be used as device wake-up source.
+     * This only takes effect when the Power button has been remapped.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_WAKEUP_REMAPPED_POWER_KEY = PropertyGroupID.POWER_MIB_BASE + 0x0033;
 
     //
     // USB Settings definitions
@@ -3156,7 +3241,7 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int WIFI_NETWORK_SHARE_DIMMED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0023;
-    
+
     /**
      * This property refers to enable or disable screensaver.
      * <p>
@@ -3349,6 +3434,28 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int APP_INFO_HIDDEN = PropertyGroupID.UI_SETTINGS_GROUP + 0x0030;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user to reboot the device in safe mode.
+     * <p>
+     * Safe Mode is a diagnostic mode of a device's operating system (OS).
+     * It is intended to help troubleshoot issues within the OS or with installed applications.
+     * When a device is started in Safe Mode, it runs with a minimal set of drivers and services,
+     * disabling third-party applications and non-essential features.
+     * This allows users to identify and resolve problems that may be caused by software conflicts,
+     * misbehaving apps, or other issues.
+     * <p>
+     * If this parameter is enabled, the option to reboot the device in Safe Mode
+     * is no longer visible in the power menu.
+     * So the user is not able to reboot the device in Safe Mode from there.
+     * <p>
+     * When the Safe Mode reboot option was previously hidden and this property value changes to disabled,
+     * then the option becomes accessible to the users again in the power menu.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int REBOOT_SAFE_MODE_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0031;
 
     //
     // UX Settings definitions
@@ -4161,6 +4268,36 @@ public class PropertyID {
     public final static int KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0018;
 
     /**
+     * This parameter defines the behaviour of Remapped Power Key when the device is in suspend mode.
+     * This takes effect only if the Remapped Power Key has been configured as wakeup source
+     * ({@link #POWER_WAKEUP_REMAPPED_POWER_KEY}).
+     * <p>
+     * If this property is disabled, when the Remapped Power Key is pressed in suspend mode,
+     * then only the wakeup event will be triggered for waking the device up from the suspend mode.
+     * So, in order to trigger the functional action assigned to the Remapped Power Key,
+     * the user shall press the key again after the device has been resumed from the suspend mode.
+     * <p>
+     * If this property is enabled, when the Remapped Power Key is pressed in suspend mode,
+     * then both the wakeup event and the action event will be triggered
+     * for waking the device up from the suspend mode and for executing the action.
+     * So, in order to trigger the functional action assigned to the Remapped Power Key,
+     * the user is required to press the key just once, because it will wake the device up
+     * from the suspend mode and it will also perform the action.
+     * <p>
+     * <b>Disclaimer</b>: if the device is locked by keyguard, then the action will be performed
+     * only if it can be executed in accordance with the current status of keyguard.
+     * <p>
+     * For example Push To Talk action can be executed or discarded with the keyguard active
+     * in accordance with the property ({@link #KEYBOARD_PTT_BYPASS_KEYGUARD_ENABLED}).
+     * While decoding action is always discarded with the keyguard active.
+     * <p>
+     * The default value is disabled.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public static final int KEYBOARD_REMAPPED_POWER_KEY_ACTION_IN_SUSPEND = PropertyGroupID.KEYBOARD_GROUP + 0x0022;
+
+    /**
      * <b>Administrative Settings:</b> For devices managed by an organization,
      * administrative policies might require to configure the default layout of
      * an external physical keyboard in combination with {@link #DESKTOP_MODE_POLICY}.
@@ -4635,6 +4772,14 @@ public class PropertyID {
      */
     public final static int SOS_TRIGGER_ACTION = PropertyGroupID.EMERGENCY_GROUP + 0x0007;
 
+    /**
+     * This property represents the list of poses registered in the device and all the associated configuration.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link com.datalogic.device.configuration.PoseManager.DevicePoses}.
+     */
+    public final static int POSE_MANAGER_DEVICE_POSES = PropertyGroupID.POSE_MANAGER_GROUP + 0x0001;
+
     //
     // Device Info definitions
     //
@@ -4836,6 +4981,35 @@ public class PropertyID {
      * The allowed values are defined by enum {@link VirtualRAMSwapPolicy}.
      */
     public final static int VIRTUAL_RAM_SWAP_POLICY = PropertyGroupID.SYSTEM_GROUP + 0x0001;
+
+    //
+    // Location definitions
+    //
+
+    /**
+     * This parameter enables location access for apps and services.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int LOCATION_MODE_ENABLE = PropertyGroupID.LOCATION_GROUP + 0x0001;
+
+    /**
+     * This parameter enables apps and services to scan for Wi-Fi networks at any time, even
+     * when Wi-Fi is off.
+     * This can be used, for example, to improve location-based features of a service.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int WIFI_SCAN_ENABLE = PropertyGroupID.LOCATION_GROUP + 0x0002;
+
+    /**
+     * This parameter enables apps and services to scan for nearby devices at any time, even
+     * when Bluetooth is off.
+     * This can be used, for example, to improve location-based features of a service.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BLUETOOTH_SCAN_ENABLE = PropertyGroupID.LOCATION_GROUP + 0x0003;
 
     //
     // General Decoding definitions
@@ -5060,14 +5234,14 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int GS1_CHECK = 0x0036;
-	/**
-	 * This parameter enables automatic formatting of the barcode content, based on the
-	 * "GS1 Human Readable Interpretation (HRI)" rules 
-	 * (<a href="https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf">
-	 * https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf</a>), by dividing the code into the
-	 * different fields and marking each 
-	 * Application Identifier by enclosing it in parentheses. Example: "(01)195001101530000(17)140704(10)AB-123"
-	 * It is used only if {@link #GS1_CHECK} is set to true.
+    /**
+     * This parameter enables automatic formatting of the barcode content, based on the
+     * "GS1 Human Readable Interpretation (HRI)" rules 
+     * (<a href="https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf">
+     * https://www.gs1.org/docs/barcodes/HRI_Implementation_Guide.pdf</a>), by dividing the code into the
+     * different fields and marking each 
+     * Application Identifier by enclosing it in parentheses. Example: "(01)195001101530000(17)140704(10)AB-123"
+     * It is used only if {@link #GS1_CHECK} is set to true.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
@@ -5080,7 +5254,7 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int GOOD_READ_TIMEOUT = 0x0038;
-     /**
+    /**
      * This parameter enables the overlay notification for a successful read.
      * <p>
      * The class of the property is {@link BooleanProperty}.
@@ -7247,6 +7421,13 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int WEDGE_KEYBOARD_NON_PRINTABLE_KEY_EVENT_DELAY = 0x11174;
+    /**
+     * IME action to send after the keyboard wedge has emitted the barcode content.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link ImeAction}.
+     */
+    public final static int WEDGE_KEYBOARD_IME_ACTION_AFTER = 0x11175;
      /**
       * This parameter enables the intent mode for the Decode Wedge.
       * <p>
@@ -7871,6 +8052,62 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int DECODE_RESULT_CROP_ENTIRE_FRAME = 0x40803;
+
+    /**
+     * This parameter allows to specify the source of the preview to be shown.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link ScanningPreviewSource}.
+     */
+    public final static int SCANNING_PREVIEW_SOURCE = 0x0080;
+    /**
+     * This parameter allows to specify the amount of time (in ms) the preview will be shown after
+     * a barcode has been successfully decoded.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_HIDE_DELAY = 0x0082;
+    /**
+     * This parameter allows to specify if the preview will be turned on during decoding.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_DECODING = 0x0083;
+    /**
+     * This parameter allows to specify if the preview can be turned on using the specific SDK methods
+     * ({@link BarcodeManager#startScanningPreview()} and {@link BarcodeManager#stopScanningPreview()}).
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_SDK = 0x0084;
+    /**
+     * This parameter allows to specify if the preview can be turned on using the specific intent actions
+     * in a broadcast intent ({@link BarcodeManager#ACTION_START_SCANNING_PREVIEW} and
+     * {@link BarcodeManager#ACTION_STOP_SCANNING_PREVIEW}).
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_INTENT = 0x0085;
+    /**
+     * This parameter allows to specify if the preview will be turned on using a ToF range.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY = 0x0086;
+    /**
+     * This parameter allows to specify the low threshold of the ToF range (in mm) when the preview
+     * can be turned on by the ToF.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_LOW_THRESHOLD = 0x0087;
+    /**
+     * This parameter allows to specify the high threshold of the ToF range (in mm) when the preview
+     * can be turned on by the ToF.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD = 0x0088;
 
     /**
      * @hide

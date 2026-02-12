@@ -58,6 +58,15 @@ public class BarcodeManager implements PropertyEditor {
 	public final static String ACTION_STOP_DECODE = "com.datalogic.decode.action.STOP_DECODE";
 
 	/**
+	 * Intent action used while broadcasting an intent to start the scanning preview.
+	 */
+	public final static String ACTION_START_SCANNING_PREVIEW = "com.datalogic.decode.action.START_SCANNING_PREVIEW";
+	/**
+	 * Intent action used while broadcasting an intent to stop the scanning preview.
+	 */
+	public final static String ACTION_STOP_SCANNING_PREVIEW = "com.datalogic.decode.action.STOP_SCANNING_PREVIEW";
+
+	/**
 	 * Android keycode representing the scanning functionality, in accordance
 	 * with <a href="http://developer.android.com/reference/android/view/KeyEvent.html">android.view.KeyEvent</a>. <br>
 	 * <br>
@@ -455,6 +464,28 @@ public int removePresentationStateListener(PresentationStateListener listener) {
 	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
 	 */
 	public int stopDecode() {
+		return 0;
+	}
+
+	/**
+	 * Call this method to start the scanning preview.
+	 *
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int startScanningPreview() {
+		return 0;
+	}
+
+	/**
+	 * Call this method to stop the scanning preview.
+	 *
+	 * @return <code>int</code> {@link DecodeException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DecodeException} error constants.
+	 * @throws DecodeException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int stopScanningPreview() {
 		return 0;
 	}
 

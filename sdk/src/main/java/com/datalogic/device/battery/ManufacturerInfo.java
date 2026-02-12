@@ -136,4 +136,15 @@ public class ManufacturerInfo
     {
         return 0;
     }
+
+    /**
+     * Returns the first boot date of the battery.
+     *
+     * @return <code>String</code>
+     *         The first boot date of the battery.
+     */
+    public String getFirstBootDate()
+    {
+        return null;
+    }
 }
