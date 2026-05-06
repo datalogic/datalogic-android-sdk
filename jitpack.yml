@@ -1,0 +1,6 @@
+jdk:
+  - openjdk11
+before_install:
+  - export JDK_VERSION="$(tr -d '[:space:]' < JDK_VERSION 2>/dev/null || echo 17)"
+  - sdk install java "${JDK_VERSION}-open"
+  - sdk use java "${JDK_VERSION}-open"

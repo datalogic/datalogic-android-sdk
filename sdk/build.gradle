@@ -1,19 +1,53 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.datalogic'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+def getPublishProperty(String key) {
+    return project.findProperty(key) ?: System.getenv(key)
+}
+
+def extractSdkVersion() {
+    def systemFile = file('src/main/java/com/datalogic/device/info/SYSTEM.java')
+    def majorVersion = null
+    def minorVersion = null
+
+    systemFile.eachLine { line ->
+        if (line.contains('SDK_VERSION_MAJOR') && line.contains('=')) {
+            def matcher = (line =~ /=\s*(\d+)/)
+            if (matcher.find()) {
+                majorVersion = matcher[0][1]
+            }
+        }
+        if (line.contains('SDK_VERSION_MINOR') && line.contains('=')) {
+            def matcher = (line =~ /=\s*(\d+)/)
+            if (matcher.find()) {
+                minorVersion = matcher[0][1]
+            }
+        }
+    }
+
+    if (majorVersion == null || minorVersion == null) {
+        throw new GradleException("Could not extract SDK version from SYSTEM.java")
+    }
+
+    return "${majorVersion}.${minorVersion}"
+}
+
+def String GROUP = 'com.datalogic'
+def String ARTIFACT_ID = 'datalogic-android-sdk'
+def String SDK_VERSION = extractSdkVersion()
 
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion 35
+    namespace 'com.datalogic.android.sdk'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -24,37 +58,87 @@ android {
         }
     }
 
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+publishing {
+    repositories {
+        maven {
+            name = 'sonatype'
+            def releaseUrl = getPublishProperty('mavenCentralReleaseUrl')
+            url = uri(releaseUrl ?: 'https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/')
+            credentials {
+                username = getPublishProperty('sonatypeUsername') ?: getPublishProperty('centralPortalUsername')
+                password = getPublishProperty('sonatypePassword') ?: getPublishProperty('centralPortalPassword')
+            }
+        }
+    }
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    publications {
+        release(MavenPublication) {
+            groupId = GROUP
+            artifactId = ARTIFACT_ID
+            version = SDK_VERSION
+
+            afterEvaluate {
+                from components.release
+            }
+
+            pom {
+                name = 'Datalogic Android SDK'
+                description = 'Official SDK for Datalogic mobile devices on Android.'
+                url = 'https://github.com/datalogic/datalogic-android-sdk'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'tnguyen1'
+                        name = 'Truong Nguyen'
+                        email = 'truong.nguyen@datalogic.com'
+                        organization = 'Datalogic S.p.A.'
+                        organizationUrl = 'https://www.datalogic.com'
+                    }
+                }
+
+                scm {
+                    url = 'https://github.com/datalogic/datalogic-android-sdk'
+                    connection = 'scm:git:git://github.com/datalogic/datalogic-android-sdk.git'
+                    developerConnection = 'scm:git:ssh://github.com:datalogic/datalogic-android-sdk.git'
+                }
+            }
+        }
+    }
 }
 
-// build a jar with source files
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
+signing {
+    def signingKey = getPublishProperty('signingKey')
+    def signingPassword = getPublishProperty('signingPassword')
+    def normalizedSigningKey = signingKey
+        ?.replace('\\r\\n', '\r\n')
+        ?.replace('\\n', '\n')
+        ?.replace('\r\n', '\n')
+        ?.trim()
+    def isRemotePublish = gradle.startParameter.taskNames.any { it.toLowerCase().contains('sonatyperepository') }
 
-task javadoc(type: Javadoc) {
-    failOnError  false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-// build a jar with javadoc
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
+    if (normalizedSigningKey && signingPassword) {
+        useInMemoryPgpKeys(normalizedSigningKey, signingPassword)
+        sign publishing.publications.release
+    } else if (isRemotePublish) {
+        throw new GradleException('Missing signingKey/signingPassword for Maven Central publish task.')
+    } else {
+        logger.lifecycle('Signing key is not configured. Set signingKey/signingPassword for Maven Central releases.')
+    }
 }
