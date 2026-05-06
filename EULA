@@ -1,0 +1,94 @@
+# DATALOGIC IP TECH S.R.L. END USER SOFTWARE LICENSE AGREEMENT (EULA)
+
+## FOR THE DATALOGIC SOFTWARE DEVELOPMENT KIT (SDK)
+
+**Notice to End User:** The Datalogic SDK software ("Datalogic SDK") subject to this EULA is integral to the operation of a Datalogic Product and interacts with software embedded in the Datalogic Product ("Embedded Software") and application software provided to you in connection with the Datalogic Product on an optional basis ("Application Software"). Datalogic SDK, the Embedded Software and the Application Software, whether obtained directly or indirectly from Datalogic, including any replacement, update, upgrade, enhancement or modification are collectively referred to herein as "Software" and are subject to the terms and conditions contained in this EULA, and are provided only for use with, and for authorized end users of, the Datalogic Product. Portions of the Software include or operate with Open Source software or libraries ("Open Source"). Use of Open Source is subject to the Open Source licenses available at the following website: http://www.datalogic.com/oss.
+
+## END USER LICENSE AGREEMENT TERMS
+
+This EULA (End User Software License Agreement) ("EULA" or "Agreement") is a legally binding agreement governing the licensing of the Software and Documentation by Datalogic IP Tech S.r.l. and its subsidiaries and Affiliates ("Datalogic") to the entity or person who has purchased or otherwise acquired a Datalogic Product ("End User"). For purposes of this Agreement, any software that is not the Datalogic SDK, Embedded Software or Application Software is software associated with a separate end-user license agreement and is licensed to you under the terms of that license agreement. Software is provided only for use in support of the Datalogic Product and any other use of Software is strictly prohibited and may subject you to legal action. Software is provided to you under license, subject to the terms and conditions of this EULA. Any and all updates to Software shall also be subject to this EULA. If you use a Datalogic Product that includes the Software or by downloading, the Datalogic SDK, you will be deemed to have accepted the terms and conditions of this EULA. If you do not intend to be bound to the terms of this EULA, Datalogic is not willing to license the Software to you; and you may not use the Datalogic Product or download, install or use the Software; and you must contact the party from whom you acquired the Datalogic Product for instructions on how to return the Datalogic Product.
+
+Datalogic and End User hereby agree as follows:
+
+## 1. Definitions
+
+**1.1** "Affiliate" means a business entity currently existing or later acquired that controls, is controlled by, or is under common control with Datalogic S.p.A.
+
+**1.2** "Documentation" means materials such as user's guides, program reference guides, quick reference guides, manuals, or similar materials associated with or related to the Datalogic Product, whether in printed, "online", or other form.
+
+**1.3** "Proprietary Information" means: (a) source code, object code, software, unpublished documentation, and any related internal design, system design, data base design, algorithms, technology, technical data or information, implementation techniques, and trade secrets related to the Datalogic Product and/or the Software, (b) any other trade secrets marked appropriately or identified as proprietary or confidential, and (c) any information that End User, under the circumstances, should recognize as confidential. Proprietary Information does not include any information that the receiving party can establish was (1) in the public domain, (2) already in the receiving party's possession or rightfully known prior to receipt, (3) rightfully learned from a third party not in violation of any other's proprietary rights, or (4) independently developed without access to Proprietary Information.
+
+**1.4** "Datalogic Product" means Datalogic mobile computing devices, operating with Android, including all Datalogic SDK, Embedded Software and related Application Software and all Documentation related to such Datalogic Product or Software, which has been purchased or otherwise acquired by End User, whether obtained directly or indirectly from Datalogic.
+
+## 2. Scope of License Granted
+
+**2.1** Datalogic grants to End User a non-exclusive, non-transferable, perpetual license to use the Software, solely in support of the Datalogic Product in which it is embedded, or the product for which it is intended for use ("designated Datalogic Product"), in machine-readable form only, solely for End User's internal business purposes. This Agreement does not convey ownership of the Software to End User. Title to the Software shall be and remain with Datalogic or the third party from whom Datalogic has obtained a licensed right. As used in this Agreement, the term "purchase" or its equivalents when applied to the Software shall mean "acquire under license."
+
+**2.2** End User shall not copy, modify, decompile, disassemble, reverse engineer, or otherwise reproduce or remanufacture the Software, whether modified or unmodified, nor sell, assign, sublicense, distribute, lend, rent, give, or otherwise transfer the Software to any other person or organization, for purposes other than as expressly provided in this Agreement, without Datalogic's prior written consent.
+
+## 3. Transfers, Support
+
+**3.1** Any copying, installing, reproduction, remanufacture, reverse engineering, electronic transfer, mimicking, or other use of the Software in support of any other product other than the designated Datalogic Product will be a material breach of this Agreement. However, Datalogic may elect not to terminate this Agreement or the granted licenses, but instead may elect to notify End User that End User is deemed to have ordered and accepted a license for each breaching use on qualified Datalogic Products. End User shall pay Datalogic the applicable list price for such licenses as of the date of such breach.
+
+**3.2** End User shall not sell, assign, sublicense, distribute, lend, rent, give, or otherwise transfer the Datalogic Product to any third party unless such third party agrees with Datalogic in writing to be bound by the terms and conditions of this Agreement. Any such transfer of the Datalogic Product absent such agreement shall be null and void.
+
+**3.3** End User may obtain support for Software from Datalogic at Datalogic's standard support fees and under Datalogic's standard support terms and conditions in effect at the time the support is requested.
+
+## 4. Intellectual Property
+
+End User acknowledges that the Software constitutes valuable trade secrets of Datalogic or Datalogic's third party licensors and that the Software is protected by United States copyright law and trade secret law, and by all applicable international intellectual property laws and treaty provisions. The license set forth in this Agreement does not transfer to End User any ownership of Datalogic's or its third-party licensors' copyrights, patents, trademarks, service marks, trade secrets, or other intellectual property rights and End User shall have no right to commence any legal actions to obtain such rights. End User shall not remove, modify, or take any other action that would obscure any copyright, trademark, patent marking, or other intellectual property notices contained in or on the Software or the Datalogic Product.
+
+## 5. Proprietary Information
+
+**5.1** End User acknowledges that Proprietary Information is the confidential, proprietary, and trade secret property of Datalogic and Datalogic's third party licensors and End User acquires no right or interest in any Proprietary Information.
+
+**5.2** End User shall not disclose, provide, or otherwise make available the Proprietary Information of Datalogic or its third-party licensors to any person other than End User's authorized employees or agents who are under confidentiality agreement, and End User shall not use the Proprietary Information other than in conjunction with use of the Datalogic Product exclusively for End User's internal business purposes. End User shall take steps to protect the Proprietary Information no less securely than if it were End User's own intellectual property.
+
+**5.3** The provisions of this Proprietary Information Section shall survive and continue for five (5) years after the termination of this Agreement, or for trade secrets, as long as allowed by applicable law.
+
+## 6. Limited Warranty
+
+**6.1** Datalogic warrants that, under normal use and operation, the Software will conform substantially to the applicable Documentation for the period specified in the Documentation. During this period, for all reproducible nonconformities for which Datalogic has been given written notice, Datalogic will use commercially reasonable efforts to remedy nonconformities verified by Datalogic. End User agrees to supply Datalogic with all reasonably requested information and assistance necessary to help Datalogic in remedying such nonconformities. For all defects reported to Datalogic within the warranty period, Datalogic's liability is limited to providing End User with one copy of corrections or responding to End User's problem reports according to Datalogic's standard assistance practices. Datalogic does not warrant that Software will meet End User's requirements or that use of Software will be uninterrupted or error free, or that Datalogic's remedial efforts will correct any nonconformance. End User agrees that the existence of such nonconformities or errors and Datalogic's inability to remedy such errors shall not constitute a breach of this Agreement. This limited warranty does not cover use of the Software with any hardware system other than the Datalogic Product or to Software that has been subjected to damage or abuse, whether intentionally, accidentally, or by neglect, or to unauthorized repair or unauthorized installation, and shall be void if End User alters or modifies the Datalogic Product or Software, uses the Datalogic Product or Software in any manner other than as established in the Documentation, or if End User breaches any of the provisions of this Agreement.
+
+**6.2** EXCEPT AS PROVIDED IN THIS AGREEMENT, THE DATALOGIC PRODUCT AND SOFTWARE IS PROVIDED "AS IS" AND DATALOGIC AND ITS THIRD PARTY LICENSORS MAKE NO WARRANTIES, CONDITIONS OR REPRESENTATIONS OF ANY KIND, WHETHER EXPRESS, STATUTORY OR IMPLIED (AT LAW OR IN EQUITY), WRITTEN OR ORAL, WITH RESPECT TO THE DATALOGIC PRODUCT OR SOFTWARE, AND SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+## 7. Infringement
+
+To the maximum extent permitted by law, the End User agrees to defend, indemnify and hold harmless Datalogic, its Affiliates and their respective directors, officers, employees and agents from and against any and all claims, actions, suits or proceedings, as well as any and all losses, liabilities, damages, costs and expenses (including reasonable attorney's fees) arising out of or accruing from (a) the End User's use of the Datalogic SDK, (b) any application the End User develops on the Datalogic SDK that infringes any Intellectual Property Rights of any person or defames any person or violates their rights of publicity or privacy, and (c) any non-compliance by you of the License Agreement.
+
+## 8. Limitation of Liability
+
+EXCEPT AS PROVIDED IN SECTION 7, NEITHER DATALOGIC NOR ITS LICENSORS SHALL BE LIABLE FOR ANY CLAIMS AGAINST END USER BY ANY OTHER PARTY. IN NO EVENT SHALL THE LIABILITY OF DATALOGIC AND/OR ITS LICENSORS FOR DAMAGES, IF ANY, WHETHER BASED UPON CONTRACT, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY, STRICT LIABILITY, WARRANTY, OR ANY OTHER BASIS, EXCEED THE PRICE OR FEE PAID BY END USER FOR THE DATALOGIC PRODUCT. UNDER NO CIRCUMSTANCES SHALL DATALOGIC OR ITS LICENSORS BE LIABLE TO END USER OR ANY THIRD PARTY FOR LOST PROFITS, LOST DATA, INTERRUPTION OF BUSINESS OR SERVICE, OR FOR ANY OTHER SPECIAL, CONSEQUENTIAL, CONTINGENT, INDIRECT, INCIDENTAL, PUNITIVE, EXEMPLARY, OR OTHER SIMILAR DAMAGES, EVEN IF DATALOGIC OR ITS LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+## 9. Government Restricted Rights; International Use
+
+**9.1** Use, duplication, or disclosure of the Software by the U.S. Government is subject to the restrictions for computer software developed at private expense as set forth in the U.S. Federal Acquisition Regulations at FAR 52.227-14(g), or 52.227-19 or in the Rights in Technical Data and Computer Software clause at DFARS 252.227-7013(c)(1)(ii), whichever is applicable.
+
+**9.2** If End User is using the Datalogic Product outside of the United States, End User must comply with the applicable local laws of the country in which the Datalogic Product is used, with U.S. export control laws, and with the English language version of this Agreement. The provisions of the "United Nations Convention on International Sale of Goods" shall not apply to this Agreement.
+
+## 10. Termination
+
+**10.1** Either party may terminate this Agreement or any license granted under this Agreement at any time upon written notice if the other party breaches any provision of this Agreement.
+
+**10.2** Upon termination of this Agreement, End User immediately shall cease using any Software and shall return to Datalogic or destroy all Software covered by this Agreement, and shall furnish Datalogic with a certificate of compliance with this provision signed by an officer or authorized representative of End User. For Embedded Software, End User agrees to sign a waiver prepared by Datalogic concerning further use of the Embedded Software. End User's resumed or continued use of the Embedded Software after termination shall constitute End User's agreement to be bound anew by the terms and conditions of this Agreement for such use.
+
+## 11. General Provisions
+
+**11.1 Entire Agreement; Amendment.** This document contains the entire agreement between the parties relating to use of the Datalogic Products and the licensing of the Software and supersedes all prior or contemporaneous agreements, written or oral, between the parties concerning the use of the Datalogic Products and licensing of the Software. This Agreement may not be changed, amended, or modified except by written document signed by Datalogic.
+
+**11.2 Notice.** All notices required or authorized under this Agreement shall be given in writing, and shall be effective when received, with evidence of receipt. Notices to Datalogic shall be sent to Datalogic IP Tech S.r.l., Legal & IP Department, Via San Vitalino 13, 40012 Calderara di Reno (Bologna), Italy or such other address as may be specified by Datalogic in writing.
+
+**11.3 Waiver.** A party's failure to enforce any of the terms and conditions of this Agreement shall not prevent the party's later enforcement of such terms and conditions.
+
+**11.4 Governing Law; Venue:** End User agrees to the application of the laws of the country in which End User obtained the license to govern, interpret, and enforce all of End User's and Datalogic's respective rights, duties, and obligations arising from, or relating in any manner to, the subject matter of this Agreement, without regard to conflict of law principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply. All rights, duties, and obligations are subject to the courts of the country in which End User obtained the license. For licenses granted by Licensee who operates in the countries specified below, the following terms apply.
+
+### For Americas:
+This Agreement is governed by the laws of the State of Oregon. This Agreement and the rights of the parties hereunder shall be governed by and construed in accordance with the laws of the State of Oregon U.S.A, without regard to the rules governing conflicts of law. The state or federal courts of the State of Oregon located in either Multnomah or Lane counties shall have exclusive jurisdiction over all matters regarding this Agreement, except that Datalogic shall have the right, at its absolute discretion, to initiate proceedings in the courts of any other state, country, or territory in which End User resides, or in which any of End User's assets are located. In the event an action is brought to enforce the terms and conditions of this Agreement, the prevailing party shall be entitled to reasonable attorneys' fees, both at trial and on appeal.
+
+### For Europe, Middle East and Africa:
+This Agreement is governed by the laws of Italy. This Agreement and the rights of the parties hereunder shall be governed by and construed in accordance with the laws of Italy, without regard to the rules governing conflicts of law. Italian Court of Bologna shall have exclusive jurisdiction over all matters regarding this Agreement, except that Datalogic shall have the right, at its absolute discretion, to initiate proceedings in the courts of any other state, country, or territory in which End User resides, or in which any of End User's assets are located. In the event an action is brought to enforce the terms and conditions of this Agreement, the prevailing party shall be entitled to reasonable attorneys' fees, both at trial and on appeal.
+
+### For Asia-Pacific Countries:
+This Agreement is governed by the laws of the State of Hong Kong. This Agreement and the rights of the parties hereunder shall be governed by and construed in accordance with the laws of the State of Hong Kong without regard to the rules governing conflicts of law. The Court of Hong Kong shall have exclusive jurisdiction over all matters regarding this Agreement, except that Datalogic shall have the right, at its absolute discretion, to initiate proceedings in the courts of any other state, country, or territory in which End User resides, or in which any of End User's assets are located. In the event an action is brought to enforce the terms and conditions of this Agreement, the prevailing party shall be entitled to reasonable attorneys' fees, both at trial and on appeal.
+
+**11.5 Attorneys' Fees.** In the event an action is brought to enforce the terms and conditions of this Agreement, the prevailing party shall be entitled to reasonable attorneys' fees, both at trial and on appeal.
