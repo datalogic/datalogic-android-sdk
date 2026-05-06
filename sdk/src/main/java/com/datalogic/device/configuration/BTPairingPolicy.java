@@ -9,7 +9,7 @@ public enum BTPairingPolicy
     /**
      * Unknown paring policy.
      */
-    UNKNOWN(3),
+    UNKNOWN(-1),
     /**
      * Android standard user experience for bluetooth pairing.
      * When this value is selected, the user will be prompted for pairing
@@ -31,7 +31,13 @@ public enum BTPairingPolicy
      * {@link PropertyID#BT_SILENT_PAIRING_WHITELISTING_ENABLE} and
      * {@link PropertyID#BT_SILENT_PAIRING_WHITELISTING} shall be properly configured.
      */
-    SILENT(2);
+    SILENT(2),
+    /**
+     * Block connections from unauthorized peripherals,
+     * enhancing both security and operational efficiency by preventing accidental or malicious device pairings.
+     * Only devices that are either whitelisted (if enabled) or trusted devices (if enabled) are allowed to pair and connect with the mobile device.
+     */
+    SECURED(3);
 
     /**
      * Internal use.

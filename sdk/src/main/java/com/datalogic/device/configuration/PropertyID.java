@@ -961,6 +961,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_FRONT_TRIGGER_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_REMAPPED_POWER_KEY_ACTION_IN_SUSPEND} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_HALF_PRESS_GAIN} </li>
  *                </ul>
  *            </details>
  *            </li>
@@ -1383,6 +1384,7 @@ import com.datalogic.device.*;
  *            <li> {@link #SCREENSAVER_DATALOGIC} </li>
  *            <li> {@link #APP_INFO_HIDDEN} </li>
  *            <li> {@link #REBOOT_SAFE_MODE_ENABLED} </li>
+ *            <li> {@link #RESTRICT_ACCESS_SETTING} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1392,6 +1394,7 @@ import com.datalogic.device.*;
  *         <summary> {@link PropertyGroupID#UX_SETTINGS_GROUP}</summary>
  *         <ul>
  *            <li> {@link #DESKTOP_MODE_POLICY} </li>
+ *            <li> {@link #DESKTOP_MODE_DISPLAY_RESOLUTION} </li>
  *            <li> {@link #SCREENSHOT_ENABLED} </li>
  *            <li> {@link #ROTATION_180_ENABLED} </li>
  *            <li> {@link #HOTSPOT_ENABLED} </li>
@@ -1415,6 +1418,7 @@ import com.datalogic.device.*;
  *            <li> {@link #CRADLE_APP_ON_INSERT} </li>
  *            <li> {@link #CRADLE_APP_ON_EXTRACT} </li>
  *            <li> {@link #DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT} </li>
+ *            <li> {@link #VIBRATION_ON_CHARGE_ENABLED} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -3457,6 +3461,17 @@ public class PropertyID {
      */
     public final static int REBOOT_SAFE_MODE_ENABLED = PropertyGroupID.UI_SETTINGS_GROUP + 0x0031;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to restrict the user from accessing settings application on the device.
+     * <p>
+     * If this parameter is enabled, the user is restricted from accessing settings application on the device. Even via intent calls.
+     * This restriction helps to prevent unauthorized changes to device configurations and settings.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int RESTRICT_ACCESS_SETTING = PropertyGroupID.UI_SETTINGS_GROUP + 0x0032;
+
     //
     // UX Settings definitions
     //
@@ -3503,6 +3518,17 @@ public class PropertyID {
      * The class of the property is {@link DesktopModePolicy}.
      */
     public final static int DESKTOP_MODE_POLICY = PropertyGroupID.UX_SETTINGS_GROUP + 0x0001;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to control the desktop mode configuration.
+     * <p>
+     * This parameter controls resolution for the external display, if connected to the device
+     * through the docking station.
+     * <p>
+     * The class of the property is {@link DesktopModeDisplayResolution}.
+     */
+    public final static int DESKTOP_MODE_DISPLAY_RESOLUTION = PropertyGroupID.UX_SETTINGS_GROUP + 0x0002;
 
     /**
      * <b>Administrative Settings:</b> For devices managed by an organization,
@@ -3883,14 +3909,29 @@ public class PropertyID {
      * administrative policies might require to provide visual feedback to the user about the start of charging.
      * <p>
      * Start charging LED property refers to enabling or disabling the LED that lights up
-     * when the device begins charging.
+     * when the device is successfully connected to an external power source (i.e., when the battery management
+     * system begins the process of charging, even if the battery is already full or end of charge).
      * <p>
-     * When enabled, the LED will blink green once to notify the use that the device is successfully connected
-     * to a power source and charging has started.
+     * When enabled, the LED will blink once to notify the user that the device is successfully connected
+     * to a power source with:
+     * LED green if the battery charging has started.
+     * LED blue if the battery is already full or end of charge.
+     *
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
      public final static int START_CHARGING_LED_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x001E;
+
+    /**
+     * This parameter enables or disables the vibration feedback when the device begins charging.
+     * <p>
+     * When enabled, the device will vibrate briefly to provide haptic confirmation
+     * that charging has started. This feature helps users verify that the device
+     * is properly connected to a power source without needing visual confirmation.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int VIBRATION_ON_CHARGE_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x001F;
 
     //
     // Developer Options definitions
@@ -4644,6 +4685,32 @@ public class PropertyID {
      * refer to property {@link #VIRTUAL_KEYBOARD_PROFILE}.
      */
     public final static int VIRTUAL_KEYBOARDS_CUSTOM_ENABLED = PropertyGroupID.KEYBOARD_GROUP + 0x001F;
+
+    /**
+     * This parameter controls the pistol trigger half-press sensitivity (gain).
+     * <p>
+     * The half-press feature allows the pistol trigger to detect a partial press before
+     * the full press action is triggered. This is useful for supporting
+     * a two-stage trigger behavior, such as aiming assistance before initiating a scan.
+     * <p>
+     * Adjusting this sensitivity value determines how much pressure is required for the
+     * device to register a half-press event:
+     * <ul>
+     * <li><b>Lower values (closer to 0)</b>: The trigger requires more physical pressure
+     * to detect a half-press. This reduces accidental activations but requires more
+     * deliberate user action.</li>
+     * <li><b>Higher values (closer to 255)</b>: The trigger requires less physical pressure
+     * to detect a half-press. This provides a more responsive feel but may increase
+     * the likelihood of unintended activations.</li>
+     * </ul>
+     * <p>
+     * This property takes effect only when the pistol trigger is enabled
+     * via {@link #KEYBOARD_PISTOL_TRIGGER}.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * The allowed values are in the range [0-255].
+     */
+    public final static int KEYBOARD_PISTOL_TRIGGER_HALF_PRESS_GAIN = PropertyGroupID.KEYBOARD_GROUP + 0x0023;
 
     //
     // Emergency definitions

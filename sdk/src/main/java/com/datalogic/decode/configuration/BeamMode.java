@@ -15,6 +15,10 @@ package com.datalogic.decode.configuration;
  * <td>RELEASE_SCAN</td>
  * <td>Turn off targeting pattern after trigger release</td>
  * </tr>
+ * <tr>
+ * <td>HALF_TRIGGER</td>
+ * <td>Turn on or off targeting pattern depending on HALF_TRIGGER keycode press or release</td>
+ * </tr>
  * </table>
  */
 public enum BeamMode {
@@ -25,5 +29,9 @@ public enum BeamMode {
 	/**
 	 * The release of scan button turns off the aiming pattern
 	 */
-	RELEASE_SCAN;
+	RELEASE_SCAN,
+	/**
+	 * The press or release of the HALF_TRIGGER keycode turns on or off the aiming pattern
+	 */
+	HALF_TRIGGER;
 }
