@@ -461,6 +461,72 @@ public class PropertyID {
 	 * can be turned on by the ToF.
 	 */
 	public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD = 0x0088;
+	/**
+	 * This parameter indicates the display mode in which to show the scanning preview.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE = 0x0089;
+	/**
+	 * This parameter indicates the X coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X = 0x008A;
+	/**
+	 * This parameter indicates the Y coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y = 0x008B;
+	/**
+	 * This parameter indicates the width of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH = 0x008C;
+	/**
+	 * This parameter indicates the height of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT = 0x008D;
+	/**
+	 * This parameter indicates the X coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X = 0x008E;
+	/**
+	 * This parameter indicates the Y coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y = 0x008F;
+	/**
+	 * This parameter indicates the width of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	*/
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH = 0x0090;
+	/**
+	 * This parameter indicates the height of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT = 0x0091;
+	/**
+	 * This parameter indicates the illumination source used in the scanning preview.
+	 * The source selected will be turned on only when the scanning preview is activated during decoding and
+	 * only if the {@link #ILLUMINATION_ENABLE} parameter is enabled.
+	 */
+	public final static int SCANNING_PREVIEW_ILLUMINATION_SOURCE = 0x0092;
 
 	//
 	// Code 39 definitions
@@ -1870,7 +1936,7 @@ public class PropertyID {
 	 */
 	public final static int PREVIEW_DISPLAY_MODE = 0x40402;
 	/**
-	 * This parameter indicates the Y coordinate of the preview shown
+	 * This parameter indicates the X coordinate of the preview shown
 	 * in case of manual display mode and camera input type, when the
 	 * device is positioned in portrait.
 	 */

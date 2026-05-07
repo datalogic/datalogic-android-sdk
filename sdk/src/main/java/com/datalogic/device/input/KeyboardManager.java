@@ -990,6 +990,12 @@ public class KeyboardManager {
 
 		public final static int VSCAN_RIGHT_ENTER = VSCAN_ENTER;
 		public final static int VSCAN_LEFT_ENTER = VSCAN_KPENTER;
+
+		/*
+		 * default for half trigger: scancode=VSCAN_PISTOL_HALF_TRIGGER,
+		 * keycode=KEYCODE_HALF_TRIGGER
+		 */
+		public final static int VSCAN_PISTOL_HALF_TRIGGER = VSCAN_BTN_X;
 	}
 
 	/**

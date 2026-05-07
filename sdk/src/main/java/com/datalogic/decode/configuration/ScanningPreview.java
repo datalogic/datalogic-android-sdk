@@ -62,6 +62,82 @@ public class ScanningPreview extends PropertyGroup {
 	public NumericProperty activationByProximityHighThreshold;
 
 	/**
+	 * <code>displayMode</code> indicates the display mode in which to show the scanning preview.
+	 */
+	public EnumProperty<ScanningPreviewDisplayMode> displayMode;
+
+	/**
+	 * <code>displayModeManualPortraitX</code> indicates the X coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait.
+	 */
+	public NumericProperty displayModeManualPortraitX;
+
+	/**
+	 * <code>displayModeManualPortraitY</code> indicates the Y coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait.
+	 */
+	public NumericProperty displayModeManualPortraitY;
+
+	/**
+	 * <code>displayModeManualPortraitWidth</code> indicates the width of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public NumericProperty displayModeManualPortraitWidth;
+
+	/**
+	 * <code>displayModeManualPortraitHeight</code> indicates the height of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in portrait. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public NumericProperty displayModeManualPortraitHeight;
+
+	/**
+	 * <code>displayModeManualLandscapeX</code> indicates the X coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape.
+	 */
+	public NumericProperty displayModeManualLandscapeX;
+
+	/**
+	 * <code>displayModeManualLandscapeY</code> indicates the X coordinate of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape.
+	 */
+	public NumericProperty displayModeManualLandscapeY;
+
+	/**
+	 * <code>displayModeManualLandscapeWidth</code> indicates the width of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public NumericProperty displayModeManualLandscapeWidth;
+
+	/**
+	 * <code>displayModeManualLandscapeHeight</code> indicates the height of the preview shown
+	 * in case of manual display mode for the scanning preview, when the
+	 * device is positioned in landscape. The camera frames will retain their
+	 * original aspect ratio but they will resize in order to fit inside the
+	 * preview box specified by the width and height parameters.
+	 */
+	public NumericProperty displayModeManualLandscapeHeight;
+
+	/**
+	 * <code>illuminationSource</code> indicates the illumination source used in the scanning preview.
+	 * The source selected will be turned on only when the scanning preview is activated during decoding and
+	 * only if the ILLUMINATION_ENABLE parameter is enabled.
+	 */
+	public EnumProperty<ScanningPreviewIlluminationSource> illuminationSource;
+
+	/**
 	 * This is the constructor of ScanningPreview. All options are initialized by
 	 * editor.
 	 *

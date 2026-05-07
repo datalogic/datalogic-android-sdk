@@ -14,7 +14,7 @@ public enum DLKeyEvent {
      * Datalogic Keycode to trigger a scanning session with the barcode scanner.
      * This value is determined based on the device platform.
      */
-    KEYCODE_BARCODE(180), //val = 1125 for the qcm4490 platform devices -> This value will be dynamically retrieve
+    KEYCODE_BARCODE(1125),
 
     /**
      * Datalogic Keycode to switch the scanner input from camera to scan engine.
@@ -40,7 +40,13 @@ public enum DLKeyEvent {
      * Datalogic's Android keycode meant to represent
      * the SOS emergency trigger button.
      */
-    KEYCODE_SOS(1130);
+    KEYCODE_SOS(1130),
+
+    /**
+     * Datalogic's Android keycode meant to represent
+     * the Half Trigger (scanner aiming) event
+     */
+    KEYCODE_HALF_TRIGGER(1131);
 
     /**
      * @hide

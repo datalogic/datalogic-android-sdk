@@ -439,22 +439,24 @@ public final class Intents {
     public static final String ACTION_SYSTEM_FIRMWARE_UPGRADE = "com.datalogic.systemupdate.action.FIRMWARE_UPDATE";
 
     /**
-     * <code>ACTION_BATTERY_START_LOG</code> Broadcast Action: Enable Battery Manager logging, if disabled.<br>
-     * <br>
-     * The intent will have the following extra values: <br>
-     * <br>
-     * {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} - boolean that indicates if logging must be executed in idle mode. <br>
-     * {@link #EXTRA_BATTERY_LOG_PERIOD} - int representing the log period in seconds. <br>
-     * {@link #EXTRA_BATTERY_LOG_STATUS} -  boolean that indicates if field "Status" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_SOURCE} - boolean that indicates if field "Source" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_CAPACITY} - boolean that indicates if field "Capacity" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_TEMPERATURE} - boolean that indicates if field "Temperature" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_VOLTAGE} - boolean that indicates if field "Voltage" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_CURRENT} - boolean that indicates if field "Current" must be logged. <br>
-     * {@link #EXTRA_BATTERY_LOG_CHARGE_LEFT} - boolean that indicates if field "Charge Left" must be logged. <br>
+     * @deprecated Use {@link PropertyID#POWER_LOGGER_BATTERY_ENABLE} instead.
      *
-     * <p>
-     * <b>Broadcast intent adb example:</b>
+     * <p><code>ACTION_BATTERY_START_LOG</code> Broadcast Action: Enable Battery Manager logging, if disabled.
+     *
+     * <p>The intent will have the following extra values:
+     * <ul>
+     * <li>{@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} - boolean that indicates if logging must be executed in idle mode.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_PERIOD} - int representing the log period in seconds.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_STATUS} - boolean that indicates if field "Status" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_SOURCE} - boolean that indicates if field "Source" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_CAPACITY} - boolean that indicates if field "Capacity" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_TEMPERATURE} - boolean that indicates if field "Temperature" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_VOLTAGE} - boolean that indicates if field "Voltage" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_CURRENT} - boolean that indicates if field "Current" must be logged.</li>
+     * <li>{@link #EXTRA_BATTERY_LOG_CHARGE_LEFT} - boolean that indicates if field "Charge Left" must be logged.</li>
+     * </ul>
+     *
+     * <p><b>Broadcast intent adb example:</b>
      * <pre>
      * adb shell am broadcast -a com.datalogic.device.intent.action.battery.START_LOG -n com.datalogic.battery/com.datalogic.battery.receiver.BatteryLogReceiver
      * --ez com.datalogic.device.intent.extra.battery.LOG_IN_IDLE_MODE true
@@ -471,64 +473,85 @@ public final class Intents {
     public final static String ACTION_BATTERY_START_LOG = "com.datalogic.device.intent.action.battery.START_LOG";
 
     /**
-     * <code>ACTION_BATTERY_STOP_LOG</code> Broadcast Action: Disable Battery Manager logging, if enabled.
+     * @deprecated Use {@link PropertyID#POWER_LOGGER_BATTERY_ENABLE} instead.
+     *
+     * <p><code>ACTION_BATTERY_STOP_LOG</code> Broadcast Action: Disable Battery Manager logging, if enabled.
      */
     public final static String ACTION_BATTERY_STOP_LOG = "com.datalogic.device.intent.action.battery.STOP_LOG";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_IN_IDLE_MODE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
+     * @deprecated Use {@link PropertyID#POWER_LOGGER_BATTERY_ENABLE} instead.
+     *
+     * <p><code>EXTRA_BATTERY_LOG_IN_IDLE_MODE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
      * It enables or disables feature "Log In Idle Mode".
      */
     public final static String EXTRA_BATTERY_LOG_IN_IDLE_MODE = "com.datalogic.device.intent.extra.battery.LOG_IN_IDLE_MODE";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_PERIOD</code> Used as an int extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It selects the logging period expressed in seconds.<br>
-     * <br>
-     * If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is enabled, allowed values are (60, 120, 300, 600, 1800, 3600) with 300 as default. <br>
-     * If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is disabled, allowed values are (10,30, 60, 120, 300, 600, 1800, 3600) with 60 as default. <br>
+     * @deprecated Use {@link PropertyID#POWER_LOGGER_BATTERY_PERIOD} instead.
+     *
+     * <p><code>EXTRA_BATTERY_LOG_PERIOD</code> Used as an int extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It selects the logging period expressed in seconds.
+     *
+     * <p>If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is enabled, allowed values are (60, 120, 300, 600, 1800, 3600) with 300 as default.
+     *
+     * <p>If {@link #EXTRA_BATTERY_LOG_IN_IDLE_MODE} is disabled, allowed values are (10,30, 60, 120, 300, 600, 1800, 3600) with 60 as default.
      */
     public final static String EXTRA_BATTERY_LOG_PERIOD = "com.datalogic.device.intent.extra.battery.LOG_PERIOD";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_STATUS</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Status"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_STATUS</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Status".
      */
     public final static String EXTRA_BATTERY_LOG_STATUS = "com.datalogic.device.intent.extra.battery.LOG_STATUS";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_SOURCE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Source"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_SOURCE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Source".
      */
     public final static String EXTRA_BATTERY_LOG_SOURCE = "com.datalogic.device.intent.extra.battery.LOG_SOURCE";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_CAPACITY</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Capacity"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_CAPACITY</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Capacity".
      */
     public final static String EXTRA_BATTERY_LOG_CAPACITY = "com.datalogic.device.intent.extra.battery.LOG_CAPACITY";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_TEMPERATURE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Temperature"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_TEMPERATURE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Temperature".
      */
     public final static String EXTRA_BATTERY_LOG_TEMPERATURE = "com.datalogic.device.intent.extra.battery.LOG_TEMPERATURE";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_VOLTAGE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Voltage"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_VOLTAGE</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Voltage".
      */
     public final static String EXTRA_BATTERY_LOG_VOLTAGE = "com.datalogic.device.intent.extra.battery.LOG_VOLTAGE";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_CURRENT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Current"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_CURRENT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Current".
      */
     public final static String EXTRA_BATTERY_LOG_CURRENT = "com.datalogic.device.intent.extra.battery.LOG_CURRENT";
 
     /**
-     * <code>EXTRA_BATTERY_LOG_CHARGE_LEFT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG},
-     * It enables or disables log of feature "Charge Left"
+     * @deprecated
+     *
+     * <p><code>EXTRA_BATTERY_LOG_CHARGE_LEFT</code> Used as a boolean extra field in {@link #ACTION_BATTERY_START_LOG}.
+     * It enables or disables log of feature "Charge Left".
      */
     public final static String EXTRA_BATTERY_LOG_CHARGE_LEFT = "com.datalogic.device.intent.extra.battery.LOG_CHARGE_LEFT";
 

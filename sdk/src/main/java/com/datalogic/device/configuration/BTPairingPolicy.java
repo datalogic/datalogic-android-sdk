@@ -2,40 +2,51 @@ package com.datalogic.device.configuration;
 import com.datalogic.device.configuration.PropertyID;
 
 /**
- * Enum {@link BTPairingPolicy} defines the policies for Bluetooth pairing through the property {@link PropertyID#BT_PAIRING_POLICY}.
+ * Enum {@link BTPairingPolicy} defines the policies for Bluetooth pairing,
+ * configured through the property {@link PropertyID#BT_PAIRING_POLICY}.
+ *
+ * <p>Each policy controls the level of user interaction required during the
+ * Bluetooth pairing process, ranging from the standard Android experience
+ * to fully silent or secured pairing.</p>
  */
 public enum BTPairingPolicy
 {
     /**
-     * Unknown paring policy.
+     * Unknown pairing policy.
      */
     UNKNOWN(-1),
     /**
-     * Android standard user experience for bluetooth pairing.
-     * When this value is selected, the user will be prompted for pairing
-     * a bluetooth device according the Android standard procedure.
+     * Standard Android user experience for Bluetooth pairing.
+     * <p>When this value is selected, the user will be prompted to pair
+     * a Bluetooth device following the standard Android procedure.</p>
      */
     STANDARD(0),
     /**
-     * Only a single confirmation is required by the user during the pairing.
-     * When this value is selected, the user will be prompted with a single
-     * confirmation for pairing a bluetooth device.
+     * Simplified pairing requiring only a single user confirmation.
+     * <p>When this value is selected, the user will be prompted with a single
+     * popup confirmation to pair a Bluetooth device.</p>
      */
     SIMPLE(1),
     /**
-     * No user confirmation is required for completing the pairing.
-     * When this value is selected, the user will never be prompted for pairing
-     * a bluetooth device. Only the pre-approved external devices are allowed to be paired.
-     * This means that the user will be restricted to pair any other devices via bluetooth.
-     * In order to configure the silent pairing procedure, the properties
-     * {@link PropertyID#BT_SILENT_PAIRING_WHITELISTING_ENABLE} and
-     * {@link PropertyID#BT_SILENT_PAIRING_WHITELISTING} shall be properly configured.
+     * Fully silent pairing with no user confirmation required.
+     * <p>When this value is selected, the user will never be prompted during
+     * Bluetooth device pairing.</p>
+     *
+     * <p><b>Important:</b> This policy allows <em>any</em> device to pair
+     * without user consent. Use with caution.</p>
      */
     SILENT(2),
     /**
-     * Block connections from unauthorized peripherals,
-     * enhancing both security and operational efficiency by preventing accidental or malicious device pairings.
-     * Only devices that are either whitelisted (if enabled) or trusted devices (if enabled) are allowed to pair and connect with the mobile device.
+     * Secured pairing that blocks connections from unauthorized peripherals.
+     * <p>This policy enhances security and operational efficiency by preventing
+     * accidental or malicious device pairings. Only devices that are whitelisted
+     * (if enabled) or trusted (if enabled) are allowed to pair and connect.</p>
+     *
+     * <p>The following properties must be properly configured:</p>
+     * <ul>
+     *   <li>{@link PropertyID#BT_SILENT_PAIRING_WHITELISTING_ENABLE}</li>
+     *   <li>{@link PropertyID#BT_SILENT_PAIRING_WHITELISTING}</li>
+     * </ul>
      */
     SECURED(3);
 

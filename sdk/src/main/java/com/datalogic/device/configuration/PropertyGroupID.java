@@ -179,6 +179,11 @@ public class PropertyGroupID {
     public final static int POWER_NOTIFICATION_GROUP = POWER_MIB_BASE + 0x0010;
 
     /**
+     * Root of the subtree of power logger properties.
+     */
+    public final static int POWER_LOGGER_GROUP = POWER_MIB_BASE + 0x0011;
+
+    /**
      * Root of the subtree of the Developer Options properties.
      */
     public static final int DEVELOPER_OPTIONS_GROUP = DEVELOPER_OPTIONS_MIB_BASE + 0x0001;

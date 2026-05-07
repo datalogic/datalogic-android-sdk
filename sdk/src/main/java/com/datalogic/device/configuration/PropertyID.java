@@ -918,6 +918,16 @@ import com.datalogic.device.*;
  *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY} </li>
  *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_LOW_THRESHOLD} </li>
  *                             <li> {@link #SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_ILLUMINATION_SOURCE} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -1064,6 +1074,16 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_NOTIFICATION_CHARGE_ENABLE} </li>
  *                  <li> {@link #POWER_NOTIFICATION_FAILURE_ENABLE} </li>
  *                  <li> {@link #POWER_NOTIFICATION_INFO_ENABLE} </li>
+ *               </ul>
+ *            </details>
+ *            </li>
+ *            <li>
+ *            <details>
+ *               <summary> {@link PropertyGroupID#POWER_LOGGER_GROUP}</summary>
+ *               <ul>
+ *                  <li> {@link #POWER_LOGGER_BATTERY_ENABLE} </li>
+ *                  <li> {@link #POWER_LOGGER_BATTERY_PERIOD} </li>
+ *                  <li> {@link #POWER_LOGGER_UEVENT_ENABLE} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -2109,6 +2129,7 @@ public class PropertyID {
 
    /** 
     * Controls whether the USB is enabled as a power-source.
+    * @deprecated use {@link #POWER_CHARGING_SOURCES} instead.
     */
     public final static int POWER_SOURCE_USB = PropertyGroupID.POWER_MIB_BASE + 0x0003;
 
@@ -2371,6 +2392,27 @@ public class PropertyID {
      */
     public final static int POWER_WAKEUP_REMAPPED_POWER_KEY = PropertyGroupID.POWER_MIB_BASE + 0x0033;
 
+    /**
+     * Enables the logging of power battery data to a log file under /sdcard/PowerLogger/.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_LOGGER_BATTERY_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0040;
+
+    /**
+     * Configures the power battery logging period in seconds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int POWER_LOGGER_BATTERY_PERIOD = PropertyGroupID.POWER_MIB_BASE + 0x0041;
+
+    /**
+     * Enables the logging of power uevents and data to a log file under /sdcard/PowerLogger/.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_LOGGER_UEVENT_ENABLE = PropertyGroupID.POWER_MIB_BASE + 0x0042;
+
     //
     // USB Settings definitions
     //
@@ -2379,6 +2421,7 @@ public class PropertyID {
      * Enables/disables USB data transmission.
      * <p>
      * The class of the property is {@link BooleanProperty}.
+     * @deprecated use {@link #USB_CLIENT_DATA} and {@link #USB_HOST_DATA} instead.
      */
     public final static int USB_DATA = PropertyGroupID.USB_MIB_BASE + 0x0001;
 
@@ -7780,7 +7823,7 @@ public class PropertyID {
      */
     public final static int PREVIEW_DISPLAY_MODE = 0x40402;
     /**
-     * This parameter indicates the Y coordinate of the preview shown
+     * This parameter indicates the X coordinate of the preview shown
      * in case of manual display mode and camera input type, when the
      * device is positioned in portrait.
      * <p>
@@ -8175,6 +8218,94 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int SCANNING_PREVIEW_ACTIVATION_BY_PROXIMITY_HIGH_THRESHOLD = 0x0088;
+    /**
+     * This parameter indicates the display mode in which to show the scanning preview.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link com.datalogic.decode.configuration.ScanningPreviewDisplayMode}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE = 0x0089;
+    /**
+     * This parameter indicates the X coordinate of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_X = 0x008A;
+    /**
+     * This parameter indicates the Y coordinate of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in portrait.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_Y = 0x008B;
+    /**
+     * This parameter indicates the width of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in portrait. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * preview box specified by the width and height parameters.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_WIDTH = 0x008C;
+    /**
+     * This parameter indicates the height of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in portrait. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * preview box specified by the width and height parameters.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_PORTRAIT_HEIGHT = 0x008D;
+    /**
+     * This parameter indicates the X coordinate of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_X = 0x008E;
+    /**
+     * This parameter indicates the Y coordinate of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in landscape.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_Y = 0x008F;
+    /**
+     * This parameter indicates the width of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in landscape. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * preview box specified by the width and height parameters.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH = 0x0090;
+    /**
+     * This parameter indicates the height of the preview shown
+     * in case of manual display mode for the scanning preview, when the
+     * device is positioned in landscape. The camera frames will retain their
+     * original aspect ratio but they will resize in order to fit inside the
+     * preview box specified by the width and height parameters.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT = 0x0091;
+    /**
+     * This parameter indicates the illumination source used in the scanning preview.
+     * The source selected will be turned on only when the scanning preview is activated during decoding and
+     * only if the {@link #ILLUMINATION_ENABLE} parameter is enabled.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link com.datalogic.decode.configuration.ScanningPreviewIlluminationSource}.
+     */
+    public final static int SCANNING_PREVIEW_ILLUMINATION_SOURCE = 0x0092;
 
     /**
      * @hide
