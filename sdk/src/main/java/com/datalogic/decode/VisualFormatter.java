@@ -173,7 +173,7 @@ public class VisualFormatter {
      * Sets the item to make active.
      *
      * @param activeItem
-     *        The item to make active.
+     *        The item to make active. You can set this to null in order to deselect the current active item.
      * @return
      *        {@link DecodeException#SUCCESS} in case it succeeds, otherwise it returns an error code if the
      *        exceptions are disabled or throws a {@link DecodeException} in case the exceptions are enabled.

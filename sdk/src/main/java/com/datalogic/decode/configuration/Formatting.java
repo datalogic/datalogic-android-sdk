@@ -46,6 +46,17 @@ public class Formatting extends PropertyGroup {
 	public BooleanProperty externalFormatting;
 
 	/**
+	 * <code>visualFormatting</code> enables the visual formatting script.
+	 */
+	public BooleanProperty visualFormatting;
+
+	/**
+	 * <code>visualFormattingSelected</code> specifies the visual formatter item to select.
+	 * The specific implementation for this type of blob is {@link VisualFormattingSelected}.
+	 */
+	public BlobProperty visualFormattingSelected;
+
+	/**
 	 * <code>eciPolicy</code> selects the policy used to handle ECI.
 	 */
 	public EnumProperty<ECIPolicy> eciPolicy;

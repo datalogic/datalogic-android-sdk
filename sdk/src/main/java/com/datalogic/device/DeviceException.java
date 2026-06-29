@@ -53,6 +53,11 @@ public class DeviceException extends RuntimeException {
 	 */
 	public static final int WAKEUP_SOURCE_ERROR = (DEV_EXCEPTION<<16 | 0x0008);
 
+    /**
+     * It is a Feature not supported error.
+     */
+    public static final int FEATURE_NOT_SUPPORTED = (DEV_EXCEPTION<<16 | 0x000b);
+
 	/**
 	 * The error number returned by the Device's system services.
 	 */

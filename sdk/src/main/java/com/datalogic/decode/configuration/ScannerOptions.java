@@ -128,6 +128,12 @@ public class ScannerOptions extends PropertyGroup {
 	public BooleanProperty scannerCameraInteroperability;
 
 	/**
+	 * <code>illuminationIntensity</code> allows to change the intensity of the scanner illumination.
+	 * Allowed values are in percentage from 1 to 100.
+	 */
+	public NumericProperty illuminationIntensity;
+
+	/**
 	 * This is the constructor of ScannerOptions. All options are initialized by
 	 * editor.
 	 * 

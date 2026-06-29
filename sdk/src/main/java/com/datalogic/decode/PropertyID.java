@@ -527,6 +527,40 @@ public class PropertyID {
 	 * only if the {@link #ILLUMINATION_ENABLE} parameter is enabled.
 	 */
 	public final static int SCANNING_PREVIEW_ILLUMINATION_SOURCE = 0x0092;
+	/**
+	 * This parameter allows to change the intensity of the scanner illumination.
+	 * Allowed values are in percentage from 1 to 100.
+	 */
+	public final static int ILLUMINATION_INTENSITY = 0x0093;
+	/**
+	 * This parameter enables the evaluation of GS1 barcodes found in the scanning preview.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_ENABLE = 0x0094;
+	/**
+	 * This property defines the labels expected while evaluating a GS1 barcode.
+	 * If at least a label is found in the barcode, a dialog will be shown with the existing labels, allowing
+	 * to confirm if the barcode is the expected or not.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_LABELS = 0x0095;
+	/**
+	 * This parameter defines the address of the server that will be queries if the label values are
+	 * not found inside the barcode.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_NAME = 0x0096;
+	/**
+	 * This property defines the format used for the final URI used to collect data from the remote server.
+	 * The URI will contain the GTIN value coming from the GS1 barcode and it will add it to the remote
+	 * address using the specified format.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_FORMAT = 0x0097;
+	/**
+	 * This parameter defines the background color of the dialog shown after GS1 evaluation succeeds.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_BLOCK = 0x0098;
+	/**
+	 * This parameter defines the text color of the dialog shown after GS1 evaluation succeeds.
+	 */
+	public final static int SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_TEXT = 0x0099;
 
 	//
 	// Code 39 definitions
@@ -908,6 +942,10 @@ public class PropertyID {
 	 * This parameter controls the character set in use for the decoded label.
 	 */
 	public final static int CODE128_CHARACTER_SET_MODE = 0x042D;
+	/**
+	 * This parameter is set to specify the conversion used for GS1 128 barcodes.
+	 */
+	public final static int CODE128_GS1_CONVERSION = 0x042E;
 
 	//
 	// UPC-A definitions
@@ -1829,7 +1867,7 @@ public class PropertyID {
 	// Visual formatting
 	//
 	/**
-	 * @hide
+	 * This parameter enables the visual formatting script.
 	 */
 	public final static int VISUAL_FORMATTING_ENABLE = 0x40100;
 	/**
@@ -1844,6 +1882,10 @@ public class PropertyID {
 	 * @hide
 	 */
 	public final static int VISUAL_FORMATTING_ACTIVE_ITEM = 0x40103;
+	/**
+	 * This parameters specifies the visual formatter item to select.
+	 */
+	public final static int VISUAL_FORMATTING_SELECTED = 0x40104;
 
 	//
 	// Frame capture
@@ -2152,4 +2194,26 @@ public class PropertyID {
          * This parameter allows to send the entire frame shown as a Bitmap in the decode result.
          */
 	public final static int DECODE_RESULT_CROP_ENTIRE_FRAME = 0x40803;
+
+	//
+	// Pharmacode
+	//
+	/**
+	 * This parameter enables or disables the symbology.
+	 */
+	public static final int PHARMACODE_ENABLE = 0x40901;
+	/**
+	 * This parameter specifies the symbology identifier (if any).
+	 * The symbology identifier is sent with the label when the global decode property {@link #SEND_CODE_ID}
+	 * is set to USERDEFINED_IDENTIFIER_BEFORE_LABEL or USERDEFINED_IDENTIFIER_AFTER_LABEL.
+	 */
+	public static final int PHARMACODE_USER_ID = 0x40902;
+	/**
+	 * This parameter defines the minimum number of bars allowed for a valid Pharmacode symbol.
+	 */
+	public static final int PHARMACODE_BAR_NUM_MIN = 0x40903;
+	/**
+	 * This parameter defines the maximum number of bars allowed for a valid Pharmacode symbol.
+	 */
+	public static final int PHARMACODE_BAR_NUM_MAX = 0x40904;
 }

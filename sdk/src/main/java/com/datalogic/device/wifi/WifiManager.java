@@ -47,6 +47,29 @@ public class WifiManager {
     }
 
     /**
+     * Enables the Wi-Fi data connection. This will turn on the Wi-Fi adapter and connect to the
+     * network according to the current configuration and available networks.
+     */
+    public void enable() {
+    }
+
+    /**
+     * Disables the Wi-Fi data connection. This will turn off the Wi-Fi adapter and disconnect from
+     * any network.
+     */
+    public void disable() {
+    }
+
+    /**
+     * Returns whether the Wi-Fi data connection is currently enabled or not.
+     *
+     * @return a boolean value indicating if the Wi-Fi data connection is currently enabled or not.
+     */
+    public boolean isEnabled() {
+        return false;
+    }
+
+    /**
      * Gets the current policy for deciding when Wi-Fi should go to sleep (which will in turn switch
      * to using the mobile data as an Internet connection).
      *

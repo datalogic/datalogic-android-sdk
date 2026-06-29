@@ -1,8 +1,6 @@
 package com.datalogic.device.configuration;
 
 import com.datalogic.decode.BarcodeManager;
-import com.datalogic.device.configuration.*;
-import com.datalogic.device.power.*;
 import com.datalogic.decode.configuration.*;
 import com.datalogic.device.*;
 /**
@@ -143,6 +141,7 @@ import com.datalogic.device.*;
  *                                                             <ul>
  *                                                                 <li> {@link #CODE128_GS1_ENABLE} </li>
  *                                                                 <li> {@link #CODE128_GS1_USER_ID} </li>
+ *                                                                 <li> {@link #CODE128_GS1_CONVERSION} </li>
  *                                                             </ul>
  *                                                         </details>
  *                                                     </li>
@@ -357,6 +356,17 @@ import com.datalogic.device.*;
  *                                                     <li> {@link #EAN_EXT_ENABLE_2_DIGIT} </li>
  *                                                     <li> {@link #EAN_EXT_ENABLE_5_DIGIT} </li>
  *                                                     <li> {@link #UPC_EAN_AGGRESSIVENESS} </li>
+ *                                                 </ul>
+ *                                             </details>
+ *                                         </li>
+ *                                         <li>
+ *                                             <details>
+ *                                                 <summary> {@link PropertyGroupID#PHARMACODE_GROUP}</summary>
+ *                                                 <ul>
+ *                                                     <li> {@link #PHARMACODE_ENABLE} </li>
+ *                                                     <li> {@link #PHARMACODE_USER_ID} </li>
+ *                                                     <li> {@link #PHARMACODE_BAR_NUM_MIN} </li>
+ *                                                     <li> {@link #PHARMACODE_BAR_NUM_MAX} </li>
  *                                                 </ul>
  *                                             </details>
  *                                         </li>
@@ -670,6 +680,7 @@ import com.datalogic.device.*;
  *                             <li> {@link #IMAGE_DECODE_TIMEOUT} </li>
  *                             <li> {@link #ENABLE_SCANNER} </li>
  *                             <li> {@link #SCANNER_CAMERA_INTEROPERABILITY} </li>
+ *                             <li> {@link #ILLUMINATION_INTENSITY} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -744,6 +755,15 @@ import com.datalogic.device.*;
  *                                             <li> {@link #GS1_LABEL_SET_PREFIX} </li>
  *                                             <li> {@link #GS1_2D_CONVERSION} </li>
  *                                             <li> {@link #HEX_FORMAT} </li>
+ *                                         </ul>
+ *                                 </details>
+ *                             </li>
+ *                             <li>
+ *                                 <details>
+ *                                     <summary> {@link PropertyGroupID#VISUAL_FORMATTING_GROUP}</summary>
+ *                                         <ul>
+ *                                             <li> {@link #VISUAL_FORMATTING_ENABLE} </li>
+ *                                             <li> {@link #VISUAL_FORMATTING_SELECTED} </li>
  *                                         </ul>
  *                                 </details>
  *                             </li>
@@ -928,6 +948,12 @@ import com.datalogic.device.*;
  *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_WIDTH} </li>
  *                             <li> {@link #SCANNING_PREVIEW_DISPLAY_MODE_MANUAL_LANDSCAPE_HEIGHT} </li>
  *                             <li> {@link #SCANNING_PREVIEW_ILLUMINATION_SOURCE} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_ENABLE} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_LABELS} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_NAME} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_FORMAT} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_BLOCK} </li>
+ *                             <li> {@link #SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_TEXT} </li>
  *                         </ul>
  *                     </details>
  *                 </li>
@@ -1102,7 +1128,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #POWER_WAKEUP_TOUCH} </li>
  *                  <li> {@link #POWER_WAKEUP_AUTOSCAN_TRIGGER} </li>
  *                  <li> {@link #POWER_WAKEUP_PTT_TRIGGER} </li>
- *                  <li> {@link #POWER_WAKEUP_REMAPPED_POWER_KEY} </li
+ *                  <li> {@link #POWER_WAKEUP_REMAPPED_POWER_KEY} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1346,6 +1372,19 @@ import com.datalogic.device.*;
  *         <ul>
  *            <li> {@link #DEVICE_NAME_BASE} </li>
  *            <li> {@link #DEVICE_NAME_SUFFIX} </li>
+ *            <li> {@link #DEVICE_MODEM_FSG_VERSION} </li>
+ *            <li> {@link #DEVICE_MODEL} </li>
+ *            <li> {@link #DEVICE_SERIAL_NUMBER} </li>
+ *            <li> {@link #DEVICE_PRODUCT_NUMBER} </li>
+ *            <li> {@link #DEVICE_SLOT1_IMEI} </li>
+ *            <li> {@link #DEVICE_SLOT2_IMEI} </li>
+ *            <li> {@link #DEVICE_SLOT1_IMSI} </li>
+ *            <li> {@link #DEVICE_SLOT2_IMSI} </li>
+ *            <li> {@link #DEVICE_SLOT1_NUMBER} </li>
+ *            <li> {@link #DEVICE_SLOT2_NUMBER} </li>
+ *            <li> {@link #DEVICE_ETHERNET_MAC_ADDRESS} </li>
+ *            <li> {@link #DEVICE_BLUETOOTH_MAC_ADDRESS} </li>
+ *            <li> {@link #DEVICE_WIFI_MAC_ADDRESS} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -4910,6 +4949,210 @@ public class PropertyID {
      */
     public final static int DEVICE_NAME_SUFFIX = PropertyGroupID.DEVICE_INFO_GROUP + 0x0002;
 
+    /**
+     * This parameter represents the modem FSG version installed on the device.
+     * <p>
+     * The modem FSG version is a specific firmware component related to the device's modem
+     * functionality and it is important for ensuring compatibility and optimal performance of the
+     * modem.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_MODEM_FSG_VERSION = PropertyGroupID.DEVICE_INFO_GROUP + 0x0003;
+
+    /**
+     * This parameter represents the device model identifier.
+     * <p>
+     * The device model is a specific identifier that uniquely identifies the hardware model
+     * of the device. This information is essential for compatibility checks, driver selection,
+     * and device-specific feature management.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_MODEL = PropertyGroupID.DEVICE_INFO_GROUP + 0x0004;
+
+    /**
+     * This parameter represents the device serial number.
+     * <p>
+     * The device serial number is a unique identifier assigned by the manufacturer to each
+     * individual device instance. It is used for tracking, warranty verification, device management,
+     * and identification purposes. The serial number is typically permanent and non-changeable
+     * at the device level.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_SERIAL_NUMBER = PropertyGroupID.DEVICE_INFO_GROUP + 0x0005;
+
+    /**
+     * This parameter represents the device product number.
+     * <p>
+     * The device product number is an identifier that classifies the device within a product line
+     * or product family. It is used to distinguish different product variants, versions, or SKUs
+     * and is important for inventory management, billing, and feature differentiation.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_PRODUCT_NUMBER = PropertyGroupID.DEVICE_INFO_GROUP + 0x0006;
+
+    /**
+     * This parameter represents the IMEI (International Mobile Equipment Identity) number of the first SIM slot.
+     * <p>
+     * The IMEI is a unique identifier assigned to mobile devices that identify the hardware
+     * of the device. It is used by mobile networks to identify valid devices and can be used
+     * to block a stolen or blacklisted device from accessing the network. The IMEI is typically
+     * printed on the device body and can also be retrieved programmatically.
+     * <p>
+     * This property applies to the first SIM slot (SIM1) of the device.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_SLOT1_IMEI = PropertyGroupID.DEVICE_INFO_GROUP + 0x0007;
+
+    /**
+     * This parameter represents the IMEI (International Mobile Equipment Identity) number of the second SIM slot.
+     * <p>
+     * The IMEI is a unique identifier assigned to mobile devices that identify the hardware
+     * of the device. It is used by mobile networks to identify valid devices and can be used
+     * to block a stolen or blacklisted device from accessing the network. The IMEI is typically
+     * printed on the device body and can also be retrieved programmatically.
+     * <p>
+     * This property applies to the second SIM slot (SIM2) of the device and is only defined in dual-SIM device mib.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_SLOT2_IMEI = PropertyGroupID.DEVICE_INFO_GROUP + 0x0008;
+
+    /**
+     * This parameter represents the IMSI (International Mobile Subscriber Identity) number of the first SIM slot.
+     * <p>
+     * The IMSI is a unique identifier that identifies a user on a cellular network. It is stored on the SIM card
+     * and is used to identify the subscriber to the cellular network. The IMSI is composed of the Mobile Country Code (MCC),
+     * Mobile Network Code (MNC), and the subscriber identification number. The IMSI is essential for network authentication
+     * and service access.
+     * <p>
+     * This property applies to the first SIM slot (SIM1) of the device. If no SIM card is inserted or the IMSI is not available,
+     * and the property is not supported.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * This property is optional and it is supported only if the SIM is inserted.
+     */
+    public final static int DEVICE_SLOT1_IMSI = PropertyGroupID.DEVICE_INFO_GROUP + 0x0009;
+
+    /**
+     * This parameter represents the IMSI (International Mobile Subscriber Identity) number of the second SIM slot.
+     * <p>
+     * The IMSI is a unique identifier that identifies a user on a cellular network. It is stored on the SIM card
+     * and is used to identify the subscriber to the cellular network. The IMSI is composed of the Mobile Country Code (MCC),
+     * Mobile Network Code (MNC), and the subscriber identification number. The IMSI is essential for network authentication
+     * and service access.
+     * <p>
+     * This property applies to the second SIM slot (SIM2) of the device and is only defined in dual-SIM device mib.
+     * If no SIM card is inserted the IMSI is not available, and the property is not supported.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * This property is optional and it is supported only if the SIM is inserted.
+     */
+    public final static int DEVICE_SLOT2_IMSI = PropertyGroupID.DEVICE_INFO_GROUP + 0x000A;
+
+    /**
+     * This parameter represents the phone number (line number) associated with the first SIM slot.
+     * <p>
+     * The line number, also known as the phone number or MSISDN (Mobile Station Isdn Number), is the telephone number
+     * assigned to the subscriber on the SIM card. This number is used for making and receiving calls and SMS messages.
+     * The line number is stored on the SIM card and is typically provisioned by the mobile carrier.
+     * <p>
+     * This property applies to the first SIM slot (SIM1) of the device. If no SIM card is inserted, the SIM card
+     * does not contain a line number, or the line number is not available, and the property is not supported.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * This property is optional and it is supported only if the SIM is inserted.
+     */
+    public final static int DEVICE_SLOT1_NUMBER = PropertyGroupID.DEVICE_INFO_GROUP + 0x000B;
+
+    /**
+     * This parameter represents the phone number (line number) associated with the second SIM slot.
+     * <p>
+     * The line number, also known as the phone number or MSISDN (Mobile Station Isdn Number), is the telephone number
+     * assigned to the subscriber on the SIM card. This number is used for making and receiving calls and SMS messages.
+     * The line number is stored on the SIM card and is typically provisioned by the mobile carrier.
+     * <p>
+     * This property applies to the second SIM slot (SIM2) of the device and is defined only on dual-SIM devices.
+     * If no SIM card is inserted, the SIM card does not contain a line number, or the line number is not available,
+     * and the property is not supported.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     * This property is optional and it is supported only if the SIM is inserted.
+     */
+    public final static int DEVICE_SLOT2_NUMBER = PropertyGroupID.DEVICE_INFO_GROUP + 0x000C;
+
+    /**
+     * This parameter represents the MAC (Media Access Control) address of the device's Ethernet interface.
+     * <p>
+     * This property is only available on devices equipped with an Ethernet interface.
+     * If the device does not have an Ethernet interface or the interface is not available, this property may be empty.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_ETHERNET_MAC_ADDRESS = PropertyGroupID.DEVICE_INFO_GROUP + 0x000D;
+
+    /**
+     * This parameter represents the MAC (Media Access Control) address of the device's Bluetooth interface.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_BLUETOOTH_MAC_ADDRESS = PropertyGroupID.DEVICE_INFO_GROUP + 0x000E;
+
+    /**
+     * This parameter represents the MAC (Media Access Control) address of the device's Wi-Fi interface.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int DEVICE_WIFI_MAC_ADDRESS = PropertyGroupID.DEVICE_INFO_GROUP + 0x000F;
+
+    //
+    // NFC definitions
+    //
+
+    /**
+     * This parameter enables/disables NFC adapter
+     * <p>
+     * When this property is true, the device will allow communication and interactions with NFC tags and devices.
+     * When this property is false, the device will disable all NFC functionalities.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NFC_ADAPTER_ENABLED = PropertyGroupID.NFC_GROUP + 0x0001;
+
+    /**
+     * Selects the NFC tag categories to be blocked.
+     * This parameter controls which tag categories should be ignored by the system.
+     * When a flag is selected, the represented category will be blocked.
+     * <p>
+     * The class of the property is {@link MultipleChoiceProperty}.
+     * The allowed values are a subset of the combinations of the values defined by {@link NfcTagDispatchBlockFlags}.
+     */
+    public final static int NFC_TAG_DISPATCH_BLOCK_MASK = PropertyGroupID.NFC_GROUP + 0x0002;
+
+    /**
+     * This parameter enables/disables NFC Host Card Emulation functionality.
+     * When this property is true, the device will be able to emulate an NFC card and interact with
+     * NFC readers as if it were a physical card.
+     * When this property is false, the device will disable the Host Card Emulation functionality.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int NFC_HOST_CARD_EMULATION_ENABLED = PropertyGroupID.NFC_GROUP + 0x0003;
+
+    /**
+     * Selects the NFC technology that should be enabled for listening.
+     * This parameter controls which nfc protocol technology should be enabled for listening by the system.
+     * When a flag is selected, the represented category will be enabled.
+     * <p>
+     * The class of the property is {@link MultipleChoiceProperty}.
+     * The allowed values are a subset of the combinations of the values defined by {@link NfcHostListenerTechFlags}.
+     */
+    public final static int NFC_HOST_LISTENER_TECH_MASK = PropertyGroupID.NFC_GROUP + 0x0004;
+
     //
     // Bluetooth definitions
     //
@@ -5057,6 +5300,24 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int BT_SILENT_PAIRING_TRUSTED_ENABLED = PropertyGroupID.BLUETOOTH_GROUP + 0x0005;
+
+    /**
+     * This parameter enables or disables Google Fast Pair on the device.
+     * <p>
+     * Google Fast Pair is a protocol that allows nearby Bluetooth accessories
+     * (e.g. headphones, earbuds, speakers) to be discovered and paired quickly with minimal
+     * user interaction. When an accessory that supports Fast Pair is in pairing mode and is
+     * within range, the device detects its BLE (Bluetooth Low Energy) advertisement and
+     * displays a pairing prompt, allowing the user to complete the pairing with a single tap.
+     * <p>
+     * When this parameter is set to {@code true}, the Fast Pair feature is active and the device
+     * will show pairing notifications for nearby compatible accessories.
+     * When set to {@code false}, Fast Pair is disabled and the device will not respond to
+     * Fast Pair advertisement packets; standard Bluetooth pairing procedures remain unaffected.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int BT_FASTPAIR_ENABLED = PropertyGroupID.BLUETOOTH_GROUP + 0x0006;
 
     /**
      * This parameter enables the notification when a profile is automatically loaded because the associated application
@@ -5766,6 +6027,13 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int CAMERA_WEDGE_ENABLE_ALWAYS_ON = 0x0081;
+    /**
+     * This parameter allows to change the intensity of the scanner illumination.
+     * Allowed values are in percentage from 1 to 100.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int ILLUMINATION_INTENSITY = 0x0093;
 
     //
     // Code 39 definitions
@@ -6313,6 +6581,13 @@ public class PropertyID {
      * The allowed values are defined by enum {@link CharacterSetMode}.
      */
     public final static int CODE128_CHARACTER_SET_MODE = 0x042D;
+    /**
+     * This parameter is set to specify the conversion used for GS1 128 barcodes.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link Code128Gs1Conversion}.
+     */
+    public final static int CODE128_GS1_CONVERSION   = 0x042E;
 
     //
     // UPC-A definitions
@@ -7705,8 +7980,7 @@ public class PropertyID {
     // Visual formatting
     //
      /**
-      * @hide
-      * This parameter enables the external formatting service.
+      * This parameter enables the visual formatting script.
       * <p>       
       * The class of the property is {@link BooleanProperty}.
       */
@@ -7728,6 +8002,13 @@ public class PropertyID {
      * @hide
      */
     public final static int VISUAL_FORMATTING_ACTIVE_ITEM = 0x40103;
+    /**
+     * This parameter selects the visual formatting item to use.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link VisualFormattingSelected}.
+     */
+    public final static int VISUAL_FORMATTING_SELECTED = 0x40104;
 
     //
     // ECI Policy
@@ -8306,6 +8587,89 @@ public class PropertyID {
      * The allowed values are defined by enum {@link com.datalogic.decode.configuration.ScanningPreviewIlluminationSource}.
      */
     public final static int SCANNING_PREVIEW_ILLUMINATION_SOURCE = 0x0092;
+
+    //
+    // Pharmacode definitions
+    //
+
+    /**
+     * This parameter enables or disables the Pharmacode symbology.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int PHARMACODE_ENABLE = 0x40901;
+
+    /**
+     * This parameter defines the user identifier transmitted within
+     * the Pharmacode label, when supported by the symbology configuration.
+     * <p>
+     * The class of the property is {@link CharacterProperty}.
+     */
+    public final static int PHARMACODE_USER_ID = 0x40902;
+
+    /**
+     * This parameter sets the minimum number of bars allowed for a valid
+     * Pharmacode symbol.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PHARMACODE_BAR_NUM_MIN = 0x40903;
+
+    /**
+     * This parameter sets the maximum number of bars allowed for a valid
+     * Pharmacode symbol.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int PHARMACODE_BAR_NUM_MAX = 0x40904;
+    /**
+     * This parameter enables the evaluation of GS1 barcodes found in the scanning preview.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_ENABLE = 0x0094;
+
+    /**
+     * This property defines the labels expected while evaluating a GS1 barcode.
+     * If at least a label is found in the barcode, a dialog will be shown with the existing labels, allowing
+     * to confirm if the barcode is the expected or not.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link com.datalogic.decode.configuration.ScanningPreviewGs1EvaluationLabels}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_LABELS = 0x0095;
+
+    /**
+     * This parameter defines the address of the server that will be queries if the label values are
+     * not found inside the barcode.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_NAME = 0x0096;
+
+    /**
+     * This property defines the format used for the final URI used to collect data from the remote server.
+     * The URI will contain the GTIN value coming from the GS1 barcode and it will add it to the remote
+     * address using the specified format.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The specific implementation for this type of blob is {@link com.datalogic.decode.configuration.ScanningPreviewGs1EvaluationRemoteAddressFormat}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_REMOTE_ADDRESS_FORMAT = 0x0097;
+
+    /**
+     * This parameter defines the background color of the dialog shown after GS1 evaluation succeeds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_BLOCK = 0x0098;
+
+    /**
+     * This parameter defines the text color of the dialog shown after GS1 evaluation succeeds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SCANNING_PREVIEW_GS1_EVALUATION_UI_COLOR_TEXT = 0x0099;
 
     /**
      * @hide

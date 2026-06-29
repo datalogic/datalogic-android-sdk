@@ -13,6 +13,10 @@ package com.datalogic.decode.configuration;
  * <td>GS1_128</td>
  * <td>GS1-128 format.</td>
  * </tr>
+ * <tr>
+ * <td>ITF14</td>
+ * <td>ITF-14 format.</td>
+ * </tr>
  * </table>
  */
 public enum GtinFormat {
@@ -23,5 +27,9 @@ public enum GtinFormat {
 	/**
 	 * GS1-128 format
 	 */
-	GS1_128;
+	GS1_128,
+	/**
+	 * ITF-14 format
+	 */
+	ITF14;
 }

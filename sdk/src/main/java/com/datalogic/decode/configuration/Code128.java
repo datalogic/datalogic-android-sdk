@@ -60,6 +60,11 @@ public class Code128 extends SymbologyLengths {
 	public EnumProperty<CharacterSetMode> characterSetMode;
 
 	/**
+	 * <code>gs1_128_conversion</code> sets the conversion used for GS1-128 barcodes.
+	 */
+	public EnumProperty<Code128Gs1Conversion> gs1_128_conversion;
+
+	/**
 	 * This is the constructor of Code 128. All symbology options are initialized
 	 * by editor.
 	 * 

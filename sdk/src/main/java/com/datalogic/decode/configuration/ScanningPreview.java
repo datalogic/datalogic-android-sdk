@@ -138,6 +138,42 @@ public class ScanningPreview extends PropertyGroup {
 	public EnumProperty<ScanningPreviewIlluminationSource> illuminationSource;
 
 	/**
+	 * <code>gs1EvaluationEnable</code> enables the evaluation of GS1 barcodes found in the scanning preview.
+	 */
+	public BooleanProperty gs1EvaluationEnable;
+
+	/**
+	 * <code>gs1EvaluationLabels</code> defines the labels expected while evaluating a GS1 barcode.
+	 * If at least a label is found in the barcode, a dialog will be shown with the existing labels, allowing
+	 * to confirm if the barcode is the expected or not.
+	 * This property can only contain an object of class {@link com.datalogic.decode.configuration.ScanningPreviewGs1EvaluationLabels}.
+	 */
+	public BlobProperty gs1EvaluationLabels;
+
+	/**
+	 * <code>gs1EvaluationRemoteAddressName</code> defines the address of the server that will be queries if the label values are
+	 * not found inside the barcode.
+	 */
+	public TextProperty gs1EvaluationRemoteAddressName;
+
+	/**
+	 * <code>gs1EvaluationRemoteAddressFormat</code> defines the format used for the final URI used to collect data from the remote server.
+	 * The URI will contain the GTIN value coming from the GS1 barcode and it will add it to the remote
+	 * address using the specified format.
+	 */
+	public EnumProperty<ScanningPreviewGs1EvaluationRemoteAddressFormat> gs1EvaluationRemoteAddressFormat;
+
+	/**
+	 * <code>gs1EvaluationUiColorBlock</code> defines the background color of the dialog shown after GS1 evaluation succeeds.
+	 */
+	public NumericProperty gs1EvaluationUiColorBlock;
+
+	/**
+	 * <code>gs1EvaluationUiColorText</code> defines the text color of the dialog shown after GS1 evaluation succeeds.
+	 */
+	public NumericProperty gs1EvaluationUiColorText;
+
+	/**
 	 * This is the constructor of ScanningPreview. All options are initialized by
 	 * editor.
 	 *

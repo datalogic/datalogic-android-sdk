@@ -61,6 +61,15 @@ public class PropertyGroupID {
     /** @hide */
     protected final static int POSE_MANAGER_MIB_BASE = 23<<18;
 
+    // TODO: Disable RFID for now and will be re-enable on SDK v1.51
+    // /** @hide */
+    // protected final static int RFID_MIB_BASE = 24<<18;
+
+    /** @hide */
+    protected final static int NFC_MIB_BASE = 25<<18;
+    /** @hide */
+    protected final static int PHARMACODE_MIB_BASE = 26<<18;
+
     /**
       * Root of the configuration tree.
       * @hide
@@ -480,6 +489,11 @@ public class PropertyGroupID {
      * Root of the subtree of the Standard Formatting properties
      */
     public final static int STANDARD_FORMATTING_GROUP = SCANNER_MIB_BASE + 0x003B;
+
+    /**
+     * Root of the subtree of the Visual Formatting properties
+     */
+    public final static int VISUAL_FORMATTING_GROUP = SCANNER_MIB_BASE + 0x003D;
     /**
      * Root of the subtree of the Input Selection properties
      */
@@ -570,6 +584,16 @@ public class PropertyGroupID {
      * Root of the subtree of PoseManager properties.
      */
     public final static int POSE_MANAGER_GROUP = POSE_MANAGER_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of the nfc manager properties.
+     */
+    public static final int NFC_GROUP = NFC_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of Pharmacode properties.
+     */
+    public final static int PHARMACODE_GROUP = PHARMACODE_MIB_BASE + 0x0001;
 
     /**
      * @hide

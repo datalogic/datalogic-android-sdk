@@ -12,5 +12,9 @@ public enum ScanningPreviewIlluminationSource {
     /**
      * Scan Engine.
      */
-    SCANENGINE;
+    SCANENGINE,
+    /**
+     * Automatic selection based on distance from the object pointed by the scanner.
+     */
+    AUTO;
 }
