@@ -956,6 +956,7 @@ public class KeyboardManager {
 		public final static int VSCAN_NUMERIC_9 = 0x209;
 		public final static int VSCAN_NUMERIC_STAR = 0x20a;
 		public final static int VSCAN_NUMERIC_POUND = 0x20b;
+		public final static int VSCAN_DICTATE = 0x24a;
 
 		/*
 		 * default for left trigger: scancode=VSCAN_LEFT_TRIGGER,
@@ -990,6 +991,12 @@ public class KeyboardManager {
 
 		public final static int VSCAN_RIGHT_ENTER = VSCAN_ENTER;
 		public final static int VSCAN_LEFT_ENTER = VSCAN_KPENTER;
+		
+		/*
+		 * default for push to talk: scancode=VSCAN_PUSH_TO_TALK,
+		 * keycode=KEY_DICTATE
+		 */
+		public final static int VSCAN_PUSH_TO_TALK = VSCAN_DICTATE;
 
 		/*
 		 * default for half trigger: scancode=VSCAN_PISTOL_HALF_TRIGGER,

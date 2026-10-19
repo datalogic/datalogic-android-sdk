@@ -3,6 +3,8 @@ package com.datalogic.device.configuration;
 import com.datalogic.decode.BarcodeManager;
 import com.datalogic.decode.configuration.*;
 import com.datalogic.device.*;
+import com.datalogic.device.input.AdvancedKeyboard;
+
 /**
  * <code>PropertyID</code> is the class that includes all the properties
  * identifiers.<br>
@@ -718,6 +720,8 @@ import com.datalogic.device.*;
  *                                         <li> {@link #SNAP_OCR_RESULT_SEPARATOR} </li>
  *                                         <li> {@link #SNAP_OCR_REGEX_FILTER} </li>
  *                                         <li> {@link #SNAP_OCR_ROI_PREFIX_VISIBILITY} </li>
+ *                                         <li> {@link #SNAP_OCR_LAST_RESULT_TIMEOUT} </li>
+ *                                         <li> {@link #SNAP_OCR_TEXT_BLOCK_FORMAT} </li>
  *                                     </ul>
  *                                 </details>
  *                             </li>
@@ -998,6 +1002,8 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_PTT_TRIGGER_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_REMAPPED_POWER_KEY_ACTION_IN_SUSPEND} </li>
  *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_HALF_PRESS_GAIN} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_IN_CRADLE_POLICY} </li>
+ *                  <li> {@link #KEYBOARD_PISTOL_TRIGGER_IN_CRADLE_POLICY_PERIOD} </li>
  *                </ul>
  *            </details>
  *            </li>
@@ -1009,6 +1015,7 @@ import com.datalogic.device.*;
  *                  <li> {@link #KEYBOARD_BACKLIGHT_BRIGHTNESS} </li>
  *                  <li> {@link #KEYBOARD_BACKLIGHT_TIMEOUT} </li>
  *                  <li> {@link #KEYBOARD_MULTITAP_DELAY} </li>
+ *                  <li> {@link #KEYBOARD_LOGO_KEYS} </li>
  *               </ul>
  *            </details>
  *            </li>
@@ -1175,6 +1182,7 @@ import com.datalogic.device.*;
  *                 <li> {@link #WIFI_VERBOSE_WIFI_MODULE_LOG} </li>
  *                 <li> {@link #WIFI_MAC_RANDOMIZATION} </li>
  *                 <li> {@link #WIFI_NO_INTERNET_EXPECTED} </li>
+ *                 <li> {@link #WIFI_MOBILE_PRIORITY_POLICY} </li>
  *                 <li>
  *                 <details>
  *                     <summary> {@link PropertyGroupID#WIFI_CHANNELS_GROUP}</summary>
@@ -1267,6 +1275,8 @@ import com.datalogic.device.*;
  *                         <li> {@link #WIFI_SCAN_INTERVAL_MAX} </li>
  *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL} </li>
  *                         <li> {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX} </li>
+ *                         <li> {@link #WIFI_SCREEN_ON_SCAN_INTERVAL} </li>
+ *                         <li> {@link #WIFI_SCREEN_ON_SCAN_INTERVAL_MAX} </li>
  *                     </ul>
  *                 </details>
  *                 </li>
@@ -1346,6 +1356,7 @@ import com.datalogic.device.*;
  *            <li> {@link #USB_HOST_DATA} </li>
  *            <li> {@link #USB_HOST_WHITELISTING} </li>
  *            <li> {@link #USB_PREDEFINED_HOST_WHITELISTING} </li>
+ *            <li> {@link #USB_DEX_MODE_ENABLED} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1391,12 +1402,25 @@ import com.datalogic.device.*;
  *
  *     <li>
  *     <details>
+ *         <summary> {@link PropertyGroupID#NFC_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #NFC_ADAPTER_ENABLED} </li>
+ *            <li> {@link #NFC_TAG_DISPATCH_BLOCK_MASK} </li>
+ *            <li> {@link #NFC_HOST_CARD_EMULATION_ENABLED} </li>
+ *            <li> {@link #NFC_HOST_LISTENER_TECH_MASK} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
  *         <summary> {@link PropertyGroupID#DISPLAY_GROUP}</summary>
  *         <ul>
  *            <li> {@link #SCREEN_BRIGHTNESS} </li>
  *            <li> {@link #SCREEN_BRIGHTNESS_RANGE_MIN} </li>
  *            <li> {@link #SCREEN_BRIGHTNESS_RANGE_MAX} </li>
  *            <li> {@link #SCREEN_FACEDOWN_DETECTOR_ENABLED} </li>
+ *            <li> {@link #SCREEN_ROTATION_LOCK_POLICY} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1478,6 +1502,9 @@ import com.datalogic.device.*;
  *            <li> {@link #CRADLE_APP_ON_EXTRACT} </li>
  *            <li> {@link #DESKTOP_MODE_APP_EXTERNAL_SCREEN_ON_INSERT} </li>
  *            <li> {@link #VIBRATION_ON_CHARGE_ENABLED} </li>
+ *            <li> {@link #NAVIGATION_BAR_POLICY} </li>
+ *            <li> {@link #USER_BRIGHTNESS_PERSISTENT_ENABLED} </li>
+ *            <li> {@link #POWER_INDICATOR_ENABLED} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1496,6 +1523,8 @@ import com.datalogic.device.*;
  *         <summary> {@link PropertyGroupID#SYSTEM_GROUP}</summary>
  *         <ul>
  *            <li> {@link #VIRTUAL_RAM_SWAP_POLICY} </li>
+ *            <li> {@link #GOOGLE_PLAY_UPDATE_ENABLED} </li>
+ *            <li> {@link #GOOGLE_PLAY_UPDATE_BLACKLIST} </li>
  *         </ul>
  *     </details>
  *     </li>
@@ -1543,12 +1572,44 @@ import com.datalogic.device.*;
  *         </ul>
  *     </details>
  *     </li>
+ * 
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#RFID_GROUP}</summary>
+ *         <ul>
+ *            <li> {@link #RFID_ENABLE } </li>
+ *            <li> {@link #RFID_POWER_LEVEL} </li>
+ *            <li> {@link #RFID_SESSION_POLICY} </li>
+ *            <li> {@link #RFID_Q_PARAMETER_POLICY} </li>
+ *            <li> {@link #RFID_INVENTORY_POLICY} </li>
+ *            <li> {@link #RFID_TIMEOUT} </li>
+ *            <li> {@link #RFID_TARGET_POLICY } </li>
+ *            <li> {@link #RFID_MODE_POLICY } </li>
+ *            <li> {@link #RFID_INJECT_TO_SCANNER } </li>
+ *            <li> {@link #RFID_PROFILE_POLICY } </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
+ *     <li>
+ *     <details>
+ *         <summary> {@link PropertyGroupID#BLE_GROUP}</summary>
+ *         <p>Supported only on M12 RFID devices running Android 15 or later.</p>
+ *         <ul>
+ *            <li> {@link #BLE_ADVERTISING_POLICY } </li>
+ *            <li> {@link #BLE_ADVERTISING_BEACON_PAYLOAD_POLICY} </li>
+ *            <li> {@link #BLE_ADVERTISING_BEACON_PAYLOAD_CUSTOM} </li>
+ *            <li> {@link #BLE_RINGING_SOUND} </li>
+ *         </ul>
+ *     </details>
+ *     </li>
+ *
  *     </details>
  *     </li>
  *   </ul>
-
  *   </details>
  *   </li>
+ * 
  * </ul>
  */
 
@@ -1567,6 +1628,9 @@ public class PropertyID {
       * The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on, until it reaches
       * the maximum value defined by {@link #WIFI_SCAN_INTERVAL_MAX}.
       * <p>
+      * This property applies to devices running versions earlier than Android 15.
+      * On Android 15 and later, use {@link #WIFI_SCREEN_ON_SCAN_INTERVAL}.
+      * <p>
       * The class of the property is {@link NumericProperty}.
       */
     public final static int WIFI_SCAN_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x0001;
@@ -1577,6 +1641,9 @@ public class PropertyID {
       * the device is woken up from a standby state, then the next scans are done in an exponential backoff fashion.
       * The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on, until it reaches
       * the maximum value defined by {@link #WIFI_SCAN_INTERVAL_MAX}.
+      * <p>
+      * This property applies to devices running versions earlier than Android 15.
+      * On Android 15 and later, use {@link #WIFI_SCREEN_ON_SCAN_INTERVAL_MAX}.
       * <p>
       * The class of the property is {@link NumericProperty}.
      */
@@ -1589,6 +1656,9 @@ public class PropertyID {
       * backoff fashion. The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on,
       * until it reaches the maximum defined by {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX}.
       * <p>
+      * This property applies to devices running versions earlier than Android 15.
+      * On Android 15 and later, use {@link #WIFI_SCREEN_ON_SCAN_INTERVAL}.
+      * <p>
       * The class of the property is {@link NumericProperty}.
       */
     public final static int WIFI_CONNECTED_SCAN_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x0003;
@@ -1599,6 +1669,9 @@ public class PropertyID {
       * is done when the device is woken up from a standby state, then the next scans are done in an exponential
       * backoff fashion. The second scan will be done after x seconds, then after 2 * x, then 4 * x... and so on,
       * until it reaches the maximum value defined by {@link #WIFI_CONNECTED_SCAN_INTERVAL_MAX}.
+      * <p>
+      * This property applies to devices running versions earlier than Android 15.
+      * On Android 15 and later, use {@link #WIFI_SCREEN_ON_SCAN_INTERVAL_MAX}.
       * <p>
       * The class of the property is {@link NumericProperty}.
       */
@@ -2062,6 +2135,29 @@ public class PropertyID {
      * The allowed values are between 10 and 200.
      */
     public final static int WIFI_BSSID_SCAN_STABLE_TIME = PropertyGroupID.WIFI_MIB_BASE + 0x0108;
+
+    /**
+     * Controls the preferred network to use when both WWAN and WLAN are available.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link WifiMobilePriorityPolicy}.
+     */
+    public final static int WIFI_MOBILE_PRIORITY_POLICY = PropertyGroupID.WIFI_MIB_BASE + 0x0109;
+
+    /**
+     * Minimum interval between screen-on Wi-Fi scans on Android 15 and later.
+     * This unified schedule applies regardless of Wi-Fi connection state.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WIFI_SCREEN_ON_SCAN_INTERVAL = PropertyGroupID.WIFI_MIB_BASE + 0x010A;
+
+    /**
+     * Maximum interval between screen-on Wi-Fi scans on Android 15 and later.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int WIFI_SCREEN_ON_SCAN_INTERVAL_MAX = PropertyGroupID.WIFI_MIB_BASE + 0x010B;
 
     /**
       * @hide
@@ -2555,6 +2651,18 @@ public class PropertyID {
      * The specific implementation for this type of blob is {@link UsbHostWhitelisting}.
      */
     public final static int USB_PREDEFINED_HOST_WHITELISTING = PropertyGroupID.USB_MIB_BASE + 0x0007;
+
+    /**
+     * Enables or disables DEX mode, allowing the use of a compatible DEX cable.
+     * <p>
+     * When enabled, the device can switch to DEX operation mode.
+     * <p>
+     * When disabled, the device will ignore DEX capabilities over USB and operate
+     * using the standard USB behavior.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int USB_DEX_MODE_ENABLED = PropertyGroupID.USB_MIB_BASE + 0x0008;
 
     //
     // Cradle Settings definitions
@@ -3554,6 +3662,14 @@ public class PropertyID {
      */
     public final static int RESTRICT_ACCESS_SETTING = PropertyGroupID.UI_SETTINGS_GROUP + 0x0032;
 
+    /**
+     * This parameter sets navigation mode.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link NavigationBarPolicy}.
+     */
+    public final static int NAVIGATION_BAR_POLICY = PropertyGroupID.UI_SETTINGS_GROUP + 0x0033;
+
     //
     // UX Settings definitions
     //
@@ -4015,6 +4131,29 @@ public class PropertyID {
      */
     public final static int VIBRATION_ON_CHARGE_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x001F;
 
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to persist the user brightness setting.
+     * <p>
+     * Persist user brightness refers to enable or disable the persistence of the user brightness setting
+     * after rebooting the device, with auto brightness enabled.
+     * If true, the user brightness setting will be persisted after rebooting the device.
+     * If false, the user brightness setting will not be persisted after rebooting the device.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int USER_BRIGHTNESS_PERSISTENT_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0020;
+
+    /**
+     * <b>Administrative Settings:</b> For devices managed by an organization,
+     * administrative policies might require to control the power notification LED.
+     * <p>
+     * Power notification LED enabled refers to enable or disable the LED that indicates the power state of the device.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int POWER_INDICATOR_ENABLED = PropertyGroupID.UX_SETTINGS_GROUP + 0x0021;
+
     //
     // Developer Options definitions
     //
@@ -4079,6 +4218,19 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int SCREEN_FACEDOWN_DETECTOR_ENABLED = PropertyGroupID.DISPLAY_GROUP + 0x0004;
+
+    /**
+     * Configures the screen rotation lock policy for the device display.
+     * This property allows you to control how the screen orientation is handled,
+     * including whether the display automatically rotates based on device orientation sensors
+     * or remains locked to a specific orientation (portrait, landscape, or inverted variants).
+     * <p>
+     * Supported only on devices running Android 15 or later.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values for this property are defined by enum {@link ScreenRotationLockPolicy}.
+     */
+    public final static int SCREEN_ROTATION_LOCK_POLICY = PropertyGroupID.DISPLAY_GROUP + 0x0005;
 
    //
    // Keyboard definitions
@@ -4206,6 +4358,14 @@ public class PropertyID {
      * The class of the property is {@link NumericProperty}.
      */
     public final static int KEYBOARD_MULTITAP_DELAY = PropertyGroupID.KEYBOARD_GROUP + 0x000E;
+
+    /**
+     * This parameter sets the mapping of the keys shown when pressing the Datalogic logo button.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link AdvancedKeyboard.LogoKeys}.
+     */
+    public final static int KEYBOARD_LOGO_KEYS = PropertyGroupID.KEYBOARD_GROUP + 0x0024;
 
     /**
      * This parameter contains the list of supported Walkie-Talkie applications can be used with the Push-to-Talk button.
@@ -4794,6 +4954,41 @@ public class PropertyID {
      */
     public final static int KEYBOARD_PISTOL_TRIGGER_HALF_PRESS_GAIN = PropertyGroupID.KEYBOARD_GROUP + 0x0023;
 
+    /**
+     * This parameter defines the action performed by long pressing the pistol trigger when the device is in the cradle.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link KeyboardPistolTriggerInCradlePolicy}.
+     * <p>
+     * The default value is {@link KeyboardPistolTriggerInCradlePolicy#DISABLED}.
+     * <p>
+     * This property only support on the following products:
+     * <ul>
+     *     <li>Joya Smart</li>
+     * </ul>
+     */
+    public final static int KEYBOARD_PISTOL_TRIGGER_IN_CRADLE_POLICY = PropertyGroupID.KEYBOARD_GROUP + 0x0025;
+
+    /**
+     * This parameter defines the hold duration, in milliseconds, required for the pistol trigger
+     * in the cradled before the configured action is triggered.
+     * <p>
+     * The allowed values are in the range [0-10000] milliseconds.
+     * <p>
+     * This property takes effect only when {@link #KEYBOARD_PISTOL_TRIGGER_IN_CRADLE_POLICY} is set
+     * to a value other than {@link KeyboardPistolTriggerInCradlePolicy#DISABLED}.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     * <p>
+     * The default value is 2000 milliseconds (2 seconds).
+     * <p>
+     * This property only support on the following products:
+     * <ul>
+     *    <li>Joya Smart</li>
+     * </ul>
+     */
+    public final static int KEYBOARD_PISTOL_TRIGGER_IN_CRADLE_POLICY_PERIOD = PropertyGroupID.KEYBOARD_GROUP + 0x0026;
+
     //
     // Emergency definitions
     //
@@ -5352,6 +5547,148 @@ public class PropertyID {
      * The allowed values are defined by enum {@link VirtualRAMSwapPolicy}.
      */
     public final static int VIRTUAL_RAM_SWAP_POLICY = PropertyGroupID.SYSTEM_GROUP + 0x0001;
+
+    /**
+     * Property ID to enable or disable GMS auto update functionality.
+     * <p>
+     * Supported only on devices running Android 15 or later.
+     * <p>
+     * When enabled, update GMS packages will be triggered. Disabled, the update will be blocked.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int GOOGLE_PLAY_UPDATE_ENABLED = PropertyGroupID.SYSTEM_GROUP + 0x0002;
+
+    /**
+     * This parameter stores all GMS packages that will be prevented from updating.
+     * <p>
+     * Supported only on devices running Android 15 or later.
+     * <p>
+     * The class of the property is {@link BlobProperty}.
+     * The specific implementation for this type of blob is {@link StringArrayBlob}.
+     */
+    public final static int GOOGLE_PLAY_UPDATE_BLACKLIST = PropertyGroupID.SYSTEM_GROUP + 0x0003;
+
+    /**
+     * Property ID to enable or disable RFID functionality.
+     * <p>
+     * When enabled, pressing the RFID button on the device or through SDK function will start the RFID inventory operation.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int RFID_ENABLE = PropertyGroupID.RFID_GROUP + 0x0001;
+
+    /**
+     * Property ID that defines the RFID transmission power level, expressed in dBm.
+    * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int RFID_POWER_LEVEL = PropertyGroupID.RFID_GROUP + 0x0002;
+
+    /**
+     * Property ID that defines the RFID transmission power level, expressed in dBm.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * This allowed values are defined by enum {@link RfidSessionPolicy}.
+     */
+    public final static int RFID_SESSION_POLICY = PropertyGroupID.RFID_GROUP + 0x0003;
+
+    /**
+     * Property ID for the RFID Q parameter policy.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * This allowed values are defined by enum {@link RfidQParameterPolicy}.
+     */
+    public final static int RFID_Q_PARAMETER_POLICY = PropertyGroupID.RFID_GROUP + 0x0004;
+
+    /**
+     * Property ID that defines how and when an RFID inventory operation is terminated.
+     * <p>
+     * Controls RFID's inventory mode: TIMED, CONTINUOUS
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link RfidInventoryPolicy}.
+     */
+    public final static int RFID_INVENTORY_POLICY = PropertyGroupID.RFID_GROUP + 0x0005;
+
+    /**
+     * Property ID that defines the timeout duration for RFID operations, expressed in milliseconds.
+     * This property is associated with the timeout configuration for RFID operations. The value is in milliseconds.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int RFID_TIMEOUT = PropertyGroupID.RFID_GROUP + 0x0006;
+
+    /**
+     * Property ID that defines the target selection policy used during RFID sessions.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link RfidTargetPolicy}.
+     */
+    public final static int RFID_TARGET_POLICY = PropertyGroupID.RFID_GROUP + 0x0007;
+
+    /**
+     * Property ID that defines how RFID tags are reported to the application during inventory.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link RfidModePolicy}.
+     */
+    public final static int RFID_MODE_POLICY = PropertyGroupID.RFID_GROUP + 0x0008;
+
+    /**
+     * Property ID to enable or disable the injection of read RFID tags into the Scanner Service.
+     * <p>
+     * When enabled, each tag read during inventory is forwarded to the Scanner Service as if it were a scanned barcode.
+     * <p>
+     * Enabling this property also allows the use of additional Scanner Service features,
+     * such as data formatting and sending the resulting "barcode" through intents.
+     * <p>
+     * The class of the property is {@link BooleanProperty}.
+     */
+    public final static int RFID_INJECT_TO_SCANNER = PropertyGroupID.RFID_GROUP + 0x0009;
+
+    /**
+     * Property ID that selects the RFID RF communication profile and modulation parameters.
+     * <p>
+     * Controls RFID modulation parameters (BLF, TARI, FLM, BLM).
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link RfidProfilePolicy}.
+     */
+    public final static int RFID_PROFILE_POLICY = PropertyGroupID.RFID_GROUP + 0x000A;
+
+    /**
+     * Property ID that selects the BLE advertising policy.
+     * <p>
+     * Controls BLE advertising behavior.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link AdvertisingPolicy}.
+     */
+    public final static int BLE_ADVERTISING_POLICY = PropertyGroupID.BLE_GROUP + 0x0002;
+
+    /**
+     * Property ID that selects the BLE advertising beacon payload policy.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link AdvertisingBeaconPayloadPolicy}.
+     */
+    public final static int BLE_ADVERTISING_BEACON_PAYLOAD_POLICY = PropertyGroupID.BLE_GROUP + 0x0004;
+
+    /**
+     * Property ID that sets a custom BLE advertising beacon payload.
+     * <p>
+     * The class of the property is {@link TextProperty}.
+     */
+    public final static int BLE_ADVERTISING_BEACON_PAYLOAD_CUSTOM = PropertyGroupID.BLE_GROUP + 0x0005;
+
+    /**
+     * Property ID that sets the ringing sound when receiving a ringing command via BLE finder.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link RingingSound}.
+     */
+    public final static int BLE_RINGING_SOUND = PropertyGroupID.BLE_GROUP + 0x0009;
 
     //
     // Location definitions
@@ -8333,7 +8670,7 @@ public class PropertyID {
     //
     //
     /**
-     * This parameter enables or disables the Snap Ocr feature.
+     * This parameter enables or disables the Snap OCR feature.
      * <p>
      * The class of the property is {@link BooleanProperty}.
      */
@@ -8377,8 +8714,8 @@ public class PropertyID {
      */
     public final static int SNAP_OCR_SCANNING_POLICY = 0x40705;
     /**
-     * This parameter is a regular expression used to filter any OCR text, excluding
-     * the values that don't match the filter.
+     * This parameter is a regular expression used to filter any OCR text inside a
+     * detected text block, excluding the values that don't match the filter.
      * <p>
      * The class of the property is {@link TextProperty}.
      */
@@ -8411,6 +8748,23 @@ public class PropertyID {
      * The class of the property is {@link BooleanProperty}.
      */
     public final static int SNAP_OCR_ROI_PREFIX_VISIBILITY = 0x4070A;
+
+    /**
+     * This parameter is used to setup the time (in milliseconds) during which the
+     * last successfully decoded OCR result is considered valid.
+     * <p>
+     * The class of the property is {@link NumericProperty}.
+     */
+    public final static int SNAP_OCR_LAST_RESULT_TIMEOUT = 0x4070B;
+
+    /**
+     * This parameter is used to select the type of text block to use. This is useful to
+     * separate the OCR result in different blocks on which to apply regular expressions.
+     * <p>
+     * The class of the property is {@link EnumProperty}.
+     * The allowed values are defined by enum {@link SnapOcrTextBlockFormat}.
+     */
+    public final static int SNAP_OCR_TEXT_BLOCK_FORMAT = 0x4070C;
 
     //
     // DECODE RESULT CROP

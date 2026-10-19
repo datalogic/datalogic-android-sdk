@@ -246,6 +246,13 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
         }
 
         /**
+         * Returns whether the dark theme is enabled.
+         */
+        public boolean isDarkThemeEnabled() {
+            return false;
+        }
+
+        /**
          * Returns the profile's install location.
          */
         public Location getInstallLocation() {
@@ -275,6 +282,7 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
              *     <li>`disableNfc` set to `false`</li>
              *     <li>`halvesBrightnessAdjustment` set to `false``</li>
              *     <li>`applicationsBlacklist` set to an empty list</li>
+             *     <li>`darkThemeEnabled` set to `true`</li>
              *     <li>`installLocation` set to `USERDATA`</li>
              * </ul>
              * The name must be set before building the Profile object.
@@ -425,6 +433,14 @@ public class EnterpriseBatterySaverProfiles extends SerializableBlob {
              * @throws IllegalArgumentException if the name is empty or null.
              */
             public Builder addApplicationsBlacklist(String application) {
+                return null;
+            }
+
+            /**
+             * Control if the dark theme is enabled.
+             * @param darkThemeEnabled true to enable the dark theme, false otherwise.
+             */
+            public Builder withDarkThemeEnabled(boolean darkThemeEnabled) {
                 return null;
             }
 

@@ -2171,6 +2171,16 @@ public class PropertyID {
          * and OCR_TEXT is the original result.
          */
 	public final static int SNAP_OCR_ROI_PREFIX_VISIBILITY = 0x4070A;
+        /**
+         * This parameter is used to setup the time (in milliseconds) during which the
+         * last successfully decoded OCR result is considered valid.
+         */
+	public final static int SNAP_OCR_LAST_RESULT_TIMEOUT = 0x4070B;
+        /**
+         * This parameter is used to select the type of text block to use. This is useful to
+         * separate the OCR result in different blocks on which to apply regular expressions.
+         */
+	public final static int SNAP_OCR_TEXT_BLOCK_FORMAT = 0x4070C;
 
 	//
 	// DECODE RESULT CROP

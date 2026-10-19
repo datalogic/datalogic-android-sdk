@@ -371,6 +371,34 @@ public class ProfileManager {
     }
 
     /**
+     * Modify the map of properties for a specific profile.
+     * If a profile with the same name is not present, the method fails.
+     * If the profile is loaded, changes will be applied immediately.
+     * <br>
+     * The profile is a .json file with the schema shown in {@link #createProfile}.
+     * @param name
+     *            <code>String</code> name of the profile to be modified.
+     *           The name must have the ".json" extension, otherwise it will be added.
+     * @param map
+     *            <code>HasMap</code> map of properties with their value to be saved as profile.
+     * @return int {@link ConfigException#SUCCESS} in case of success, otherwise a possible error
+     *          code, matching one of the {@link ConfigException} error constants.
+     * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public int editProfile(String name, HashMap<Integer, String> map) {
+       return 0;
+    }
+
+    /**
+     * Gets the map of a profile, given the name.
+     * @return HashMap<Integer, String> in case of success, otherwise, if exceptions are not enabled, a null pointer.
+     * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public HashMap<Integer, String> getProfile(String name) {
+        return null;
+    }
+
+    /**
      * Deletes the given profile.
      * The method fails if the profile has {@link PersistenceType#FACTORY_RESET_PERSISTENT} persistence or 
      * it is currently loaded or it is associated to a rule.
@@ -391,6 +419,15 @@ public class ProfileManager {
      * @return String, the name of the manually loaded profile or an empty String if there isn't a manually loaded profile.
      */
     public String getLoadedProfile() {
+        return null;
+    }
+
+    /**
+     * Returns the name of the automatically loaded profile, otherwise an empty string.
+     *
+     * @return String, the name of the automatically loaded profile or an empty String if there isn't a automatically loaded profile.
+     */
+    public String getLoadedAutomaticProfile() {
         return null;
     }
 
@@ -430,7 +467,7 @@ public class ProfileManager {
     }
 
     /**
-     * Gets the list of all the profile rules defined on the device. See @link{ProfileRuleType} and @link{ProfileRuleUrlType} for more info.
+     * Gets the list of all the profile rules defined on the device. See {@link ProfileRuleType} and {@link ProfileUrlRuleType} for more info.
      * @return ArrayList<{@link ProfileRuleType}> in case of success, otherwise, if exceptions are not enabled, a null pointer.
      * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
      */
@@ -523,5 +560,16 @@ public class ProfileManager {
      */
     public int removeProfileRule(String name) {
         return 0;
+    }
+
+     /**
+     * Gets the characteristics of the specified profile rule. See {@link ProfileRuleType} and {@link ProfileUrlRuleType} for more info.
+     * @param name
+     *            <code>String</code> name of the profile rule to be retrieved.
+     * @return {@link ProfileRuleType} if the profile rule exists, null otherwise.
+     * @throws ConfigException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+     */
+    public ProfileRuleType getProfileRule(String name) {
+        return null;
     }
 }

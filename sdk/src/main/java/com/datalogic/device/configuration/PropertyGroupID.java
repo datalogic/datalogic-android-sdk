@@ -60,15 +60,14 @@ public class PropertyGroupID {
     protected final static int LOCATION_MIB_BASE = 22<<18;
     /** @hide */
     protected final static int POSE_MANAGER_MIB_BASE = 23<<18;
-
-    // TODO: Disable RFID for now and will be re-enable on SDK v1.51
-    // /** @hide */
-    // protected final static int RFID_MIB_BASE = 24<<18;
-
+    /** @hide */
+    protected final static int RFID_MIB_BASE = 24<<18;
     /** @hide */
     protected final static int NFC_MIB_BASE = 25<<18;
     /** @hide */
     protected final static int PHARMACODE_MIB_BASE = 26<<18;
+    /** @hide */
+    protected final static int BLE_MIB_BASE = 27<<18;
 
     /**
       * Root of the configuration tree.
@@ -569,6 +568,11 @@ public class PropertyGroupID {
      * Root of the subtree of System properties.
      */
     public final static int SYSTEM_GROUP = SYSTEM_MIB_BASE + 0x0001;
+    
+    /**
+     * Root of the subtree of RFID properties.
+     */
+    public final static int RFID_GROUP = RFID_MIB_BASE + 0x0001;
 
     /**
      * Root of the subtree of Emergency properties.
@@ -594,6 +598,13 @@ public class PropertyGroupID {
      * Root of the subtree of Pharmacode properties.
      */
     public final static int PHARMACODE_GROUP = PHARMACODE_MIB_BASE + 0x0001;
+
+    /**
+     * Root of the subtree of Bluetooth Low Energy properties.
+     * <p>
+     * Supported only on M12 RFID devices running Android 15 or later.
+     */
+    public final static int BLE_GROUP = BLE_MIB_BASE + 0x0001;
 
     /**
      * @hide

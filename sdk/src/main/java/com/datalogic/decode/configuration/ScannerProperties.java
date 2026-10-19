@@ -294,6 +294,12 @@ public class ScannerProperties extends PropertyGroup {
 	public ScanningPreview scanningPreview;
 
 	/**
+	 * Controls the Pharmacode barcode reading capabilities.
+	 * {@see Pharmacode}
+	 */
+	public Pharmacode pharmacode;
+
+	/**
 	 * Returns all the ScannerProperties initialized with the actual values.
 	 * 
 	 * @param editor A {@link PropertyGetter} used to load the current barcode families and properties.

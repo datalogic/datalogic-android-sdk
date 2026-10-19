@@ -115,4 +115,38 @@ public class LedManager {
 	public int setLed(Led id, boolean enable) {
 		return 0;
 	}
+
+	/**
+	 * Enables or disables the LED without blocking the caller thread.
+	 * Disabling the LED also turns it off.
+	 * 
+	 * @param id
+	 *            Specifies which {@link Led} to control.
+	 * @param enable
+	 *            <code>true</code> to enable the LED and <code>false</code> to completely disable it.
+	 *            When set to <code>false</code>, the LED is turned off and no other application can turn it on
+	 *            until it is enabled again.
+	 * 
+	 * @return <code>int</code> {@link DeviceException#SUCCESS} in case of success,
+	 * otherwise a possible error code, matching one of the {@link DeviceException} error constants.
+	 * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public int setLedEnabled(Led id, boolean enable) {
+		return 0;
+	}
+
+	/**
+	 * This method returns the current status (enabled/disabled) of a led.
+	 *
+	 * @param id
+	 *            Specifies which {@link Led} to control.
+	 *
+	 * @return <code>boolean</code> value set to false if the LED is disabled and no other application can turn it on,
+	 * true otherwise.
+	 * @throws DeviceException in case of error, when exceptions are enabled through the {@link ErrorManager} singleton.
+	 */
+	public boolean getLedEnabled(Led id) {
+		return true;
+	}
+
 }

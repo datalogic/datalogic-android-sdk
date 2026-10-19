@@ -2,6 +2,8 @@ package com.datalogic.device.input;
 
 import com.datalogic.device.DeviceException;
 import com.datalogic.device.ErrorManager;
+import com.datalogic.device.configuration.PropertyID;
+import com.datalogic.device.configuration.SerializableBlob;
 
 import java.util.List;
 
@@ -579,6 +581,393 @@ public class AdvancedKeyboard {
          */
         public String getDate() {
             return null;
+        }
+    }
+
+    /**
+     * Collection of scan code constants used to configure and identify
+     * key mappings for the Datalogic logo overlay.<br/>
+     * Each constant represents a hardware scan code associated with
+     * a keyboard key, function key, navigation key, trigger or
+     * device-specific action supported by Datalogic devices.<br/>
+     * The values are aligned with Linux input subsystem scan codes,
+     * extended with Datalogic-specific proprietary codes.
+     */
+    public static class ScanCode {
+        /** No scan code assigned. */
+        public static final int CODE_NONE = 0;
+        /** Escape key. */
+        public static final int CODE_ESC = 1;
+        /** Numeric key 1. */
+        public static final int CODE_1 = 2;
+        /** Numeric key 2. */
+        public static final int CODE_2 = 3;
+        /** Numeric key 3. */
+        public static final int CODE_3 = 4;
+        /** Numeric key 4. */
+        public static final int CODE_4 = 5;
+        /** Numeric key 5. */
+        public static final int CODE_5 = 6;
+        /** Numeric key 6. */
+        public static final int CODE_6 = 7;
+        /** Numeric key 7. */
+        public static final int CODE_7 = 8;
+        /** Numeric key 8. */
+        public static final int CODE_8 = 9;
+        /** Numeric key 9. */
+        public static final int CODE_9 = 10;
+        /** Numeric key 0. */
+        public static final int CODE_0 = 11;
+        /** Minus key (-). */
+        public static final int CODE_MINUS = 12;
+        /** Equal key (=). */
+        public static final int CODE_EQUAL = 13;
+        /** Backspace key. */
+        public static final int CODE_BKSP = 14;
+        /** Tab key. */
+        public static final int CODE_TAB = 15;
+        /** Letter Q key. */
+        public static final int CODE_Q = 16;
+        /** Letter W key. */
+        public static final int CODE_W = 17;
+        /** Letter E key. */
+        public static final int CODE_E = 18;
+        /** Letter R key. */
+        public static final int CODE_R = 19;
+        /** Letter T key. */
+        public static final int CODE_T = 20;
+        /** Letter Y key. */
+        public static final int CODE_Y = 21;
+        /** Letter U key. */
+        public static final int CODE_U = 22;
+        /** Letter I key. */
+        public static final int CODE_I = 23;
+        /** Letter O key. */
+        public static final int CODE_O = 24;
+        /** Letter P key. */
+        public static final int CODE_P = 25;
+        /** Left bracket key ([). */
+        public static final int CODE_LEFT_BRACKET = 26;
+        /** Right bracket key (]). */
+        public static final int CODE_RIGHT_BRACKET = 27;
+        /** Right Enter key. */
+        public static final int CODE_ENTER_R = 28;
+        /** Control key. */
+        public static final int CODE_CTRL = 29;
+        /** Letter A key. */
+        public static final int CODE_A = 30;
+        /** Letter S key. */
+        public static final int CODE_S = 31;
+        /** Letter D key. */
+        public static final int CODE_D = 32;
+        /** Letter F key. */
+        public static final int CODE_F = 33;
+        /** Letter G key. */
+        public static final int CODE_G = 34;
+        /** Letter H key. */
+        public static final int CODE_H = 35;
+        /** Letter J key. */
+        public static final int CODE_J = 36;
+        /** Letter K key. */
+        public static final int CODE_K = 37;
+        /** Letter L key. */
+        public static final int CODE_L = 38;
+        /** Semicolon key (;). */
+        public static final int CODE_SEMICOLON = 39;
+        /** Apostrophe key ('). */
+        public static final int CODE_APOSTROPHE = 40;
+        /** Backtick key (`). */
+        public static final int CODE_BACKTICK = 41;
+        /** Shift key. */
+        public static final int CODE_SHIFT = 42;
+        /** Backslash key (\). */
+        public static final int CODE_BACKSLASH = 43;
+        /** Letter Z key. */
+        public static final int CODE_Z = 44;
+        /** Letter X key. */
+        public static final int CODE_X = 45;
+        /** Letter C key. */
+        public static final int CODE_C = 46;
+        /** Letter V key. */
+        public static final int CODE_V = 47;
+        /** Letter B key. */
+        public static final int CODE_B = 48;
+        /** Letter N key. */
+        public static final int CODE_N = 49;
+        /** Letter M key. */
+        public static final int CODE_M = 50;
+        /** Comma key (,). */
+        public static final int CODE_COMMA = 51;
+        /** Period key (.). */
+        public static final int CODE_PERIOD = 52;
+        /** Slash key (/). */
+        public static final int CODE_SLASH = 53;
+        /** Numeric keypad asterisk key (*). */
+        public static final int CODE_ASTERISK = 55;
+        /** Alt key. */
+        public static final int CODE_ALT = 56;
+        /** Space bar key. */
+        public static final int CODE_SPACE = 57;
+        /** Caps Lock key. */
+        public static final int CODE_CAPS = 58;
+        /** Function key F1. */
+        public static final int CODE_F1 = 59;
+        /** Function key F2. */
+        public static final int CODE_F2 = 60;
+        /** Function key F3. */
+        public static final int CODE_F3 = 61;
+        /** Function key F4. */
+        public static final int CODE_F4 = 62;
+        /** Function key F5. */
+        public static final int CODE_F5 = 63;
+        /** Function key F6. */
+        public static final int CODE_F6 = 64;
+        /** Function key F7. */
+        public static final int CODE_F7 = 65;
+        /** Function key F8. */
+        public static final int CODE_F8 = 66;
+        /** Function key F9. */
+        public static final int CODE_F9 = 67;
+        /** Function key F10. */
+        public static final int CODE_F10 = 68;
+        /** Plus key (+). */
+        public static final int CODE_PLUS = 78;
+        /** Function key F11. */
+        public static final int CODE_F11 = 87;
+        /** Function key F12. */
+        public static final int CODE_F12 = 88;
+        /** Left Enter key. */
+        public static final int CODE_ENTER_L = 96;
+        /** Print Screen key. */
+        public static final int CODE_PRINTSCRN = 99;
+        /** Home key. */
+        public static final int CODE_HOME = 102;
+        /** Up arrow key. */
+        public static final int CODE_UP = 103;
+        /** Page Up key. */
+        public static final int CODE_PGUP = 104;
+        /** Left arrow key. */
+        public static final int CODE_LEFT = 105;
+        /** Right arrow key. */
+        public static final int CODE_RIGHT = 106;
+        /** End key. */
+        public static final int CODE_END = 107;
+        /** Down arrow key. */
+        public static final int CODE_DOWN = 108;
+        /** Page Down key. */
+        public static final int CODE_PGDWN = 109;
+        /** Insert key. */
+        public static final int CODE_INS = 110;
+        /** Delete key. */
+        public static final int CODE_DEL = 111;
+        /** Volume down key. */
+        public static final int CODE_VOL_MINUS = 114;
+        /** Volume up key. */
+        public static final int CODE_VOL_PLUS = 115;
+        /** Power key. */
+        public static final int CODE_PWR = 116;
+        /** Stop key. */
+        public static final int CODE_STOP = 128;
+        /** SOS/emergency key. */
+        public static final int CODE_SOS = 138;
+        /** Menu key. */
+        public static final int CODE_MENU = 139;
+        /** Programmable key P1. */
+        public static final int CODE_P1 = 148;
+        /** Programmable key P2. */
+        public static final int CODE_P2 = 149;
+        /** Lock key. */
+        public static final int CODE_LOCK = 152;
+        /** Back key. */
+        public static final int CODE_BACK = 158;
+        /** Forward key. */
+        public static final int CODE_FRWRD = 159;
+        /** Refresh key. */
+        public static final int CODE_REFRESH = 173;
+        /** Scroll/roller increment key. */
+        public static final int CODE_ROLL_PLUS = 177;
+        /** Scroll/roller decrement key. */
+        public static final int CODE_ROLL_MINUS = 178;
+        /** Left parenthesis key ((). */
+        public static final int CODE_LEFT_PAREN = 179;
+        /** Right parenthesis key ()). */
+        public static final int CODE_RIGHT_PAREN = 180;
+        /** Function key F13. */
+        public static final int CODE_F13 = 183;
+        /** Function key F14. */
+        public static final int CODE_F14 = 184;
+        /** Function key F15. */
+        public static final int CODE_F15 = 185;
+        /** Function key F16. */
+        public static final int CODE_F16 = 186;
+        /** Function key F17. */
+        public static final int CODE_F17 = 187;
+        /** Function key F18. */
+        public static final int CODE_F18 = 188;
+        /** Function key F19. */
+        public static final int CODE_F19 = 189;
+        /** Function key F20. */
+        public static final int CODE_F20 = 190;
+        /** Function key F21. */
+        public static final int CODE_F21 = 191;
+        /** Function key F22. */
+        public static final int CODE_F22 = 192;
+        /** Function key F23. */
+        public static final int CODE_F23 = 193;
+        /** Function key F24. */
+        public static final int CODE_F24 = 194;
+        /** Question mark key (?). */
+        public static final int CODE_QUESTION = 214;
+        /** Brightness up key. */
+        public static final int CODE_BRUP = 224;
+        /** Brightness down key. */
+        public static final int CODE_BRDWN = 225;
+        /** Battery swap key. */
+        public static final int CODE_BATTSWAP = 236;
+        /** Brightness cycle key. */
+        public static final int CODE_BRCYC = 243;
+        /** Less-than key (<). */
+        public static final int CODE_LESS = 256;
+        /** Greater-than key (>). */
+        public static final int CODE_GREATER = 257;
+        /** Exclamation mark key (!). */
+        public static final int CODE_EXCLAMATION = 258;
+        /** Caret key (^). */
+        public static final int CODE_CARET = 259;
+        /** Ampersand key (&). */
+        public static final int CODE_AMPERSAND = 260;
+        /** Underscore key (_). */
+        public static final int CODE_UNDERSCORE = 262;
+        /** Colon key (:). */
+        public static final int CODE_COLON = 263;
+        /** Double quote key ("). */
+        public static final int CODE_QUOTE = 264;
+        /** Percent key (%). */
+        public static final int CODE_PERCENT = 265;
+        /** Pipe key (|). */
+        public static final int CODE_PIPE = 266;
+        /** Tilde key (~). */
+        public static final int CODE_TILDE = 267;
+        /** Shift+Tab key combination. */
+        public static final int CODE_SHIFT_TAB = 268;
+        /** Attention key. */
+        public static final int CODE_ATTN = 269;
+        /** Function exit key. */
+        public static final int CODE_FEXIT = 270;
+        /** Symbol key. */
+        public static final int CODE_SYMB = 271;
+        /** Auto-scan trigger key. */
+        public static final int CODE_SCAN_A = 304;
+        /** Motion scan trigger M key. */
+        public static final int CODE_SCAN_M = 305;
+        /** Reset key. */
+        public static final int CODE_RST = 306;
+        /** Half trigger key. */
+        public static final int CODE_HALF_TRIG = 307;
+        /** Left trigger scan key. */
+        public static final int CODE_SCAN_L = 310;
+        /** Right trigger scan key. */
+        public static final int CODE_SCAN_R = 311;
+        /** Field decrement key. */
+        public static final int CODE_FLD_MINUS = 312;
+        /** Field increment key. */
+        public static final int CODE_FLD_PLUS = 313;
+        /** Pistol trigger scan key. */
+        public static final int CODE_SCAN_T = 314;
+        /** Front trigger scan key. */
+        public static final int CODE_SCAN_F = 315;
+        /** Trigger handle left key. */
+        public static final int CODE_THL = 317;
+        /** Trigger handle right key. */
+        public static final int CODE_THR = 318;
+        /** Clear key. */
+        public static final int CODE_CLR = 355;
+        /** Datalogic key. */
+        public static final int CODE_DL = 360;
+        /** Symbol modifier key. */
+        public static final int CODE_SYM = 368;
+        /** Dollar sign key ($). */
+        public static final int CODE_DOLLAR = 434;
+        /** At sign key (@). */
+        public static final int CODE_AT = 512;
+        /** Hash sign key (#). */
+        public static final int CODE_HASH = 523;
+        /** Push-to-talk key. */
+        public static final int CODE_PTT = 586;
+    }
+
+    /**
+     * <code>LogoKeys</code> implements the BlobProperty that allows to manage
+     * the mapping of the keys available in the Datalogic logo overlay, which
+     * is shown when pressing the Datalogic logo button.<br>
+     * The class is managed by the ConfigurationManager Blob Property
+     * {@link PropertyID#KEYBOARD_LOGO_KEYS}.
+     */
+    public static class LogoKeys extends SerializableBlob {
+        /**
+         * @hide
+         */
+        public LogoKeys() {
+        }
+
+        /**
+         * Get the list of currently mapped keys. The list cannot be
+         * modified to add or remove items, the only editable thing is the
+         * scan code of the contained keys. After editing the scancodes,
+         * the changes can be applied by calling the {@link #setKeys} method.
+         * @return An unmodifiable list containing all the mapped keys.
+         */
+        public List<Key> getKeys() {
+            return null;
+        }
+
+        /**
+         * Set the list of currently mapped keys. The list must contain the same
+         * keys already included in the property, the only change allowed is
+         * in the internal scancodes of the keys.
+         * @param logoKeys A list containing all the mapped keys.
+         * @throws IllegalArgumentException The input keys are not valid.
+         */
+        public void setKeys(List<Key> logoKeys) {
+            
+        }
+
+        /**
+         * A single key found in the Datalogic logo overlay.
+         */
+        public static class Key {
+            /**
+             * @hide
+             */
+            public Key() {
+                
+            }
+
+            /**
+             * Returns the key name.
+             * @return The name.
+             */
+            public String getName() {
+                return null;
+            }
+
+            /**
+             * Returns the scancode of this key. The list of available scancodes
+             * is found in the {@link ScanCode} class.
+             * @return The scancode.
+             */
+            public int getScanCode() {
+                return 0;
+            }
+
+            /**
+             * Set the scancode of this key. The list of available scancodes
+             * is found in the {@link ScanCode} class.
+             * @param scanCode The new scancode.
+             */
+            public void setScanCode(int scanCode) {
+                
+            }
         }
     }
 

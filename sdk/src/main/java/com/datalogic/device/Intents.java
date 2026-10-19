@@ -751,4 +751,284 @@ public final class Intents {
      */
     public static final String EXTRA_POWER_STATUS_CRITICAL_FAILURE_EEPROM_CORRUPTED = "com.datalogic.device.intent.extra.power.status.CRITICAL_FAILURE_EEPROM_CORRUPTED";
 
+    /**
+     * <code>ACTION_CREATE_PROFILE</code> Broadcast Action: Request the creation of a profile.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#createProfile}.
+     * <br>
+     * The intent can have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_NAME} - String representing the profile name. <br>
+     * {@link #EXTRA_PROFILE_PROPERTIES} - map of profile properties and values. <br>
+     * {@link #EXTRA_PROFILE_DESCRIPTION} - String representing the profile description. <br>
+     * {@link #EXTRA_PROFILE_PERSISTENCE} - {@link com.datalogic.device.PersistenceType} representing
+     * the profile persistence mode. If not provided, defaults to
+     * {@link com.datalogic.device.PersistenceType#REBOOT_PERSISTENT}. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_CREATE_PROFILE = "com.datalogic.device.intent.action.profile.CREATE_PROFILE";
+
+    /**
+     * <code>ACTION_DELETE_PROFILE</code> Broadcast Action: Request the deletion of a profile.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#deleteProfile}.
+     * <br>
+     * The intent must have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_NAME} - String representing the profile name. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_DELETE_PROFILE = "com.datalogic.device.intent.action.profile.DELETE_PROFILE";
+
+    /**
+     * <code>ACTION_EDIT_PROFILE</code> Broadcast Action: Request editing an existing profile.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#editProfile}.
+     * <br>
+     * The intent must have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_NAME} - String representing the profile name. <br>
+     * {@link #EXTRA_PROFILE_PROPERTIES} - map of profile properties and values to update. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_EDIT_PROFILE = "com.datalogic.device.intent.action.profile.EDIT_PROFILE";
+
+    /**
+     * <code>ACTION_LOAD_PROFILE</code> Broadcast Action: Request loading a profile.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#loadProfile}.
+     * <br>
+     * The intent must have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_NAME} - String representing the profile name. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_LOAD_PROFILE = "com.datalogic.device.intent.action.profile.LOAD_PROFILE";
+
+    /**
+     * <code>ACTION_UNLOAD_PROFILE</code> Broadcast Action: Request unloading the currently loaded profile.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#unloadProfile}.
+     * <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_UNLOAD_PROFILE = "com.datalogic.device.intent.action.profile.UNLOAD_PROFILE";
+
+    /**
+     * <code>ACTION_ADD_PROFILE_RULE</code> Broadcast Action: Request creation of a profile rule.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#addProfileRule}
+     * or, when {@link #EXTRA_PROFILE_RULE_URL} is provided, to
+     * {@link com.datalogic.device.configuration.ProfileManager#addProfileUrlRule}.
+     * <br>
+     * The intent can have the following extra values: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_RULE_NAME} - String representing the rule name. <br>
+     * {@link #EXTRA_PROFILE_RULE_PROFILE} - String representing the target profile name. <br>
+     * {@link #EXTRA_PROFILE_RULE_PACKAGE} - String representing the package name. <br>
+     * {@link #EXTRA_PROFILE_RULE_ACTIVITIES} - list of activity class names. <br>
+     * {@link #EXTRA_PROFILE_RULE_URL} - String representing the URL regex for URL rules. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE} and
+     * {@link #EXTRA_PROFILE_RULE_NAME} containing the actual rule name assigned. If a rule with
+     * the requested name already exists, a numeric suffix is automatically appended to ensure
+     * uniqueness.
+     */
+    public static final String ACTION_ADD_PROFILE_RULE = "com.datalogic.device.intent.action.profile.ADD_PROFILE_RULE";
+
+    /**
+     * <code>ACTION_REMOVE_PROFILE_RULE</code> Broadcast Action: Request deletion of a profile rule.
+     * <br>
+     * This action is equivalent to invoking
+     * {@link com.datalogic.device.configuration.ProfileManager#removeProfileRule}.
+     * <br>
+     * The intent must have the following extra value: <br>
+     * <br>
+     * {@link #EXTRA_PROFILE_RULE_NAME} - String representing the rule name. <br>
+     * {@link #EXTRA_RESPONSE_ACTION} - optional String specifying the broadcast action to receive
+     * the response. When present, the response is sent with {@link #EXTRA_STATUS_CODE}.
+     */
+    public static final String ACTION_REMOVE_PROFILE_RULE = "com.datalogic.device.intent.action.profile.REMOVE_PROFILE_RULE";
+
+    /**
+     * <code>ACTION_QUERY_PROFILE_MANAGER</code> Broadcast Action: Request profile manager information.
+     * <br>
+     * The request must include exactly one query selector among:
+     * <br>
+     * {@link #EXTRA_PROFILE_NAME} - requests the characteristics of the specified profile. <br>
+     * {@link #EXTRA_PROFILE_RULE_NAME} - requests the characteristics of the specified rule. <br>
+     * {@link #EXTRA_LOADED_MANUAL_PROFILE} - requests the currently loaded manual profile. <br>
+     * {@link #EXTRA_LOADED_AUTOMATIC_PROFILE} - requests the currently loaded automatic profile. <br>
+     * {@link #EXTRA_PROFILES_LIST} - requests the list of available profile names. <br>
+     * {@link #EXTRA_PROFILE_RULES_LIST} - requests the list of available rule names.
+     * <br><br>
+     * {@link #EXTRA_RESPONSE_ACTION} can be provided to receive the response broadcast. When sent,
+     * the response always includes {@link #EXTRA_STATUS_CODE}.
+     * <br><br>
+     * Response extras by query selector:
+     * <br>
+     * <b>Profile query</b> ({@link #EXTRA_PROFILE_NAME}): <br>
+     * {@link #EXTRA_PROFILE_NAME}, {@link #EXTRA_PROFILE_DESCRIPTION},
+     * {@link #EXTRA_PROFILE_PERSISTENCE}, {@link #EXTRA_PROFILE_PROPERTIES}. <br><br>
+     * <b>Rule query</b> ({@link #EXTRA_PROFILE_RULE_NAME}): <br>
+     * {@link #EXTRA_PROFILE_RULE_NAME}, {@link #EXTRA_PROFILE_RULE_PROFILE},
+     * {@link #EXTRA_PROFILE_RULE_PACKAGE}, {@link #EXTRA_PROFILE_RULE_ACTIVITIES}; and
+     * {@link #EXTRA_PROFILE_RULE_URL} only for URL rules. <br><br>
+     * <b>Loaded manual profile query</b> ({@link #EXTRA_LOADED_MANUAL_PROFILE}): <br>
+     * {@link #EXTRA_PROFILE_NAME}. <br><br>
+     * <b>Loaded automatic profile query</b> ({@link #EXTRA_LOADED_AUTOMATIC_PROFILE}): <br>
+     * {@link #EXTRA_PROFILE_NAME}. <br><br>
+     * <b>Profiles list query</b> ({@link #EXTRA_PROFILES_LIST}): <br>
+     * {@link #EXTRA_PROFILES_LIST}. <br><br>
+     * <b>Profile rules list query</b> ({@link #EXTRA_PROFILE_RULES_LIST}): <br>
+     * {@link #EXTRA_PROFILE_RULES_LIST}.
+     */
+    public static final String ACTION_QUERY_PROFILE_MANAGER = "com.datalogic.device.intent.action.profile.QUERY_PROFILE_MANAGER";
+
+    /**
+     * <code>EXTRA_RESPONSE_ACTION</code> - Used as a String extra field in
+     * {@link #ACTION_CREATE_PROFILE}, {@link #ACTION_DELETE_PROFILE}, {@link #ACTION_EDIT_PROFILE}, {@link #ACTION_LOAD_PROFILE},
+     * {@link #ACTION_UNLOAD_PROFILE}, {@link #ACTION_ADD_PROFILE_RULE},
+     * {@link #ACTION_REMOVE_PROFILE_RULE} and {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * It specifies the broadcast action string used by the profile manager to send back the
+     * response. When present, the profile manager broadcasts the response using this action.
+     * The response always includes {@link #EXTRA_STATUS_CODE} and may include additional extras
+     * depending on the originating action.
+     */
+    public static final String EXTRA_RESPONSE_ACTION = "com.datalogic.device.intent.extra.RESPONSE_ACTION";
+
+    /**
+     * <code>EXTRA_STATUS_CODE</code> - Used as an integer extra field in broadcast responses
+     * sent by the profile manager.
+     * It contains the status code of the requested operation. The value is one of the error
+     * constants defined in {@link com.datalogic.device.configuration.ConfigException}
+     * (e.g. {@link com.datalogic.device.configuration.ConfigException#SUCCESS}).
+     */
+    public static final String EXTRA_STATUS_CODE = "com.datalogic.device.intent.extra.STATUS_CODE";
+
+    /**
+     * <code>EXTRA_PROFILE_NAME</code> - Used as a String extra field in
+     * {@link #ACTION_CREATE_PROFILE}, {@link #ACTION_DELETE_PROFILE}, {@link #ACTION_EDIT_PROFILE}, {@link #ACTION_LOAD_PROFILE}
+     * and {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * It represents the profile name. Also returned in the response broadcast of
+     * {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a profile.
+     */
+    public static final String EXTRA_PROFILE_NAME = "com.datalogic.device.intent.extra.profile.PROFILE_NAME";
+
+    /**
+     * <code>EXTRA_PROFILE_PROPERTIES</code> - Used as a map extra field in
+     * {@link #ACTION_CREATE_PROFILE} and {@link #ACTION_EDIT_PROFILE}.
+     * It represents profile properties and values.
+     * In {@link #ACTION_CREATE_PROFILE}, it is expected as a map keyed by property identifier.
+     * In {@link #ACTION_EDIT_PROFILE}, it is required and represents the updated properties map.
+     * In the response broadcast of {@link #ACTION_QUERY_PROFILE_MANAGER} (profile query), it is
+     * returned as a {@code HashMap<String, String>} where the key is the property name and the
+     * value is the property value as a string.
+     */
+    public static final String EXTRA_PROFILE_PROPERTIES = "com.datalogic.device.intent.extra.profile.PROFILE_PROPERTIES";
+
+    /**
+     * <code>EXTRA_PROFILE_DESCRIPTION</code> - Used as a String extra field in
+     * {@link #ACTION_CREATE_PROFILE}.
+     * It represents the profile description. Also returned in the response broadcast of
+     * {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a profile.
+     */
+    public static final String EXTRA_PROFILE_DESCRIPTION = "com.datalogic.device.intent.extra.profile.PROFILE_DESCRIPTION";
+
+    /**
+     * <code>EXTRA_PROFILE_PERSISTENCE</code> - Used as a serializable
+     * {@link com.datalogic.device.PersistenceType} extra field in
+     * {@link #ACTION_CREATE_PROFILE}.
+     * It represents the profile persistence mode. Also returned in the response broadcast of
+     * {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a profile.
+     */
+    public static final String EXTRA_PROFILE_PERSISTENCE = "com.datalogic.device.intent.extra.profile.PROFILE_PERSISTENCE";
+
+    /**
+     * <code>EXTRA_PROFILE_RULE_NAME</code> - Used as a String extra field in
+     * {@link #ACTION_ADD_PROFILE_RULE}, {@link #ACTION_REMOVE_PROFILE_RULE} and
+     * {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * It represents the rule name. Also returned in the response broadcast of
+     * {@link #ACTION_ADD_PROFILE_RULE} (with the actual name assigned, which may differ from
+     * the requested name if a conflict occurred) and of {@link #ACTION_QUERY_PROFILE_MANAGER}
+     * when querying a rule.
+     */
+    public static final String EXTRA_PROFILE_RULE_NAME = "com.datalogic.device.intent.extra.profile.PROFILE_RULE_NAME";
+
+    /**
+     * <code>EXTRA_PROFILE_RULE_PROFILE</code> - Used as a String extra field in
+     * {@link #ACTION_ADD_PROFILE_RULE}.
+     * It represents the profile associated to the rule. Also returned in the response broadcast
+     * of {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a rule.
+     */
+    public static final String EXTRA_PROFILE_RULE_PROFILE = "com.datalogic.device.intent.extra.profile.PROFILE_RULE_PROFILE";
+
+    /**
+     * <code>EXTRA_PROFILE_RULE_PACKAGE</code> - Used as a String extra field in
+     * {@link #ACTION_ADD_PROFILE_RULE}.
+     * It represents the package name associated to the rule. Also returned in the response
+     * broadcast of {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a rule.
+     */
+    public static final String EXTRA_PROFILE_RULE_PACKAGE = "com.datalogic.device.intent.extra.profile.PROFILE_RULE_PACKAGE";
+
+    /**
+     * <code>EXTRA_PROFILE_RULE_ACTIVITIES</code> - Used as a {@code ArrayList<String>} extra field in
+     * {@link #ACTION_ADD_PROFILE_RULE}.
+     * It represents the list of activity class names associated to the rule. Also returned in the
+     * response broadcast of {@link #ACTION_QUERY_PROFILE_MANAGER} when querying a rule.
+     */
+    public static final String EXTRA_PROFILE_RULE_ACTIVITIES = "com.datalogic.device.intent.extra.profile.PROFILE_RULE_ACTIVITIES";
+
+    /**
+     * <code>EXTRA_PROFILE_RULE_URL</code> - Used as a String extra field in
+     * {@link #ACTION_ADD_PROFILE_RULE}.
+     * It represents the URL regex used for URL rules. When present, the rule is created as a
+     * URL rule. Also returned in the response broadcast of {@link #ACTION_QUERY_PROFILE_MANAGER}
+     * when querying a URL rule.
+     */
+    public static final String EXTRA_PROFILE_RULE_URL = "com.datalogic.device.intent.extra.profile.PROFILE_RULE_URL";
+
+    /**
+     * <code>EXTRA_LOADED_MANUAL_PROFILE</code> - Used as a marker extra field in
+     * {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * When present, it requests the currently loaded manual profile. The response includes
+     * {@link #EXTRA_PROFILE_NAME}.
+     */
+    public static final String EXTRA_LOADED_MANUAL_PROFILE = "com.datalogic.device.intent.extra.profile.LOADED_MANUAL_PROFILE";
+
+    /**
+     * <code>EXTRA_LOADED_AUTOMATIC_PROFILE</code> - Used as a marker extra field in
+     * {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * When present, it requests the currently loaded automatic profile. The response includes
+     * {@link #EXTRA_PROFILE_NAME}.
+     */
+    public static final String EXTRA_LOADED_AUTOMATIC_PROFILE = "com.datalogic.device.intent.extra.profile.LOADED_AUTOMATIC_PROFILE";
+
+    /**
+     * <code>EXTRA_PROFILES_LIST</code> - Used as a marker extra field in
+     * {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * When present, it requests the list of available profile names. The response includes
+     * this extra as an {@code ArrayList<String>}.
+     */
+    public static final String EXTRA_PROFILES_LIST = "com.datalogic.device.intent.extra.profile.PROFILES_LIST";
+
+    /**
+     * <code>EXTRA_PROFILE_RULES_LIST</code> - Used as a marker extra field in
+     * {@link #ACTION_QUERY_PROFILE_MANAGER}.
+     * When present, it requests the list of available profile rule names. The response includes
+     * this extra as an {@code ArrayList<String>}.
+     */
+    public static final String EXTRA_PROFILE_RULES_LIST = "com.datalogic.device.intent.extra.profile.PROFILE_RULES_LIST";
+
 }

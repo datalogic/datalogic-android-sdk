@@ -193,5 +193,9 @@ public enum Symbology {
 	/**
 	 * GS1 Digital Link Data Matrix
 	 */
-	GS1_DL_DATAMATRIX;
+	GS1_DL_DATAMATRIX,
+	/**
+	 * Pharmacode
+	 */
+	PHARMACODE;
 }

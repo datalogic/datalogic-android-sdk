@@ -35,6 +35,18 @@ public class SnapOcrResultSettings extends PropertyGroup {
 	public BooleanProperty roiPrefixVisible;
 
 	/**
+	 * <code>lastResultTimeout</code> is used to setup the time (in milliseconds) during which the
+	 * last successfully decoded OCR result is considered valid.
+	 */
+	public NumericProperty lastResultTimeout;
+
+	/**
+	 * <code>textBlockFormat</code> is used to select the type of text block to use. This is useful to
+	 * separate the OCR result in different blocks on which to apply regular expressions.
+	 */
+	public EnumProperty<SnapOcrTextBlockFormat> textBlockFormat;
+
+	/**
 	 * This is the constructor of SnapOcrResultSettings.
 	 */
 	public SnapOcrResultSettings(PropertyGetter editor) {

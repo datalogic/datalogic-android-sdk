@@ -46,7 +46,13 @@ public enum DLKeyEvent {
      * Datalogic's Android keycode meant to represent
      * the Half Trigger (scanner aiming) event
      */
-    KEYCODE_HALF_TRIGGER(1131);
+    KEYCODE_HALF_TRIGGER(1131),
+
+    /**
+     * Datalogic's Android keycode meant to represent
+     * the RFID inventory trigger button.
+     */
+    KEYCODE_RFID(1135);
 
     /**
      * @hide

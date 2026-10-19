@@ -364,6 +364,10 @@ public enum BarcodeID {
 	/**
 	 * Telepen
 	 */
-	TELEPEN;
+	TELEPEN,
+	/**
+	 * RFID
+	 */
+	RFID;
 
 }
